@@ -1149,10 +1149,19 @@ border-left-width: 32px;
     border-radius: 64px; */}
 
 .menu-categories-box {
-  padding: 10px 15px; }
+  padding: 10px 15px;
+  /*background-color: rgba(64, 64, 64, 0.75);*/
+font-size : 13pt;
+  }
+
+.menu-applications-box {
+    padding: 10px 15px;
+}
+
 
 .menu-applications-inner-box .menu-applications-outer-box {
-  padding: 5px 5px 0 10px; }
+  padding: 5px 5px 0 10px; 
+}
 
 .menu-application-button {
   padding: 7px;
@@ -1216,7 +1225,8 @@ border-left-width: 32px;
   padding-right: 30px;
   padding-left: 28px;
   text-align: right;
-  color: #ffffff; }
+  color: #ffffff; 
+}
 
 .menu-selected-app-title {
   font-weight: bold; }
