@@ -1,4 +1,4 @@
-cp -r ./ ~/.themes
+cp -r ./ ~/.themes/DermoDeX
 cd ~/
 git clone https://github.com/wmk69/Color-Icons
 cd ~/Color-Icons
