@@ -130,13 +130,19 @@ def exact_color(input_image, resize, tolerance, zoom):
             rect = patches.Rectangle((x_posi + 1000, y_posi2), 360, 160, facecolor = c)
             ax2.add_artist(rect)
             ax2.text(x = x_posi+1400, y = y_posi2+100, s = c, fontdict={'fontsize': 190})
+    
+    ax2.text(x = 150, y = -200, s = "Dark: " + list_hex[2] + " Light: " + list_hex[10], fontdict={'fontsize': 190})
 
+    
     fig.set_facecolor('white')
     ax2.axis('off')
     bg = plt.imread('/tmp/bg.png')
-    plt.imshow(bg)       
+    plt.imshow(bg)
     plt.tight_layout()
-    return plt.show()
+    plt.savefig("/tmp/wallpaper_swatch.png", transparent=False)
+    os.system('cp /tmp/wallpaper_swatch.png ~/Pictures')
+    #return plt.show()
+    return
 
 wallpaper_file = str(os.popen('gsettings get org.cinnamon.desktop.background picture-uri').read()).replace("\n", "")
 wallpaper_file = wallpaper_file.replace("file://", "").replace("'", "")
@@ -145,7 +151,10 @@ print(wallpaper_file)
 os.system('cp '+ wallpaper_file +' /tmp/wallpaper.jpg')
 
 exact_color('/tmp/wallpaper.jpg', 900, 12, 2.5)
-print("Best Accent Color: " + list_hex[10] + " - rgb" + str(get_rgb(list_hex[10])))
+
+print("Light Accent Color: " + list_hex[10] + " - rgb" + str(get_rgb(list_hex[10])))
+print("Dark Accent Color : " + list_hex[2] + " - rgb" + str(get_rgb(list_hex[2])))
+
 
 os.system('rm -rf /tmp/bg.jpg')
 os.system('rm -rf /tmp/wallpaper.jpg')
