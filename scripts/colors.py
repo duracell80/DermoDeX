@@ -1,4 +1,4 @@
-import os
+import os, math
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -6,13 +6,40 @@ import matplotlib.patches as patches
 import matplotlib.image as mpimg
 
 from PIL import Image
+from PIL import ImageColor
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 
 import cv2
-import extcolors
+import extcolors, colorsys
 
 from colormap import rgb2hex
 
+    
+def get_rgb(h):
+    return ImageColor.getcolor(h, "RGB")
+
+def get_hex(r, g, b):
+    
+    # helper function
+    def help(c):
+        if c<0: return 0
+        if c>255: return 255
+        return c
+    
+    # make sure that values are within bounds
+    r = help(r)
+    g = help(g)
+    b = help(b)
+    
+    # convert to hex
+    # maintain 2 spaces each
+    val = "%02x%02x%02x" % (r, g, b)
+    
+    # return UpperCase string
+    return val.upper()
+
+def get_lum(r,g,b):
+    return math.sqrt( .241 * r + .691 * g + .068 * b )
 
 def color_to_df(input):
     colors_pre_list = str(input).replace('([(','').split(', (')[0:-1]
@@ -53,8 +80,21 @@ def exact_color(input_image, resize, tolerance, zoom):
     colors_x = extcolors.extract_from_path(img_url, tolerance = tolerance, limit = 13)
     df_color = color_to_df(colors_x)
     
+    
     #annotate text
     list_color = list(df_color['c_code'])
+    length = len(list_color)
+    list_rgb=[]
+    for i in range(length):
+        r, g, b = get_rgb(list_color[i])
+        list_rgb.append([r, g, b])
+        
+    list_rgb.sort(key=lambda rgb: colorsys.rgb_to_hsv(*rgb))
+    
+    for i in range(length):
+        list_bits = str(list_rgb[i]).replace("[", "").replace("]", "").split(",")
+        print("#" + get_hex(int(list_bits[0]), int(list_bits[1]), int(list_bits[2])))
+    
     list_precent = [int(i) for i in list(df_color['occurence'])]
     text_c = [c + ' ' + str(round(p*100/sum(list_precent),1)) +'%' for c, p in zip(list_color, list_precent)]
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(160,120), dpi = 10)
