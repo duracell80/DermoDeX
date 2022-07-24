@@ -1,10 +1,17 @@
 #!/bin/bash
+#pip3 install easydev
+#pip3 install colormap
+#pip3 install opencv-python
+#pip3 install colorgram.py
+#pip3 install extcolors
+
+
 dconf dump /org/cinnamon/ > ~/cinnamon_desktop_backup
 
 echo "[i] Setting Up The Start Menu"
 cp -r ./theme ~/.themes/DermoDeX
 cp ~/.cinnamon/configs/menu@cinnamon.org/0.json ~/.cinnamon/configs/menu@cinnamon.org/0.json.bak
-cp -f 0.json ~/.cinnamon/configs/menu@cinnamon.org/
+cp -f ./scripts/config_menu.json ~/.cinnamon/configs/menu@cinnamon.org/0.json
 
 if [ -d ~/Color-Icons ] ; then
 # Things to do
