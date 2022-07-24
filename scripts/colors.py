@@ -85,15 +85,19 @@ def exact_color(input_image, resize, tolerance, zoom):
     list_color = list(df_color['c_code'])
     length = len(list_color)
     list_rgb=[]
+    global list_hex
+    list_hex=[]
+    
     for i in range(length):
         r, g, b = get_rgb(list_color[i])
         list_rgb.append([r, g, b])
         
-    list_rgb.sort(key=lambda rgb: colorsys.rgb_to_hsv(*rgb))
+    list_rgb.sort(key=lambda rgb: get_lum(*rgb))
     
     for i in range(length):
         list_bits = str(list_rgb[i]).replace("[", "").replace("]", "").split(",")
-        print("#" + get_hex(int(list_bits[0]), int(list_bits[1]), int(list_bits[2])))
+        new_hex = "#" + get_hex(int(list_bits[0]), int(list_bits[1]), int(list_bits[2]))
+        list_hex.append(new_hex)
     
     list_precent = [int(i) for i in list(df_color['occurence'])]
     text_c = [c + ' ' + str(round(p*100/sum(list_precent),1)) +'%' for c, p in zip(list_color, list_precent)]
@@ -141,6 +145,7 @@ print(wallpaper_file)
 os.system('cp '+ wallpaper_file +' /tmp/wallpaper.jpg')
 
 exact_color('/tmp/wallpaper.jpg', 900, 12, 2.5)
+print("Best Accent Color: " + list_hex[10] + " - rgb" + str(get_rgb(list_hex[10])))
 
 os.system('rm -rf /tmp/bg.jpg')
 os.system('rm -rf /tmp/wallpaper.jpg')
