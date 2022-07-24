@@ -14,12 +14,10 @@ cp ~/.cinnamon/configs/menu@cinnamon.org/0.json ~/.cinnamon/configs/menu@cinnamo
 cp -f ./scripts/config_menu.json ~/.cinnamon/configs/menu@cinnamon.org/0.json
 
 if [ -d ~/Color-Icons ] ; then
-# Things to do
-echo ""
+    echo ""
 
 else
-# Things to do
-echo "[i] Installing Icons"
+    echo "[i] Installing Icons"
 
 	cd ~/
 	git clone https://github.com/wmk69/Color-Icons
