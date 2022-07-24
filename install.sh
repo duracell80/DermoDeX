@@ -25,7 +25,9 @@ fi
 echo "[i] Setting The Icons and Theme"
 gsettings set org.cinnamon.desktop.interface icon-theme "White-Icons"
 gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark-Aqua"
+gsettings set org.cinnamon.desktop.wm.preferences theme "Mint-Y"
 gsettings set org.cinnamon.theme name "DermoDeX"
+
 
 echo "[i] Adjusting The Height Of The Panels"
 dconf write /org/cinnamon/panels-height "['1:60']"
