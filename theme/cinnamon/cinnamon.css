@@ -186,11 +186,7 @@ StScrollView StScrollBar {
  * ===================================================================*/
 #panel {
   padding: 0px;
-  height: 60px;
-  width: 60px;
-  min-height : 60px;
   background : transparent;
-  border-bottom : 10px solid transparent;
   color: #ffffff;
   font-weight: normal; }
   #panel:highlight {
@@ -215,10 +211,12 @@ background-color : rgba(64, 64, 64, 0.9);
   box-shadow: -1px 0px 0px 0px #141414; }
 
 .panel-top {
-  box-shadow: 0px 1px 0px 0px #141414; }
+  box-shadow: 0px 1px 0px 0px #141414;
+border-top : 10px solid transparent;}
 
 .panel-bottom {
-  box-shadow: 0px -1px 0px 0px #141414; }
+  box-shadow: 0px -1px 0px 0px #141414;
+border-bottom : 10px solid transparent; }
 
 .panel-dummy {
   background-color: rgba(47, 47, 47, 0.4); }
@@ -226,8 +224,8 @@ background-color : rgba(64, 64, 64, 0.9);
     background-color: rgba(255, 35, 35, 0.4); }
 
 #panelLeft {
-  spacing: 4px; 
-min-height : 60px;}
+  spacing: 4px;
+}
   #panelLeft:ltr {
     padding-right: 4px; }
   #panelLeft:rtl {

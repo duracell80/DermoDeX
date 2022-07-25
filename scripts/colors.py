@@ -1,3 +1,7 @@
+# Credits: 
+# medium: @programming-fever
+# https://www.alanzucconi.com
+
 import os, math
 import numpy as np
 import pandas as pd
@@ -14,7 +18,9 @@ import extcolors, colorsys
 
 from colormap import rgb2hex
 
-    
+global HOME
+HOME = str(os.popen('echo $HOME').read()).replace('\n', '')
+
 def get_rgb(h):
     return ImageColor.getcolor(h, "RGB")
 
@@ -57,7 +63,7 @@ def color_to_df(input):
 
 def exact_color(input_image, resize, tolerance, zoom):
     #background
-    bg = '/tmp/bg.png'
+    bg = HOME + '/.cache/dermodex/bg.png'
     fig, ax = plt.subplots(figsize=(192,108),dpi=10)
     fig.set_facecolor('white')
     plt.savefig(bg)
@@ -70,7 +76,7 @@ def exact_color(input_image, resize, tolerance, zoom):
         wpercent = (output_width/float(img.size[0]))
         hsize = int((float(img.size[1])*float(wpercent)))
         img = img.resize((output_width,hsize))
-        resize_name = '/tmp/resize_'+ input_image.replace('/tmp/', '')
+        resize_name = HOME + '/.cache/dermodex/resize_'+ input_image.replace(HOME + '/.cache/dermodex/', '')
         img.save(resize_name)
     else:
         resize_name = input_image
@@ -98,6 +104,11 @@ def exact_color(input_image, resize, tolerance, zoom):
         list_bits = str(list_rgb[i]).replace("[", "").replace("]", "").split(",")
         new_hex = "#" + get_hex(int(list_bits[0]), int(list_bits[1]), int(list_bits[2]))
         list_hex.append(new_hex)
+    
+    os.system('rm -rf '+ HOME +'/.cache/dermodex/colors.txt')
+    os.system('touch '+ HOME +'/.cache/dermodex/colors.txt')
+    for i in range(length):
+        os.system('echo "' + list_hex[i] + '" >> '+ HOME +'/.cache/dermodex/colors.txt')
     
     list_precent = [int(i) for i in list(df_color['occurence'])]
     text_c = [c + ' ' + str(round(p*100/sum(list_precent),1)) +'%' for c, p in zip(list_color, list_precent)]
@@ -136,26 +147,26 @@ def exact_color(input_image, resize, tolerance, zoom):
     
     fig.set_facecolor('white')
     ax2.axis('off')
-    bg = plt.imread('/tmp/bg.png')
+    bg = plt.imread(HOME + '/.cache/dermodex/bg.png')
     plt.imshow(bg)
     plt.tight_layout()
-    plt.savefig("/tmp/wallpaper_swatch.png", transparent=False)
-    os.system('cp /tmp/wallpaper_swatch.png ~/Pictures')
+    plt.savefig(HOME + '/.cache/dermodex/wallpaper_swatch.png', transparent=False)
+    os.system('cp '+ HOME +'/.cache/dermodex/wallpaper_swatch.png ~/Pictures')
     #return plt.show()
     return
+
 
 wallpaper_file = str(os.popen('gsettings get org.cinnamon.desktop.background picture-uri').read()).replace("\n", "")
 wallpaper_file = wallpaper_file.replace("file://", "").replace("'", "")
 
-print(wallpaper_file)
-os.system('cp '+ wallpaper_file +' /tmp/wallpaper.jpg')
+os.system('cp '+ wallpaper_file +' '+ HOME +'/.cache/dermodex/wallpaper.jpg')
 
-exact_color('/tmp/wallpaper.jpg', 900, 12, 2.5)
+exact_color(HOME +'/.cache/dermodex/wallpaper.jpg', 900, 12, 2.5)
 
 print("Light Accent Color: " + list_hex[10] + " - rgb" + str(get_rgb(list_hex[10])))
 print("Dark Accent Color : " + list_hex[2] + " - rgb" + str(get_rgb(list_hex[2])))
 
 
-os.system('rm -rf /tmp/bg.jpg')
-os.system('rm -rf /tmp/wallpaper.jpg')
-os.system('rm -rf /tmp/resize_wallpaper.jpg')
+os.system('rm -rf '+ HOME +'/.cache/dermodex/bg.jpg')
+os.system('rm -rf '+ HOME +'/.cache/dermodex/wallpaper.jpg')
+os.system('rm -rf '+ HOME +'/.cache/dermodex/resize_wallpaper.jpg')
