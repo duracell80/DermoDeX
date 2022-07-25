@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/lee/.local/share/dermodex/watch_wallpaper.sh
+X-GNOME-Autostart-enabled=true
+NoDisplay=false
+Hidden=false
+Name[en_US]=DermoDex Wallpaper Watcher
+Comment[en_US]=Watches every hour for changes to wallpaper and then recalculates accent colors and rebuilds cinnamon.css
+X-GNOME-Autostart-Delay=30
