@@ -4,6 +4,8 @@ touch $HOME/.cache/dermodex/wallpaper_swatch.png
 touch $HOME/.cache/dermodex/resize_wallpaper.jpg
 touch $HOME/.cache/dermodex/wallpaper_current.txt
 touch $HOME/.cache/dermodex/bg.png
+touch $HOME/.cache/dermodex/colors_hex.txt
+touch $HOME/.cache/dermodex/colors_rgb.txt
 
 while true
 do
@@ -14,7 +16,7 @@ do
  else
  	ACT="1"
 	echo $CUR > $HOME/.cache/dermodex/wallpaper_current.txt
-	python3 $HOME/GitHub/DermoDeX/scripts/colors.py
+	python3 $HOME/Documents/GitHub/DermoDeX/scripts/colors.py
 	cp cinnamon_base.css $HOME/.cache/dermodex/cinnamon.css
 
 	COS=$(tail -n 2 $HOME/.cache/dermodex/colors_rgb.txt | head -1 | rev | cut -c2- | rev)
