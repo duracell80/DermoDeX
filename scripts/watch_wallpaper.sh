@@ -23,7 +23,7 @@ do
 	sed -i "s|fav-background-gradient-end: rgba(0,0,0|background-gradient-end: rgba${COE}|g" $HOME/.cache/dermodex/cinnamon.css
 	sed -i "s|fav-background-gradient-start: rgba(0,0,0|background-gradient-start: rgba${COS}|g" $HOME/.cache/dermodex/cinnamon.css
 	cp $HOME/.cache/dermodex/cinnamon.css $HOME/.themes/DermoDeX/cinnamon
-	notify-send --urgency=normal --category=transfer.complete --icon=cs-backgrounds-symbolic --hint=string:image-path:$HOME/.cache/dermodex/wallpaper_swatch.png "Cinnamon Wallpaper Updated" "\nCapturing colors from the new wallpaper. Restart Cinnamon with Alt+F2 then type r\n\nfile://${HOME}/.cache/dermodex/wallpaper_swatch.png"
+	notify-send --urgency=normal --category=transfer.complete --icon=cs-backgrounds-symbolic --hint=string:image-path:$HOME/.cache/dermodex/wallpaper_swatch.png "DermoDeX Recalculating Accent Colors!" "\nRestart Cinnamon with CTRL+Alt+Esc\n\nfile://${HOME}/.cache/dermodex/wallpaper_swatch.png"
  fi
 
  # Letting The Cables Sleep
