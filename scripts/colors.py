@@ -1,6 +1,8 @@
-# Credits: 
-# medium: @programming-fever
-# https://www.alanzucconi.com
+# Credits:
+# Sorting Colors: # https://www.alanzucconi.com
+
+# medium@programming-fever
+# github@duracell80
 
 import os, math
 import numpy as np

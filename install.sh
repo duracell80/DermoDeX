@@ -13,6 +13,10 @@ cp -r ./theme ~/.themes/DermoDeX
 cp ~/.cinnamon/configs/menu@cinnamon.org/0.json ~/.cinnamon/configs/menu@cinnamon.org/0.json.bak
 cp -f ./scripts/config_menu.json ~/.cinnamon/configs/menu@cinnamon.org/0.json
 
+echo "[i] Installing DermoDex to .local/share"
+mkdir -p ~/.local/share/dermodex
+cp ./scripts/* ~/.local/share/dermodex
+
 if [ -d ~/Color-Icons ] ; then
     echo ""
 

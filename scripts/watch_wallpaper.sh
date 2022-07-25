@@ -7,6 +7,13 @@ touch $HOME/.cache/dermodex/bg.png
 touch $HOME/.cache/dermodex/colors_hex.txt
 touch $HOME/.cache/dermodex/colors_rgb.txt
 
+if ! type "xdotool" > /dev/null 2>&1; then
+	notify-send --urgency=normal --category=im.recieved --icon=help-info-symbolic "DermoDeX Color Extractor Active" "Looks for changes to the desktop wallpaper once an hour and reloads cinnamon with accent colors from that image! Press CTRL+Alt+Esc to reload the desktop environment."
+
+else
+	notify-send --urgency=normal --category=im.recieved --icon=help-info-symbolic "DermoDeX Color Extractor Active" "Looks for changes to the desktop wallpaper once an hour and reloads cinnamon with accent colors from that image! Changes will occur automatically for the next 15 minutes!"
+fi
+
 while true
 do
  CUR=$(gsettings get org.cinnamon.desktop.background picture-uri)
@@ -16,8 +23,8 @@ do
  else
  	ACT="1"
 	echo $CUR > $HOME/.cache/dermodex/wallpaper_current.txt
-	python3 $HOME/Documents/GitHub/DermoDeX/scripts/colors.py
-	cp cinnamon_base.css $HOME/.cache/dermodex/cinnamon.css
+	python3 $HOME/.local/share/dermodex/colors.py
+	cp $HOME/.local/share/dermodex/cinnamon_base.css $HOME/.cache/dermodex/cinnamon.css
 
 	COS=$(tail -n 2 $HOME/.cache/dermodex/colors_rgb.txt | head -1 | rev | cut -c2- | rev)
  	COE=$(head -n 3 $HOME/.cache/dermodex/colors_rgb.txt | tail -1 | rev | cut -c2- | rev)
@@ -29,19 +36,22 @@ do
 
 	if ! type "xdotool" > /dev/null 2>&1; then
 		echo "[i] Hot Keys not installed"
-		notify-send --urgency=normal --category=transfer.complete --icon=help-info-symbolic "Hot Keys Tool not installed ..." "Run 'sudo apt install xdotool' to automate shortcuts such as CTRL+Alt+Esc"
+		notify-send --urgency=normal --category=im.receieved --icon=help-info-symbolic "Hot Keys Tool not installed ..." "Run 'sudo apt install xdotool' to automate shortcuts such as CTRL+Alt+Esc"
 	else
+		sleep 10
 		xdotool key ctrl+alt+"Escape"
 	fi
 
  fi
 
  # Letting The Cables Sleep
- if [ "$(find $HOME/.cache/dermodex/wallpaper_current.txt -mmin +5)" == "" ]
+ if [ "$(find $HOME/.cache/dermodex/wallpaper_current.txt -mmin +15)" != "" ]
  then
-  sleep 10
+  echo "[i] DermoDex Color Extractor Less Active"
+  sleep 3600
  else
   # No Rush
-  sleep 3600
+  echo "[i] DermoDex Color Extractor More Active"
+  sleep 10
  fi
 done
