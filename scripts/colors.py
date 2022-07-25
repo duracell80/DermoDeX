@@ -105,10 +105,14 @@ def exact_color(input_image, resize, tolerance, zoom):
         new_hex = "#" + get_hex(int(list_bits[0]), int(list_bits[1]), int(list_bits[2]))
         list_hex.append(new_hex)
     
-    os.system('rm -rf '+ HOME +'/.cache/dermodex/colors.txt')
-    os.system('touch '+ HOME +'/.cache/dermodex/colors.txt')
+    os.system('rm -rf '+ HOME +'/.cache/dermodex/colors_hex.txt')
+    os.system('touch '+ HOME +'/.cache/dermodex/colors_hex.txt')
+    os.system('rm -rf '+ HOME +'/.cache/dermodex/colors_rgb.txt')
+    os.system('touch '+ HOME +'/.cache/dermodex/colors_rgb.txt')
     for i in range(length):
-        os.system('echo "' + list_hex[i] + '" >> '+ HOME +'/.cache/dermodex/colors.txt')
+        os.system('echo "' + list_hex[i] + '" >> '+ HOME +'/.cache/dermodex/colors_hex.txt')
+        os.system('echo "' + str(get_rgb(list_hex[i])) + '" >> '+ HOME +'/.cache/dermodex/colors_rgb.txt')
+    
     
     list_precent = [int(i) for i in list(df_color['occurence'])]
     text_c = [c + ' ' + str(round(p*100/sum(list_precent),1)) +'%' for c, p in zip(list_color, list_precent)]
@@ -142,7 +146,7 @@ def exact_color(input_image, resize, tolerance, zoom):
             ax2.add_artist(rect)
             ax2.text(x = x_posi+1400, y = y_posi2+100, s = c, fontdict={'fontsize': 190})
     
-    ax2.text(x = 150, y = -200, s = "Dark: " + list_hex[2] + " Light: " + list_hex[10], fontdict={'fontsize': 190})
+    ax2.text(x = 150, y = -200, s = "Dark: " + list_hex[2] + " Light: " + list_hex[-2], fontdict={'fontsize': 190})
 
     
     fig.set_facecolor('white')
@@ -163,7 +167,7 @@ os.system('cp '+ wallpaper_file +' '+ HOME +'/.cache/dermodex/wallpaper.jpg')
 
 exact_color(HOME +'/.cache/dermodex/wallpaper.jpg', 900, 12, 2.5)
 
-print("Light Accent Color: " + list_hex[10] + " - rgb" + str(get_rgb(list_hex[10])))
+print("Light Accent Color: " + list_hex[-2] + " - rgb" + str(get_rgb(list_hex[-2])))
 print("Dark Accent Color : " + list_hex[2] + " - rgb" + str(get_rgb(list_hex[2])))
 
 

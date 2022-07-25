@@ -1136,9 +1136,9 @@ border-left-width: 32px;
 .menu-favorites-box {
   padding: 8px;
   background-color: rgba(64, 64, 64, 0.85);
-  /*background-gradient-direction: vertical;
-  background-gradient-end: rgba(0,0,0,0.33);
-  background-gradient-start: rgba(0,0,0,0);*/
+  background-gradient-direction: vertical;
+  fav-background-gradient-end: rgba(0,0,0,0.33);
+  fav-background-gradient-start: rgba(0,0,0,0);
   border: 1px solid #202020;
   border-radius: 64px; }
 
