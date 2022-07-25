@@ -26,6 +26,14 @@ do
 	sed -i "s|fav-background-gradient-start: rgba(0,0,0|background-gradient-start: rgba${COS}|g" $HOME/.cache/dermodex/cinnamon.css
 	cp $HOME/.cache/dermodex/cinnamon.css $HOME/.themes/DermoDeX/cinnamon
 	notify-send --urgency=normal --category=transfer.complete --icon=cs-backgrounds-symbolic --hint=string:image-path:$HOME/.cache/dermodex/wallpaper_swatch.png "DermoDeX Recalculating Accent Colors!" "\nRestart Cinnamon with CTRL+Alt+Esc\n\nfile://${HOME}/.cache/dermodex/wallpaper_swatch.png"
+
+	if ! type "xdotool" > /dev/null 2>&1; then
+		echo "[i] Hot Keys not installed"
+		notify-send --urgency=normal --category=transfer.complete --icon=help-info-symbolic "Hot Keys Tool not installed ..." "Run 'sudo apt install xdotool' to automate shortcuts such as CTRL+Alt+Esc"
+	else
+		xdotool key ctrl+alt+"Escape"
+	fi
+
  fi
 
  # Letting The Cables Sleep
