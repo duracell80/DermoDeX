@@ -46,11 +46,14 @@ gsettings set org.cinnamon.theme name "DermoDeX"
 echo "[i] Adjusting The Height Of The Panels"
 dconf write /org/cinnamon/panels-height "['1:60']"
 
-#clear
-#echo "Attempting to refresh Cinnamon using xdotool. Install if not already installed ..."
-#apt-get install -y -q xdotool
-#clear
-#xdotool key ctrl+alt+"Escape"
-#clear
-echo "[i] Press Ctrl+Alt+Esc to Refresh Your Desktop ..."
-#echo "Cinnamon Refreshed!"
+
+if ! type "xdotool" > /dev/null 2>&1; then
+    echo "[i] Hot Keys not installed"
+    notify-send --urgency=normal --category=im.receieved --icon=help-info-symbolic "Hot Keys Tool not installed ..." "Run 'sudo apt install xdotool' to automate shortcuts such as CTRL+Alt+Esc"
+    
+    echo "[i] Press Ctrl+Alt+Esc to Refresh Your Desktop ..."
+    sudo apt-get install -y -q xdotool
+else
+    xdotool key ctrl+alt+"Escape"
+    echo "[i] Cinnamon Refreshed!"
+fi

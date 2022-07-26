@@ -53,6 +53,21 @@ def get_hex(r, g, b):
 def get_lum(r,g,b):
     return math.sqrt( .241 * r + .691 * g + .068 * b )
 
+def step (r,g,b, repetitions=4):
+    lum = math.sqrt( .241 * r + .691 * g + .068 * b )
+
+    h, s, v = colorsys.rgb_to_hsv(r,g,b)
+
+    h2 = int(h * repetitions)
+    lum2 = int(lum * repetitions)
+    v2 = int(v * repetitions)
+
+    if h2 % 2 == 1:
+        v2 = repetitions - v2
+        lum = repetitions - lum
+
+    return (h2, lum, v2)
+
 def color_to_df(input):
     colors_pre_list = str(input).replace('([(','').split(', (')[0:-1]
     df_rgb = [i.split('), ')[0] + ')' for i in colors_pre_list]
@@ -104,8 +119,8 @@ def exact_color(input_image, resize, tolerance, zoom):
         r, g, b = get_rgb(list_color[i])
         list_rgb.append([r, g, b])
         
-    list_rgb.sort(key=lambda rgb: get_lum(*rgb))
-    
+    #list_rgb.sort(key=lambda rgb: get_lum(*rgb))
+    list_rgb.sort(key=lambda rgb: step(*rgb))
     for i in range(length):
         list_bits = str(list_rgb[i]).replace("[", "").replace("]", "").split(",")
         new_hex = "#" + get_hex(int(list_bits[0]), int(list_bits[1]), int(list_bits[2]))
@@ -152,7 +167,7 @@ def exact_color(input_image, resize, tolerance, zoom):
             ax2.add_artist(rect)
             ax2.text(x = x_posi+1400, y = y_posi2+100, s = c, fontdict={'fontsize': 190})
     
-    ax2.text(x = 150, y = -200, s = "Dark: " + list_hex[2] + " Light: " + list_hex[-2], fontdict={'fontsize': 190})
+    ax2.text(x = 150, y = -200, s = "Shade1: " + list_hex[1] + " Shade2: " + list_hex[-2], fontdict={'fontsize': 190})
 
     
     fig.set_facecolor('white')
@@ -171,10 +186,10 @@ wallpaper_file = wallpaper_file.replace("file://", "").replace("'", "")
 
 os.system('cp '+ wallpaper_file +' '+ HOME +'/.cache/dermodex/wallpaper.jpg')
 
-exact_color(HOME +'/.cache/dermodex/wallpaper.jpg', 900, 12, 2.5)
+exact_color(HOME +'/.cache/dermodex/wallpaper.jpg', 900, 24, 2.5)
 
-print("Light Accent Color: " + list_hex[-2] + " - rgb" + str(get_rgb(list_hex[-2])))
-print("Dark Accent Color : " + list_hex[2] + " - rgb" + str(get_rgb(list_hex[2])))
+print("Shade1 Color: " + list_hex[1] + " - rgb" + str(get_rgb(list_hex[1])))
+print("Shade2 Color: " + list_hex[-2] + " - rgb" + str(get_rgb(list_hex[-2])))
 
 
 os.system('rm -rf '+ HOME +'/.cache/dermodex/bg.jpg')

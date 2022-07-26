@@ -22,14 +22,25 @@ do
  echo "${PAS} - ${CUR}"
  if [ "$PAS" != "$CUR" ]; then
  	ACT="1"
-
-	echo $CUR > $HOME/.cache/dermodex/wallpaper_current.txt
+	
+    echo $CUR > $HOME/.cache/dermodex/wallpaper_current.txt
 	python3 $HOME/.local/share/dermodex/colors.py
 	cp $HOME/.local/share/dermodex/cinnamon_base.css $HOME/.cache/dermodex/cinnamon.css
 
 	COS=$(tail -n 2 $HOME/.cache/dermodex/colors_rgb.txt | head -1 | rev | cut -c2- | rev)
- 	COE=$(head -n 3 $HOME/.cache/dermodex/colors_rgb.txt | tail -1 | rev | cut -c2- | rev)
-
+ 	COE=$(head -n 2 $HOME/.cache/dermodex/colors_rgb.txt | tail -1 | rev | cut -c2- | rev)
+    HOS=$(tail -n 2 $HOME/.cache/dermodex/colors_hex.txt | head -1 | rev | cut -c1- | rev)
+ 	HOE=$(head -n 2 $HOME/.cache/dermodex/colors_hex.txt | tail -1 | rev | cut -c1- | rev)
+    
+    
+    gsettings set org.cinnamon.desktop.background primary-color "${HOS}"
+    gsettings set org.cinnamon.desktop.background secondary-color "${HOE}"
+    gsettings set org.cinnamon.desktop.background color-shading-type "vertical"
+    
+    CONF_SLIDESHOW=$(gsettings get org.cinnamon.desktop.background.slideshow slideshow-enabled)
+    CONF_SLIDETIME=$(gsettings get org.cinnamon.desktop.background.slideshow delay)
+    
+    
 	sed -i "s|fav-background-gradient-end: rgba(0,0,0|background-gradient-end: rgba${COE}|g" $HOME/.cache/dermodex/cinnamon.css
 	sed -i "s|fav-background-gradient-start: rgba(0,0,0|background-gradient-start: rgba${COS}|g" $HOME/.cache/dermodex/cinnamon.css
 	cp $HOME/.cache/dermodex/cinnamon.css $HOME/.themes/DermoDeX/cinnamon
