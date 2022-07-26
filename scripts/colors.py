@@ -1,6 +1,10 @@
 # Credits:
-# Sorting Colors: # https://www.alanzucconi.com
+# OpenCV, Matplotlib https://towardsdatascience.com/image-color-extraction-with-python-in-4-steps-8d9370d9216e
+# OpenCV https://medium.com/programming-fever/color-detection-using-opencv-python-6eec8dcde8c7
+# Sorting Colors: https://www.alanzucconi.com/2015/09/30/colour-sorting/
 
+
+# medium@borih.k
 # medium@programming-fever
 # github@duracell80
 
