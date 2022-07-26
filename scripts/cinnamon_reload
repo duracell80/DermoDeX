@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+xdotool key ctrl+alt+"Escape"

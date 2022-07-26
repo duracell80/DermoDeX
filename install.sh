@@ -12,6 +12,10 @@ echo "[i] Setting Up The Start Menu"
 cp -r ./theme ~/.themes/DermoDeX
 cp ~/.cinnamon/configs/menu@cinnamon.org/0.json ~/.cinnamon/configs/menu@cinnamon.org/0.json.bak
 cp -f ./scripts/config_menu.json ~/.cinnamon/configs/menu@cinnamon.org/0.json
+cp -f ./scripts/cinnamon_reload ~/.local/bin
+cp -f ./scripts/dd_wake.sh ~/.local/bin/dd_wake
+cp -f ./scripts/notify-send.sh ~/.local/bin
+cp -f ./scripts/notify-action.sh ~/.local/bin
 cp -f ./*.desktop ~/.config/autostart
 
 echo "[i] Installing DermoDex to .local/share"
