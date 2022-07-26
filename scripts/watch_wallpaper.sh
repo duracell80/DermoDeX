@@ -57,7 +57,7 @@ do
  then
   echo "[i] DermoDex Color Extractor Less Active"
   UPT=$(uptime)
-  notify-send.sh --action="Reload Cinnamon":~/.local/bin/cinnamon_reload --urgency=normal --category=im.receieved --icon=help-info-symbolic "DermoDex is currently resting." "Changing your wallpaper at the moment will take a while to reflect in your accent colors. Logout and back in or reboot to wake up DermoDeX. You can also stop DermoDeX auto loading by searching for Startup Applications in the cinnamon menu. Your current system uptime is: ${UPT}"
+  notify-send.sh --action="Wake DermoDeX":~/.local/bin/dd_wake --urgency=normal --category=im.receieved --icon=help-info-symbolic "DermoDex is currently resting." "Changing your wallpaper at the moment will take a while to reflect in your accent colors. Logout and back in or reboot to wake up DermoDeX. You can also stop DermoDeX auto loading by searching for Startup Applications in the cinnamon menu. Your current system uptime is: ${UPT}"
 
   sleep 3600
  else
