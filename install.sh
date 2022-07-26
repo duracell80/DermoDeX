@@ -1,7 +1,7 @@
 #!/bin/bash
 pip3 install easydev
 pip3 install colormap
-pip3 install opencv-python
+#pip3 install opencv-python
 pip3 install colorgram.py
 pip3 install extcolors
 pip3 install matplotlib

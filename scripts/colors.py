@@ -1,5 +1,5 @@
 # Credits:
-# OpenCV, Matplotlib https://towardsdatascience.com/image-color-extraction-with-python-in-4-steps-8d9370d9216e
+# Matplotlib https://towardsdatascience.com/image-color-extraction-with-python-in-4-steps-8d9370d9216e
 # OpenCV https://medium.com/programming-fever/color-detection-using-opencv-python-6eec8dcde8c7
 # Sorting Colors: https://www.alanzucconi.com/2015/09/30/colour-sorting/
 
@@ -19,7 +19,7 @@ from PIL import Image
 from PIL import ImageColor
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 
-import cv2
+#import cv2
 import extcolors, colorsys
 
 from colormap import rgb2hex
