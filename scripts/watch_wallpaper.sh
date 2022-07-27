@@ -54,7 +54,7 @@ else
 
                 sed -i "s|fav-background-gradient-end: rgba(0,0,0|background-gradient-end: rgba${COE}|g" $HOME/.cache/dermodex/cinnamon.css
                 sed -i "s|fav-background-gradient-start: rgba(0,0,0|background-gradient-start: rgba${COS}|g" $HOME/.cache/dermodex/cinnamon.css
-		sed -i "s|#478db2|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/cinnamon.css
+		sed -i "s|#478db2|${HOE}|g" $HOME/.cache/dermodex/cinnamon.css
 
                 # Shake the Cinnamon over the Coffee
                 cp $HOME/.cache/dermodex/cinnamon.css $HOME/.themes/DermoDeX/cinnamon
