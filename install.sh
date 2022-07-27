@@ -11,6 +11,9 @@ dconf dump /org/cinnamon/ > ~/cinnamon_desktop.backup
 cp -r ./theme ~/.themes/DermoDeX
 cp ~/.cinnamon/configs/menu@cinnamon.org/0.json ~/.cinnamon/configs/menu@cinnamon.org/0.json.bak
 cp -f ./scripts/config_menu.json ~/.cinnamon/configs/menu@cinnamon.org/0.json
+cp ~/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json ~/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json.bak
+cp -f ./scripts/config_workspace.json ~/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json
+
 cp -f ./scripts/cinnamon_reload ~/.local/bin
 cp -f ./scripts/dd_sleep.sh ~/.local/bin/dd_sleep
 cp -f ./scripts/dd_wake.sh ~/.local/bin/dd_wake
@@ -42,13 +45,14 @@ gsettings set org.cinnamon.desktop.interface icon-theme "White-Icons"
 gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark-Aqua"
 gsettings set org.cinnamon.desktop.wm.preferences theme "Mint-Y"
 gsettings set org.cinnamon.theme name "DermoDeX"
-
+gsettings set org.cinnamon.desktop.notifications bottom-notifications "true"
+gsettings set org.cinnamon.desktop.notifications display-notifications "true"
 
 echo "[i] Adjusting The Height Of The Panels"
 dconf write /org/cinnamon/panels-height "['1:60']"
 dconf load /org/cinnamon/ < ./scripts/cinnamon_dd.txt
 
-dd_release
+#dd_release&
 #dd_wake&
 
 if ! type "xdotool" > /dev/null 2>&1; then
