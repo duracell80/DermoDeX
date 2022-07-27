@@ -106,14 +106,23 @@ def exact_color(input_image, resize, tolerance, zoom):
     img_url = resize_name
     colors_x = extcolors.extract_from_path(img_url, tolerance = tolerance, limit = 13)
     df_color = color_to_df(colors_x)
-    
+
     
     #annotate text
     list_color = list(df_color['c_code'])
     length = len(list_color)
-    list_rgb=[]
+    
+    
+    
+    global list_rgb
     global list_hex
+    global shade_rgb
+    global shade_hex
+    
+    list_rgb=[]
     list_hex=[]
+    shade_rgb = str(get_rgb(list_color[0]))
+    shade_hex = str(list_color[0])
     
     for i in range(length):
         r, g, b = get_rgb(list_color[i])
@@ -130,6 +139,9 @@ def exact_color(input_image, resize, tolerance, zoom):
     os.system('touch '+ HOME +'/.cache/dermodex/colors_hex.txt')
     os.system('rm -rf '+ HOME +'/.cache/dermodex/colors_rgb.txt')
     os.system('touch '+ HOME +'/.cache/dermodex/colors_rgb.txt')
+    
+    os.system('echo "' + shade_hex + '" > '+ HOME +'/.cache/dermodex/colors_hex.txt')
+    os.system('echo "' + shade_rgb + '" > '+ HOME +'/.cache/dermodex/colors_rgb.txt')
     for i in range(length):
         os.system('echo "' + list_hex[i] + '" >> '+ HOME +'/.cache/dermodex/colors_hex.txt')
         os.system('echo "' + str(get_rgb(list_hex[i])) + '" >> '+ HOME +'/.cache/dermodex/colors_rgb.txt')
@@ -167,6 +179,7 @@ def exact_color(input_image, resize, tolerance, zoom):
             ax2.add_artist(rect)
             ax2.text(x = x_posi+1400, y = y_posi2+100, s = c, fontdict={'fontsize': 190})
     
+    ax2.text(x = 150, y = -350, s = "Main Shade: " + shade_hex, fontdict={'fontsize': 275})
     ax2.text(x = 150, y = -200, s = "Shade1: " + list_hex[1] + " Shade2: " + list_hex[-2], fontdict={'fontsize': 190})
 
     
@@ -186,10 +199,11 @@ wallpaper_file = wallpaper_file.replace("file://", "").replace("'", "")
 
 os.system('cp '+ wallpaper_file +' '+ HOME +'/.cache/dermodex/wallpaper.jpg')
 
-exact_color(HOME +'/.cache/dermodex/wallpaper.jpg', 900, 24, 2.5)
+exact_color(HOME +'/.cache/dermodex/wallpaper.jpg', 900, 30, 2.5)
 
-print("Shade1 Color: " + list_hex[1] + " - rgb" + str(get_rgb(list_hex[1])))
-print("Shade2 Color: " + list_hex[-2] + " - rgb" + str(get_rgb(list_hex[-2])))
+print("Shade1: " + shade_hex + " - rgb" + str(shade_rgb))
+print("Shade1: " + list_hex[1] + " - rgb" + str(get_rgb(list_hex[1])))
+print("Shade2: " + list_hex[-2] + " - rgb" + str(get_rgb(list_hex[-2])))
 
 
 os.system('rm -rf '+ HOME +'/.cache/dermodex/bg.jpg')

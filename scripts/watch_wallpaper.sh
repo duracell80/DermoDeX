@@ -36,10 +36,13 @@ else
                 python3 $HOME/.local/share/dermodex/colors.py
                 cp $HOME/.local/share/dermodex/cinnamon_base.css $HOME/.cache/dermodex/cinnamon.css
 
-                COS=$(tail -n 2 $HOME/.cache/dermodex/colors_rgb.txt | head -1 | rev | cut -c2- | rev)
-                COE=$(head -n 2 $HOME/.cache/dermodex/colors_rgb.txt | tail -1 | rev | cut -c2- | rev)
-                HOS=$(tail -n 2 $HOME/.cache/dermodex/colors_hex.txt | head -1 | rev | cut -c1- | rev)
-                HOE=$(head -n 2 $HOME/.cache/dermodex/colors_hex.txt | tail -1 | rev | cut -c1- | rev)
+                COS=$(tail -n 3 $HOME/.cache/dermodex/colors_rgb.txt | head -1 | rev | cut -c2- | rev)
+                COE=$(head -n 3 $HOME/.cache/dermodex/colors_rgb.txt | tail -1 | rev | cut -c2- | rev)
+                HOS=$(tail -n 3 $HOME/.cache/dermodex/colors_hex.txt | head -1 | rev | cut -c1- | rev)
+                HOE=$(head -n 3 $HOME/.cache/dermodex/colors_hex.txt | tail -1 | rev | cut -c1- | rev)
+                
+                MAINSHADE_RGB=$(head -n 1 $HOME/.cache/dermodex/colors_rgb.txt | tail -1 | rev | cut -c2- | rev)
+                MAINSHADE_HEX=$(head -n 1 $HOME/.cache/dermodex/colors_hex.txt | tail -1 | rev | cut -c1- | rev)
 
                 gsettings set org.cinnamon.desktop.background primary-color "${HOS}"
                 gsettings set org.cinnamon.desktop.background secondary-color "${HOE}"
@@ -51,12 +54,12 @@ else
 
                 sed -i "s|fav-background-gradient-end: rgba(0,0,0|background-gradient-end: rgba${COE}|g" $HOME/.cache/dermodex/cinnamon.css
                 sed -i "s|fav-background-gradient-start: rgba(0,0,0|background-gradient-start: rgba${COS}|g" $HOME/.cache/dermodex/cinnamon.css
-
+		sed -i "s|#478db2|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/cinnamon.css
 
                 # Shake the Cinnamon over the Coffee
                 cp $HOME/.cache/dermodex/cinnamon.css $HOME/.themes/DermoDeX/cinnamon
 
-                notify-send.sh --action="Hold DermoDeX":~/.local/bin/dd_hold --urgency=normal --category=transfer.complete --icon=cs-backgrounds-symbolic --hint=string:image-path:$HOME/.cache/dermodex/wallpaper_swatch.png "DermoDeX Recalculating Accent Colors!" "\nWait 15 seconds or manually reload Cinnamon woth ALT+F2 r.\n\nfile://${HOME}/.cache/dermodex/wallpaper_swatch.png"
+                notify-send.sh --action="Hold DermoDeX":~/.local/bin/dd_hold --urgency=normal --category=transfer.complete --icon=cs-backgrounds-symbolic --hint=string:image-path:$HOME/.cache/dermodex/wallpaper_swatch.png "DermoDeX Recalculating Accent Colors!" "\nWait 15 seconds or manually reload Cinnamon with CTRL+Alt+Esc r.\n\nfile://${HOME}/.cache/dermodex/wallpaper_swatch.png"
 
                 echo "[i] Updating Accent Colors ..."
                 if ! type "xdotool" > /dev/null 2>&1; then
