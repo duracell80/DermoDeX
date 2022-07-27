@@ -1,0 +1,90 @@
+[/]
+alttab-switcher-delay=100
+command-history=['r', 'dd_release', 'dd_wake', 'dd_hold']
+desklet-decorations=0
+desklet-snap=true
+desklet-snap-interval=25
+device-aliases=['/org/freedesktop/UPower/devices/mouse_hidpp_battery_1:= M720 Mouse', '/org/freedesktop/UPower/devices/keyboard_hidpp_battery_0:= K780 Wireless Keyboard']
+enabled-applets=['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:3:grouped-window-list@cinnamon.org:2', 'panel1:right:4:systray@cinnamon.org:3', 'panel1:right:1:xapp-status@cinnamon.org:4', 'panel1:right:6:notifications@cinnamon.org:5', 'panel1:right:5:printers@cinnamon.org:6', 'panel1:right:9:network@cinnamon.org:10', 'panel1:right:7:sound@cinnamon.org:11', 'panel1:right:8:calendar@cinnamon.org:13', 'panel1:right:3:radio@driglu4it:16', 'panel1:left:1:ShutdownApplet@DeathMD:20', 'panel1:left:2:app-launcher@mchilli:22', 'panel1:right:0:workspace-switcher@cinnamon.org:27']
+enabled-desklets=['clock@cinnamon.org:2:3925:75']
+favorite-apps=['cinnamon-settings.desktop', 'org.gnome.Terminal.desktop', 'nemo.desktop']
+next-applet-id=30
+next-desklet-id=4
+no-adjacent-panel-barriers=false
+panel-edit-mode=false
+panel-zone-icon-sizes='[{"panelId":1,"left":22,"center":22,"right":22}]'
+panel-zone-symbolic-icon-sizes='[{"panelId":1,"left":24,"center":16,"right":16}]'
+panel-zone-text-sizes='[{"panelId":1,"left":10,"center":10,"right":10}]'
+panels-autohide=['1:false', '2:false']
+panels-enabled=['1:0:bottom']
+panels-height=['1:60']
+panels-hide-delay=['1:0', '2:0']
+panels-show-delay=['1:0', '2:0']
+
+[control-center/display]
+show-fractional-scaling-controls=false
+
+[desktop/a11y/applications]
+screen-keyboard-enabled=true
+
+[desktop/applications/calculator]
+exec='gnome-calculator'
+
+[desktop/applications/terminal]
+exec='gnome-terminal'
+
+[desktop/background]
+color-shading-type='vertical'
+picture-options='zoom'
+picture-uri='file:///usr/share/backgrounds/linuxmint-una/eeselioglu_istanbul.jpg'
+primary-color='#2E1E3B'
+secondary-color='#FF0200'
+
+[desktop/background/slideshow]
+delay=15
+image-source='xml:///usr/share/cinnamon-background-properties/linuxmint-ulyssa.xml'
+
+[desktop/interface]
+clock-show-date=false
+clock-show-seconds=false
+gtk-overlay-scrollbars=true
+gtk-theme='Mint-Y-Dark-Aqua'
+icon-theme='White-Icons'
+scaling-factor=uint32 0
+toolkit-accessibility=true
+
+[desktop/media-handling]
+autorun-never=false
+autorun-x-content-ignore=['x-content/image-dcf']
+autorun-x-content-open-folder=@as []
+autorun-x-content-start-app=['x-content/audio-cdda', 'x-content/unix-software', 'x-content/video-dvd']
+
+[desktop/notifications]
+bottom-notifications=true
+
+[desktop/screensaver]
+ask-for-away-message=false
+
+[desktop/sound]
+event-sounds=false
+
+[desktop/wm/preferences]
+min-window-opacity=30
+num-workspaces=4
+theme='Mint-Y'
+workspace-names=@as []
+
+[muffin]
+resize-threshold=24
+
+[settings-daemon/peripherals/keyboard]
+numlock-state='off'
+
+[settings-daemon/peripherals/touchscreen]
+orientation-lock=false
+
+[settings-daemon/plugins/power]
+button-power='suspend'
+
+[theme]
+name='DermoDeX'

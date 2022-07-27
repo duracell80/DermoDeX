@@ -6,7 +6,7 @@
 #pip3 install extcolors
 #pip3 install matplotlib
 
-#dconf dump /org/cinnamon/ > ~/cinnamon_desktop_backup
+dconf dump /org/cinnamon/ > ~/cinnamon_desktop.backup
 
 cp -r ./theme ~/.themes/DermoDeX
 cp ~/.cinnamon/configs/menu@cinnamon.org/0.json ~/.cinnamon/configs/menu@cinnamon.org/0.json.bak
@@ -16,6 +16,7 @@ cp -f ./scripts/dd_sleep.sh ~/.local/bin/dd_sleep
 cp -f ./scripts/dd_wake.sh ~/.local/bin/dd_wake
 cp -f ./scripts/dd_hold.sh ~/.local/bin/dd_hold
 cp -f ./scripts/dd_release.sh ~/.local/bin/dd_release
+cp -f ./scripts/dd_rescue.sh ~/.local/bin/dd_rescue
 cp -f ./scripts/notify-send.sh ~/.local/bin
 cp -f ./scripts/notify-action.sh ~/.local/bin
 cp -f ./*.desktop ~/.config/autostart
@@ -45,12 +46,15 @@ gsettings set org.cinnamon.theme name "DermoDeX"
 
 echo "[i] Adjusting The Height Of The Panels"
 dconf write /org/cinnamon/panels-height "['1:60']"
+dconf load /org/cinnamon/ < ./scripts/cinnamon_dd.txt
 
+dd_release
+dd_wake
 
 if ! type "xdotool" > /dev/null 2>&1; then
     echo "[i] Hot Keys not installed"
     notify-send --urgency=normal --category=im.receieved --icon=help-info-symbolic "Hot Keys Tool not installed ..." "Run 'sudo apt install xdotool' to automate shortcuts such as CTRL+Alt+Esc"
-    
+
     echo "[i] Press Ctrl+Alt+Esc to Refresh Your Desktop ..."
     sudo apt-get install -y -q xdotool
 else
