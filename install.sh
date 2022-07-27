@@ -1,18 +1,18 @@
 #!/bin/bash
-pip3 install easydev
-pip3 install colormap
+#pip3 install easydev
+#pip3 install colormap
 #pip3 install opencv-python
-pip3 install colorgram.py
-pip3 install extcolors
-pip3 install matplotlib
+#pip3 install colorgram.py
+#pip3 install extcolors
+#pip3 install matplotlib
 
-dconf dump /org/cinnamon/ > ~/cinnamon_desktop_backup
+#dconf dump /org/cinnamon/ > ~/cinnamon_desktop_backup
 
-echo "[i] Setting Up The Start Menu"
 cp -r ./theme ~/.themes/DermoDeX
 cp ~/.cinnamon/configs/menu@cinnamon.org/0.json ~/.cinnamon/configs/menu@cinnamon.org/0.json.bak
 cp -f ./scripts/config_menu.json ~/.cinnamon/configs/menu@cinnamon.org/0.json
 cp -f ./scripts/cinnamon_reload ~/.local/bin
+cp -f ./scripts/dd_sleep.sh ~/.local/bin/dd_sleep
 cp -f ./scripts/dd_wake.sh ~/.local/bin/dd_wake
 cp -f ./scripts/dd_hold.sh ~/.local/bin/dd_hold
 cp -f ./scripts/dd_release.sh ~/.local/bin/dd_release
@@ -20,7 +20,6 @@ cp -f ./scripts/notify-send.sh ~/.local/bin
 cp -f ./scripts/notify-action.sh ~/.local/bin
 cp -f ./*.desktop ~/.config/autostart
 
-echo "[i] Installing DermoDex to .local/share"
 mkdir -p ~/.local/share/dermodex
 cp ./scripts/* ~/.local/share/dermodex
 
@@ -38,7 +37,6 @@ else
 	cp -r Color-Icons/Black-Icons ~/.local/share/icons
 fi
 
-echo "[i] Setting The Icons and Theme"
 gsettings set org.cinnamon.desktop.interface icon-theme "White-Icons"
 gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark-Aqua"
 gsettings set org.cinnamon.desktop.wm.preferences theme "Mint-Y"
