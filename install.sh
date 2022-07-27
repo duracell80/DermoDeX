@@ -49,7 +49,7 @@ dconf write /org/cinnamon/panels-height "['1:60']"
 dconf load /org/cinnamon/ < ./scripts/cinnamon_dd.txt
 
 dd_release
-dd_wake
+#dd_wake&
 
 if ! type "xdotool" > /dev/null 2>&1; then
     echo "[i] Hot Keys not installed"
@@ -61,3 +61,9 @@ else
     xdotool key ctrl+alt+"Escape"
     echo "[i] Cinnamon Refreshed!"
 fi
+
+echo "[i] Install Complete"
+echo ""
+echo "Run dd_wake to wake DermoDeX before changing the wallpaper."
+echo "Run dd_hold to keep your accent colors static when changing the wallpaper"
+echo "Run dd-sleep to turn DermoDeX off for this session"
