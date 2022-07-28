@@ -6,6 +6,7 @@
 
 # medium@borih.k
 # medium@programming-fever
+# stackoverflow@Aidan
 # github@duracell80
 
 import os, math
@@ -68,6 +69,18 @@ def step (r,g,b, repetitions=4):
 
     return (h2, lum, v2)
 
+#https://stackoverflow.com/questions/141855/programmatically-lighten-a-color
+def lighten_color(hex, amount):
+    """ Lighten an RGB color by an amount (between 0 and 1),
+
+    e.g. lighten('#4290e5', .5) = #C1FFFF
+    """
+    hex = hex.replace('#','')
+    red = min(255, int(hex[0:2], 16) + 255 * amount)
+    green = min(255, int(hex[2:4], 16) + 255 * amount)
+    blue = min(255, int(hex[4:6], 16) + 255 * amount)
+    return "#%X%X%X" % (int(red), int(green), int(blue))
+
 def color_to_df(input):
     colors_pre_list = str(input).replace('([(','').split(', (')[0:-1]
     df_rgb = [i.split('), ')[0] + ')' for i in colors_pre_list]
@@ -104,7 +117,7 @@ def exact_color(input_image, resize, tolerance, zoom):
     
     #crate dataframe
     img_url = resize_name
-    colors_x = extcolors.extract_from_path(img_url, tolerance = tolerance, limit = 13)
+    colors_x = extcolors.extract_from_path(img_url, tolerance = tolerance, limit = 9)
     df_color = color_to_df(colors_x)
 
     
@@ -121,8 +134,8 @@ def exact_color(input_image, resize, tolerance, zoom):
     
     list_rgb=[]
     list_hex=[]
-    shade_rgb = str(get_rgb(list_color[0]))
-    shade_hex = str(list_color[0])
+    shade_hex = str(lighten_color(list_color[0], 0.2))
+    shade_rgb = str(get_rgb(shade_hex))
     
     for i in range(length):
         r, g, b = get_rgb(list_color[i])
@@ -132,7 +145,7 @@ def exact_color(input_image, resize, tolerance, zoom):
     list_rgb.sort(key=lambda rgb: step(*rgb))
     for i in range(length):
         list_bits = str(list_rgb[i]).replace("[", "").replace("]", "").split(",")
-        new_hex = "#" + get_hex(int(list_bits[0]), int(list_bits[1]), int(list_bits[2]))
+        new_hex = str(lighten_color(get_hex(int(list_bits[0]), int(list_bits[1]), int(list_bits[2])), 0.15))
         list_hex.append(new_hex)
     
     os.system('rm -rf '+ HOME +'/.cache/dermodex/colors_hex.txt')
@@ -201,10 +214,11 @@ os.system('cp '+ wallpaper_file +' '+ HOME +'/.cache/dermodex/wallpaper.jpg')
 
 exact_color(HOME +'/.cache/dermodex/wallpaper.jpg', 900, 30, 2.5)
 
-print("Shade1: " + shade_hex + " - rgb" + str(shade_rgb))
+print("Shade0: " + shade_hex + " - rgb" + str(shade_rgb))
 print("Shade1: " + list_hex[1] + " - rgb" + str(get_rgb(list_hex[1])))
 print("Shade2: " + list_hex[-2] + " - rgb" + str(get_rgb(list_hex[-2])))
 
+list_tricolor=[]
 
 os.system('rm -rf '+ HOME +'/.cache/dermodex/bg.jpg')
 os.system('rm -rf '+ HOME +'/.cache/dermodex/wallpaper.jpg')

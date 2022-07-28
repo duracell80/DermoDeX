@@ -69,7 +69,7 @@ else
                     if [ "$(find $HOME/.cache/dermodex/wallpaper_current.txt -mmin +15)" != "" ]
                         UPT=$(uptime)
                     then
-                        sleep 15
+                        sleep 5
                         xdotool key ctrl+alt+"Escape"
                     fi
                 fi
