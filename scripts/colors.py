@@ -9,7 +9,12 @@
 # stackoverflow@Aidan
 # github@duracell80
 
-import os, math
+import os, math, configparser
+
+global HOME
+HOME = str(os.popen('echo $HOME').read()).replace('\n', '')
+
+    
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -22,11 +27,70 @@ from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 
 #import cv2
 import extcolors, colorsys
-
 from colormap import rgb2hex
 
-global HOME
-HOME = str(os.popen('echo $HOME').read()).replace('\n', '')
+
+
+
+
+
+
+
+
+
+
+
+global cfg, cfg_colorcollect, cfg_brightness, cfg_tollerance, override1, override2, override3
+cfg = configparser.ConfigParser()
+cfg.sections()
+cfg.read(HOME + '/.local/share/dermodex/config.ini')
+
+
+try:
+    cfg['dd_conf']['colorcollect']
+except KeyError:
+    cfg_colorcollect = int("13")
+else:
+    cfg_colorcollect = int(cfg['dd_conf']['colorcollect'])
+
+    
+try:
+    cfg['dd_conf']['brightness']
+except KeyError:
+    cfg_brightness = float("0.15")
+else:
+    cfg_brightness = float(cfg['dd_conf']['brightness'])
+    
+
+try:
+    cfg['dd_conf']['tollerance']
+except KeyError:
+    cfg_tollerance = int("30")
+else:
+    cfg_tollerance = int(cfg['dd_conf']['tollerance'])
+    
+
+try:
+    cfg['dd_conf']['override1']
+except KeyError:
+    cfg_override1 = str("#744976")
+else:
+    cfg_override1 = str(cfg['dd_conf']['override1'])   
+    
+try:
+    cfg['dd_conf']['override2']
+except KeyError:
+    cfg_override2 = str("#744976")
+else:
+    cfg_override2 = str(cfg['dd_conf']['override2'])
+
+try:
+    cfg['dd_conf']['override3']
+except KeyError:
+    cfg_override3 = str("#744976")
+else:
+    cfg_override3 = str(cfg['dd_conf']['override3'])    
+
 
 def get_rgb(h):
     return ImageColor.getcolor(h, "RGB")
@@ -117,7 +181,7 @@ def exact_color(input_image, resize, tolerance, zoom):
     
     #crate dataframe
     img_url = resize_name
-    colors_x = extcolors.extract_from_path(img_url, tolerance = tolerance, limit = 9)
+    colors_x = extcolors.extract_from_path(img_url, tolerance = cfg_tollerance, limit = cfg_colorcollect)
     df_color = color_to_df(colors_x)
 
     
@@ -134,8 +198,6 @@ def exact_color(input_image, resize, tolerance, zoom):
     
     list_rgb=[]
     list_hex=[]
-    shade_hex = str(lighten_color(list_color[0], 0.2))
-    shade_rgb = str(get_rgb(shade_hex))
     
     for i in range(length):
         r, g, b = get_rgb(list_color[i])
@@ -145,8 +207,13 @@ def exact_color(input_image, resize, tolerance, zoom):
     list_rgb.sort(key=lambda rgb: step(*rgb))
     for i in range(length):
         list_bits = str(list_rgb[i]).replace("[", "").replace("]", "").split(",")
-        new_hex = str(lighten_color(get_hex(int(list_bits[0]), int(list_bits[1]), int(list_bits[2])), 0.15))
+        new_hex = str(lighten_color(get_hex(int(list_bits[0]), int(list_bits[1]), int(list_bits[2])), float(cfg_brightness)))
         list_hex.append(new_hex)
+    
+    
+    shade_hex = str(lighten_color(list_color[0], float(cfg_brightness)))
+    shade_rgb = str(get_rgb(shade_hex))
+    
     
     os.system('rm -rf '+ HOME +'/.cache/dermodex/colors_hex.txt')
     os.system('touch '+ HOME +'/.cache/dermodex/colors_hex.txt')
@@ -193,7 +260,10 @@ def exact_color(input_image, resize, tolerance, zoom):
             ax2.text(x = x_posi+1400, y = y_posi2+100, s = c, fontdict={'fontsize': 190})
     
     ax2.text(x = 150, y = -350, s = "Main Shade: " + shade_hex, fontdict={'fontsize': 275})
-    ax2.text(x = 150, y = -200, s = "Shade1: " + list_hex[1] + " Shade2: " + list_hex[-2], fontdict={'fontsize': 190})
+    if len(list_hex) < 2:
+        ax2.text(x = 150, y = -200, s = "Shade1: " + list_hex[0] + " Shade2: " + list_hex[0], fontdict={'fontsize': 190})
+    else:
+        ax2.text(x = 150, y = -200, s = "Shade1: " + list_hex[1] + " Shade2: " + list_hex[-1], fontdict={'fontsize': 190})
 
     
     fig.set_facecolor('white')
@@ -212,13 +282,17 @@ wallpaper_file = wallpaper_file.replace("file://", "").replace("'", "")
 
 os.system('cp '+ wallpaper_file +' '+ HOME +'/.cache/dermodex/wallpaper.jpg')
 
-exact_color(HOME +'/.cache/dermodex/wallpaper.jpg', 900, 30, 2.5)
+exact_color(HOME +'/.cache/dermodex/wallpaper.jpg', 900, int(cfg_tollerance), 2.5)
 
-print("Shade0: " + shade_hex + " - rgb" + str(shade_rgb))
-print("Shade1: " + list_hex[1] + " - rgb" + str(get_rgb(list_hex[1])))
-print("Shade2: " + list_hex[-2] + " - rgb" + str(get_rgb(list_hex[-2])))
+if len(list_hex) < 2:
+    print("Shade0: " + shade_hex + " - rgb" + str(shade_rgb))
+    print("Shade1: " + list_hex[0] + " - rgb" + str(get_rgb(list_hex[0])))
+    print("Shade2: " + list_hex[0] + " - rgb" + str(get_rgb(list_hex[0])))
+else:
+    print("Shade0: " + shade_hex + " - rgb" + str(shade_rgb))
+    print("Shade1: " + list_hex[1] + " - rgb" + str(get_rgb(list_hex[1])))
+    print("Shade2: " + list_hex[-1] + " - rgb" + str(get_rgb(list_hex[-1])))
 
-list_tricolor=[]
 
 os.system('rm -rf '+ HOME +'/.cache/dermodex/bg.jpg')
 os.system('rm -rf '+ HOME +'/.cache/dermodex/wallpaper.jpg')

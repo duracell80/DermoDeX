@@ -5,6 +5,7 @@
 #pip3 install colorgram.py
 #pip3 install extcolors
 #pip3 install matplotlib
+#pip3 install configparser
 
 dconf dump /org/cinnamon/ > ~/cinnamon_desktop.backup
 
@@ -20,6 +21,7 @@ cp -f ./scripts/dd_wake.sh ~/.local/bin/dd_wake
 cp -f ./scripts/dd_hold.sh ~/.local/bin/dd_hold
 cp -f ./scripts/dd_release.sh ~/.local/bin/dd_release
 cp -f ./scripts/dd_rescue.sh ~/.local/bin/dd_rescue
+cp -f ./scripts/dd_reload.sh ~/.local/bin/dd_reload
 cp -f ./scripts/notify-send.sh ~/.local/bin
 cp -f ./scripts/notify-action.sh ~/.local/bin
 cp -f ./*.desktop ~/.config/autostart

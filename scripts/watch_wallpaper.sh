@@ -52,14 +52,24 @@ else
                 CONF_SLIDETIME=$(gsettings get org.cinnamon.desktop.background.slideshow delay)
                 CONF_ASPECT=$(gsettings get org.cinnamon.desktop.background picture-options)
 
-                sed -i "s|fav-background-gradient-end: rgba(0,0,0|background-gradient-end: rgba${COE}|g" $HOME/.cache/dermodex/cinnamon.css
+                
                 sed -i "s|fav-background-gradient-start: rgba(0,0,0|background-gradient-start: rgba${COS}|g" $HOME/.cache/dermodex/cinnamon.css
-		sed -i "s|#478db2|${HOE}|g" $HOME/.cache/dermodex/cinnamon.css
+		        
+                if n=$(grep -i "mainshade = true" $HOME/.local/share/dermodex/config.ini); then
+                    echo "[i] Main Shade Active: When deactivated a lesser color may be chosen"
+                    sed -i "s|#478db2|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/cinnamon.css
+                    
+                    sed -i "s|fav-background-gradient-end: rgba(0,0,0|background-gradient-end: rgba${MAINSHADE_RGB}|g" $HOME/.cache/dermodex/cinnamon.css
+                else
+                    sed -i "s|#478db2|${HOE}|g" $HOME/.cache/dermodex/cinnamon.css
+                    
+                    sed -i "s|fav-background-gradient-end: rgba(0,0,0|background-gradient-end: rgba${COE}|g" $HOME/.cache/dermodex/cinnamon.css
+                fi
 
                 # Shake the Cinnamon over the Coffee
                 cp $HOME/.cache/dermodex/cinnamon.css $HOME/.themes/DermoDeX/cinnamon
 
-                notify-send.sh --action="Hold DermoDeX":~/.local/bin/dd_hold --urgency=normal --category=transfer.complete --icon=cs-backgrounds-symbolic --hint=string:image-path:$HOME/.cache/dermodex/wallpaper_swatch.png "DermoDeX Recalculating Accent Colors!" "\nWait 15 seconds or manually reload Cinnamon with CTRL+Alt+Esc r.\n\nfile://${HOME}/.cache/dermodex/wallpaper_swatch.png"
+                notify-send.sh --action="Hold DermoDeX":~/.local/bin/dd_hold --urgency=normal --category=transfer.complete --icon=cs-backgrounds-symbolic --hint=string:image-path:$HOME/.cache/dermodex/wallpaper_swatch.png "DermoDeX Recalculating Accent Colors!" "\nWait 15 seconds or manually reload Cinnamon with CTRL+Alt+Esc.\n\nfile://${HOME}/.cache/dermodex/wallpaper_swatch.png"
 
                 echo "[i] Updating Accent Colors ..."
                 if ! type "xdotool" > /dev/null 2>&1; then
