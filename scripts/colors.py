@@ -40,7 +40,7 @@ from colormap import rgb2hex
 
 
 
-global cfg, cfg_colorcollect, cfg_brightness, cfg_tollerance, override1, override2, override3
+global cfg, cfg_colorcollect, cfg_pastel, cfg_tollerance, override1, override2, override3
 cfg = configparser.ConfigParser()
 cfg.sections()
 cfg.read(HOME + '/.local/share/dermodex/config.ini')
@@ -55,11 +55,11 @@ else:
 
     
 try:
-    cfg['dd_conf']['brightness']
+    cfg['dd_conf']['pastel']
 except KeyError:
-    cfg_brightness = float("0.15")
+    cfg_pastel = float("0.15")
 else:
-    cfg_brightness = float(cfg['dd_conf']['brightness'])
+    cfg_pastel = float(cfg['dd_conf']['pastel'])
     
 
 try:
@@ -207,11 +207,11 @@ def exact_color(input_image, resize, tolerance, zoom):
     list_rgb.sort(key=lambda rgb: step(*rgb))
     for i in range(length):
         list_bits = str(list_rgb[i]).replace("[", "").replace("]", "").split(",")
-        new_hex = str(lighten_color(get_hex(int(list_bits[0]), int(list_bits[1]), int(list_bits[2])), float(cfg_brightness)))
+        new_hex = str(lighten_color(get_hex(int(list_bits[0]), int(list_bits[1]), int(list_bits[2])), float(cfg_pastel)))
         list_hex.append(new_hex)
     
     
-    shade_hex = str(lighten_color(list_color[0], float(cfg_brightness)))
+    shade_hex = str(lighten_color(list_color[0], float(cfg_pastel)))
     shade_rgb = str(get_rgb(shade_hex))
     
     

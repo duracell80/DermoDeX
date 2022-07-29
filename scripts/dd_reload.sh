@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 dd_sleep
-sleep 5
+sleep 3
 dd_wake
