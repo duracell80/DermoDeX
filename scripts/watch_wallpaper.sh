@@ -56,6 +56,8 @@ else
                 cp -f $HOME/.local/share/dermodex/common-assets/misc/close.svg $HOME/.cache/dermodex/
                 cp -f $HOME/.local/share/dermodex/common-assets/misc/close-hover.svg $HOME/.cache/dermodex/
                 cp -f $HOME/.local/share/dermodex/common-assets/misc/close-active.svg $HOME/.cache/dermodex/
+                cp -f $HOME/.local/share/dermodex/common-assets/misc/calendar-arrow-left-hover.svg $HOME/.cache/dermodex/
+                cp -f $HOME/.local/share/dermodex/common-assets/misc/calendar-arrow-right-hover.svg $HOME/.cache/dermodex/
                 
                 sed -i "s|fav-background-gradient-start: rgba(0,0,0|background-gradient-start: rgba${COS}|g" $HOME/.cache/dermodex/cinnamon.css
 		        
@@ -66,6 +68,8 @@ else
                     sed -i "s|#f70505|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/close.svg
                     sed -i "s|#f70505|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/close-hover.svg
                     sed -i "s|#f70505|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/close-active.svg
+                    sed -i "s|#478db2|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/calendar-arrow-left-hover.svg
+                    sed -i "s|#478db2|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/calendar-arrow-right-hover.svg
                     
                     sed -i "s|fav-background-gradient-end: rgba(0,0,0|background-gradient-end: rgba${MAINSHADE_RGB}|g" $HOME/.cache/dermodex/cinnamon.css
                 else
@@ -74,6 +78,8 @@ else
                     sed -i "s|#f70505|${HOS}|g" $HOME/.cache/dermodex/close.svg
                     sed -i "s|#f70505|${HOS}|g" $HOME/.cache/dermodex/close-hover.svg
                     sed -i "s|#f70505|${HOS}|g" $HOME/.cache/dermodex/close-active.svg
+                    sed -i "s|#478db2|${HOS}|g" $HOME/.cache/dermodex/calendar-arrow-left-hover.svg
+                    sed -i "s|#478db2|${HOS}|g" $HOME/.cache/dermodex/calendar-arrow-right-hover.svg
                     
                     sed -i "s|fav-background-gradient-end: rgba(0,0,0|background-gradient-end: rgba${COE}|g" $HOME/.cache/dermodex/cinnamon.css
                 fi
@@ -85,6 +91,8 @@ else
                 cp -f $HOME/.cache/dermodex/close.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
                 cp -f $HOME/.cache/dermodex/close-hover.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
                 cp -f $HOME/.cache/dermodex/close-active.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
+                cp -f $HOME/.cache/dermodex/calendar-arrow-left-hover.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
+                cp -f $HOME/.cache/dermodex/calendar-arrow-right-hover.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
 
 
                 notify-send.sh --action="Hold DermoDeX":~/.local/bin/dd_hold --urgency=normal --category=transfer.complete --icon=cs-backgrounds-symbolic --hint=string:image-path:$HOME/.cache/dermodex/wallpaper_swatch.png "DermoDeX Recalculating Accent Colors!" "\nWait for Cinnamon to reload or manually reload with CTRL+Alt+Esc.\n\nfile://${HOME}/.cache/dermodex/wallpaper_swatch.png"
