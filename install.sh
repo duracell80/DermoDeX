@@ -29,6 +29,8 @@ cp -f ./*.desktop ~/.config/autostart
 mkdir -p ~/.local/share/dermodex
 cp ./scripts/* ~/.local/share/dermodex
 
+cp -r ./theme/cinnamon/common-assets ~/.local/share/dermodex
+
 if [ -d ~/Color-Icons ] ; then
     echo ""
 
