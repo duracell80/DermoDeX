@@ -21,9 +21,12 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import matplotlib.image as mpimg
 
+from matplotlib.offsetbox import OffsetImage, AnnotationBbox
+
 from PIL import Image
 from PIL import ImageColor
-from matplotlib.offsetbox import OffsetImage, AnnotationBbox
+from PIL import ImageEnhance
+
 
 #import cv2
 import extcolors, colorsys
@@ -89,7 +92,28 @@ try:
 except KeyError:
     cfg_override3 = str("#744976")
 else:
-    cfg_override3 = str(cfg['dd_conf']['override3'])    
+    cfg_override3 = str(cfg['dd_conf']['override3'])
+    
+try:
+    cfg['dd_conf']['saturation']
+except KeyError:
+    cfg_saturation = str("0")
+else:
+    cfg_saturation = str(cfg['dd_conf']['saturation'])
+    
+try:
+    cfg['dd_conf']['brightness']
+except KeyError:
+    cfg_brightness = str("0")
+else:
+    cfg_brightness = str(cfg['dd_conf']['brightness'])
+    
+try:
+    cfg['dd_conf']['contrast']
+except KeyError:
+    cfg_contrast = str("0")
+else:
+    cfg_contrast = str(cfg['dd_conf']['contrast'])
 
 
 def get_rgb(h):
@@ -133,12 +157,35 @@ def step (r,g,b, repetitions=4):
 
     return (h2, lum, v2)
 
+# Saturation, Contrast and Brightness of the image (apply before analysing for colors)
+def adjust_saturation(img, saturation_factor):
+    enhancer = ImageEnhance.Color(img)
+    img = enhancer.enhance(saturation_factor)
+    return img
+
+def adjust_contrast(img, contrast_factor):
+    enhancer = ImageEnhance.Contrast(img)
+    img = enhancer.enhance(contrast_factor)
+    return img 
+
+def adjust_brightness(img, brightness_factor):
+    enhancer = ImageEnhance.Brightness(img)
+    img = enhancer.enhance(brightness_factor)
+    return img
+
+
+
 #https://stackoverflow.com/questions/141855/programmatically-lighten-a-color
 def lighten_color(hex, amount):
     """ Lighten an RGB color by an amount (between 0 and 1),
 
     e.g. lighten('#4290e5', .5) = #C1FFFF
     """
+    if amount < 0.1:
+        amount = 0.1
+    if amount > 1:
+        amount = 1
+        
     hex = hex.replace('#','')
     red = min(255, int(hex[0:2], 16) + 255 * amount)
     green = min(255, int(hex[2:4], 16) + 255 * amount)
@@ -167,9 +214,23 @@ def exact_color(input_image, resize, tolerance, zoom):
     plt.savefig(bg)
     plt.close(fig)
     
-    #resize
+    # Open Image
     output_width = resize
     img = Image.open(input_image)
+    
+    # Apply Filters
+    if cfg_saturation != "0":
+        img = adjust_saturation(img, float(cfg_saturation))
+
+    if cfg_brightness != "0":
+        img = adjust_brightness(img, float(cfg_brightness))
+
+    if cfg_contrast != "0":
+        img = adjust_contrast(img, float(cfg_contrast))
+    
+    #img.show()
+    
+    # Resize
     if img.size[0] >= resize:
         wpercent = (output_width/float(img.size[0]))
         hsize = int((float(img.size[1])*float(wpercent)))
@@ -179,17 +240,17 @@ def exact_color(input_image, resize, tolerance, zoom):
     else:
         resize_name = input_image
     
-    #crate dataframe
+    # Create dataframe
     img_url = resize_name
     colors_x = extcolors.extract_from_path(img_url, tolerance = cfg_tollerance, limit = cfg_colorcollect)
     df_color = color_to_df(colors_x)
 
     
-    #annotate text
+    # Annotate text
     list_color = list(df_color['c_code'])
     length = len(list_color)
     
-    
+    print(list_color)
     
     global list_rgb
     global list_hex
@@ -207,7 +268,11 @@ def exact_color(input_image, resize, tolerance, zoom):
     list_rgb.sort(key=lambda rgb: step(*rgb))
     for i in range(length):
         list_bits = str(list_rgb[i]).replace("[", "").replace("]", "").split(",")
-        new_hex = str(lighten_color(get_hex(int(list_bits[0]), int(list_bits[1]), int(list_bits[2])), float(cfg_pastel)))
+        if float(cfg_pastel) != 0:
+            new_hex = str(lighten_color(get_hex(int(list_bits[0]), int(list_bits[1]), int(list_bits[2])), float(cfg_pastel)))
+        else:
+            new_hex = "#" + str(get_hex(int(list_bits[0]), int(list_bits[1]), int(list_bits[2])))
+        
         list_hex.append(new_hex)
     
     
@@ -223,6 +288,7 @@ def exact_color(input_image, resize, tolerance, zoom):
     os.system('echo "' + shade_hex + '" > '+ HOME +'/.cache/dermodex/colors_hex.txt')
     os.system('echo "' + shade_rgb + '" > '+ HOME +'/.cache/dermodex/colors_rgb.txt')
     for i in range(length):
+        
         os.system('echo "' + list_hex[i] + '" >> '+ HOME +'/.cache/dermodex/colors_hex.txt')
         os.system('echo "' + str(get_rgb(list_hex[i])) + '" >> '+ HOME +'/.cache/dermodex/colors_rgb.txt')
     
@@ -231,7 +297,7 @@ def exact_color(input_image, resize, tolerance, zoom):
     text_c = [c + ' ' + str(round(p*100/sum(list_precent),1)) +'%' for c, p in zip(list_color, list_precent)]
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(160,120), dpi = 10)
     
-    #donut plot
+    # Donut plot
     wedges, text = ax1.pie(list_precent,
                            labels= text_c,
                            labeldistance= 1.05,
@@ -239,13 +305,13 @@ def exact_color(input_image, resize, tolerance, zoom):
                            textprops={'fontsize': 150, 'color':'black'})
     plt.setp(wedges, width=0.3)
 
-    #add image in the center of donut plot
+    # Add image in the center of donut plot
     img = mpimg.imread(resize_name)
     imagebox = OffsetImage(img, zoom=zoom)
     ab = AnnotationBbox(imagebox, (0, 0))
     ax1.add_artist(ab)
     
-    #color palette
+    # Color palette
     x_posi, y_posi, y_posi2 = 160, -170, -170
     for c in list_color:
         if list_color.index(c) <= 5:
@@ -282,7 +348,7 @@ wallpaper_file = wallpaper_file.replace("file://", "").replace("'", "")
 
 os.system('cp '+ wallpaper_file +' '+ HOME +'/.cache/dermodex/wallpaper.jpg')
 
-exact_color(HOME +'/.cache/dermodex/wallpaper.jpg', 900, int(cfg_tollerance), 2.5)
+exact_color(HOME +'/.cache/dermodex/wallpaper.jpg', 1200, int(cfg_tollerance), 2.5)
 
 if len(list_hex) < 2:
     print("Shade0: " + shade_hex + " - rgb" + str(shade_rgb))

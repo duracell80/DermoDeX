@@ -59,7 +59,7 @@ exec='gnome-terminal'
 [desktop/background]
 color-shading-type='vertical'
 picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/linuxmint-uma/rnoguier_java.jpg'
+picture-uri='file:///usr/share/backgrounds/linuxmint-ulyssa/lblunk_golden_gate.jpg'
 primary-color='#FFD3FB'
 secondary-color='#A5B437'
 
