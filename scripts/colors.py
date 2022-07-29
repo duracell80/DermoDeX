@@ -276,7 +276,11 @@ def exact_color(input_image, resize, tolerance, zoom):
         list_hex.append(new_hex)
     
     
-    shade_hex = str(lighten_color(list_color[0], float(cfg_pastel)))
+    if float(cfg_pastel) != 0:
+        shade_hex = str(lighten_color(list_color[0], float(cfg_pastel)))
+    else:
+        shade_hex = str(list_color[0])
+    
     shade_rgb = str(get_rgb(shade_hex))
     
     
@@ -348,7 +352,7 @@ wallpaper_file = wallpaper_file.replace("file://", "").replace("'", "")
 
 os.system('cp '+ wallpaper_file +' '+ HOME +'/.cache/dermodex/wallpaper.jpg')
 
-exact_color(HOME +'/.cache/dermodex/wallpaper.jpg', 1200, int(cfg_tollerance), 2.5)
+exact_color(HOME +'/.cache/dermodex/wallpaper.jpg', 900, int(cfg_tollerance), 2.5)
 
 if len(list_hex) < 2:
     print("Shade0: " + shade_hex + " - rgb" + str(shade_rgb))
