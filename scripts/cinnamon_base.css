@@ -122,7 +122,7 @@ StScrollView StScrollBar {
   spacing: 0.5em; }
   .popup-menu-item:active {
     background-color: #478db2;
-    color: #ffffff;
+    --popmenu-color: #ffffff;
     border-color: #202020; }
   .popup-menu-item:insensitive {
     background-color: rgba(100, 100, 100, 0.4);

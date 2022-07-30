@@ -28,6 +28,7 @@ else
             # Let DermoDeX do
             CUR=$(gsettings get org.cinnamon.desktop.background picture-uri)
             PAS=$(cat $HOME/.cache/dermodex/wallpaper_current.txt)
+            TXT=$(cat $HOME/.local/share/dermodex/text_hover.txt)
 
             if [ "$PAS" != "$CUR" ]; then
                 ACT="1"

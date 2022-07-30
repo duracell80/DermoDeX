@@ -173,6 +173,19 @@ def step (r,g,b, repetitions=4):
 
     return (h2, lum, v2)
 
+# StackOverflow kardi-teknomo
+def isLightOrDark(r,g,b):
+    r = int(r)
+    g = int(g)
+    b = int(b)
+    hsp = math.sqrt(0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b))
+    if (hsp>127.5):
+        return 'light'
+    else:
+        return 'dark'
+
+
+
 # Saturation, Contrast and Brightness of the image (apply before analysing for colors)
 def adjust_saturation(img, saturation_factor):
     enhancer = ImageEnhance.Color(img)
@@ -373,12 +386,23 @@ if len(list_hex) < 2:
     print("Shade0: " + shade_hex + " - rgb" + str(shade_rgb))
     print("Shade1: " + list_hex[0] + " - rgb" + str(get_rgb(list_hex[0])))
     print("Shade2: " + list_hex[0] + " - rgb" + str(get_rgb(list_hex[0])))
+    shade_txt = get_rgb(list_hex[0])
 else:
     print("Shade0: " + shade_hex + " - rgb" + str(shade_rgb))
     print("Shade1: " + list_hex[1] + " - rgb" + str(get_rgb(list_hex[1])))
     print("Shade2: " + list_hex[-1] + " - rgb" + str(get_rgb(list_hex[-1])))
+    shade_txt = get_rgb(list_hex[1])
 
 
+tri = str(shade_txt).replace('(', '').replace(')', '').replace(' ', '').split(',')
+
+if isLightOrDark(tri[0],tri[1],tri[2]) == "light":
+    os.system('echo "dark" > ' + HOME + '/.local/share/dermodex/text_hover.txt')
+    os.system('sed -i "s|--popmenu-color: #ffffff;|color: #000000;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+else:
+    os.system('echo "light" > ' + HOME + '/.local/share/dermodex/text_hover.txt')
+    os.system('sed -i "s|--popmenu-color: #ffffff;|color: #ffffff;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+    
 os.system('rm -rf '+ HOME +'/.cache/dermodex/bg.jpg')
 os.system('rm -rf '+ HOME +'/.cache/dermodex/wallpaper.jpg')
 os.system('rm -rf '+ HOME +'/.cache/dermodex/resize_wallpaper.jpg')
