@@ -144,7 +144,7 @@ StScrollView StScrollBar {
   -slider-height: 0.1em;
   -slider-background-color: #646464;
   -slider-border-color: rgba(0, 0, 0, 0);
-  -slider-active-background-color: white;
+  --slider-active-background-color: #ffffff;
   -slider-active-border-color: rgba(0, 0, 0, 0);
   -slider-border-width: 0px;
   -slider-handle-radius: 0.5em; }
@@ -1066,7 +1066,7 @@ margin-top :16px;}
   -slider-height: 0.5em;
   -slider-background-color: #2f2f2f;
   -slider-border-color: #202020;
-  -slider-active-background-color: #ffffff;
+  --slider-active-background-color: #ffffff;
   -slider-active-border-color: #202020;
   -slider-border-width: 0px;
   -slider-handle-radius: 0px;}
@@ -1177,7 +1177,7 @@ font-size : 14pt;
 
 .menu-application-button-selected {
   padding: 10px;
-  color: #202020;
+  --menu-text-selected-color: #202020;
   background-color: #478db2;
   border: 1px solid #478db2;
   border-radius: 6px; }
