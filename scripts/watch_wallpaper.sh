@@ -13,10 +13,11 @@ else
     touch $HOME/.cache/dermodex/colors_rgb.txt
 
     if ! type "xdotool" > /dev/null 2>&1; then
-        notify-send --urgency=normal --category=im.recieved --icon=help-info-symbolic "DermoDeX Color Extractor Active" "Looks for changes to the desktop wallpaper infrequently and upon reboot. DermoDeX reloads Cinnamon with accent colors from that image and looks for changes up to 15 miutes after waking! Press CTRL+Alt+Esc to reload the desktop environment."
+        notify-send --urgency=normal --category=im.recieved --icon=help-info-symbolic "DermoDeX Color Extractor Active" "DermoDeX reloads Cinnamon with accent colors from the wallpaper image! DermoDeX is active for 15 minutes after launching, press CTRL+Alt+Esc to reload Cinnamon"
 
     else
-        notify-send --urgency=normal --category=im.recieved --icon=help-info-symbolic "DermoDeX Color Extractor Active" "Looks for changes to the desktop wallpaper infrequently and upon reboot. DermoDeX reloads Cinnamon with accent colors from that image! DermoDeX monitors the desktop wallpaper for accent colors for 15 minutes after launching."
+        echo ""
+        #notify-send --urgency=normal --category=im.recieved --icon=help-info-symbolic "DermoDeX Color Extractor Active" "DermoDeX reloads Cinnamon with accent colors from the wallpaper image! DermoDeX is active for 15 minutes after launching."
     fi
 
     while true
