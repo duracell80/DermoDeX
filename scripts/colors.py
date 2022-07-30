@@ -422,15 +422,13 @@ tri = str(shade_txt).replace('(', '').replace(')', '').replace(' ', '').split(',
 if isLightOrDark(tri[0],tri[1],tri[2]) == "light":
     os.system('echo "dark" > ' + HOME + '/.local/share/dermodex/text_hover.txt')
     os.system('sed -i "s|--popmenu-color: #ffffff;|color: #000000;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    os.system('sed -i "s|--slider-active-background-color: #ffffff;|-slider-active-background-color: #000000;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    
     os.system('sed -i "s|--menu-text-selected-color: #202020;|color: #000000;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
 else:
     os.system('echo "light" > ' + HOME + '/.local/share/dermodex/text_hover.txt')
     os.system('sed -i "s|--popmenu-color: #ffffff;|color: #ffffff;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    os.system('sed -i "s|--slider-active-background-color: #ffffff;|-slider-active-background-color: #ffffff;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    
     os.system('sed -i "s|--menu-text-selected-color: #202020;|color: #ffffff;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+
+os.system('sed -i "s|--slider-active-background-color: #ffffff;|-slider-active-background-color: '+ shade_hex +';|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
     
 os.system('rm -rf '+ HOME +'/.cache/dermodex/bg.jpg')
 os.system('rm -rf '+ HOME +'/.cache/dermodex/wallpaper.jpg')
