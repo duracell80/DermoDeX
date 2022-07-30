@@ -443,7 +443,7 @@ else:
     os.system('sed -i "s|--popmenu-color: #ffffff;|color: #ffffff;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
     os.system('sed -i "s|--menu-text-selected-color: #202020;|color: #ffffff;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
 
-tri = str(get_rgb(shade_2)).replace('(', '').replace(')', '').replace(' ', '').split(',')
+tri = str(get_rgb(shade_1)).replace('(', '').replace(')', '').replace(' ', '').split(',')
 if isLightOrDark(tri[0],tri[1],tri[2]) == "dark":
     os.system('sed -i "s|--slider-active-background-color: #ffffff;|-slider-active-background-color: '+ shade_1_lighter +';|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
 else:
