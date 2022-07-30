@@ -434,7 +434,7 @@ else:
     shade_2_lighter = str(lighten_color(get_hex(int(shade_2_bits[0]), int(shade_2_bits[1]), int(shade_2_bits[2])), 0.1))
 
     shade_hex_bits = str(get_rgb(shade_hex)).replace("(", "").replace(")", "").split(",")
-    shade_hex_lighter = str(lighten_color(get_hex(int(shade_2_bits[0]), int(shade_2_bits[1]), int(shade_2_bits[2])), 0.1))
+    shade_hex_lighter = str(lighten_color(get_hex(int(shade_hex_bits[0]), int(shade_hex_bits[1]), int(shade_hex_bits[2])), 0.1))
     
 
 tri = str(shade_txt).replace('(', '').replace(')', '').replace(' ', '').split(',')
