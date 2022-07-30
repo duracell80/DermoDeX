@@ -7,9 +7,9 @@ stage {
   color: #ffffff; }
 
 .cinnamon-link {
-  color: #0000ff; }
+  color: #eeeeee; }
   .cinnamon-link:hover {
-    color: #0000e0; }
+    color: #ffffff; }
 
 StScrollBar {
   padding: 0px 0px; }
@@ -187,7 +187,7 @@ StScrollView StScrollBar {
  * ===================================================================*/
 #panel {
   padding: 0px;
-  background : transparent;
+  --panel-background-color : transparent;
   color: #ffffff;
   font-weight: normal; }
   #panel:highlight {
@@ -199,10 +199,10 @@ StScrollView StScrollBar {
 padding: 6px;
 margin-left : 10px;
 margin-right : 10px;
-border-radius : 32px;
+--panel-border-radius : 32px;
     height : 60px;
     min-height : 60px;
-background-color : rgba(64, 64, 64, 0.9);
+--panel-inner-background-color : rgba(64, 64, 64, 0.9);
  }
 
 .panel-left {
@@ -213,11 +213,11 @@ background-color : rgba(64, 64, 64, 0.9);
 
 .panel-top {
   box-shadow: 0px 1px 0px 0px #141414;
-border-top : 10px solid transparent;}
+--panel-border-top : 10px solid transparent;}
 
 .panel-bottom {
   box-shadow: 0px -1px 0px 0px #141414;
-border-bottom : 10px solid transparent; }
+--panel-border-bottom : 10px solid transparent; }
 
 .panel-dummy {
   background-color: rgba(47, 47, 47, 0.4); }

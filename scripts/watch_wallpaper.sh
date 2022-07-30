@@ -33,8 +33,10 @@ else
                 ACT="1"
 
                 echo $CUR > $HOME/.cache/dermodex/wallpaper_current.txt
-                python3 $HOME/.local/share/dermodex/colors.py
                 cp $HOME/.local/share/dermodex/cinnamon_base.css $HOME/.cache/dermodex/cinnamon.css
+                
+                python3 $HOME/.local/share/dermodex/colors.py
+                
 
                 COS=$(tail -n 3 $HOME/.cache/dermodex/colors_rgb.txt | head -1 | rev | cut -c2- | rev)
                 COE=$(head -n 3 $HOME/.cache/dermodex/colors_rgb.txt | tail -1 | rev | cut -c2- | rev)
