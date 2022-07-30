@@ -26,6 +26,7 @@ from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 from PIL import Image
 from PIL import ImageColor
 from PIL import ImageEnhance
+from PIL import ImageFilter
 
 
 #import cv2
@@ -137,6 +138,13 @@ except KeyError:
     cin_textfactor = str("1.0")
 else:
     cin_textfactor = str(cfg['cinnamon']['textfactor'])
+    
+try:
+    cfg['login']['blur']
+except KeyError:
+    login_blur = str("100")
+else:
+    login_blur = str(cfg['login']['blur'])
 
 
 def get_rgb(h):
@@ -243,7 +251,7 @@ def color_to_df(input):
 
 
 def exact_color(input_image, resize, tolerance, zoom):
-    #background
+    # Background
     bg = HOME + '/.cache/dermodex/bg.png'
     fig, ax = plt.subplots(figsize=(192,108),dpi=10)
     fig.set_facecolor('white')
@@ -253,6 +261,12 @@ def exact_color(input_image, resize, tolerance, zoom):
     # Open Image
     output_width = resize
     img = Image.open(input_image)
+
+    # Blur Copy
+    imggauss = img.filter(ImageFilter.GaussianBlur(int(login_blur)))
+    imggauss.save(HOME + '/.local/share/dermodex/login_blur.jpg')
+    img.save(HOME + '/.local/share/dermodex/wallpaper.jpg')
+
     
     # Apply Filters
     if cfg_saturation != "0":
@@ -379,6 +393,8 @@ def exact_color(input_image, resize, tolerance, zoom):
     plt.tight_layout()
     plt.savefig(HOME + '/.cache/dermodex/wallpaper_swatch.png', transparent=False)
     os.system('cp '+ HOME +'/.cache/dermodex/wallpaper_swatch.png ~/Pictures')
+    os.system('cp '+ HOME +'/.local/share/dermodex/login_blur.jpg ~/Pictures/wallpaper_blur.jpg')
+    os.system('cp '+ HOME +'/.local/share/dermodex/login_blur.jpg /usr/share/backgrounds/dermodex')
     #return plt.show()
     return
 
