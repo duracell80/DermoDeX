@@ -1,7 +1,7 @@
 [/]
 alttab-switcher-delay=100
 applet-cache-updated=1593057270
-command-history=['r', 'dd_release', 'dd_hold', 'dd_sleep', 'dd_wake', 'dd_refresh']
+command-history=['r', 'dd_release', 'dd_hold', 'dd_sleep', 'dd_wake', 'dd_refresh', 'dd_reload']
 desklet-cache-updated=1593325530
 desklet-decorations=0
 desklet-snap=true
@@ -75,8 +75,8 @@ font-name='Ubuntu 14'
 gtk-overlay-scrollbars=true
 gtk-theme='Mint-Y-Dark-Aqua'
 icon-theme='White-Icons'
-scaling-factor=uint32 0
-text-scaling-factor=1.0
+scaling-factor=uint32 1
+text-scaling-factor=0.90000000000000002
 toolkit-accessibility=true
 
 [desktop/media-handling]
@@ -96,6 +96,7 @@ lock-enabled=true
 [desktop/sound]
 event-sounds=false
 volume-sound-enabled=true
+volume-sound-file='/home/lee/linux-a11y-sound-theme/linux-a11y/stereo/bell.oga'
 
 [desktop/wm/preferences]
 min-window-opacity=30
@@ -131,8 +132,21 @@ hinting='slight'
 rgba-order='vbgr'
 
 [sounds]
+close-file='/home/lee/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/tooltip-popup.oga'
+login-file='/home/lee/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/desktop-login.oga'
+logout-file='/home/lee/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/desktop-logout.oga'
+map-file='/home/lee/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/tooltip-popup.oga'
+maximize-file='/home/lee/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/window-minimized.oga'
+minimize-file='/home/lee/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/window-minimized.oga'
 notification-enabled=true
+notification-file='/home/lee/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/window-attention.oga'
+plug-file='/home/lee/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/message-sent.oga'
+switch-enabled=false
+switch-file='/home/lee/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/menu-popup.oga'
 tile-enabled=false
+tile-file='/home/lee/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/window-switch.oga'
+unmaximize-file='/home/lee/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/window-minimized.oga'
+unplug-file='/home/lee/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/message.oga'
 
 [theme]
 name='DermoDeX'
