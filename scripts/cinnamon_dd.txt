@@ -1,7 +1,7 @@
 [/]
 alttab-switcher-delay=100
 applet-cache-updated=1593057270
-command-history=['r', 'dd_release', 'dd_hold', 'dd_sleep', 'dd_wake']
+command-history=['r', 'dd_release', 'dd_hold', 'dd_sleep', 'dd_wake', 'dd_refresh']
 desklet-cache-updated=1593325530
 desklet-decorations=0
 desklet-snap=true
@@ -25,7 +25,7 @@ desktop-effects-unmaximize-effect='none'
 desktop-effects-unmaximize-time=100
 desktop-effects-unmaximize-transition='easeNone'
 device-aliases=['/org/freedesktop/UPower/devices/mouse_hidpp_battery_1:= M720 Mouse', '/org/freedesktop/UPower/devices/keyboard_hidpp_battery_0:= K780 Wireless Keyboard']
-enabled-applets=['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:3:grouped-window-list@cinnamon.org:2', 'panel1:right:3:systray@cinnamon.org:3', 'panel1:right:1:xapp-status@cinnamon.org:4', 'panel1:right:4:notifications@cinnamon.org:5', 'panel1:right:7:printers@cinnamon.org:6', 'panel1:right:9:network@cinnamon.org:10', 'panel1:right:8:sound@cinnamon.org:11', 'panel1:right:6:calendar@cinnamon.org:13', 'panel1:right:2:radio@driglu4it:16', 'panel1:right:0:workspace-switcher@cinnamon.org:27', 'panel1:right:10:power@cinnamon.org:30']
+enabled-applets=['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:3:grouped-window-list@cinnamon.org:2', 'panel1:right:3:systray@cinnamon.org:3', 'panel1:right:1:xapp-status@cinnamon.org:4', 'panel1:right:7:notifications@cinnamon.org:5', 'panel1:right:6:printers@cinnamon.org:6', 'panel1:right:8:network@cinnamon.org:10', 'panel1:right:4:sound@cinnamon.org:11', 'panel1:right:9:calendar@cinnamon.org:13', 'panel1:right:2:radio@driglu4it:16', 'panel1:right:0:workspace-switcher@cinnamon.org:27', 'panel1:right:10:power@cinnamon.org:30']
 enabled-desklets=['clock@cinnamon.org:2:3925:75']
 favorite-apps=['cinnamon-settings.desktop', 'org.gnome.Terminal.desktop', 'nemo.desktop']
 next-applet-id=31
@@ -59,9 +59,9 @@ exec='gnome-terminal'
 [desktop/background]
 color-shading-type='vertical'
 picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/linuxmint-ulyssa/lblunk_golden_gate.jpg'
-primary-color='#FFD3FB'
-secondary-color='#A5B437'
+picture-uri='file:///usr/share/backgrounds/linuxmint-ulyssa/lmarconnet_demigny.jpg'
+primary-color='#FFFF9A'
+secondary-color='#C2D152'
 
 [desktop/background/slideshow]
 delay=15
@@ -112,7 +112,7 @@ tile-hud-threshold=25
 numlock-state='off'
 
 [settings-daemon/peripherals/touchscreen]
-orientation-lock=false
+orientation-lock=true
 
 [settings-daemon/plugins/power]
 button-power='suspend'

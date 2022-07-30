@@ -117,11 +117,19 @@ else:
     
     
 try:
-    cfg['dd_conf']['panelstyle']
+    cfg['cinnamon']['panelstyle']
 except KeyError:
     cin_panelstyle = str("modern")
 else:
-    cin_panelstyle = str(cfg['dd_conf']['panelstyle'])    
+    cin_panelstyle = str(cfg['cinnamon']['panelstyle'])
+    
+    
+try:
+    cfg['cinnamon']['paneltrans']
+except KeyError:
+    cin_paneltrans = str("0.90")
+else:
+    cin_paneltrans = str(cfg['cinnamon']['paneltrans'])
 
 
 def get_rgb(h):
@@ -380,7 +388,7 @@ os.system('rm -rf '+ HOME +'/.cache/dermodex/resize_wallpaper.jpg')
 if cin_panelstyle == "flat":
     print("[i] Panel Style: Flat")
     os.system('sed -i "s|--panel-border-radius : 32px;|border-radius : 0px;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    os.system('sed -i "s|--panel-background-color : transparent;|background-color : rgba(64, 64, 64, 0.9);|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+    os.system('sed -i "s|--panel-background-color : transparent;|background-color : rgba(64, 64, 64, ' + cin_paneltrans + ');|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
     os.system('sed -i "s|--panel-inner-background-color : rgba(64, 64, 64, 0.9);|background-color : transparent;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
     os.system('sed -i "s|--panel-border-top : 10px solid transparent;|border-top : 0px solid transparent;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
     os.system('sed -i "s|--panel-border-bottom : 10px solid transparent;|border-bottom : 0px solid transparent;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
@@ -391,6 +399,6 @@ else:
     print("[i] Panel Style: Modern")
     os.system('sed -i "s|--panel-border-radius : 32px;|border-radius : 32px;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
     os.system('sed -i "s|--panel-background-color : transparent;|background-color : transparent;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    os.system('sed -i "s|--panel-inner-background-color : rgba(64, 64, 64, 0.9);|background-color : rgba(64, 64, 64, 0.9);|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+    os.system('sed -i "s|--panel-inner-background-color : rgba(64, 64, 64, 0.9);|background-color : rgba(64, 64, 64, ' + cin_paneltrans + ');|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
     os.system('sed -i "s|--panel-border-top : 10px solid transparent;|border-top : 10px solid transparent;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
     os.system('sed -i "s|--panel-border-bottom : 10px solid transparent;|border-bottom : 10px solid transparent;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
