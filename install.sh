@@ -77,6 +77,9 @@ echo "Run dd_wake to wake DermoDeX before changing the wallpaper."
 echo "Run dd_hold to keep your accent colors static when changing the wallpaper"
 echo "Run dd-sleep to turn DermoDeX off for this session"
 
+cd ~/
+git clone https://github.com/coffeeking/linux-a11y-sound-theme.git
+
 echo ""
 echo "As a final step, a directory in /usr/share/backgrounds needs to be writeable to allow for blured login backgrounds"
 
