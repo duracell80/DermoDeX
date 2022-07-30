@@ -101,9 +101,22 @@ else
                 cp -f $HOME/.cache/dermodex/calendar-arrow-left-hover.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
                 cp -f $HOME/.cache/dermodex/calendar-arrow-right-hover.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
                 cp -f $HOME/.cache/dermodex/corner-ripple.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
-
-
-                dex-notify.sh --action="Hold DermoDeX":~/.local/bin/dd_hold --urgency=normal --category=transfer.complete --icon=cs-backgrounds-symbolic --hint=string:image-path:$HOME/.cache/dermodex/wallpaper_swatch.png "DermoDeX Recalculating Accent Colors!" "\nWait for Cinnamon to reload or manually reload with CTRL+Alt+Esc.\n\nfile://${HOME}/.cache/dermodex/wallpaper_swatch.png"
+                
+                # Give Possibility to change sounds based on wallpaper too
+                gsettings set org.cinnamon.sounds tile-file $HOME/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/window-switch.oga
+                gsettings set org.cinnamon.sounds plug-file $HOME/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/message-sent.oga
+                gsettings set org.cinnamon.sounds unplug-file $HOME/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/message.oga
+                gsettings set org.cinnamon.sounds close-file $HOME/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/tooltip-popup.oga
+                gsettings set org.cinnamon.sounds map-file $HOME/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/tooltip-popup.oga
+                gsettings set org.cinnamon.sounds minimize-file $HOME/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/window-minimized.oga
+                gsettings set org.cinnamon.sounds logout-file $HOME/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/desktop-logout.oga
+                gsettings set org.cinnamon.sounds maximize-file $HOME/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/window-minimized.oga
+                gsettings set org.cinnamon.sounds switch-file $HOME/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/menu-popup.oga
+                gsettings set org.cinnamon.sounds notification-file $HOME/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/window-attention.oga
+                gsettings set org.cinnamon.sounds unmaximize-file $HOME/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/window-minimized.oga
+                gsettings set org.cinnamon.sounds login-file $HOME/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/desktop-login.oga
+                
+                dex-notify.sh --action="Hold DermoDeX":$HOME/.local/bin/dd_hold --urgency=normal --category=transfer.complete --icon=cs-backgrounds-symbolic --hint=string:image-path:$HOME/.cache/dermodex/wallpaper_swatch.png "DermoDeX Recalculating Accent Colors!" "\nWait for Cinnamon to reload or manually reload with CTRL+Alt+Esc.\n\nfile://${HOME}/.cache/dermodex/wallpaper_swatch.png"
 
                 echo "[i] Updating Accent Colors ..."
                 if ! type "xdotool" > /dev/null 2>&1; then
@@ -113,7 +126,7 @@ else
                     if [ "$(find $HOME/.cache/dermodex/wallpaper_current.txt -mmin +15)" != "" ]
                         UPT=$(uptime)
                     then
-                        sleep 15
+                        sleep 5
                         xdotool key ctrl+alt+"Escape"
                     fi
                 fi
@@ -136,7 +149,7 @@ else
                 echo "[i] DermoDex Color Extractor Less Active"
                 CUR_WALL=$(gsettings get org.cinnamon.desktop.background picture-uri)
                 
-                #dex-notify.sh --action="Wake DermoDeX":~/.local/bin/dd_wake --urgency=normal --category=im.receieved --icon=help-info-symbolic "DermoDex is currently resting." "Changing your wallpaper at the moment will take a while or reboot to reflect in your accent colors. Wake up DermoDeX with the dd_wake command. Your current wallpaper is located at: ${CUR_WALL}"
+                #dex-notify.sh --action="Wake DermoDeX":$HOME/.local/bin/dd_wake --urgency=normal --category=im.receieved --icon=help-info-symbolic "DermoDex is currently resting." "Changing your wallpaper at the moment will take a while or reboot to reflect in your accent colors. Wake up DermoDeX with the dd_wake command. Your current wallpaper is located at: ${CUR_WALL}"
 
                 # No Rush
                 sleep 7200
