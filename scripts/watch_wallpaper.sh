@@ -155,7 +155,7 @@ else
                 sleep 7200
             else
                 # Rush Mixtape and Space Invaders
-                sleep 10
+                sleep 3
             fi
         fi
     done
