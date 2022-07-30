@@ -417,6 +417,8 @@ if len(list_hex) < 2:
     
     shade_2 = shade_1
     shade_2_lighter = shade_1_lighter
+    
+    shade_hex_lighter = shade_hex_lighter
 else:
     print("Shade0: " + shade_hex + " - rgb" + str(shade_rgb))
     print("Shade1: " + list_hex[1] + " - rgb" + str(get_rgb(list_hex[1])))
@@ -430,6 +432,9 @@ else:
     shade_2 = list_hex[-1]
     shade_2_bits = str(get_rgb(list_hex[-1])).replace("(", "").replace(")", "").split(",")
     shade_2_lighter = str(lighten_color(get_hex(int(shade_2_bits[0]), int(shade_2_bits[1]), int(shade_2_bits[2])), 0.1))
+
+    shade_hex_bits = str(get_rgb(shade_hex)).replace("(", "").replace(")", "").split(",")
+    shade_hex_lighter = str(lighten_color(get_hex(int(shade_2_bits[0]), int(shade_2_bits[1]), int(shade_2_bits[2])), 0.1))
     
 
 tri = str(shade_txt).replace('(', '').replace(')', '').replace(' ', '').split(',')
@@ -447,7 +452,7 @@ tri = str(get_rgb(shade_1)).replace('(', '').replace(')', '').replace(' ', '').s
 if isLightOrDark(tri[0],tri[1],tri[2]) == "dark":
     os.system('sed -i "s|--slider-active-background-color: #ffffff;|-slider-active-background-color: '+ shade_1_lighter +';|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
 else:
-    os.system('sed -i "s|--slider-active-background-color: #ffffff;|-slider-active-background-color: '+ shade_1 +';|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+    os.system('sed -i "s|--slider-active-background-color: #ffffff;|-slider-active-background-color: '+ shade_hex_lighter +';|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
     
 os.system('rm -rf '+ HOME +'/.cache/dermodex/bg.jpg')
 os.system('rm -rf '+ HOME +'/.cache/dermodex/wallpaper.jpg')
