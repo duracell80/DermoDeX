@@ -130,6 +130,13 @@ except KeyError:
     cin_paneltrans = str("0.90")
 else:
     cin_paneltrans = str(cfg['cinnamon']['paneltrans'])
+    
+try:
+    cfg['cinnamon']['textfactor']
+except KeyError:
+    cin_textfactor = str("1.0")
+else:
+    cin_textfactor = str(cfg['cinnamon']['textfactor'])
 
 
 def get_rgb(h):
@@ -409,15 +416,18 @@ os.system('rm -rf '+ HOME +'/.cache/dermodex/resize_wallpaper.jpg')
 
 
 # MAKE SOME CINNAMON TWEAKS
+
+# TEXT SCALE
+os.system('gsettings set org.cinnamon.desktop.interface text-scaling-factor "' + cin_textfactor +'"')
+
+# PANNEL STYLE
 if cin_panelstyle == "flat":
     print("[i] Panel Style: Flat")
     os.system('sed -i "s|--panel-border-radius : 32px;|border-radius : 0px;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
     os.system('sed -i "s|--panel-background-color : transparent;|background-color : rgba(64, 64, 64, ' + cin_paneltrans + ');|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
     os.system('sed -i "s|--panel-inner-background-color : rgba(64, 64, 64, 0.9);|background-color : transparent;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
     os.system('sed -i "s|--panel-border-top : 10px solid transparent;|border-top : 0px solid transparent;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    os.system('sed -i "s|--panel-border-bottom : 10px solid transparent;|border-bottom : 0px solid transparent;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    
-    
+    os.system('sed -i "s|--panel-border-bottom : 10px solid transparent;|border-bottom : 0px solid transparent;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')    
     
 else:
     print("[i] Panel Style: Modern")
