@@ -33,7 +33,7 @@ SUMMARY_SET=n
 help() {
     cat <<EOF
 Usage:
-  notify-send.sh [OPTION...] <SUMMARY> [BODY] - create a notification
+  dex-notify.sh [OPTION...] <SUMMARY> [BODY] - create a notification
 
 Help Options:
   -?|--help                         Show help options
@@ -171,7 +171,7 @@ process_hint() {
 
 maybe_run_action_handler() {
     if [[ -n "$NOTIFICATION_ID" ]] && [[ -n "$ACTION_COMMANDS" ]]; then
-        local notify_action="$(dirname ${BASH_SOURCE[0]})/notify-action.sh"
+        local notify_action="$(dirname ${BASH_SOURCE[0]})/dex-action.sh"
         if [[ -x "$notify_action" ]] ; then
             "$notify_action" "$NOTIFICATION_ID" "${ACTION_COMMANDS[@]}" &
             exit 0

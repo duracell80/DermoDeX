@@ -23,8 +23,8 @@ cp -f ./scripts/dd_release.sh ~/.local/bin/dd_release
 cp -f ./scripts/dd_rescue.sh ~/.local/bin/dd_rescue
 cp -f ./scripts/dd_reload.sh ~/.local/bin/dd_reload
 cp -f ./scripts/dd_refresh.sh ~/.local/bin/dd_refresh
-cp -f ./scripts/notify-send.sh ~/.local/bin
-cp -f ./scripts/notify-action.sh ~/.local/bin
+cp -f ./scripts/dex-notify.sh ~/.local/bin
+cp -f ./scripts/dex-action.sh ~/.local/bin
 cp -f ./*.desktop ~/.config/autostart
 
 mkdir -p ~/.local/share/dermodex
