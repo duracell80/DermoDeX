@@ -9,6 +9,10 @@
 
 dconf dump /org/cinnamon/ > ~/cinnamon_desktop.backup
 
+CWD=$(pwd)
+
+echo $CWD
+
 cp -r ./theme ~/.themes/DermoDeX
 cp ~/.cinnamon/configs/menu@cinnamon.org/0.json ~/.cinnamon/configs/menu@cinnamon.org/0.json.bak
 cp -f ./scripts/config_menu.json ~/.cinnamon/configs/menu@cinnamon.org/0.json
@@ -39,12 +43,14 @@ else
     echo "[i] Installing Icons"
 
 	cd ~/
-	git clone https://github.com/wmk69/Color-Icons
+	git clone --quiet https://github.com/wmk69/Color-Icons
 	cd ~/Color-Icons
 	tar -xvzf Color-Icons.tar.gz
 	cp -r Color-Icons/White-Icons ~/.local/share/icons
 	cp -r Color-Icons/Black-Icons ~/.local/share/icons
 fi
+
+cp -rf $CWD/theme/icons/breeze-dark_white/places ~/.local/share/icons/White-Icons/scalable
 
 gsettings set org.cinnamon.desktop.interface icon-theme "White-Icons"
 gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark-Aqua"
