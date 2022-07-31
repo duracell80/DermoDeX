@@ -103,18 +103,7 @@ else
                 cp -f $HOME/.cache/dermodex/corner-ripple.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
                 
                 # Give Possibility to change sounds based on wallpaper too
-                gsettings set org.cinnamon.sounds tile-file $HOME/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/window-switch.oga
-                gsettings set org.cinnamon.sounds plug-file $HOME/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/message-sent.oga
-                gsettings set org.cinnamon.sounds unplug-file $HOME/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/message.oga
-                gsettings set org.cinnamon.sounds close-file $HOME/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/tooltip-popup.oga
-                gsettings set org.cinnamon.sounds map-file $HOME/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/tooltip-popup.oga
-                gsettings set org.cinnamon.sounds minimize-file $HOME/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/window-minimized.oga
-                gsettings set org.cinnamon.sounds logout-file $HOME/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/desktop-logout.oga
-                gsettings set org.cinnamon.sounds maximize-file $HOME/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/window-minimized.oga
-                gsettings set org.cinnamon.sounds switch-file $HOME/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/menu-popup.oga
-                gsettings set org.cinnamon.sounds notification-file $HOME/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/window-attention.oga
-                gsettings set org.cinnamon.sounds unmaximize-file $HOME/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/window-minimized.oga
-                gsettings set org.cinnamon.sounds login-file $HOME/.local/share/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/stereo/desktop-login.oga
+                # gsettings set org.cinnamon.sounds login-file /usr/share/sounds/linux-a11y/stereo/desktop-login.oga
                 
                 dex-notify.sh --action="Hold DermoDeX":$HOME/.local/bin/dd_hold --urgency=normal --category=transfer.complete --icon=cs-backgrounds-symbolic --hint=string:image-path:$HOME/.cache/dermodex/wallpaper_swatch.png "DermoDeX Recalculating Accent Colors!" "\nWait for Cinnamon to reload or manually reload with CTRL+Alt+Esc.\n\nfile://${HOME}/.cache/dermodex/wallpaper_swatch.png"
 

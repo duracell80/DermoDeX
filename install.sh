@@ -54,8 +54,13 @@ gsettings set org.cinnamon.desktop.notifications bottom-notifications "true"
 gsettings set org.cinnamon.desktop.notifications display-notifications "true"
 
 echo "[i] Adjusting The Height Of The Panels"
-dconf write /org/cinnamon/panels-height "['1:60']"
 dconf load /org/cinnamon/ < ./scripts/cinnamon_dd.txt
+dconf write /org/cinnamon/panels-height "['1:60']"
+
+# Enhance user privacy
+gsettings set org.cinnamon.desktop.privacy remember-recent-files "false"
+gsettings set org.cinnamon.desktop.screensaver lock-enabled "true"
+gsettings set org.cinnamon.desktop.screensaver lock-delay 0
 
 #dd_release&
 #dd_wake&
@@ -67,24 +72,47 @@ if ! type "xdotool" > /dev/null 2>&1; then
     echo "[i] Press Ctrl+Alt+Esc to Refresh Your Desktop ..."
     sudo apt-get install -y -q xdotool
 else
-    xdotool key ctrl+alt+"Escape"
-    echo "[i] Cinnamon Refreshed!"
+    #xdotool key ctrl+alt+"Escape"
+    echo "[i] Cinnamon is Ready to be reloaded by pressing CTRL+Alt+Esc!"
 fi
 
 echo "[i] Install Complete"
 echo ""
-echo "Run dd_wake to wake DermoDeX before changing the wallpaper."
-echo "Run dd_hold to keep your accent colors static when changing the wallpaper"
+echo "Run dd-wake to wake DermoDeX before changing the wallpaper."
+echo "Run dd-hold to keep your accent colors static when changing the wallpaper"
 echo "Run dd-sleep to turn DermoDeX off for this session"
+echo
+echo "Check the Startup Applications to toggle DermoDeX Monitor on/off at startup"
+echo ""
+echo "Login screen can be 'blured' using the login_blur.png file in ~/.local/share/dermodex. To do this search for Login Window in the Control Panel."
 
-mkdir -p ~/.local/share/dermodex/common-assets/sounds/
-cd ~/.local/share/dermodex/common-assets/sounds/
-git clone https://github.com/coffeeking/linux-a11y-sound-theme.git
+mkdir -p ~/.cache/dermodex/common-assets/sounds/
+cd ~/.cache/dermodex/common-assets/sounds/
+git clone --quiet https://github.com/coffeeking/linux-a11y-sound-theme.git
 
 echo ""
-echo "As a final step, a directory in /usr/share/backgrounds needs to be writeable to allow for blured login backgrounds"
+echo "As a final step, a directory in /usr/share/backgrounds needs to be writeable to allow for blured login backgrounds. A soft set of sounds from the linux-a11y sound theme project will also be dropped into the /usr/share/sounds directory. This too would need sudo to complete."
+echo ""
+echo ""
 
 sudo mkdir -p /usr/share/backgrounds/dermodex
 sudo chmod a+rw /usr/share/backgrounds/dermodex
+sudo cp -fr ~/.cache/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/ /usr/share/sounds/
+
+gsettings set org.cinnamon.sounds tile-file /usr/share/sounds/linux-a11y/stereo/window-switch.oga
+gsettings set org.cinnamon.sounds plug-file /usr/share/sounds/linux-a11y/stereo/message-sent.oga
+gsettings set org.cinnamon.sounds unplug-file /usr/share/sounds/linux-a11y/stereo/message.oga
+gsettings set org.cinnamon.sounds close-file /usr/share/sounds/linux-a11y/stereo/tooltip-popup.oga
+gsettings set org.cinnamon.sounds map-file /usr/share/sounds/linux-a11y/stereo/tooltip-popup.oga
+gsettings set org.cinnamon.sounds minimize-file /usr/share/sounds/linux-a11y/stereo/window-minimized.oga
+gsettings set org.cinnamon.sounds logout-file /usr/share/sounds/linux-a11y/stereo/desktop-logout.oga
+gsettings set org.cinnamon.sounds maximize-file /usr/share/sounds/linux-a11y/stereo/window-minimized.oga
+gsettings set org.cinnamon.sounds switch-file /usr/share/sounds/linux-a11y/stereo/menu-popup.oga
+gsettings set org.cinnamon.sounds notification-file /usr/share/sounds/linux-a11y/stereo/window-attention.oga
+gsettings set org.cinnamon.sounds notification-enabled "true"
+gsettings set org.cinnamon.sounds unmaximize-file /usr/share/sounds/linux-a11y/stereo/window-minimized.oga
+gsettings set org.cinnamon.sounds login-file /usr/share/sounds/linux-a11y/stereo/desktop-login.oga
+
+rm -rf ~/.cache/dermodex/common-assets/sounds/linux-a11y-sound-theme
 
 cd ~/
