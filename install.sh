@@ -1,7 +1,8 @@
 #!/bin/bash
 #pip3 install easydev
 #pip3 install colormap
-#pip3 install opencv-python
+#pip3 install pandas
+#pip3 install numpy
 #pip3 install colorgram.py
 #pip3 install extcolors
 #pip3 install matplotlib
@@ -12,6 +13,8 @@ dconf dump /org/cinnamon/ > ~/cinnamon_desktop.backup
 CWD=$(pwd)
 
 echo $CWD
+
+mkdir -p ~/.local/share/dermodex
 
 cp -r ./theme ~/.themes/DermoDeX
 cp ~/.cinnamon/configs/menu@cinnamon.org/0.json ~/.cinnamon/configs/menu@cinnamon.org/0.json.bak
@@ -31,9 +34,8 @@ cp -f ./scripts/dex-notify.sh ~/.local/bin
 cp -f ./scripts/dex-action.sh ~/.local/bin
 cp -f ./*.desktop ~/.config/autostart
 
-mkdir -p ~/.local/share/dermodex
-cp ./scripts/* ~/.local/share/dermodex
 
+cp ./scripts/* ~/.local/share/dermodex
 cp -r ./theme/cinnamon/common-assets ~/.local/share/dermodex
 
 if [ -d ~/Color-Icons ] ; then
@@ -105,6 +107,7 @@ echo ""
 sudo mkdir -p /usr/share/backgrounds/dermodex
 sudo chmod a+rw /usr/share/backgrounds/dermodex
 sudo cp -fr ~/.cache/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/ /usr/share/sounds/
+sudo apt install python-pip3
 
 gsettings set org.cinnamon.sounds tile-file /usr/share/sounds/linux-a11y/stereo/window-switch.oga
 gsettings set org.cinnamon.sounds plug-file /usr/share/sounds/linux-a11y/stereo/message-sent.oga
