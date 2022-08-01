@@ -44,7 +44,7 @@ from colormap import rgb2hex
 
 
 
-global cfg, cfg_colorcollect, cfg_pastel, cfg_tollerance, override1, override2, override3
+global cfg, cfg_colorcollect, cfg_pastel, cfg_tollerance, override1, override2, override3, RES_PRIMARY
 cfg = configparser.ConfigParser()
 cfg.sections()
 cfg.read(HOME + '/.local/share/dermodex/config.ini')
@@ -131,6 +131,13 @@ except KeyError:
     cin_paneltrans = str("0.90")
 else:
     cin_paneltrans = str(cfg['cinnamon']['paneltrans'])
+
+try:
+    cfg['cinnamon']['panellocat']
+except KeyError:
+    cin_panellocat = str("bottom")
+else:
+    cin_panellocat = str(cfg['cinnamon']['panellocat'])    
     
 try:
     cfg['cinnamon']['panelblur']
@@ -160,6 +167,8 @@ except KeyError:
 else:
     login_blur = str(cfg['login']['blur'])
 
+    
+RES_PRIMARY = os.system('xrandr | grep -i "primary" | cut --delimiter=" " -f 4 | cut --delimiter="+" -f 1 | cut --delimiter="x" -f 2')
 
 def get_rgb(h):
     return ImageColor.getcolor(h, "RGB")
@@ -504,7 +513,15 @@ if cin_panelblur == "true":
     os.system('sed -i "s|background-image : url(/usr/share/backgrounds/dermodex/panel_blur.jpg);|background-image : url('+ HOME +'/.local/share/dermodex/panel_blur.jpg);|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
 
     os.system('sed -i "s|--panel-blur-background-color : rgba(64, 64, 64, 0.6);|background-color : rgba(64, 64, 64, 0.6);|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+    
+    if cin_panellocat == "top":
+        os.system('sed -i "s|--panel-blur-background-position: 0px -700px;|background-position: 0px 0px;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+    else:
+        os.system('sed -i "s|--panel-blur-background-position: 0px -700px;|--panel-blur-background-position: 0px -0px;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+    
         
 else:
     os.system('sed -i "s|--panel-blur-background-color : rgba(64, 64, 64, 0.6);|background-color : rgba(64, 64, 64, 0.9);|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+    
+    os.system('sed -i "s|--panel-blur-background-position: 0px -700px;|background-position: 0px -1080px;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
     

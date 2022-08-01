@@ -241,7 +241,7 @@ margin-bottom : 5px;
 /*START-PANEL-FROSTY*/
 #panel{
     background-image : url(/usr/share/backgrounds/dermodex/panel_blur.jpg);
-    background-position: 0px -1000px;
+    --panel-blur-background-position: 0px -700px;
     background-repeat: no-repeat;
     background-size: cover;
 }

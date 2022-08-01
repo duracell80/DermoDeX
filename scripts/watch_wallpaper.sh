@@ -30,16 +30,21 @@ else
             CUR=$(gsettings get org.cinnamon.desktop.background picture-uri)
             PAS=$(cat $HOME/.cache/dermodex/wallpaper_current.txt)
             TXT=$(cat $HOME/.local/share/dermodex/text_hover.txt)
-
+            
+            
+            
             if [ "$PAS" != "$CUR" ]; then
                 ACT="1"
-
+                
+                RES_PRIMARY=$(xrandr | grep -i "primary" | cut --delimiter=" " -f 4 | cut --delimiter="+" -f 1 | cut --delimiter="x" -f 2)
+                
+                RES_PRIMARY="$((RES_PRIMARY - 80))"
+                
                 echo $CUR > $HOME/.cache/dermodex/wallpaper_current.txt
                 cp $HOME/.local/share/dermodex/cinnamon_base.css $HOME/.cache/dermodex/cinnamon.css
                 
                 python3 $HOME/.local/share/dermodex/colors.py
                 
-
                 COS=$(tail -n 3 $HOME/.cache/dermodex/colors_rgb.txt | head -1 | rev | cut -c2- | rev)
                 COE=$(head -n 3 $HOME/.cache/dermodex/colors_rgb.txt | tail -1 | rev | cut -c2- | rev)
                 HOS=$(tail -n 3 $HOME/.cache/dermodex/colors_hex.txt | head -1 | rev | cut -c1- | rev)
@@ -89,7 +94,10 @@ else
                     sed -i "s|#478db2|${HOS}|g" $HOME/.cache/dermodex/corner-ripple.svg
                     
                     sed -i "s|fav-background-gradient-end: rgba(0,0,0|background-gradient-end: rgba${COE}|g" $HOME/.cache/dermodex/cinnamon.css
+
                 fi
+                
+                sed -i "s|--panel-blur-background-position: 0px -0px;|background-position: 0px -${RES_PRIMARY}px;|g" $HOME/.cache/dermodex/cinnamon.css
 
                 # Shake the Cinnamon over the Coffee
                 cp $HOME/.cache/dermodex/cinnamon.css $HOME/.themes/DermoDeX/cinnamon
