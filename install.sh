@@ -50,6 +50,7 @@ else
 	cp -r Color-Icons/Black-Icons ~/.local/share/icons
 fi
 
+mkdir -p ~/.local/share/icons/White-Icons/scalable
 cp -rf $CWD/theme/icons/breeze-dark_white/places ~/.local/share/icons/White-Icons/scalable
 
 gsettings set org.cinnamon.desktop.interface icon-theme "White-Icons"

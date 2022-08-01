@@ -213,16 +213,45 @@ margin-right : 10px;
 
 .panel-top {
   box-shadow: 0px 1px 0px 0px #141414;
---panel-border-top : 10px solid transparent;}
+/*--panel-border-top : 10px solid transparent;*/}
 
 .panel-bottom {
   box-shadow: 0px -1px 0px 0px #141414;
---panel-border-bottom : 10px solid transparent; }
+/*--panel-border-bottom : 10px solid transparent;*/ }
 
 .panel-dummy {
   background-color: rgba(47, 47, 47, 0.4); }
   .panel-dummy:entered {
     background-color: rgba(255, 35, 35, 0.4); }
+
+.panel-bottom .panelLeft,
+.panel-bottom .panelRight {
+margin-top : 5px;
+margin-bottom : 5px;
+/*--panel-border-bottom : 10px solid transparent;*/
+}
+
+.panel-top .panelLeft,
+.panel-top .panelRight {
+margin-top : 5px;
+margin-bottom : 5px;
+/*--panel-border-top : 10px solid transparent;*/
+}
+
+/*START-PANEL-FROSTY*/
+#panel{
+    
+    background-image : url("/usr/share/backgrounds/dermodex/login_blur.jpg");
+    background-position: 0px -1000px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.panelLeft,
+.panelRight {
+    background-color : rgba(64, 64, 64, 0.6);
+}
+/*END-PANEL-FROSTY*/
 
 #panelLeft {
   spacing: 4px;
