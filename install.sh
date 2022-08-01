@@ -16,7 +16,11 @@ echo $CWD
 
 mkdir -p ~/.local/share/dermodex
 mkdir -p ~/.themes/DermoDeX
-cp -r $CWD/theme ~/.themes/DermoDeX
+cp -r $CWD/theme/cinnamon ~/.themes/DermoDeX
+cp -r $CWD/theme/gtk-2.0 ~/.themes/DermoDeX
+cp -r $CWD/theme/gtk-3.0 ~/.themes/DermoDeX
+cp -r $CWD/theme/metacity-1 ~/.themes/DermoDeX
+cp -r $CWD/theme/xfwm4 ~/.themes/DermoDeX
 
 cp ~/.cinnamon/configs/menu@cinnamon.org/0.json ~/.cinnamon/configs/menu@cinnamon.org/0.json.bak
 cp -f ./scripts/config_menu.json ~/.cinnamon/configs/menu@cinnamon.org/0.json
