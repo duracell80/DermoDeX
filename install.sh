@@ -15,8 +15,9 @@ CWD=$(pwd)
 echo $CWD
 
 mkdir -p ~/.local/share/dermodex
+mkdir -p ~/.themes/DermoDeX
+cp -r $CWD/theme ~/.themes/DermoDeX
 
-cp -r ./theme ~/.themes/DermoDeX
 cp ~/.cinnamon/configs/menu@cinnamon.org/0.json ~/.cinnamon/configs/menu@cinnamon.org/0.json.bak
 cp -f ./scripts/config_menu.json ~/.cinnamon/configs/menu@cinnamon.org/0.json
 cp ~/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json ~/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json.bak
@@ -36,6 +37,7 @@ cp -f ./*.desktop ~/.config/autostart
 
 
 cp ./scripts/* ~/.local/share/dermodex
+touch ~/.local/share/dermodex/text_hover.txt
 cp -r ./theme/cinnamon/common-assets ~/.local/share/dermodex
 
 if [ -d ~/Color-Icons ] ; then
