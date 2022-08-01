@@ -106,7 +106,7 @@ volume-sound-file='/usr/share/sounds/linux-a11y/stereo/bell.oga'
 
 [desktop/wm/preferences]
 min-window-opacity=30
-num-workspaces=4
+num-workspaces=3
 theme='Mint-Y'
 titlebar-font='Ubuntu Medium 12'
 workspace-names=@as []

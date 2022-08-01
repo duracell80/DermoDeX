@@ -240,8 +240,7 @@ margin-bottom : 5px;
 
 /*START-PANEL-FROSTY*/
 #panel{
-    
-    background-image : url("/usr/share/backgrounds/dermodex/login_blur.jpg");
+    background-image : url(/usr/share/backgrounds/dermodex/panel_blur.jpg);
     background-position: 0px -1000px;
     background-repeat: no-repeat;
     background-size: cover;
@@ -249,7 +248,7 @@ margin-bottom : 5px;
 
 .panelLeft,
 .panelRight {
-    background-color : rgba(64, 64, 64, 0.6);
+    --panel-blur-background-color : rgba(64, 64, 64, 0.6);
 }
 /*END-PANEL-FROSTY*/
 
@@ -1417,16 +1416,16 @@ margin-left:2em;}
   width: 28px;
   height: 28px;
   -cinnamon-close-overlap: 13px;
-  background-image: url("common-assets/misc/close.svg"); }
+  background-image: url(common-assets/misc/close.svg); }
   .window-close:hover {
-    background-image: url("common-assets/misc/close-hover.svg"); }
+    background-image: url(common-assets/misc/close-hover.svg); }
 
 .window-close-area {
   width: 400px;
   height: 120px;
   border-radius: 20px 20px 0px 0px;
   background-color: #2f2f2f;
-  background-image: url("common-assets/misc/trash-icon.png");
+  background-image: url(common-assets/misc/trash-icon.png);
   background-size: 100px;
   border: 1px solid #202020;
   border-bottom-width: 0px; }
@@ -1463,9 +1462,9 @@ margin-left:2em;}
 .ripple-box {
   width: 104px;
   height: 104px;
-  background-image: url("common-assets/misc/corner-ripple.svg"); }
+  background-image: url(common-assets/misc/corner-ripple.svg); }
   .ripple-box:rtl {
-    background-image: url("common-assets/misc/corner-ripple.svg"); }
+    background-image: url(common-assets/misc/corner-ripple.svg); }
 
 /* ===================================================================
  * On screen keyboard
@@ -1682,10 +1681,10 @@ padding : 5px;}
   * Overview corner
   * ===================================================================*/
 #overview-corner {
-  background-image: url("common-assets/misc/overview.png"); }
+  background-image: url(common-assets/misc/overview.png); }
 
 #overview-corner:hover {
-  background-image: url("common-assets/misc/overview-hover.png"); }
+  background-image: url(common-assets/misc/overview-hover.png); }
 
 /* ===================================================================
 * Systray Applet

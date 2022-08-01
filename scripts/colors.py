@@ -133,6 +133,20 @@ else:
     cin_paneltrans = str(cfg['cinnamon']['paneltrans'])
     
 try:
+    cfg['cinnamon']['panelblur']
+except KeyError:
+    cin_panelblur = str("false")
+else:
+    cin_panelblur = str(cfg['cinnamon']['panelblur'])
+
+try:
+    cfg['cinnamon']['blur']
+except KeyError:
+    panel_blur = str("100")
+else:
+    panel_blur = str(cfg['cinnamon']['blur'])    
+    
+try:
     cfg['cinnamon']['textfactor']
 except KeyError:
     cin_textfactor = str("1.0")
@@ -264,8 +278,11 @@ def exact_color(input_image, resize, tolerance, zoom):
 
     # Blur Copy
     imggauss = img.filter(ImageFilter.GaussianBlur(int(login_blur)))
+    imgpanel = img.filter(ImageFilter.GaussianBlur(int(panel_blur)))
     imggauss.save(HOME + '/.local/share/dermodex/login_blur.jpg')
+    imgpanel.save(HOME + '/.local/share/dermodex/panel_blur.jpg')
     img.save(HOME + '/.local/share/dermodex/wallpaper.jpg')
+    img.save(HOME + '/Pictures/wallpaper.jpg')
 
     
     # Apply Filters
@@ -470,6 +487,8 @@ if cin_panelstyle == "flat":
     os.system('sed -i "s|--panel-border-radius : 32px;|border-radius : 0px;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
     os.system('sed -i "s|--panel-background-color : transparent;|background-color : rgba(64, 64, 64, ' + cin_paneltrans + ');|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
     os.system('sed -i "s|--panel-inner-background-color : rgba(64, 64, 64, 0.9);|background-color : transparent;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+    os.system('sed -i "s|--panel-blur-background-color : rgba(64, 64, 64, 0.6);|background-color : rgba(64, 64, 64, 0);|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+    
     os.system('sed -i "s|--panel-border-top : 10px solid transparent;|border-top : 0px solid transparent;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
     os.system('sed -i "s|--panel-border-bottom : 10px solid transparent;|border-bottom : 0px solid transparent;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')   
     
@@ -480,3 +499,12 @@ else:
     os.system('sed -i "s|--panel-inner-background-color : rgba(64, 64, 64, 0.9);|background-color : rgba(64, 64, 64, ' + cin_paneltrans + ');|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
     os.system('sed -i "s|--panel-border-top : 10px solid transparent;|border-top : 10px solid transparent;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
     os.system('sed -i "s|--panel-border-bottom : 10px solid transparent;|border-bottom : 10px solid transparent;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+    
+if cin_panelblur == "true":
+    os.system('sed -i "s|background-image : url(/usr/share/backgrounds/dermodex/panel_blur.jpg);|background-image : url('+ HOME +'/.local/share/dermodex/panel_blur.jpg);|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+
+    os.system('sed -i "s|--panel-blur-background-color : rgba(64, 64, 64, 0.6);|background-color : rgba(64, 64, 64, 0.6);|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+        
+else:
+    os.system('sed -i "s|--panel-blur-background-color : rgba(64, 64, 64, 0.6);|background-color : rgba(64, 64, 64, 0.9);|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+    
