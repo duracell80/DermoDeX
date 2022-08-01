@@ -38,7 +38,7 @@ else
                 
                 RES_PRIMARY=$(xrandr | grep -i "primary" | cut --delimiter=" " -f 4 | cut --delimiter="+" -f 1 | cut --delimiter="x" -f 2)
                 
-                RES_PRIMARY="$((RES_PRIMARY - 80))"
+                RES_PRIMARY="$((RES_PRIMARY - 120))"
                 
                 echo $CUR > $HOME/.cache/dermodex/wallpaper_current.txt
                 cp $HOME/.local/share/dermodex/cinnamon_base.css $HOME/.cache/dermodex/cinnamon.css
