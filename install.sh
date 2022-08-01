@@ -12,15 +12,19 @@ dconf dump /org/cinnamon/ > ~/cinnamon_desktop.backup
 
 CWD=$(pwd)
 
-echo $CWD
-
 mkdir -p ~/.local/share/dermodex
 mkdir -p ~/.themes/DermoDeX
+
+# GRANULAR CONTROL OVER WHICH SUB THEMES TO COPY OVER
 cp -r $CWD/theme/cinnamon ~/.themes/DermoDeX
 cp -r $CWD/theme/gtk-2.0 ~/.themes/DermoDeX
 cp -r $CWD/theme/gtk-3.0 ~/.themes/DermoDeX
 cp -r $CWD/theme/metacity-1 ~/.themes/DermoDeX
 cp -r $CWD/theme/xfwm4 ~/.themes/DermoDeX
+
+cp -r $CWD/theme/metadata.json ~/.themes/DermoDeX
+cp -r $CWD/theme/index.theme ~/.themes/DermoDeX
+cp -r $CWD/theme/LICENSE ~/.themes/DermoDeX
 
 cp ~/.cinnamon/configs/menu@cinnamon.org/0.json ~/.cinnamon/configs/menu@cinnamon.org/0.json.bak
 cp -f ./scripts/config_menu.json ~/.cinnamon/configs/menu@cinnamon.org/0.json
