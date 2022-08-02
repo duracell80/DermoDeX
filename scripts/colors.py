@@ -514,7 +514,7 @@ if cin_panelblur == "true":
 
     os.system('sed -i "s|--panel-blur-background-color : rgba(64, 64, 64, 0.6);|background-color : rgba(64, 64, 64, 0.6);|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
     
-    if cin_panellocat == "top":
+    if cin_panellocat == "top" or cin_panellocat == "left" or cin_panellocat == "right":
         os.system('sed -i "s|--panel-blur-background-position: 0px -700px;|background-position: 0px 0px;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
     else:
         os.system('sed -i "s|--panel-blur-background-position: 0px -700px;|--panel-blur-background-position: 0px -0px;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')

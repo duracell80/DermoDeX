@@ -1,4 +1,6 @@
 #!/bin/bash
+#sudo apt install python3-pip
+
 #pip3 install easydev
 #pip3 install colormap
 #pip3 install pandas
@@ -117,7 +119,7 @@ echo ""
 sudo mkdir -p /usr/share/backgrounds/dermodex
 sudo chmod a+rw /usr/share/backgrounds/dermodex
 sudo cp -fr ~/.cache/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/ /usr/share/sounds/
-sudo apt install python3-pip
+
 
 gsettings set org.cinnamon.sounds tile-file /usr/share/sounds/linux-a11y/stereo/window-switch.oga
 gsettings set org.cinnamon.sounds plug-file /usr/share/sounds/linux-a11y/stereo/message-sent.oga
