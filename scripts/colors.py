@@ -128,7 +128,7 @@ else:
 try:
     cfg['cinnamon']['paneltrans']
 except KeyError:
-    cin_paneltrans = str("0.90")
+    cin_paneltrans = str("0.85")
 else:
     cin_paneltrans = str(cfg['cinnamon']['paneltrans'])
 
@@ -521,7 +521,10 @@ if cin_panelblur == "true":
     
         
 else:
-    os.system('sed -i "s|--panel-blur-background-color : rgba(64, 64, 64, 0.6);|background-color : rgba(64, 64, 64, 0.9);|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+    if float(cin_paneltrans) == 0:
+        os.system('sed -i "s|--panel-blur-background-color : rgba(64, 64, 64, 0.6);|background-color : rgba(64, 64, 64, 0);|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+    else:
+        os.system('sed -i "s|--panel-blur-background-color : rgba(64, 64, 64, 0.6);|background-color : rgba(64, 64, 64, '+ str(cin_paneltrans) +');|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
     
     os.system('sed -i "s|--panel-blur-background-position: 0px -700px;|background-position: 0px -1080px;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
     

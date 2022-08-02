@@ -199,8 +199,6 @@ padding: 8px;
 margin-left : 10px;
 margin-right : 10px;
 --panel-border-radius : 32px;
-    height : 60px;
-    min-height : 60px;
 background-color : rgba(64, 64, 64, 0.9);
  }
 
