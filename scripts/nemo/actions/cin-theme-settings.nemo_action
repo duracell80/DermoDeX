@@ -1,0 +1,9 @@
+[Nemo Action]
+# Opens the Theme Settings to Change Themes
+Name=_Theme Settings
+Comment=Make Changes to Overall Theme Settings
+Exec=cinnamon-settings themes
+Icon-Name=video-joined-displays-symbolic
+Selection=none
+Extensions=any;
+Conditions=desktop;

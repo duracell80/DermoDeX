@@ -47,10 +47,22 @@ panels-show-delay=['1:0', '2:0']
 quit-time-delay=60
 
 [control-center/display]
-show-fractional-scaling-controls=false
+show-fractional-scaling-controls=true
 
 [desktop/a11y/applications]
 screen-keyboard-enabled=true
+
+[desktop/a11y/keyboard]
+bouncekeys-delay=300
+mousekeys-accel-time=300
+mousekeys-init-delay=300
+mousekeys-max-speed=10
+slowkeys-delay=300
+
+[desktop/a11y/mouse]
+dwell-threshold=10
+dwell-time=1.2
+secondary-click-time=1.2
 
 [desktop/applications/calculator]
 exec='gnome-calculator'
@@ -61,13 +73,13 @@ exec='gnome-terminal'
 [desktop/background]
 color-shading-type='vertical'
 picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/linuxmint-ulyssa/lblunk_golden_gate.jpg'
-primary-color='#191919'
-secondary-color='#FF9743'
+picture-uri='file:///usr/share/backgrounds/linuxmint-una/aburden_frozen_winter_ball.jpg'
+primary-color='#7792B0'
+secondary-color='#2B2E37'
 
 [desktop/background/slideshow]
 delay=15
-image-source='xml:///usr/share/cinnamon-background-properties/linuxmint-ulyssa.xml'
+image-source='xml:///usr/share/cinnamon-background-properties/linuxmint-una.xml'
 slideshow-enabled=false
 
 [desktop/interface]
@@ -75,7 +87,7 @@ clock-show-date=false
 clock-show-seconds=false
 font-name='Ubuntu 14'
 gtk-overlay-scrollbars=true
-gtk-theme='Mint-Y-Dark-Aqua'
+gtk-theme='DermoDeX'
 icon-theme='White-Icons'
 scaling-factor=uint32 1
 text-scaling-factor=0.90000000000000002
@@ -90,6 +102,7 @@ autorun-x-content-start-app=['x-content/audio-cdda', 'x-content/unix-software', 
 [desktop/notifications]
 bottom-notifications=true
 display-notifications=true
+remove-old=true
 
 [desktop/privacy]
 remember-recent-files=false
@@ -98,6 +111,10 @@ remember-recent-files=false
 ask-for-away-message=false
 lock-delay=uint32 0
 lock-enabled=true
+use-custom-format=false
+
+[desktop/session]
+idle-delay=uint32 300
 
 [desktop/sound]
 event-sounds=false
