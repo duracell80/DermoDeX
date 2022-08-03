@@ -149,6 +149,5 @@ echo ""
 echo ""
 sudo dpkg -i oomox_1.13.3_18.10+.deb
 sudo apt --fix-broken install
-sudo dpkg -i oomox_1.13.3_18.10+.deb
 
 dd_reload
