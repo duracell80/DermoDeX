@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=DermoDeX
+Comment=A fresh approach to Cinnamon
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+Name=DermoDeX
+GtkTheme=DermoDeX
+IconTheme=DermoDeX
+MetacityTheme=DermoDeX
