@@ -26,7 +26,7 @@ img_gauss.save(HOME + '/.local/share/dermodex/login_blur.jpg')
 img_panel.save(HOME + '/.local/share/dermodex/panel_blur.jpg')
 
 # Send Notification
-os.system('notify-send "Panel Blur Set!" "In your themes cinnamon.css file you will need to add the following css to the panel section: background : url(/home/<your username>/.local/share/dermodex/panel_blur.jpg) cover no-repeat 0px -960px;"')
+os.system('notify-send "Panel Blur Set!" "Press CTRL+Alt+Esc or ALT+F2 then type r to refresh Cinnamon\n\nIn your themes cinnamon.css file you will need to add the following css to the panel section: background : url(/home/<your username>/.local/share/dermodex/panel_blur.jpg) cover no-repeat 0px -960px;"')
 
 # Refresh Cinnamon with xdotool
 # os.system('xdotool key ctrl+alt+"Escape"')
