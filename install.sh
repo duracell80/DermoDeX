@@ -73,7 +73,7 @@ cp -rf $CWD/theme/icons/breeze-dark_white/places ~/.local/share/icons/White-Icon
 gsettings set org.cinnamon.desktop.interface icon-theme "White-Icons"
 gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark-Aqua"
 gsettings set org.cinnamon.desktop.wm.preferences theme "Mint-Y"
-gsettings set org.cinnamon.theme name "DermoDeX"
+gsettings set org.cinnamon.theme name "Mint-Y-Dark-Aqua"
 gsettings set org.cinnamon.desktop.notifications bottom-notifications "true"
 gsettings set org.cinnamon.desktop.notifications display-notifications "true"
 
@@ -142,6 +142,10 @@ rm -rf ~/.cache/dermodex/common-assets/sounds/linux-a11y-sound-theme
 
 cd $CWD/deps
 
+echo ""
 echo "[i] Finally we need to install a theme customizer called themix (oomox), you may need to configure this with dpkg to get all the dependencies met. DermoDeX believes in you!"
-
+echo ""
+echo ""
+sudo dpkg -i oomox_1.13.3_18.10+.deb
+sudo apt --fix-broken install
 sudo dpkg -i oomox_1.13.3_18.10+.deb
