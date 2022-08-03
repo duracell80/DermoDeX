@@ -7,7 +7,7 @@ cp -f ~/.cache/dermodex/colors_hex.txt ~/.local/share/dermodex/
 cp -f ~/.cache/dermodex/colors_rgb.txt ~/.local/share/dermodex/
 chmod a+r ~/.local/share/dermodex/dermodex_hold
 
-dconf dump /org/cinnamon/ > ~/cinnamon_dd.backup
+#dconf dump /org/cinnamon/ > ~/cinnamon_dd.backup
 
 HOLD_FILE="$HOME/.local/share/dermodex/dermodex_hold"
 if [ -f "$HOLD_FILE" ]; then

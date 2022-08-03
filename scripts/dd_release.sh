@@ -3,8 +3,11 @@ rm -f ~/.local/share/dermodex/dermodex_hold
 rm -f ~/.local/share/dermodex/dermodex_swatch
 rm -f ~/.local/share/dermodex/colors_rgb.txt
 rm -f ~/.local/share/dermodex/colors_hex.txt
+rm -f ~/.local/share/dermodex/colors_hex.txt
+rm -f $HOME/.cache/dermodex/wallpaper_current.txt
+touch $HOME/.cache/dermodex/wallpaper_current.txt
 
-dconf load /org/cinnamon/ < ~/cinnamon_dd.backup
+#dconf load /org/cinnamon/ < ~/cinnamon_dd.backup
 
 HOLD_FILE="$HOME/.local/share/dermodex/dermodex_hold"
 if [ -f "$HOLD_FILE" ]; then 

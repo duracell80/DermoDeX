@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=/home/lee/.local/share/dermodex/watch_wallpaper.sh
+Exec=/home/lee/.local/share/dermodex/dd_start.sh
 X-GNOME-Autostart-enabled=true
 NoDisplay=false
 Hidden=false

@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-dd_sleep
-echo "" > $HOME/.cache/dermodex/wallpaper_current.txt
-sleep 2
-dd_wake
-sleep 15
-
-notify-send.sh --action="Hold DermoDeX":~/.local/bin/dd_hold --urgency=normal --category=transfer.complete --icon=cs-backgrounds-symbolic --hint=string:image-path:$HOME/.cache/dermodex/wallpaper_swatch.png "" "\nWait for Cinnamon to reload or manually reload with CTRL+Alt+Esc.\n\nfile://${HOME}/.cache/dermodex/wallpaper_swatch.png"

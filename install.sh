@@ -12,6 +12,7 @@
 
 dconf dump /org/cinnamon/ > ~/cinnamon_desktop.backup
 
+dd_release
 CWD=$(pwd)
 
 mkdir -p ~/.local/share/dermodex
@@ -149,3 +150,5 @@ echo ""
 sudo dpkg -i oomox_1.13.3_18.10+.deb
 sudo apt --fix-broken install
 sudo dpkg -i oomox_1.13.3_18.10+.deb
+
+dd_reload
