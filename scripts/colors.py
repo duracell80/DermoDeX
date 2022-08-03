@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # Credits:
 # Matplotlib https://towardsdatascience.com/image-color-extraction-with-python-in-4-steps-8d9370d9216e
 # OpenCV https://medium.com/programming-fever/color-detection-using-opencv-python-6eec8dcde8c7

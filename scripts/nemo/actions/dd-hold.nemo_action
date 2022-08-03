@@ -1,0 +1,9 @@
+[Nemo Action]
+# Holds DermoDeX from reacting to changes to the wallpaper
+Name=DermoDeX - Hold
+Comment=Hold DermoDex after changing wallpaper
+Exec=dd_hold
+Icon-Name=cs-backgrounds-symbolic
+Selection=none
+Extensions=any;
+Conditions=desktop;

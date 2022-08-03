@@ -1,0 +1,10 @@
+[Nemo Action]
+# Loads Swatch into image viewer
+Name=DermoDeX - Swatch
+Comment=Show the current swatch
+Exec=dd_swatch
+Icon-Name=cs-backgrounds-symbolic
+Selection=none
+Extensions=any;
+Conditions=desktop;
+Dependencies=xviewer

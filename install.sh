@@ -41,8 +41,11 @@ cp -f ./scripts/dd_release.sh ~/.local/bin/dd_release
 cp -f ./scripts/dd_rescue.sh ~/.local/bin/dd_rescue
 cp -f ./scripts/dd_reload.sh ~/.local/bin/dd_reload
 cp -f ./scripts/dd_refresh.sh ~/.local/bin/dd_refresh
+cp -f ./scripts/dd_swatch.sh ~/.local/bin/dd_swatch
 cp -f ./scripts/dex-notify.sh ~/.local/bin
 cp -f ./scripts/dex-action.sh ~/.local/bin
+cp -r ./scripts/nemo/actions ~/.local/share/nemo
+cp -r ./scripts/nemo/scripts ~/.local/share/nemo
 cp -f ./*.desktop ~/.config/autostart
 
 

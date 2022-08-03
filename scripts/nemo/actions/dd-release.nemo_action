@@ -1,0 +1,9 @@
+[Nemo Action]
+# Releases DermoDeX, freeing it to react to changes to the wallpaper
+Name=DermoDeX - Release
+Comment=Release DermoDex to update colors in theme
+Exec=dd_release
+Icon-Name=cs-backgrounds-symbolic
+Selection=none
+Extensions=any;
+Conditions=desktop;

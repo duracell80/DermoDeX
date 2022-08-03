@@ -1,0 +1,9 @@
+[Nemo Action]
+# Refreshes DermoDeX to react to changes in wallpaper
+Name=DermoDeX - Refresh
+Comment=Analyse wallpaper for colors
+Exec=dd_refresh
+Icon-Name=cs-backgrounds-symbolic
+Selection=none
+Extensions=any;
+Conditions=desktop;
