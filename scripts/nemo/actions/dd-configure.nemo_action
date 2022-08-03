@@ -1,0 +1,10 @@
+[Nemo Action]
+# Loads DermoDeX Main Configuration File For Editing
+Name=DermoDeX - Configure
+Comment=Edit the DermoDex Configuration File
+Exec=xed .local/share/dermodex/config.ini
+Icon-Name=terminal
+Selection=none
+Extensions=any;
+Conditions=desktop;
+Dependencies=xed
