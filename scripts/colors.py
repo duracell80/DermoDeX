@@ -44,7 +44,7 @@ from colormap import rgb2hex
 
 
 
-global cfg, cfg_colorcollect, cfg_pastel, cfg_tollerance, override1, override2, override3, RES_PRIMARY
+global cfg, cfg_colorcollect, cfg_pastel, cfg_tollerance, cfg_splitimage, cfg_splitfocus, override1, override2, override3, RES_PRIMARY
 cfg = configparser.ConfigParser()
 cfg.sections()
 cfg.read(HOME + '/.local/share/dermodex/config.ini')
@@ -116,6 +116,20 @@ except KeyError:
 else:
     cfg_contrast = str(cfg['dd_conf']['contrast'])
     
+try:
+    cfg['dd_conf']['splitimage']
+except KeyError:
+    cfg_splitimage = str("2")
+else:
+    cfg_splitimage = str(cfg['dd_conf']['splitimage'])
+    
+    
+try:
+    cfg['dd_conf']['splitfocus']
+except KeyError:
+    cfg_splitfocus = str("v2")
+else:
+    cfg_splitfocus = str(cfg['dd_conf']['splitfocus'])    
     
 try:
     cfg['cinnamon']['panelstyle']
@@ -170,6 +184,9 @@ else:
     
 RES_PRIMARY = os.system('xrandr | grep -i "primary" | cut --delimiter=" " -f 4 | cut --delimiter="+" -f 1 | cut --delimiter="x" -f 2')
 
+
+
+
 def get_rgb(h):
     return ImageColor.getcolor(h, "RGB")
 
@@ -196,7 +213,7 @@ def get_hex(r, g, b):
 def get_lum(r,g,b):
     return math.sqrt( .241 * r + .691 * g + .068 * b )
 
-def step (r,g,b, repetitions=4):
+def get_step (r,g,b, repetitions=4):
     lum = math.sqrt( .241 * r + .691 * g + .068 * b )
 
     h, s, v = colorsys.rgb_to_hsv(r,g,b)
@@ -259,6 +276,44 @@ def lighten_color(hex, amount):
     blue = min(255, int(hex[4:6], 16) + 255 * amount)
     return "#%X%X%X" % (int(red), int(green), int(blue))
 
+
+#https://stackoverflow.com/questions/64838050/how-to-split-an-image-horizontally-into-equal-sized-pieces
+def save_crops(image_file, image_slices = 2):
+    
+    
+    outputPath = HOME + "/.cache/dermodex/"
+    im = Image.open(image_file)
+    x_width, y_height = im.size
+    outputFileFormat = "{0}{1}.jpg"
+    baseName = "wallpaper_v"
+
+    i=0
+    edges = np.linspace(0, x_width, image_slices+1)
+    for start, end in zip(edges[:-1], edges[1:]):
+        box = (start, 0, end, y_height)
+        io = im.crop(box)
+        io.load()
+        outputName = os.path.join(outputPath, outputFileFormat.format(baseName, i + 1))
+        
+        io.save(outputName, "JPEG")
+        i+=1
+        
+    baseName = "wallpaper_h"
+
+    i=0
+    edges = np.linspace(0, y_height, image_slices+1)
+    for start, end in zip(edges[:-1], edges[1:]):
+        box = (0, start, y_height, end)
+        io = im.crop(box)
+        io.load()
+        outputName = os.path.join(outputPath, outputFileFormat.format(baseName, i + 1))
+        
+        io.save(outputName, "JPEG")
+        i+=1
+
+
+
+
 def color_to_df(input):
     colors_pre_list = str(input).replace('([(','').split(', (')[0:-1]
     df_rgb = [i.split('), ')[0] + ')' for i in colors_pre_list]
@@ -273,7 +328,7 @@ def color_to_df(input):
     return df
 
 
-def exact_color(input_image, resize, tolerance, zoom):
+def extract_color(input_image, resize, tolerance, zoom, crop_variant = "h_1"):
     # Background
     bg = HOME + '/.cache/dermodex/bg.png'
     fig, ax = plt.subplots(figsize=(192,108),dpi=10)
@@ -292,7 +347,11 @@ def exact_color(input_image, resize, tolerance, zoom):
     imgpanel.save(HOME + '/.local/share/dermodex/panel_blur.jpg')
     img.save(HOME + '/.local/share/dermodex/wallpaper.jpg')
     img.save(HOME + '/Pictures/wallpaper.jpg')
-
+    
+    # Crop Into Sections
+    save_crops(HOME + '/.local/share/dermodex/wallpaper.jpg', int(cfg_splitimage))
+    
+    img = Image.open(HOME + '/.cache/dermodex/wallpaper_'+ str(crop_variant) +'.jpg')
     
     # Apply Filters
     if cfg_saturation != "0":
@@ -341,7 +400,7 @@ def exact_color(input_image, resize, tolerance, zoom):
         list_rgb.append([r, g, b])
         
     #list_rgb.sort(key=lambda rgb: get_lum(*rgb))
-    list_rgb.sort(key=lambda rgb: step(*rgb))
+    list_rgb.sort(key=lambda rgb: get_step(*rgb))
     for i in range(length):
         list_bits = str(list_rgb[i]).replace("[", "").replace("]", "").split(",")
         if float(cfg_pastel) != 0:
@@ -430,7 +489,20 @@ wallpaper_file = wallpaper_file.replace("file://", "").replace("'", "")
 
 os.system('cp '+ wallpaper_file +' '+ HOME +'/.cache/dermodex/wallpaper.jpg')
 
-exact_color(HOME +'/.cache/dermodex/wallpaper.jpg', 900, int(cfg_tollerance), 2.5)
+
+
+
+extract_color(HOME +'/.cache/dermodex/wallpaper.jpg', 900, int(cfg_tollerance), 2.5, cfg_splitfocus)
+
+
+
+
+
+
+
+
+
+
 if len(list_hex) < 2:
     print("Shade0: " + shade_hex + " - rgb" + str(shade_rgb))
     print("Shade1: " + list_hex[0] + " - rgb" + str(get_rgb(list_hex[0])))
@@ -480,9 +552,7 @@ if isLightOrDark(tri[0],tri[1],tri[2]) == "dark":
 else:
     os.system('sed -i "s|--slider-active-background-color: #ffffff;|-slider-active-background-color: '+ shade_hex_lighter +';|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
     
-os.system('rm -rf '+ HOME +'/.cache/dermodex/bg.jpg')
-os.system('rm -rf '+ HOME +'/.cache/dermodex/wallpaper.jpg')
-os.system('rm -rf '+ HOME +'/.cache/dermodex/resize_wallpaper.jpg')
+#os.system('rm -rf '+ HOME +'/.cache/dermodex/*.jpg')
 
 
 # MAKE SOME CINNAMON TWEAKS
