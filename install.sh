@@ -140,4 +140,8 @@ gsettings set org.cinnamon.sounds login-file /usr/share/sounds/linux-a11y/stereo
 
 rm -rf ~/.cache/dermodex/common-assets/sounds/linux-a11y-sound-theme
 
-cd ~/
+cd $CWD/deps
+
+echo "[i] Finally we need to install a theme customizer called themix (oomox), you may need to configure this with dpkg to get all the dependencies met. DermoDeX believes in you!"
+
+sudo dpkg -i oomox_1.13.3_18.10+.deb
