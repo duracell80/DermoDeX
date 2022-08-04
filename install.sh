@@ -57,6 +57,7 @@ cp ./scripts/* ~/.local/share/dermodex
 touch ~/.local/share/dermodex/text_hover.txt
 cp -r ./theme/cinnamon/common-assets ~/.local/share/dermodex
 cp -r ./theme/gtk-3.0/assets ~/.local/share/dermodex/gtk-3.0
+cp -r ./theme/gtk-3.0/assets ~/.cache/dermodex/gtk-3.0
 cp -r ./theme/icons ~/.local/share/dermodex/
 
 mkdir -p ~/.cache/dermodex/gtk-3.0
