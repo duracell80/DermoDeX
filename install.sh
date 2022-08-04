@@ -58,6 +58,9 @@ touch ~/.local/share/dermodex/text_hover.txt
 cp -r ./theme/cinnamon/common-assets ~/.local/share/dermodex
 cp -r ./theme/gtk-3.0/assets ~/.local/share/dermodex/gtk-3.0
 
+mkdir -p ~/.cache/dermodex/gtk-3.0
+chmod u+rw ~/.cache/dermodex/gtk-3.0
+
 if [ -d ~/Color-Icons ] ; then
     echo ""
 

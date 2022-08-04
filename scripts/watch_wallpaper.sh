@@ -69,6 +69,8 @@ else
                 cp -f $HOME/.local/share/dermodex/common-assets/misc/calendar-arrow-right-hover.svg $HOME/.cache/dermodex/
                 cp -f $HOME/.local/share/dermodex/common-assets/misc/corner-ripple.svg $HOME/.cache/dermodex/
                 
+                cp -f $HOME/.local/share/dermodex/gtk-3.0/assets/*.svg $HOME/.cache/dermodex/gtk-3.0
+                
                 sed -i "s|fav-background-gradient-start: rgba(0,0,0|background-gradient-start: rgba${COS}|g" $HOME/.cache/dermodex/cinnamon.css
 		        
                 if n=$(grep -i "mainshade = true" $HOME/.local/share/dermodex/config.ini); then
@@ -82,6 +84,22 @@ else
                     sed -i "s|#478db2|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/calendar-arrow-right-hover.svg
                     sed -i "s|#478db2|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/corner-ripple.svg
                     
+                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked.svg
+                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked-dark.svg
+                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-mixed.svg
+                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-mixed-dark.svg
+                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/grid-selection-checked.svg
+                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/grid-selection-checked-dark.svg
+                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-checkbox-checked.svg
+                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-checkbox-mixed-selected.svg
+                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-radio-checked.svg
+                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-radio-mixed-selected.svg
+                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-checked.svg
+                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-checked-dark.svg
+                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed.svg
+                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed-dark.svg
+                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-selected.svg
+                    
                     sed -i "s|fav-background-gradient-end: rgba(0,0,0|background-gradient-end: rgba${MAINSHADE_RGB}|g" $HOME/.cache/dermodex/cinnamon.css
                 else
                     sed -i "s|#478db2|${HOE}|g" $HOME/.cache/dermodex/cinnamon.css
@@ -92,6 +110,22 @@ else
                     sed -i "s|#478db2|${HOS}|g" $HOME/.cache/dermodex/calendar-arrow-left-hover.svg
                     sed -i "s|#478db2|${HOS}|g" $HOME/.cache/dermodex/calendar-arrow-right-hover.svg
                     sed -i "s|#478db2|${HOS}|g" $HOME/.cache/dermodex/corner-ripple.svg
+                    
+                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked.svg
+                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked-dark.svg
+                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-mixed.svg
+                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-mixed-dark.svg
+                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/grid-selection-checked.svg
+                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/grid-selection-checked-dark.svg
+                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-checkbox-checked.svg
+                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-checkbox-mixed-selected.svg
+                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-radio-checked.svg
+                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-radio-mixed-selected.svg
+                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/radio-checked.svg
+                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/radio-checked-dark.svg
+                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed.svg
+                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed-dark.svg
+                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/radio-selected.svg
                     
                     sed -i "s|fav-background-gradient-end: rgba(0,0,0|background-gradient-end: rgba${COE}|g" $HOME/.cache/dermodex/cinnamon.css
 
@@ -109,6 +143,8 @@ else
                 cp -f $HOME/.cache/dermodex/calendar-arrow-left-hover.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
                 cp -f $HOME/.cache/dermodex/calendar-arrow-right-hover.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
                 cp -f $HOME/.cache/dermodex/corner-ripple.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
+                
+                cp -f $HOME/.cache/dermodex/gtk-3.0/*.svg $HOME/.themes/DermoDeX/gtk-3.0/assets
                 
                 # Give Possibility to change sounds based on wallpaper too
                 # gsettings set org.cinnamon.sounds login-file /usr/share/sounds/linux-a11y/stereo/desktop-login.oga
