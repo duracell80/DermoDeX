@@ -71,6 +71,15 @@ else
                 
                 cp -f $HOME/.local/share/dermodex/gtk-3.0/assets/*.svg $HOME/.cache/dermodex/gtk-3.0
                 
+                mkdir -p $HOME/.cache/dermodex/common-assets/icons/emblems
+                cp -f $HOME/.local/share/dermodex/icons/breeze-dark_white/emblems/*.svg $HOME/.cache/dermodex/common-assets/icons/emblems
+                
+                rm -f $HOME/.local/share/dermodex/icons/breeze-dark_white/places/folder.svg
+                mkdir -p $HOME/.cache/dermodex/common-assets/icons/places
+                cp -f $HOME/.local/share/dermodex/icons/breeze-dark_white/places/*.svg $HOME/.cache/dermodex/common-assets/icons/places
+                
+                
+                
                 sed -i "s|fav-background-gradient-start: rgba(0,0,0|background-gradient-start: rgba${COS}|g" $HOME/.cache/dermodex/cinnamon.css
 		        
                 if n=$(grep -i "mainshade = true" $HOME/.local/share/dermodex/config.ini); then
@@ -128,6 +137,27 @@ else
                     sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/radio-selected.svg
                     
                     sed -i "s|fav-background-gradient-end: rgba(0,0,0|background-gradient-end: rgba${COE}|g" $HOME/.cache/dermodex/cinnamon.css
+                    
+                    for filename in $HOME/.cache/dermodex/common-assets/icons/emblems/*.svg; do
+                        [ -e "$filename" ] || continue
+                        sed -i "s|#ffaa00|${HOS}|g" $filename
+                    done
+                    
+                    rm -f $HOME/.cache/dermodex/common-assets/icons/places/folder.svg
+                    
+                    for filename in $HOME/.cache/dermodex/common-assets/icons/places/*.svg; do
+                        [ -e "$filename" ] || continue
+                        if [[ $string == "folder.svg" ]]; then
+                          echo "[i] Skipping coloration of folder.svg"
+                        else
+                            sed -i "s|#ffffff|${HOE}|g" $filename
+                            sed -i "s|#fff|${HOS}|g" $filename
+                            sed -i "s|#707073|${HOE}|g" $filename
+                        fi
+                    done
+                    
+                    rm -f $HOME/.cache/dermodex/common-assets/icons/places/folder-open.svg
+                    
 
                 fi
                 
@@ -135,6 +165,9 @@ else
 
                 # Shake the Cinnamon over the Coffee
                 cp $HOME/.cache/dermodex/cinnamon.css $HOME/.themes/DermoDeX/cinnamon
+                
+                mkdir -p $HOME/.local/share/icons/White-Icons/scalable/emblems
+                mkdir -p $HOME/.local/share/icons/White-Icons/scalable/places
                 
                 cp -f $HOME/.cache/dermodex/switch-on.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/switch
                 cp -f $HOME/.cache/dermodex/close.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
@@ -145,6 +178,8 @@ else
                 cp -f $HOME/.cache/dermodex/corner-ripple.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
                 
                 cp -f $HOME/.cache/dermodex/gtk-3.0/*.svg $HOME/.themes/DermoDeX/gtk-3.0/assets
+                cp -f $HOME/.cache/dermodex/common-assets/icons/emblems/*.svg $HOME/.local/share/icons/White-Icons/scalable/emblems
+                cp -f $HOME/.cache/dermodex/common-assets/icons/places/*.svg $HOME/.local/share/icons/White-Icons/scalable/places
                 
                 # Give Possibility to change sounds based on wallpaper too
                 # gsettings set org.cinnamon.sounds login-file /usr/share/sounds/linux-a11y/stereo/desktop-login.oga
