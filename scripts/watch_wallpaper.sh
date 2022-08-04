@@ -74,7 +74,6 @@ else
                 mkdir -p $HOME/.cache/dermodex/common-assets/icons/emblems
                 cp -f $HOME/.local/share/dermodex/icons/breeze-dark_white/emblems/*.svg $HOME/.cache/dermodex/common-assets/icons/emblems
                 
-                rm -f $HOME/.local/share/dermodex/icons/breeze-dark_white/places/folder.svg
                 mkdir -p $HOME/.cache/dermodex/common-assets/icons/places
                 cp -f $HOME/.local/share/dermodex/icons/breeze-dark_white/places/*.svg $HOME/.cache/dermodex/common-assets/icons/places
                 
@@ -110,6 +109,19 @@ else
                     sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-selected.svg
                     
                     sed -i "s|fav-background-gradient-end: rgba(0,0,0|background-gradient-end: rgba${MAINSHADE_RGB}|g" $HOME/.cache/dermodex/cinnamon.css
+                    
+                    for filename in $HOME/.cache/dermodex/common-assets/icons/emblems/*.svg; do
+                        [ -e "$filename" ] || continue
+                        sed -i "s|#ffaa00|${HOS}|g" $filename
+                    done
+                    
+                    
+                    for filename in $HOME/.cache/dermodex/common-assets/icons/places/*.svg; do
+                        [ -e "$filename" ] || continue
+                        #sed -i "s|#ffffff|${HOE}|g" $filename
+                        #sed -i "s|#fff|${HOS}|g" $filename
+                        sed -i "s|#707073|${MAINSHADE_HEX}|g" $filename
+                    done
                 else
                     sed -i "s|#478db2|${HOE}|g" $HOME/.cache/dermodex/cinnamon.css
                     sed -i "s|#478db2|${HOS}|g" $HOME/.cache/dermodex/switch-on.svg
@@ -120,21 +132,22 @@ else
                     sed -i "s|#478db2|${HOS}|g" $HOME/.cache/dermodex/calendar-arrow-right-hover.svg
                     sed -i "s|#478db2|${HOS}|g" $HOME/.cache/dermodex/corner-ripple.svg
                     
-                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked.svg
-                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked-dark.svg
-                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-mixed.svg
-                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-mixed-dark.svg
-                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/grid-selection-checked.svg
-                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/grid-selection-checked-dark.svg
-                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-checkbox-checked.svg
-                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-checkbox-mixed-selected.svg
-                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-radio-checked.svg
-                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-radio-mixed-selected.svg
-                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/radio-checked.svg
-                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/radio-checked-dark.svg
-                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed.svg
-                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed-dark.svg
-                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/radio-selected.svg
+                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked.svg
+                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked-dark.svg
+                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-mixed.svg
+                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-mixed-dark.svg
+                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/grid-selection-checked.svg
+                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/grid-selection-checked-dark.svg
+                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-checkbox-checked.svg
+                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-checkbox-mixed-selected.svg
+                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-radio-checked.svg
+                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-radio-mixed-selected.svg
+                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/radio-checked.svg
+                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/radio-checked-dark.svg
+                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed.svg
+                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed-dark.svg
+                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/radio-selected.svg
+                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/grouped-window-dot-active.svg
                     
                     sed -i "s|fav-background-gradient-end: rgba(0,0,0|background-gradient-end: rgba${COE}|g" $HOME/.cache/dermodex/cinnamon.css
                     
@@ -143,26 +156,21 @@ else
                         sed -i "s|#ffaa00|${HOS}|g" $filename
                     done
                     
-                    rm -f $HOME/.cache/dermodex/common-assets/icons/places/folder.svg
                     
                     for filename in $HOME/.cache/dermodex/common-assets/icons/places/*.svg; do
                         [ -e "$filename" ] || continue
-                        if [[ $string == "folder.svg" ]]; then
-                          echo "[i] Skipping coloration of folder.svg"
-                        else
-                            sed -i "s|#ffffff|${HOE}|g" $filename
-                            sed -i "s|#fff|${HOS}|g" $filename
-                            sed -i "s|#707073|${HOE}|g" $filename
-                        fi
+                        #sed -i "s|#ffffff|${HOE}|g" $filename
+                        #sed -i "s|#fff|${HOS}|g" $filename
+                        sed -i "s|#707073|${HOE}|g" $filename
                     done
-                    
-                    rm -f $HOME/.cache/dermodex/common-assets/icons/places/folder-open.svg
-                    
+              
 
                 fi
                 
                 sed -i "s|--panel-blur-background-position: 0px -0px;|background-position: 0px -${RES_PRIMARY}px;|g" $HOME/.cache/dermodex/cinnamon.css
-
+                
+                sed -i "s|background-image: url(~/.themes/|background-image: url(${HOME}/.themes/|g" $HOME/.cache/dermodex/cinnamon.css
+                
                 # Shake the Cinnamon over the Coffee
                 cp $HOME/.cache/dermodex/cinnamon.css $HOME/.themes/DermoDeX/cinnamon
                 

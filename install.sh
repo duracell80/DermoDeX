@@ -12,7 +12,7 @@
 
 dconf dump /org/cinnamon/ > ~/cinnamon_desktop.backup
 
-dd_release
+dd_sleep
 CWD=$(pwd)
 
 mkdir -p ~/.local/share/dermodex
