@@ -53,15 +53,19 @@ cp -r ./nemo/scripts/* ~/.local/share/nemo/scripts
 cp -f ./*.desktop ~/.config/autostart
 
 
+mkdir -p ~/.cache/dermodex/gtk-3.0
+mkdir -p ~/.local/share/dermodex/gtk-3.0
+chmod u+rw ~/.cache/dermodex/gtk-3.0
+chmod u+rw ~/.local/share/dermodex/gtk-3.0
+
 cp ./scripts/* ~/.local/share/dermodex
 touch ~/.local/share/dermodex/text_hover.txt
 cp -r ./theme/cinnamon/common-assets ~/.local/share/dermodex
 cp -r ./theme/gtk-3.0/assets ~/.local/share/dermodex/gtk-3.0
 cp -r ./theme/gtk-3.0/assets ~/.cache/dermodex/gtk-3.0
+cp -r ./theme/gtk-3.20/gtk.gresource ~/.local/share/dermodex/gtk-3.0
 cp -r ./theme/icons ~/.local/share/dermodex/
 
-mkdir -p ~/.cache/dermodex/gtk-3.0
-chmod u+rw ~/.cache/dermodex/gtk-3.0
 
 if [ -d ~/Color-Icons ] ; then
     echo ""

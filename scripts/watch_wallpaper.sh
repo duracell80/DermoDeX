@@ -189,6 +189,14 @@ else
                 cp -f $HOME/.cache/dermodex/common-assets/icons/emblems/*.svg $HOME/.local/share/icons/White-Icons/scalable/emblems
                 cp -f $HOME/.cache/dermodex/common-assets/icons/places/*.svg $HOME/.local/share/icons/White-Icons/scalable/places
                 
+                
+                # GTK
+                cp $HOME/.local/share/dermodex/gtk-3.0/gtk.gresource $HOME/.cache/dermodex/
+                sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk.gresource
+                cp $HOME/.cache/dermodex/gtk.gresource $HOME/.themes/DermoDeX/gtk-3.20/
+                
+                
+                
                 # Give Possibility to change sounds based on wallpaper too
                 # gsettings set org.cinnamon.sounds login-file /usr/share/sounds/linux-a11y/stereo/desktop-login.oga
                 
