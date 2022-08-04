@@ -22,12 +22,15 @@ mkdir -p ~/.themes/DermoDeX
 cp -r $CWD/theme/cinnamon ~/.themes/DermoDeX
 cp -r $CWD/theme/gtk-2.0 ~/.themes/DermoDeX
 cp -r $CWD/theme/gtk-3.0 ~/.themes/DermoDeX
+cp -r $CWD/theme/gtk-3.20 ~/.themes/DermoDeX
 cp -r $CWD/theme/metacity-1 ~/.themes/DermoDeX
+cp -r $CWD/theme/openbox-3 ~/.themes/DermoDeX
+cp -r $CWD/theme/unity ~/.themes/DermoDeX
 cp -r $CWD/theme/xfwm4 ~/.themes/DermoDeX
 
-cp -r $CWD/theme/metadata.json ~/.themes/DermoDeX
 cp -r $CWD/theme/index.theme ~/.themes/DermoDeX
-cp -r $CWD/theme/LICENSE ~/.themes/DermoDeX
+#cp -r $CWD/theme/metadata.json ~/.themes/DermoDeX
+#cp -r $CWD/theme/LICENSE ~/.themes/DermoDeX
 
 cp ~/.cinnamon/configs/menu@cinnamon.org/0.json ~/.cinnamon/configs/menu@cinnamon.org/0.json.bak
 cp -f ./scripts/config_menu.json ~/.cinnamon/configs/menu@cinnamon.org/0.json
@@ -45,14 +48,15 @@ cp -f ./scripts/dd_refresh.sh ~/.local/bin/dd_refresh
 cp -f ./scripts/dd_swatch.sh ~/.local/bin/dd_swatch
 cp -f ./scripts/dex-notify.sh ~/.local/bin
 cp -f ./scripts/dex-action.sh ~/.local/bin
-cp -r ./scripts/nemo/actions ~/.local/share/nemo
-cp -r ./scripts/nemo/scripts ~/.local/share/nemo
+cp -r ./nemo/actions/*.nemo_action ~/.local/share/nemo/actions
+cp -r ./nemo/scripts/* ~/.local/share/nemo/scripts
 cp -f ./*.desktop ~/.config/autostart
 
 
 cp ./scripts/* ~/.local/share/dermodex
 touch ~/.local/share/dermodex/text_hover.txt
 cp -r ./theme/cinnamon/common-assets ~/.local/share/dermodex
+cp -r ./theme/gtk-3.0/assets ~/.local/share/dermodex/gtk-3.0
 
 if [ -d ~/Color-Icons ] ; then
     echo ""
@@ -116,7 +120,7 @@ cd ~/.cache/dermodex/common-assets/sounds/
 git clone --quiet https://github.com/coffeeking/linux-a11y-sound-theme.git
 
 echo ""
-echo "As a final step, a directory in /usr/share/backgrounds needs to be writeable to allow for blured login backgrounds. A soft set of sounds from the linux-a11y sound theme project will also be dropped into the /usr/share/sounds directory. This too would need sudo to complete."
+echo "A directory in /usr/share/backgrounds needs to be writeable to allow for blured login backgrounds. A soft set of sounds from the linux-a11y sound theme project will also be dropped into the /usr/share/sounds directory. This too would need sudo to complete."
 echo ""
 echo ""
 
@@ -141,13 +145,14 @@ gsettings set org.cinnamon.sounds login-file /usr/share/sounds/linux-a11y/stereo
 
 rm -rf ~/.cache/dermodex/common-assets/sounds/linux-a11y-sound-theme
 
-cd $CWD/deps
+cd $CWD
+#cd $CWD/deps
 
-echo ""
-echo "[i] Finally we need to install a theme customizer called themix (oomox), you may need to configure this with dpkg to get all the dependencies met. DermoDeX believes in you!"
-echo ""
-echo ""
-sudo dpkg -i oomox_1.13.3_18.10+.deb
-sudo apt --fix-broken install
+#echo ""
+#echo "[i] Finally we need to install a theme customizer called themix (oomox), you may need to configure this with dpkg to get all the dependencies met. DermoDeX believes in you!"
+#echo ""
+#echo ""
+#sudo dpkg -i oomox_1.13.3_18.10+.deb
+#sudo apt --fix-broken install
 
 dd_reload

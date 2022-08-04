@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 rm -f ~/.local/share/dermodex/dermodex_hold
 rm -f ~/.local/share/dermodex/dermodex_swatch
-rm -f ~/.local/share/dermodex/colors_rgb.txt
-rm -f ~/.local/share/dermodex/colors_hex.txt
-rm -f ~/.local/share/dermodex/colors_hex.txt
+#rm -f ~/.local/share/dermodex/colors_rgb.txt
+#rm -f ~/.local/share/dermodex/colors_hex.txt
+#rm -f ~/.local/share/dermodex/colors_hex.txt
 rm -f $HOME/.cache/dermodex/wallpaper_current.txt
 touch $HOME/.cache/dermodex/wallpaper_current.txt
 
