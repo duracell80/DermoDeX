@@ -192,7 +192,7 @@ else
                 
                 # GTK
                 cp $HOME/.local/share/dermodex/gtk-3.0/gtk.gresource $HOME/.cache/dermodex/
-                sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk.gresource
+                sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk.gresource
                 cp $HOME/.cache/dermodex/gtk.gresource $HOME/.themes/DermoDeX/gtk-3.20/
                 
                 
