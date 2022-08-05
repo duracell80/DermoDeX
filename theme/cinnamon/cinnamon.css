@@ -163,20 +163,21 @@ StScrollView StScrollBar {
 
 /* Switches (to be used in menus) */
 .toggle-switch {
-  width: 64px;
-  height: 18px; }
+  width: 50px;
+  height: 22px;
+background-size: cover;}
 
 .toggle-switch-us {
-  background-image: url("common-assets/switch/switch-off.svg"); }
+  background-image: url("common-assets/switch/switch-off-outline.svg"); }
 
 .toggle-switch-us:checked {
-  background-image: url("common-assets/switch/switch-on.svg"); }
+  background-image: url("common-assets/switch/switch-on-outline.svg"); }
 
 .toggle-switch-intl {
-  background-image: url("common-assets/switch/switch-off.svg"); }
+  background-image: url("common-assets/switch/switch-off-outline.svg"); }
 
 .toggle-switch-intl:checked {
-  background-image: url("common-assets/switch/switch-on.svg"); }
+  background-image: url("common-assets/switch/switch-off-outline.svg"); }
 
 .nm-menu-item-icons {
   spacing: 0.5em; }
