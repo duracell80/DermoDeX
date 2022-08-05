@@ -38,150 +38,31 @@ from colormap import rgb2hex
 
 
 
-
-
-
-
-
-
-
-
 global cfg, cfg_colorcollect, cfg_pastel, cfg_tollerance, cfg_splitimage, cfg_splitfocus, override1, override2, override3, RES_PRIMARY
 cfg = configparser.ConfigParser()
 cfg.sections()
 cfg.read(HOME + '/.local/share/dermodex/config.ini')
 
 
-try:
-    cfg['dd_conf']['colorcollect']
-except KeyError:
-    cfg_colorcollect = int("13")
-else:
-    cfg_colorcollect = int(cfg['dd_conf']['colorcollect'])
 
-    
-try:
-    cfg['dd_conf']['pastel']
-except KeyError:
-    cfg_pastel = float("0.15")
-else:
-    cfg_pastel = float(cfg['dd_conf']['pastel'])
-    
-
-try:
-    cfg['dd_conf']['tollerance']
-except KeyError:
-    cfg_tollerance = int("30")
-else:
-    cfg_tollerance = int(cfg['dd_conf']['tollerance'])
-    
-
-try:
-    cfg['dd_conf']['override1']
-except KeyError:
-    cfg_override1 = str("#744976")
-else:
-    cfg_override1 = str(cfg['dd_conf']['override1'])   
-    
-try:
-    cfg['dd_conf']['override2']
-except KeyError:
-    cfg_override2 = str("#744976")
-else:
-    cfg_override2 = str(cfg['dd_conf']['override2'])
-
-try:
-    cfg['dd_conf']['override3']
-except KeyError:
-    cfg_override3 = str("#744976")
-else:
-    cfg_override3 = str(cfg['dd_conf']['override3'])
-    
-try:
-    cfg['dd_conf']['saturation']
-except KeyError:
-    cfg_saturation = str("0")
-else:
-    cfg_saturation = str(cfg['dd_conf']['saturation'])
-    
-try:
-    cfg['dd_conf']['brightness']
-except KeyError:
-    cfg_brightness = str("0")
-else:
-    cfg_brightness = str(cfg['dd_conf']['brightness'])
-    
-try:
-    cfg['dd_conf']['contrast']
-except KeyError:
-    cfg_contrast = str("0")
-else:
-    cfg_contrast = str(cfg['dd_conf']['contrast'])
-    
-try:
-    cfg['dd_conf']['splitimage']
-except KeyError:
-    cfg_splitimage = str("2")
-else:
-    cfg_splitimage = str(cfg['dd_conf']['splitimage'])
-    
-    
-try:
-    cfg['dd_conf']['splitfocus']
-except KeyError:
-    cfg_splitfocus = str("v2")
-else:
-    cfg_splitfocus = str(cfg['dd_conf']['splitfocus'])    
-    
-try:
-    cfg['cinnamon']['panelstyle']
-except KeyError:
-    cin_panelstyle = str("modern")
-else:
-    cin_panelstyle = str(cfg['cinnamon']['panelstyle'])
-    
-    
-try:
-    cfg['cinnamon']['paneltrans']
-except KeyError:
-    cin_paneltrans = str("0.85")
-else:
-    cin_paneltrans = str(cfg['cinnamon']['paneltrans'])
-
-try:
-    cfg['cinnamon']['panellocat']
-except KeyError:
-    cin_panellocat = str("bottom")
-else:
-    cin_panellocat = str(cfg['cinnamon']['panellocat'])    
-    
-try:
-    cfg['cinnamon']['panelblur']
-except KeyError:
-    cin_panelblur = str("false")
-else:
-    cin_panelblur = str(cfg['cinnamon']['panelblur'])
-
-try:
-    cfg['cinnamon']['blur']
-except KeyError:
-    panel_blur = str("100")
-else:
-    panel_blur = str(cfg['cinnamon']['blur'])    
-    
-try:
-    cfg['cinnamon']['textfactor']
-except KeyError:
-    cin_textfactor = str("1.0")
-else:
-    cin_textfactor = str(cfg['cinnamon']['textfactor'])
-    
-try:
-    cfg['login']['blur']
-except KeyError:
-    login_blur = str("100")
-else:
-    login_blur = str(cfg['login']['blur'])
+cfg_colorcollect = int(cfg['dd_conf']['colorcollect'])
+cfg_pastel = float(cfg['dd_conf']['pastel'])
+cfg_tollerance = int(cfg['dd_conf']['tollerance'])
+cfg_override1 = str(cfg['dd_conf']['override1'])   
+cfg_override2 = str(cfg['dd_conf']['override2'])
+cfg_override3 = str(cfg['dd_conf']['override3'])
+cfg_saturation = str(cfg['dd_conf']['saturation'])
+cfg_brightness = str(cfg['dd_conf']['brightness'])
+cfg_contrast = str(cfg['dd_conf']['contrast'])
+cfg_splitimage = str(cfg['dd_conf']['splitimage'])
+cfg_splitfocus = str(cfg['dd_conf']['splitfocus'])    
+cin_panelstyle = str(cfg['cinnamon']['panelstyle'])
+cin_paneltrans = str(cfg['cinnamon']['paneltrans'])
+cin_panellocat = str(cfg['cinnamon']['panellocat'])    
+cin_panelblur = str(cfg['cinnamon']['panelblur'])
+panel_blur = str(cfg['cinnamon']['blur'])    
+cin_textfactor = str(cfg['cinnamon']['textfactor'])
+login_blur = str(cfg['login']['blur'])
 
     
 RES_PRIMARY = os.system('xrandr | grep -i "primary" | cut --delimiter=" " -f 4 | cut --delimiter="+" -f 1 | cut --delimiter="x" -f 2')

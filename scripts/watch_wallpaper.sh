@@ -1,5 +1,22 @@
 #!/usr/bin/env bash
 HOLD_FILE="$HOME/.local/share/dermodex/dermodex_hold"
+CONF_FILE="$HOME/.local/share/dermodex/config.ini"
+
+shopt -s extglob
+
+tr -d '\r' < $CONF_FILE | sed 's/[][]//g' > $CONF_FILE.unix
+while IFS='= ' read -r lhs rhs
+do
+    if [[ ! $lhs =~ ^\ *# && -n $lhs ]]; then
+        rhs="${rhs%%\#*}"    # Del in line right comments
+        rhs="${rhs%%*( )}"   # Del trailing spaces
+        rhs="${rhs%\"*}"     # Del opening string quotes 
+        rhs="${rhs#\"*}"     # Del closing string quotes 
+        declare $lhs="$rhs"
+    fi
+done < $CONF_FILE.unix
+shopt -u extglob # Switching it back off after use
+
 if [ -f "$HOLD_FILE" ]; then
     ACT="0"
 else
@@ -192,7 +209,13 @@ else
                 
                 # GTK
                 cp $HOME/.local/share/dermodex/gtk-3.0/gtk.gresource $HOME/.cache/dermodex/
-                sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk.gresource
+                if [ "$flipcolors" = true ]; then
+                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk.gresource
+                    sed -i "s|#637f9e|${HOS}|g" $HOME/.cache/dermodex/gtk.gresource
+                else
+                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk.gresource
+                    sed -i "s|#637f9e|${HOE}|g" $HOME/.cache/dermodex/gtk.gresource
+                fi
                 cp $HOME/.cache/dermodex/gtk.gresource $HOME/.themes/DermoDeX/gtk-3.20/
                 
                 
