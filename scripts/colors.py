@@ -38,7 +38,7 @@ from colormap import rgb2hex
 
 
 
-global cfg, cfg_colorcollect, cfg_pastel, cfg_tollerance, cfg_splitimage, cfg_splitfocus, override1, override2, override3, RES_PRIMARY
+global cfg, cfg_colorcollect, cfg_pastel, cfg_tollerance, cfg_splitimage, cfg_splitfocus, override1, override2, override3
 cfg = configparser.ConfigParser()
 cfg.sections()
 cfg.read(HOME + '/.local/share/dermodex/config.ini')
@@ -62,10 +62,14 @@ cin_panellocat = str(cfg['cinnamon']['panellocat'])
 cin_panelblur = str(cfg['cinnamon']['panelblur'])
 panel_blur = str(cfg['cinnamon']['blur'])    
 cin_textfactor = str(cfg['cinnamon']['textfactor'])
+cin_menubckgrd = str(cfg['cinnamon']['menubckgrd'])
 login_blur = str(cfg['login']['blur'])
 
-    
+global RES_PRIMARY, RES_PRIMARY_W
+
 RES_PRIMARY = os.system('xrandr | grep -i "primary" | cut --delimiter=" " -f 4 | cut --delimiter="+" -f 1 | cut --delimiter="x" -f 2')
+RES_PRIMARY_H = RES_PRIMARY
+RES_PRIMARY_W = os.system('xrandr | grep -i "primary" | cut --delimiter=" " -f 4 | cut --delimiter="+" -f 1 | cut --delimiter="x" -f 1')
 
 
 
@@ -225,11 +229,22 @@ def extract_color(input_image, resize, tolerance, zoom, crop_variant = "h_1"):
 
     # Blur Copy
     imggauss = img.filter(ImageFilter.GaussianBlur(int(login_blur)))
-    imgpanel = img.filter(ImageFilter.GaussianBlur(int(panel_blur)))
+    imgpanel_pre = img.filter(ImageFilter.GaussianBlur(int(panel_blur)))
+    imgpanel = adjust_brightness(imgpanel_pre, float("0.8"))
     imggauss.save(HOME + '/.local/share/dermodex/login_blur.jpg')
     imgpanel.save(HOME + '/.local/share/dermodex/panel_blur.jpg')
     img.save(HOME + '/.local/share/dermodex/wallpaper.jpg')
     img.save(HOME + '/Pictures/wallpaper.jpg')
+    
+    # Darken For Menu Blur
+    if cin_menubckgrd == "true":
+        wpercent = (int(output_width)/float(img.size[0]))
+        hsize = int((float(img.size[1])*float(wpercent)))
+        
+        imgmenublur = adjust_brightness(imggauss, float("0.4"))
+        imgmenu = imgmenublur.resize((int(output_width),hsize))
+        imgmenu.save(HOME + '/.local/share/dermodex/menu_blur.jpg')
+    
     
     # Crop Into Sections
     save_crops(HOME + '/.local/share/dermodex/wallpaper.jpg', int(cfg_splitimage))
@@ -443,7 +458,13 @@ else:
 # TEXT SCALE
 os.system('gsettings set org.cinnamon.desktop.interface text-scaling-factor "' + cin_textfactor +'"')
 
-# PANNEL STYLE
+# MENU STYLE
+if cin_menubckgrd == "true":
+    os.system('sed -i "s|--menu-background-image : url(~/.local/share/dermodex/menu_blur.jpg);|background-image : url(' + HOME + '/.local/share/dermodex/menu_blur.jpg);|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+else:
+    os.system('sed -i "s|--menu-background-image : url(~/.local/share/dermodex/menu_blur.jpg);|background-image : url();|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+    
+# PANEL STYLE
 if cin_panelstyle == "flat":
     print("[i] Panel Style: Flat")
     os.system('sed -i "s|--panel-border-radius : 32px;|border-radius : 0px;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
