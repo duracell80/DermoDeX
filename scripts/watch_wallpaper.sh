@@ -109,21 +109,21 @@ else
                     sed -i "s|#478db2|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/calendar-arrow-right-hover.svg
                     sed -i "s|#478db2|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/corner-ripple.svg
                     
-                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked.svg
-                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked-dark.svg
-                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-mixed.svg
-                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-mixed-dark.svg
-                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/grid-selection-checked.svg
-                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/grid-selection-checked-dark.svg
-                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-checkbox-checked.svg
-                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-checkbox-mixed-selected.svg
-                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-radio-checked.svg
-                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-radio-mixed-selected.svg
-                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-checked.svg
-                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-checked-dark.svg
-                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed.svg
-                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed-dark.svg
-                    sed -i "s|#5e7997|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-selected.svg
+                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked.svg
+                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked-dark.svg
+                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-mixed.svg
+                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-mixed-dark.svg
+                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/grid-selection-checked.svg
+                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/grid-selection-checked-dark.svg
+                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-checkbox-checked.svg
+                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-checkbox-mixed-selected.svg
+                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-radio-checked.svg
+                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-radio-mixed-selected.svg
+                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-checked.svg
+                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-checked-dark.svg
+                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed.svg
+                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed-dark.svg
+                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-selected.svg
                     
                     sed -i "s|fav-background-gradient-end: rgba(0,0,0|background-gradient-end: rgba${MAINSHADE_RGB}|g" $HOME/.cache/dermodex/cinnamon.css
                     
@@ -149,22 +149,22 @@ else
                     sed -i "s|#478db2|${HOS}|g" $HOME/.cache/dermodex/calendar-arrow-right-hover.svg
                     sed -i "s|#478db2|${HOS}|g" $HOME/.cache/dermodex/corner-ripple.svg
                     
-                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked.svg
-                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked-dark.svg
-                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-mixed.svg
-                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-mixed-dark.svg
-                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/grid-selection-checked.svg
-                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/grid-selection-checked-dark.svg
-                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-checkbox-checked.svg
-                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-checkbox-mixed-selected.svg
-                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-radio-checked.svg
-                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-radio-mixed-selected.svg
-                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/radio-checked.svg
-                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/radio-checked-dark.svg
-                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed.svg
-                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed-dark.svg
-                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/radio-selected.svg
-                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/grouped-window-dot-active.svg
+                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked.svg
+                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked-dark.svg
+                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-mixed.svg
+                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-mixed-dark.svg
+                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/grid-selection-checked.svg
+                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/grid-selection-checked-dark.svg
+                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-checkbox-checked.svg
+                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-checkbox-mixed-selected.svg
+                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-radio-checked.svg
+                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-radio-mixed-selected.svg
+                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/radio-checked.svg
+                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/radio-checked-dark.svg
+                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed.svg
+                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed-dark.svg
+                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/radio-selected.svg
+                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/grouped-window-dot-active.svg
                     
                     sed -i "s|fav-background-gradient-end: rgba(0,0,0|background-gradient-end: rgba${COE}|g" $HOME/.cache/dermodex/cinnamon.css
                     
@@ -203,20 +203,27 @@ else
                 cp -f $HOME/.cache/dermodex/corner-ripple.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
                 
                 cp -f $HOME/.cache/dermodex/gtk-3.0/*.svg $HOME/.themes/DermoDeX/gtk-3.0/assets
+                cp -f $HOME/.cache/dermodex/gtk-3.0/*.svg $HOME/.themes/DermoDeX/assets
                 cp -f $HOME/.cache/dermodex/common-assets/icons/emblems/*.svg $HOME/.local/share/icons/White-Icons/scalable/emblems
                 cp -f $HOME/.cache/dermodex/common-assets/icons/places/*.svg $HOME/.local/share/icons/White-Icons/scalable/places
                 
                 
                 # GTK
-                cp $HOME/.local/share/dermodex/gtk-3.0/gtk.gresource $HOME/.cache/dermodex/
+                mkdir -p $HOME/.cache/dermodex/gtk-3.20/dist
+                
+                cp $HOME/.local/share/dermodex/gtk-3.20/gtk.gresource $HOME/.cache/dermodex/gtk-3.20
+                cp $HOME/.local/share/dermodex/gtk-3.20/dist/gtk.css $HOME/.cache/dermodex/gtk-3.20/dist/
                 if [ "$flipcolors" = true ]; then
-                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk.gresource
-                    sed -i "s|#637f9e|${HOS}|g" $HOME/.cache/dermodex/gtk.gresource
+                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css
+                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
+                    sed -i "s|#637f9e|${HOS}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
                 else
-                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk.gresource
-                    sed -i "s|#637f9e|${HOE}|g" $HOME/.cache/dermodex/gtk.gresource
+                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css
+                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
+                    sed -i "s|#637f9e|${HOE}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
                 fi
-                cp $HOME/.cache/dermodex/gtk.gresource $HOME/.themes/DermoDeX/gtk-3.20/
+                cp -f $HOME/.cache/dermodex/gtk-3.20/gtk.gresource $HOME/.themes/DermoDeX/gtk-3.20/
+                cp -f $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css $HOME/.themes/DermoDeX/gtk-3.20/dist/
                 
                 
                 
@@ -243,6 +250,9 @@ else
                 #gsettings set org.cinnamon.desktop.background picture-options "centered"
                 #sleep 3
                 #gsettings set org.cinnamon.desktop.background picture-options "zoom"
+                
+                gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark-Aqua"
+                gsettings set org.cinnamon.desktop.interface gtk-theme "DermoDeX"
 
 
 
