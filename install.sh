@@ -68,6 +68,7 @@ cp -r ./theme/gtk-3.0/assets ~/.local/share/dermodex/gtk-3.0
 cp -r ./theme/gtk-3.0/assets ~/.cache/dermodex/gtk-3.0
 cp -r ./theme/gtk-3.20/gtk.gresource ~/.local/share/dermodex/gtk-3.20
 cp -r ./theme/icons ~/.local/share/dermodex/
+cp -r ./theme/cinnamon/common-assets/user-avatar.png ~/.local/share/dermodex/
 
 
 if [ -d ~/Color-Icons ] ; then

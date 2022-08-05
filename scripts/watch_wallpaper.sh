@@ -85,6 +85,8 @@ else
                 cp -f $HOME/.local/share/dermodex/common-assets/misc/calendar-arrow-left-hover.svg $HOME/.cache/dermodex/
                 cp -f $HOME/.local/share/dermodex/common-assets/misc/calendar-arrow-right-hover.svg $HOME/.cache/dermodex/
                 cp -f $HOME/.local/share/dermodex/common-assets/misc/corner-ripple.svg $HOME/.cache/dermodex/
+                cp -f $HOME/.local/share/dermodex/common-assets/misc/grouped-window-dot-active.svg $HOME/.cache/dermodex/
+                cp -f $HOME/.local/share/dermodex/common-assets/misc/grouped-window-dot-hover.svg $HOME/.cache/dermodex/
                 
                 cp -f $HOME/.local/share/dermodex/gtk-3.0/assets/*.svg $HOME/.cache/dermodex/gtk-3.0
                 
@@ -108,6 +110,8 @@ else
                     sed -i "s|#478db2|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/calendar-arrow-left-hover.svg
                     sed -i "s|#478db2|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/calendar-arrow-right-hover.svg
                     sed -i "s|#478db2|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/corner-ripple.svg
+                    sed -i "s|#478db2|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/grouped-window-dot-active.svg
+                    sed -i "s|#478db2|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/grouped-window-dot-hover.svg
                     
                     sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked.svg
                     sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked-dark.svg
@@ -148,6 +152,8 @@ else
                     sed -i "s|#478db2|${HOS}|g" $HOME/.cache/dermodex/calendar-arrow-left-hover.svg
                     sed -i "s|#478db2|${HOS}|g" $HOME/.cache/dermodex/calendar-arrow-right-hover.svg
                     sed -i "s|#478db2|${HOS}|g" $HOME/.cache/dermodex/corner-ripple.svg
+                    sed -i "s|#478db2|${HOE}|g" $HOME/.cache/dermodex/grouped-window-dot-active.svg
+                    sed -i "s|#478db2|${HOE}|g" $HOME/.cache/dermodex/grouped-window-dot-hover.svg
                     
                     sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked.svg
                     sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked-dark.svg
@@ -164,7 +170,6 @@ else
                     sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed.svg
                     sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed-dark.svg
                     sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/radio-selected.svg
-                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/grouped-window-dot-active.svg
                     
                     sed -i "s|fav-background-gradient-end: rgba(0,0,0|background-gradient-end: rgba${COE}|g" $HOME/.cache/dermodex/cinnamon.css
                     
@@ -188,6 +193,12 @@ else
                 
                 sed -i "s|background-image: url(~/.themes/|background-image: url(${HOME}/.themes/|g" $HOME/.cache/dermodex/cinnamon.css
                 
+                if [ "$menuavatar" = true ]; then
+                    sed -i "s|background-image: url(~/.face);|background-image: url(${HOME}/.face);|g" $HOME/.cache/dermodex/cinnamon.css
+                else
+                    sed -i "s|background-image: url(~/.face);|background-image: url(none);|g" $HOME/.cache/dermodex/cinnamon.css
+                fi
+                
                 # Shake the Cinnamon over the Coffee
                 cp $HOME/.cache/dermodex/cinnamon.css $HOME/.themes/DermoDeX/cinnamon
                 
@@ -201,6 +212,8 @@ else
                 cp -f $HOME/.cache/dermodex/calendar-arrow-left-hover.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
                 cp -f $HOME/.cache/dermodex/calendar-arrow-right-hover.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
                 cp -f $HOME/.cache/dermodex/corner-ripple.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
+                cp -f $HOME/.cache/dermodex/grouped-window-dot-active.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
+                cp -f $HOME/.cache/dermodex/grouped-window-dot-hover.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
                 
                 cp -f $HOME/.cache/dermodex/gtk-3.0/*.svg $HOME/.themes/DermoDeX/gtk-3.0/assets
                 cp -f $HOME/.cache/dermodex/gtk-3.0/*.svg $HOME/.themes/DermoDeX/assets

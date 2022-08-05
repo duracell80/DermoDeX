@@ -63,6 +63,7 @@ cin_panelblur = str(cfg['cinnamon']['panelblur'])
 panel_blur = str(cfg['cinnamon']['blur'])    
 cin_textfactor = str(cfg['cinnamon']['textfactor'])
 cin_menubckgrd = str(cfg['cinnamon']['menubckgrd'])
+cin_menuavatar = str(cfg['cinnamon']['menuavatar'])
 login_blur = str(cfg['login']['blur'])
 
 global RES_PRIMARY, RES_PRIMARY_W

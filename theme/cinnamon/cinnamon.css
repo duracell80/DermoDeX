@@ -1158,6 +1158,13 @@ font-size : 13pt;
     padding: 10px 15px;
 }
 
+.menu-applications-inner-box {
+    background-repeat : no-repeat;
+    background-size: 75px 75px;
+    background-position: 210px 350px;
+    background-image: url(~/.face);
+}
+
 
 .menu-applications-inner-box .menu-applications-outer-box {
   padding: 5px 5px 0 10px; 
@@ -1236,6 +1243,7 @@ font-size : 13pt;
 
 .menu-search-box {
   padding-left: 15px;
+  padding-right: 15px;
 }
 
 .menu-search-entry-icon {
