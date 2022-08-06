@@ -39,32 +39,42 @@ from colormap import rgb2hex
 
 
 global cfg, cfg_colorcollect, cfg_pastel, cfg_tollerance, cfg_splitimage, cfg_splitfocus, override1, override2, override3
+
+CONF_FILE = HOME + '/.local/share/dermodex/config.ini'
+
 cfg = configparser.ConfigParser()
 cfg.sections()
-cfg.read(HOME + '/.local/share/dermodex/config.ini')
+cfg.read(CONF_FILE)
 
 
+cfg_colorcollect = str(cfg.get('dd_conf', 'colorcollect', fallback=8))
+cfg_pastel = str(cfg.get('dd_conf', 'pastel', fallback=0.1))
+cfg_tollerance = int(cfg.get('dd_conf', 'tollerance', fallback=24))
+cfg_override1 = str(cfg.get('dd_conf', 'cfg_override0', fallback="#2C4E6A"))
+cfg_override2 = str(cfg.get('dd_conf', 'cfg_override1', fallback="#668CB1"))
+cfg_override3 = str(cfg.get('dd_conf', 'cfg_override2', fallback="#B2D0F4"))
 
-cfg_colorcollect = int(cfg['dd_conf']['colorcollect'])
-cfg_pastel = float(cfg['dd_conf']['pastel'])
-cfg_tollerance = int(cfg['dd_conf']['tollerance'])
-cfg_override1 = str(cfg['dd_conf']['override1'])   
-cfg_override2 = str(cfg['dd_conf']['override2'])
-cfg_override3 = str(cfg['dd_conf']['override3'])
-cfg_saturation = str(cfg['dd_conf']['saturation'])
-cfg_brightness = str(cfg['dd_conf']['brightness'])
-cfg_contrast = str(cfg['dd_conf']['contrast'])
-cfg_splitimage = str(cfg['dd_conf']['splitimage'])
-cfg_splitfocus = str(cfg['dd_conf']['splitfocus'])    
-cin_panelstyle = str(cfg['cinnamon']['panelstyle'])
-cin_paneltrans = str(cfg['cinnamon']['paneltrans'])
-cin_panellocat = str(cfg['cinnamon']['panellocat'])    
-cin_panelblur = str(cfg['cinnamon']['panelblur'])
-panel_blur = str(cfg['cinnamon']['blur'])    
-cin_textfactor = str(cfg['cinnamon']['textfactor'])
-cin_menubckgrd = str(cfg['cinnamon']['menubckgrd'])
-cin_menuavatar = str(cfg['cinnamon']['menuavatar'])
-login_blur = str(cfg['login']['blur'])
+cfg_saturation = str(cfg.get('dd_conf', 'saturation', fallback=1.2))
+cfg_brightness = str(cfg.get('dd_conf', 'brightness', fallback=1.2))
+cfg_contrast = str(cfg.get('dd_conf', 'contrast', fallback=1.1))
+
+cfg_splitimage = str(cfg.get('dd_conf', 'splitimage', fallback=2))
+cfg_splitfocus = str(cfg.get('dd_conf', 'splitfocus', fallback="v2"))
+
+
+cin_panelstyle = str(cfg.get('cinnamon', 'panelstyle', fallback="modern"))
+cin_paneltrans = str(cfg.get('cinnamon', 'paneltrans', fallback=0.9))
+cin_panellocat = str(cfg.get('cinnamon', 'panellocat', fallback="bottom"))
+cin_panelblur = str(cfg.get('cinnamon', 'panelblur', fallback="true"))
+panel_blur = str(cfg.get('cinnamon', 'pblur', fallback="100"))
+login_blur = str(cfg.get('login', 'lblur', fallback="100"))
+
+cin_textfactor = str(cfg.get('cinnamon', 'textfactor', fallback=0.9))
+cin_menubckgrd = str(cfg.get('cinnamon', 'menubckgrd', fallback="true"))
+cin_menuavatar = str(cfg.get('cinnamon', 'menuavatar', fallback="true"))
+  
+
+
 
 global RES_PRIMARY, RES_PRIMARY_W
 
@@ -389,13 +399,15 @@ wallpaper_file = wallpaper_file.replace("file://", "").replace("'", "")
 os.system('cp '+ wallpaper_file +' '+ HOME +'/.cache/dermodex/wallpaper.jpg')
 
 
-
-
 extract_color(HOME +'/.cache/dermodex/wallpaper.jpg', 900, int(cfg_tollerance), 2.5, cfg_splitfocus)
 
 
 
 
+
+config = configparser.ConfigParser()
+config.read(CONF_FILE)
+config.set('cinnamon', 'wallpaperf', wallpaper_file)
 
 
 
@@ -416,6 +428,11 @@ if len(list_hex) < 2:
     shade_2_lighter = shade_1_lighter
     
     shade_hex_lighter = shade_hex_lighter
+ 
+    config.set('cinnamon', 'saveshade0', shade_hex)
+    config.set('cinnamon', 'saveshade1', list_hex[0])
+    config.set('cinnamon', 'saveshade2', list_hex[0])
+    
 else:
     print("Shade0: " + shade_hex + " - rgb" + str(shade_rgb))
     print("Shade1: " + list_hex[1] + " - rgb" + str(get_rgb(list_hex[1])))
@@ -432,6 +449,13 @@ else:
 
     shade_hex_bits = str(get_rgb(shade_hex)).replace("(", "").replace(")", "").split(",")
     shade_hex_lighter = str(lighten_color(get_hex(int(shade_hex_bits[0]), int(shade_hex_bits[1]), int(shade_hex_bits[2])), 0.1))
+
+    config.set('cinnamon', 'saveshade0', shade_hex)
+    config.set('cinnamon', 'saveshade1', list_hex[1])
+    config.set('cinnamon', 'saveshade2', list_hex[-1])
+    
+with open(CONF_FILE, 'w') as configfile:
+    config.write(configfile)    
     
 
 tri = str(shade_txt).replace('(', '').replace(')', '').replace(' ', '').split(',')
