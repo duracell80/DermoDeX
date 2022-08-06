@@ -25,7 +25,7 @@ desktop-effects-unmaximize-effect='none'
 desktop-effects-unmaximize-time=100
 desktop-effects-unmaximize-transition='easeNone'
 device-aliases=['/org/freedesktop/UPower/devices/mouse_hidpp_battery_1:= M720 Mouse', '/org/freedesktop/UPower/devices/keyboard_hidpp_battery_0:= K780 Wireless Keyboard']
-enabled-applets=['panel1:left:1:menu@cinnamon.org:0', 'panel1:left:3:grouped-window-list@cinnamon.org:2', 'panel1:right:4:systray@cinnamon.org:3', 'panel1:right:2:xapp-status@cinnamon.org:4', 'panel1:right:7:notifications@cinnamon.org:5', 'panel1:right:6:printers@cinnamon.org:6', 'panel1:right:8:network@cinnamon.org:10', 'panel1:right:5:sound@cinnamon.org:11', 'panel1:right:9:calendar@cinnamon.org:13', 'panel1:right:3:radio@driglu4it:16', 'panel1:right:1:workspace-switcher@cinnamon.org:27', 'panel1:right:10:power@cinnamon.org:30', 'panel1:left:2:user@cinnamon.org:33', 'panel1:center:0:expo@cinnamon.org:36']
+enabled-applets=['panel1:left:1:menu@cinnamon.org:0', 'panel1:left:3:grouped-window-list@cinnamon.org:2', 'panel1:right:4:systray@cinnamon.org:3', 'panel1:right:2:xapp-status@cinnamon.org:4', 'panel1:right:7:notifications@cinnamon.org:5', 'panel1:right:6:printers@cinnamon.org:6', 'panel1:right:8:network@cinnamon.org:10', 'panel1:right:5:sound@cinnamon.org:11', 'panel1:right:9:calendar@cinnamon.org:13', 'panel1:right:3:radio@driglu4it:16', 'panel1:right:1:workspace-switcher@cinnamon.org:27', 'panel1:right:10:power@cinnamon.org:30', 'panel1:right:11:user@cinnamon.org:33', 'panel1:center:0:expo@cinnamon.org:36']
 enabled-desklets=['clock@cinnamon.org:2:3925:75']
 enabled-extensions=@as []
 favorite-apps=['cinnamon-settings.desktop', 'org.gnome.Terminal.desktop', 'nemo.desktop']
@@ -73,13 +73,13 @@ exec='gnome-terminal'
 [desktop/background]
 color-shading-type='vertical'
 picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/linuxmint-una/aburden_frozen_winter_ball.jpg'
-primary-color='#7792B0'
-secondary-color='#2B2E37'
+picture-uri='file:///home/lee/Pictures/DermoDeX/Africa_Nambia.jpg'
+primary-color='#434047'
+secondary-color='#A53F19'
 
 [desktop/background/slideshow]
 delay=15
-image-source='xml:///usr/share/cinnamon-background-properties/linuxmint-una.xml'
+image-source='directory:///home/lee/Pictures/DermoDeX'
 slideshow-enabled=false
 
 [desktop/interface]
@@ -90,7 +90,7 @@ gtk-overlay-scrollbars=true
 gtk-theme='DermoDeX'
 icon-theme='White-Icons'
 scaling-factor=uint32 1
-text-scaling-factor=0.90000000000000002
+text-scaling-factor=0.84999999999999998
 toolkit-accessibility=true
 
 [desktop/media-handling]
