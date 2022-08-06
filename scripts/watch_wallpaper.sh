@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 HOLD_FILE="$HOME/.local/share/dermodex/dermodex_hold"
 CONF_FILE="$HOME/.local/share/dermodex/config.ini"
+CINN_FILE="$HOME/.cache/dermodex/cinnamon.css"
 
 shopt -s extglob
 
@@ -58,7 +59,7 @@ else
                 RES_PRIMARY="$((RES_PRIMARY - 120))"
                 
                 echo $CUR > $HOME/.cache/dermodex/wallpaper_current.txt
-                cp $HOME/.local/share/dermodex/cinnamon_base.css $HOME/.cache/dermodex/cinnamon.css
+                cp $HOME/.local/share/dermodex/cinnamon_base.css $CINN_FILE
                 
                 python3 $HOME/.local/share/dermodex/colors.py
                 
@@ -97,12 +98,10 @@ else
                 cp -f $HOME/.local/share/dermodex/icons/breeze-dark_white/places/*.svg $HOME/.cache/dermodex/common-assets/icons/places
                 
                 
-                
-                sed -i "s|fav-background-gradient-start: rgba(0,0,0|background-gradient-start: rgba${COS}|g" $HOME/.cache/dermodex/cinnamon.css
-		        
-                if n=$(grep -i "mainshade = true" $HOME/.local/share/dermodex/config.ini); then
+
+                if [ "$mainshade" = true ]; then
                     echo "[i] Main Shade Active: When deactivated a lesser color may be chosen"
-                    sed -i "s|#478db2|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/cinnamon.css
+                    sed -i "s|#478db2|${MAINSHADE_HEX}|g" $CINN_FILE
                     sed -i "s|#478db2|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/switch-on.svg
                     sed -i "s|#f70505|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/close.svg
                     sed -i "s|#f70505|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/close-hover.svg
@@ -129,7 +128,7 @@ else
                     sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed-dark.svg
                     sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-selected.svg
                     
-                    sed -i "s|fav-background-gradient-end: rgba(0,0,0|background-gradient-end: rgba${MAINSHADE_RGB}|g" $HOME/.cache/dermodex/cinnamon.css
+                    sed -i "s|fav-background-gradient-end: rgba(0,0,0|background-gradient-end: rgba${MAINSHADE_RGB}|g" $CINN_FILE
                     
                     for filename in $HOME/.cache/dermodex/common-assets/icons/emblems/*.svg; do
                         [ -e "$filename" ] || continue
@@ -144,7 +143,7 @@ else
                         sed -i "s|#707073|${MAINSHADE_HEX}|g" $filename
                     done
                 else
-                    sed -i "s|#478db2|${HOE}|g" $HOME/.cache/dermodex/cinnamon.css
+                    sed -i "s|#478db2|${HOE}|g" $CINN_FILE
                     sed -i "s|#478db2|${HOS}|g" $HOME/.cache/dermodex/switch-on.svg
                     sed -i "s|#f70505|${HOS}|g" $HOME/.cache/dermodex/close.svg
                     sed -i "s|#f70505|${HOS}|g" $HOME/.cache/dermodex/close-hover.svg
@@ -171,14 +170,15 @@ else
                     sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed-dark.svg
                     sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/radio-selected.svg
                     
-                    sed -i "s|fav-background-gradient-end: rgba(0,0,0|background-gradient-end: rgba${COE}|g" $HOME/.cache/dermodex/cinnamon.css
+                    sed -i "s|fav-background-gradient-end: rgba(0,0,0|background-gradient-end: rgba${COE}|g" $CINN_FILE
                     
+                    # RECOLOR NEMO EMBLEMS
                     for filename in $HOME/.cache/dermodex/common-assets/icons/emblems/*.svg; do
                         [ -e "$filename" ] || continue
                         sed -i "s|#ffaa00|${HOS}|g" $filename
                     done
                     
-                    
+                    # RECOLOR NEMO PLACES ICONS
                     for filename in $HOME/.cache/dermodex/common-assets/icons/places/*.svg; do
                         [ -e "$filename" ] || continue
                         #sed -i "s|#ffffff|${HOE}|g" $filename
@@ -189,19 +189,78 @@ else
 
                 fi
                 
-                sed -i "s|--panel-blur-background-position: 0px -0px;|background-position: 0px -${RES_PRIMARY}px;|g" $HOME/.cache/dermodex/cinnamon.css
+                # SET FAVORTIES BAR GRADIENT
+                sed -i "s|fav-background-gradient-start: rgba(0,0,0|background-gradient-start: rgba${COS}|g" $CINN_FILE
                 
-                sed -i "s|background-image: url(~/.themes/|background-image: url(${HOME}/.themes/|g" $HOME/.cache/dermodex/cinnamon.css
-                
+                # SHOW AVATAR ON START MENU OR NOT
                 if [ "$menuavatar" = true ]; then
-                    sed -i "s|background-image: url(~/.face);|background-image: url(${HOME}/.face);|g" $HOME/.cache/dermodex/cinnamon.css
+                    sed -i "s|background-image: url(~/.face);|background-image: url(${HOME}/.face);|g" $CINN_FILE
                 else
-                    sed -i "s|background-image: url(~/.face);|background-image: url(none);|g" $HOME/.cache/dermodex/cinnamon.css
+                    sed -i "s|background-image: url(~/.face);|background-image: url(none);|g" $CINN_FILE
                 fi
                 
-                # Shake the Cinnamon over the Coffee
-                cp $HOME/.cache/dermodex/cinnamon.css $HOME/.themes/DermoDeX/cinnamon
+                # BLUR COPY OF WALLPAPER ON START MENU OR NOT
+                if [ "$menubckgrd" = "true" ]; then
+                    sed -i "s|--menu-background-image : url(~/.local/share/dermodex/menu_blur.jpg);|background-image : url($HOME/.local/share/dermodex/menu_blur.jpg);|g" $CINN_FILE
+                else 
+                    sed -i "s|--menu-background-image : url(~/.local/share/dermodex/menu_blur.jpg);|background-image : url();|g" $CINN_FILE
+                fi
                 
+                
+                # INNER PANEL STYLE
+                if [ "$panelstyle" = "flat" ]; then
+                    echo "[i] Panel Style: Flat"
+                    sed -i "s|--panel-border-radius : 32px;|border-radius : 0px;|g" $CINN_FILE
+                    sed -i "s|--panel-background-color : transparent;|background-color : rgba(64, 64, 64, $paneltrans);|g" $CINN_FILE
+                    sed -i "s|--panel-inner-background-color : rgba(64, 64, 64, 0.9);|background-color : transparent;|g" $CINN_FILE
+                    sed -i "s|--panel-blur-background-color : rgba(64, 64, 64, 0.6);|background-color : rgba(64, 64, 64, 0);|g" $CINN_FILE
+                    sed -i "s|--panel-border-top : 10px solid transparent;|border-top : 0px solid transparent;|g" $CINN_FILE
+                    sed -i "s|--panel-border-bottom : 10px solid transparent;|border-bottom : 0px solid transparent;|g" $CINN_FILE  
+
+                else
+                    echo "[i] Panel Style: Modern"
+                    
+                    sed -i "s|--panel-border-radius : 32px;|border-radius : 32px;|g" $CINN_FILE
+                    sed -i "s|--panel-background-color : transparent;|background-color : transparent;|g" $CINN_FILE
+                    sed -i "s|--panel-inner-background-color : rgba(64, 64, 64, 0.9);|background-color : rgba(64, 64, 64, $paneltrans);|g" $CINN_FILE
+                    sed -i "s|--panel-border-top : 10px solid transparent;|border-top : 10px solid transparent;|g" $CINN_FILE
+                    sed -i "s|--panel-border-bottom : 10px solid transparent;|border-bottom : 10px solid transparent;|g" $CINN_FILE
+                fi
+                
+                # PANEL BLUR NOT INNER PANEL
+                if [ "$panelblur" = "true" ]; then
+                    sed -i "s|background-image : url(/usr/share/backgrounds/dermodex/panel_blur.jpg);|background-image : url($HOME/.local/share/dermodex/panel_blur.jpg);|g" $CINN_FILE
+                    sed -i "s|--panel-blur-background-color : rgba(64, 64, 64, 0.6);|background-color : rgba(64, 64, 64, 0.6);|g" $CINN_FILE
+                    
+                    if [[ "$panellocat" == "top" || "$panellocat" == "left" || "$panellocat" == "right" ]]; then
+                        sed -i "s|--panel-blur-background-position: 0px -700px;|background-position: 0px 0px;|g" $CINN_FILE
+                    else
+                        sed -i "s|--panel-blur-background-position: 0px -700px;|--panel-blur-background-position: 0px -0px;|g" $CINN_FILE
+                    fi
+
+                else
+                    if [ "$paneltrans" == "0" ]; then
+                        sed -i "s|--panel-blur-background-color : rgba(64, 64, 64, 0.6);|background-color : rgba(64, 64, 64, 0);|g" $CINN_FILE
+                    else
+                        sed -i "s|--panel-blur-background-color : rgba(64, 64, 64, 0.6);|background-color : rgba(64, 64, 64, $paneltrans);|g" $CINN_FILE
+                    fi
+                    
+                    sed -i "s|--panel-blur-background-position: 0px -700px;|background-position: 0px -1080px;|g" $CINN_FILE
+                
+                fi
+                
+                # PANEL BLUR - IMPORTANT KEEP THIS BELOW PANEL TRANS
+                sed -i "s|--panel-blur-background-position: 0px -0px;|background-position: 0px -${RES_PRIMARY}px;|g" $CINN_FILE
+                sed -i "s|background-image: url(~/.themes/|background-image: url(${HOME}/.themes/|g" $CINN_FILE
+                
+                
+                
+                
+                # Shake the Cinnamon - Cinnamon SEDs go above this line, at this point customizations are sent to .themes
+                cp $CINN_FILE $HOME/.themes/DermoDeX/cinnamon
+                
+                
+                # ICONS and GTK COPY OVER
                 mkdir -p $HOME/.local/share/icons/White-Icons/scalable/emblems
                 mkdir -p $HOME/.local/share/icons/White-Icons/scalable/places
                 
@@ -221,7 +280,7 @@ else
                 cp -f $HOME/.cache/dermodex/common-assets/icons/places/*.svg $HOME/.local/share/icons/White-Icons/scalable/places
                 
                 
-                # GTK
+                # GTK CSS
                 mkdir -p $HOME/.cache/dermodex/gtk-3.20/dist
                 
                 cp $HOME/.local/share/dermodex/gtk-3.20/gtk.gresource $HOME/.cache/dermodex/gtk-3.20
@@ -238,7 +297,8 @@ else
                 cp -f $HOME/.cache/dermodex/gtk-3.20/gtk.gresource $HOME/.themes/DermoDeX/gtk-3.20/
                 cp -f $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css $HOME/.themes/DermoDeX/gtk-3.20/dist/
                 
-                
+                # TEXT SCALING
+                gsettings set org.cinnamon.desktop.interface text-scaling-factor "$textfactor"
                 
                 # Give Possibility to change sounds based on wallpaper too
                 # gsettings set org.cinnamon.sounds login-file /usr/share/sounds/linux-a11y/stereo/desktop-login.oga
@@ -258,12 +318,7 @@ else
                     fi
                 fi
 
-                # Workaround cinnamon 5.3 reloading with multiple monitors and making wallpaper aspect strange
-                #sleep 7
-                #gsettings set org.cinnamon.desktop.background picture-options "centered"
-                #sleep 3
-                #gsettings set org.cinnamon.desktop.background picture-options "zoom"
-                
+                # REFRESH GTK THEME
                 gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark-Aqua"
                 gsettings set org.cinnamon.desktop.interface gtk-theme "DermoDeX"
 

@@ -38,7 +38,7 @@ from colormap import rgb2hex
 
 
 
-global cfg, cfg_colorcollect, cfg_pastel, cfg_tollerance, cfg_splitimage, cfg_splitfocus, override1, override2, override3
+global cfg, cfg_colorcollect, cfg_pastel, cfg_tollerance, cfg_splitimage, cfg_splitfocus, cfg_override0, cfg_override1, cfg_override2, cfg_override3
 
 CONF_FILE = HOME + '/.local/share/dermodex/config.ini'
 
@@ -50,9 +50,10 @@ cfg.read(CONF_FILE)
 cfg_colorcollect = str(cfg.get('dd_conf', 'colorcollect', fallback=8))
 cfg_pastel = str(cfg.get('dd_conf', 'pastel', fallback=0.1))
 cfg_tollerance = int(cfg.get('dd_conf', 'tollerance', fallback=24))
-cfg_override1 = str(cfg.get('dd_conf', 'cfg_override0', fallback="#2C4E6A"))
-cfg_override2 = str(cfg.get('dd_conf', 'cfg_override1', fallback="#668CB1"))
-cfg_override3 = str(cfg.get('dd_conf', 'cfg_override2', fallback="#B2D0F4"))
+cfg_override0 = str(cfg.get('dd_conf', 'cfg_override0', fallback="#000000"))
+cfg_override1 = str(cfg.get('dd_conf', 'cfg_override1', fallback="#2C4E6A"))
+cfg_override2 = str(cfg.get('dd_conf', 'cfg_override2', fallback="#668CB1"))
+cfg_override3 = str(cfg.get('dd_conf', 'cfg_override3', fallback="#B2D0F4"))
 
 cfg_saturation = str(cfg.get('dd_conf', 'saturation', fallback=1.2))
 cfg_brightness = str(cfg.get('dd_conf', 'brightness', fallback=1.2))
@@ -227,6 +228,9 @@ def color_to_df(input):
 
 
 def extract_color(input_image, resize, tolerance, zoom, crop_variant = "h_1"):
+    
+    
+    
     # Background
     bg = HOME + '/.cache/dermodex/bg.png'
     fig, ax = plt.subplots(figsize=(192,108),dpi=10)
@@ -312,15 +316,18 @@ def extract_color(input_image, resize, tolerance, zoom, crop_variant = "h_1"):
     list_rgb.sort(key=lambda rgb: get_step(*rgb))
     for i in range(length):
         list_bits = str(list_rgb[i]).replace("[", "").replace("]", "").split(",")
-        if float(cfg_pastel) != 0:
+        if float(cfg_pastel) > 0:
             new_hex = str(lighten_color(get_hex(int(list_bits[0]), int(list_bits[1]), int(list_bits[2])), float(cfg_pastel)))
         else:
             new_hex = "#" + str(get_hex(int(list_bits[0]), int(list_bits[1]), int(list_bits[2])))
         
-        list_hex.append(new_hex)
+        if new_hex.lower() == "#ffffff":
+            list_hex.append(cfg_override0)
+        else:
+            list_hex.append(new_hex)
     
     
-    if float(cfg_pastel) != 0:
+    if float(cfg_pastel) > 0:
         shade_hex = str(lighten_color(list_color[0], float(cfg_pastel)))
     else:
         shade_hex = str(list_color[0])
@@ -404,15 +411,8 @@ extract_color(HOME +'/.cache/dermodex/wallpaper.jpg', 900, int(cfg_tollerance), 
 
 
 
-
 config = configparser.ConfigParser()
 config.read(CONF_FILE)
-config.set('cinnamon', 'wallpaperf', wallpaper_file)
-
-
-
-
-
 
 if len(list_hex) < 2:
     print("Shade0: " + shade_hex + " - rgb" + str(shade_rgb))
@@ -434,12 +434,17 @@ if len(list_hex) < 2:
     config.set('cinnamon', 'saveshade2', list_hex[0])
     
 else:
+    if list_hex[1].lower() == "#ffffff":
+        shade1 = list_hex[1]
+    else:
+        shade1 = list_hex[2]
+    
     print("Shade0: " + shade_hex + " - rgb" + str(shade_rgb))
-    print("Shade1: " + list_hex[1] + " - rgb" + str(get_rgb(list_hex[1])))
+    print("Shade1: " + shade1 + " - rgb" + str(get_rgb(shade1)))
     print("Shade2: " + list_hex[-1] + " - rgb" + str(get_rgb(list_hex[-1])))
     shade_txt = get_rgb(list_hex[1])
     
-    shade_1 = list_hex[1]
+    shade_1 = shade1
     shade_1_bits = str(get_rgb(list_hex[1])).replace("(", "").replace(")", "").split(",")
     shade_1_lighter = str(lighten_color(get_hex(int(shade_1_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2])), 0.1)) 
     
@@ -451,8 +456,16 @@ else:
     shade_hex_lighter = str(lighten_color(get_hex(int(shade_hex_bits[0]), int(shade_hex_bits[1]), int(shade_hex_bits[2])), 0.1))
 
     config.set('cinnamon', 'saveshade0', shade_hex)
-    config.set('cinnamon', 'saveshade1', list_hex[1])
+    config.set('cinnamon', 'saveshade1', shade1)
     config.set('cinnamon', 'saveshade2', list_hex[-1])
+    
+
+
+
+
+
+
+config.set('cinnamon', 'background', wallpaper_file)
     
 with open(CONF_FILE, 'w') as configfile:
     config.write(configfile)    
@@ -476,54 +489,3 @@ else:
     os.system('sed -i "s|--slider-active-background-color: #ffffff;|-slider-active-background-color: '+ shade_hex_lighter +';|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
     
 #os.system('rm -rf '+ HOME +'/.cache/dermodex/*.jpg')
-
-
-# MAKE SOME CINNAMON TWEAKS
-
-# TEXT SCALE
-os.system('gsettings set org.cinnamon.desktop.interface text-scaling-factor "' + cin_textfactor +'"')
-
-# MENU STYLE
-if cin_menubckgrd == "true":
-    os.system('sed -i "s|--menu-background-image : url(~/.local/share/dermodex/menu_blur.jpg);|background-image : url(' + HOME + '/.local/share/dermodex/menu_blur.jpg);|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-else:
-    os.system('sed -i "s|--menu-background-image : url(~/.local/share/dermodex/menu_blur.jpg);|background-image : url();|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    
-# PANEL STYLE
-if cin_panelstyle == "flat":
-    print("[i] Panel Style: Flat")
-    os.system('sed -i "s|--panel-border-radius : 32px;|border-radius : 0px;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    os.system('sed -i "s|--panel-background-color : transparent;|background-color : rgba(64, 64, 64, ' + cin_paneltrans + ');|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    os.system('sed -i "s|--panel-inner-background-color : rgba(64, 64, 64, 0.9);|background-color : transparent;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    os.system('sed -i "s|--panel-blur-background-color : rgba(64, 64, 64, 0.6);|background-color : rgba(64, 64, 64, 0);|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    
-    os.system('sed -i "s|--panel-border-top : 10px solid transparent;|border-top : 0px solid transparent;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    os.system('sed -i "s|--panel-border-bottom : 10px solid transparent;|border-bottom : 0px solid transparent;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')   
-    
-else:
-    print("[i] Panel Style: Modern")
-    os.system('sed -i "s|--panel-border-radius : 32px;|border-radius : 32px;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    os.system('sed -i "s|--panel-background-color : transparent;|background-color : transparent;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    os.system('sed -i "s|--panel-inner-background-color : rgba(64, 64, 64, 0.9);|background-color : rgba(64, 64, 64, ' + cin_paneltrans + ');|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    os.system('sed -i "s|--panel-border-top : 10px solid transparent;|border-top : 10px solid transparent;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    os.system('sed -i "s|--panel-border-bottom : 10px solid transparent;|border-bottom : 10px solid transparent;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    
-if cin_panelblur == "true":
-    os.system('sed -i "s|background-image : url(/usr/share/backgrounds/dermodex/panel_blur.jpg);|background-image : url('+ HOME +'/.local/share/dermodex/panel_blur.jpg);|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-
-    os.system('sed -i "s|--panel-blur-background-color : rgba(64, 64, 64, 0.6);|background-color : rgba(64, 64, 64, 0.6);|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    
-    if cin_panellocat == "top" or cin_panellocat == "left" or cin_panellocat == "right":
-        os.system('sed -i "s|--panel-blur-background-position: 0px -700px;|background-position: 0px 0px;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    else:
-        os.system('sed -i "s|--panel-blur-background-position: 0px -700px;|--panel-blur-background-position: 0px -0px;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    
-        
-else:
-    if float(cin_paneltrans) == 0:
-        os.system('sed -i "s|--panel-blur-background-color : rgba(64, 64, 64, 0.6);|background-color : rgba(64, 64, 64, 0);|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    else:
-        os.system('sed -i "s|--panel-blur-background-color : rgba(64, 64, 64, 0.6);|background-color : rgba(64, 64, 64, '+ str(cin_paneltrans) +');|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    
-    os.system('sed -i "s|--panel-blur-background-position: 0px -700px;|background-position: 0px -1080px;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    
