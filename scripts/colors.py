@@ -50,7 +50,7 @@ cfg.read(CONF_FILE)
 cfg_colorcollect = str(cfg.get('dd_conf', 'colorcollect', fallback=8))
 cfg_pastel = str(cfg.get('dd_conf', 'pastel', fallback=0.1))
 cfg_tollerance = int(cfg.get('dd_conf', 'tollerance', fallback=24))
-cfg_override0 = str(cfg.get('dd_conf', 'cfg_override0', fallback="#000000"))
+cfg_override0 = str(cfg.get('dd_conf', 'cfg_override0', fallback="#668CB1"))
 cfg_override1 = str(cfg.get('dd_conf', 'cfg_override1', fallback="#2C4E6A"))
 cfg_override2 = str(cfg.get('dd_conf', 'cfg_override2', fallback="#668CB1"))
 cfg_override3 = str(cfg.get('dd_conf', 'cfg_override3', fallback="#B2D0F4"))
@@ -441,10 +441,10 @@ else:
     print("Shade0: " + shade_hex + " - rgb" + str(shade_rgb))
     print("Shade1: " + shade1 + " - rgb" + str(get_rgb(shade1)))
     print("Shade2: " + list_hex[-1] + " - rgb" + str(get_rgb(list_hex[-1])))
-    shade_txt = get_rgb(list_hex[1])
+    shade_txt = get_rgb(shade1)
     
     shade_1 = shade1
-    shade_1_bits = str(get_rgb(list_hex[1])).replace("(", "").replace(")", "").split(",")
+    shade_1_bits = str(get_rgb(shade1)).replace("(", "").replace(")", "").split(",")
     shade_1_lighter = str(lighten_color(get_hex(int(shade_1_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2])), 0.1)) 
     
     shade_2 = list_hex[-1]
@@ -457,8 +457,6 @@ else:
     config.set('cinnamon', 'saveshade0', shade_hex)
     config.set('cinnamon', 'saveshade1', shade1)
     config.set('cinnamon', 'saveshade2', list_hex[-1])
-    
-
 
 
 
