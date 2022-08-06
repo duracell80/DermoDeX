@@ -18,6 +18,22 @@ CWD=$(pwd)
 mkdir -p ~/.local/share/dermodex
 mkdir -p ~/.themes/DermoDeX
 
+# SYMLINK WALLPAPERS TO PICTURES WITHOUT COPYING WALLPAPERS ACROSS
+simlink? () {
+  test "$(readlink "${1}")";
+}
+
+FILE=~/Pictures/DermoDeX
+
+if simlink? "${FILE}"; then
+  echo "[i] DermoDeX Directory in Pictures already exists"
+else
+  echo "[i] Creating DermoDex Symlink in Pictures"
+  ln -s ~/.local/share/dermodex/wallpapers ~/Pictures/DermoDeX
+fi
+
+
+
 # GRANULAR CONTROL OVER WHICH SUB THEMES TO COPY OVER
 cp -r $CWD/theme/cinnamon ~/.themes/DermoDeX
 cp -r $CWD/theme/gtk-2.0 ~/.themes/DermoDeX
@@ -37,6 +53,7 @@ cp -f ./scripts/config_menu.json ~/.cinnamon/configs/menu@cinnamon.org/0.json
 cp ~/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json ~/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json.bak
 cp -f ./scripts/config_workspace.json ~/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json
 
+cp -f ./scripts/cinnamon_base.css ~/.local/share/dermodex
 cp -f ./scripts/cinnamon_reload ~/.local/bin
 cp -f ./scripts/dd_sleep.sh ~/.local/bin/dd_sleep
 cp -f ./scripts/dd_wake.sh ~/.local/bin/dd_wake
@@ -61,13 +78,16 @@ chmod u+rw ~/.cache/dermodex/gtk-3.0
 chmod u+rw ~/.local/share/dermodex/gtk-3.0
 
 cp -r $CWD/theme/gtk-3.20/dist ~/.local/share/dermodex/gtk-3.20
-cp ./scripts/* ~/.local/share/dermodex
+cp ./scripts/watch_wallpaper.sh ~/.local/share/dermodex
+cp ./scripts/cinnamon_dd.txt ~/.local/share/dermodex
+cp ./scripts/*.ini ~/.local/share/dermodex
+cp ./scripts/colors.py ~/.local/share/dermodex
 touch ~/.local/share/dermodex/text_hover.txt
 cp -r ./theme/cinnamon/common-assets ~/.local/share/dermodex
 
 mkdir -p ~/.local/share/dermodex/wallpapers
 cp -r ./theme/cinnamon/wallpapers ~/.local/share/dermodex
-ln -s ~/.local/share/dermodex/wallpapers ~/Pictures/DermoDeX
+
 
 
 cp -r ./theme/gtk-3.0/assets ~/.local/share/dermodex/gtk-3.0
