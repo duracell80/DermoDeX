@@ -77,11 +77,10 @@ cin_menuavatar = str(cfg.get('cinnamon', 'menuavatar', fallback="true"))
 
 
 
-global RES_PRIMARY, RES_PRIMARY_W
-
-RES_PRIMARY = os.system('xrandr | grep -i "primary" | cut --delimiter=" " -f 4 | cut --delimiter="+" -f 1 | cut --delimiter="x" -f 2')
-RES_PRIMARY_H = RES_PRIMARY
-RES_PRIMARY_W = os.system('xrandr | grep -i "primary" | cut --delimiter=" " -f 4 | cut --delimiter="+" -f 1 | cut --delimiter="x" -f 1')
+#global RES_PRIMARY, RES_PRIMARY_W
+#RES_PRIMARY = os.system('xrandr | grep -i "primary" | cut --delimiter=" " -f 4 | cut --delimiter="+" -f 1 | cut --delimiter="x" -f 2')
+#RES_PRIMARY_H = RES_PRIMARY
+#RES_PRIMARY_W = os.system('xrandr | grep -i "primary" | cut --delimiter=" " -f 4 | cut --delimiter="+" -f 1 | cut --delimiter="x" -f 1')
 
 
 
@@ -403,7 +402,7 @@ def extract_color(input_image, resize, tolerance, zoom, crop_variant = "h_1"):
 wallpaper_file = str(os.popen('gsettings get org.cinnamon.desktop.background picture-uri').read()).replace("\n", "")
 wallpaper_file = wallpaper_file.replace("file://", "").replace("'", "")
 
-os.system('cp '+ wallpaper_file +' '+ HOME +'/.cache/dermodex/wallpaper.jpg')
+os.system('cp "'+ wallpaper_file +'" '+ HOME +'/.cache/dermodex/wallpaper.jpg')
 
 
 extract_color(HOME +'/.cache/dermodex/wallpaper.jpg', 900, int(cfg_tollerance), 2.5, cfg_splitfocus)
