@@ -3,23 +3,7 @@ HOLD_FILE="$HOME/.local/share/dermodex/dermodex_hold"
 CONF_FILE="$HOME/.local/share/dermodex/config.ini"
 CINN_FILE="$HOME/.cache/dermodex/cinnamon.css"
 
-shopt -s extglob
 
-tr -d '\r' < $CONF_FILE | sed 's/[][]//g' > $CONF_FILE.unix
-while IFS='= ' read -r lhs rhs
-do
-    if [[ ! $lhs =~ ^\ *# && -n $lhs ]]; then
-        rhs="${rhs%%\#*}"    # Del in line right comments
-        rhs="${rhs%%*( )}"   # Del trailing spaces
-        rhs="${rhs%\"*}"     # Del opening string quotes 
-        rhs="${rhs#\"*}"     # Del closing string quotes 
-        declare $lhs="$rhs"
-    fi
-done < $CONF_FILE.unix
-shopt -u extglob # Switching it back off after use
-
-
-echo $savehex1
 
 mkdir -p $HOME/.cache/dermodex/common-assets/icons/emblems
 mkdir -p $HOME/.cache/dermodex/common-assets/icons/places
@@ -34,8 +18,8 @@ else
     touch $HOME/.cache/dermodex/resize_wallpaper.jpg
     touch $HOME/.cache/dermodex/wallpaper_current.txt
     touch $HOME/.cache/dermodex/bg.png
-    touch $HOME/.cache/dermodex/colors_hex.txt
-    touch $HOME/.cache/dermodex/colors_rgb.txt
+    #touch $HOME/.cache/dermodex/colors_hex.txt
+    #touch $HOME/.cache/dermodex/colors_rgb.txt
 
     if ! type "xdotool" > /dev/null 2>&1; then
         notify-send --urgency=normal --category=im.recieved --icon=help-info-symbolic "DermoDeX Color Extractor Active" "DermoDeX reloads Cinnamon with accent colors from the wallpaper image! DermoDeX is active for 15 minutes after launching, press CTRL+Alt+Esc to reload Cinnamon"
@@ -53,7 +37,7 @@ else
             # Hold DermoDeX from acting upon wallpaper changes
             ACT="0"
         else
-            # Let DermoDeX do
+            # LET DermoDeX DO
             CUR=$(gsettings get org.cinnamon.desktop.background picture-uri)
             PAS=$(cat $HOME/.cache/dermodex/wallpaper_current.txt)
             TXT=$(cat $HOME/.local/share/dermodex/text_hover.txt)
@@ -70,12 +54,40 @@ else
                 echo $CUR > $HOME/.cache/dermodex/wallpaper_current.txt
                 cp $HOME/.local/share/dermodex/cinnamon_base.css $CINN_FILE
                 
+                # GENERATE THE COLORS AND UPDATE THE CONFIG
                 python3 $HOME/.local/share/dermodex/colors.py
                 
-                COS=$(tail -n 3 $HOME/.cache/dermodex/colors_rgb.txt | head -1 | rev | cut -c2- | rev)
-                COE=$(head -n 3 $HOME/.cache/dermodex/colors_rgb.txt | tail -1 | rev | cut -c2- | rev)
-                HOS=$(tail -n 3 $HOME/.cache/dermodex/colors_hex.txt | head -1 | rev | cut -c1- | rev)
-                HOE=$(head -n 3 $HOME/.cache/dermodex/colors_hex.txt | tail -1 | rev | cut -c1- | rev)
+                # READ THE UPDATED CONFIG
+                shopt -s extglob
+
+                tr -d '\r' < $CONF_FILE | sed 's/[][]//g' > $CONF_FILE.unix
+                while IFS='= ' read -r lhs rhs
+                do
+                    if [[ ! $lhs =~ ^\ *# && -n $lhs ]]; then
+                        rhs="${rhs%%\#*}"    # Del in line right comments
+                        rhs="${rhs%%*( )}"   # Del trailing spaces
+                        rhs="${rhs%\"*}"     # Del opening string quotes 
+                        rhs="${rhs#\"*}"     # Del closing string quotes 
+                        declare $lhs="$rhs"
+                    fi
+                done < $CONF_FILE.unix
+                shopt -u extglob # Switching it back off after use
+
+                
+                #COS=$(tail -n 3 $HOME/.cache/dermodex/colors_rgb.txt | head -1 | rev | cut -c2- | rev)
+                #COE=$(head -n 3 $HOME/.cache/dermodex/colors_rgb.txt | tail -1 | rev | cut -c2- | rev)
+                #HOS=$(tail -n 3 $HOME/.cache/dermodex/colors_hex.txt | head -1 | rev | cut -c1- | rev)
+                #HOE=$(head -n 3 $HOME/.cache/dermodex/colors_hex.txt | tail -1 | rev | cut -c1- | rev)
+
+                
+                # RECOMBINE STORED DATA FROM CONFIG FILE
+                HOS="#${savehex2}"
+                HOE="#${savehex1}"
+                
+                COS="(${savergb2}"
+                COE="(${savergb1}"
+                
+                echo $COE
                 
                 MAINSHADE_RGB=$(head -n 1 $HOME/.cache/dermodex/colors_rgb.txt | tail -1 | rev | cut -c2- | rev)
                 MAINSHADE_HEX=$(head -n 1 $HOME/.cache/dermodex/colors_hex.txt | tail -1 | rev | cut -c1- | rev)
@@ -153,23 +165,13 @@ else
                     sed -i "s|#478db2|${HOE}|g" $HOME/.cache/dermodex/grouped-window-dot-active.svg
                     sed -i "s|#478db2|${HOE}|g" $HOME/.cache/dermodex/grouped-window-dot-hover.svg
                     
-                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked.svg
-                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked-dark.svg
-                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-mixed.svg
-                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-mixed-dark.svg
-                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/grid-selection-checked.svg
-                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/grid-selection-checked-dark.svg
-                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-checkbox-checked.svg
-                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-checkbox-mixed-selected.svg
-                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-radio-checked.svg
-                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-radio-mixed-selected.svg
-                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/radio-checked.svg
-                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/radio-checked-dark.svg
-                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed.svg
-                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed-dark.svg
-                    sed -i "s|#647891|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/radio-selected.svg
                     
-                    sed -i "s|fav-background-gradient-end: rgba(0,0,0|background-gradient-end: rgba${COE}|g" $CINN_FILE
+                    # RECOLOR GTK ICONS
+                    for filename in $HOME/.cache/dermodex/gtk-3.0/*.svg; do
+                        [ -e "$filename" ] || continue
+                        sed -i "s|#647891|${HOS}|g" $filename
+                    done
+                    
                     
                     # RECOLOR NEMO EMBLEMS
                     for filename in $HOME/.cache/dermodex/common-assets/icons/emblems/*.svg; do
@@ -190,6 +192,7 @@ else
                 
                 # SET FAVORTIES BAR GRADIENT
                 sed -i "s|fav-background-gradient-start: rgba(0,0,0|background-gradient-start: rgba${COS}|g" $CINN_FILE
+                sed -i "s|fav-background-gradient-end: rgba(0,0,0|background-gradient-end: rgba${COE}|g" $CINN_FILE
                 
                 # SHOW AVATAR ON START MENU OR NOT
                 if [ "$menuavatar" = true ]; then

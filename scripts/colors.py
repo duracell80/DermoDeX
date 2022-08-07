@@ -326,17 +326,17 @@ def extract_color(input_image, resize, tolerance, zoom, crop_variant = "h_1"):
     shade_rgb = str(get_rgb(shade_hex))
     
     
-    os.system('rm -rf '+ HOME +'/.cache/dermodex/colors_hex.txt')
-    os.system('touch '+ HOME +'/.cache/dermodex/colors_hex.txt')
-    os.system('rm -rf '+ HOME +'/.cache/dermodex/colors_rgb.txt')
-    os.system('touch '+ HOME +'/.cache/dermodex/colors_rgb.txt')
+    #os.system('rm -rf '+ HOME +'/.cache/dermodex/colors_hex.txt')
+    #os.system('touch '+ HOME +'/.cache/dermodex/colors_hex.txt')
+    #os.system('rm -rf '+ HOME +'/.cache/dermodex/colors_rgb.txt')
+    #os.system('touch '+ HOME +'/.cache/dermodex/colors_rgb.txt')
     
-    os.system('echo "' + shade_hex + '" > '+ HOME +'/.cache/dermodex/colors_hex.txt')
-    os.system('echo "' + shade_rgb + '" > '+ HOME +'/.cache/dermodex/colors_rgb.txt')
-    for i in range(length):
+    #os.system('echo "' + shade_hex + '" > '+ HOME +'/.cache/dermodex/colors_hex.txt')
+    #os.system('echo "' + shade_rgb + '" > '+ HOME +'/.cache/dermodex/colors_rgb.txt')
+    #for i in range(length):
         
-        os.system('echo "' + list_hex[i] + '" >> '+ HOME +'/.cache/dermodex/colors_hex.txt')
-        os.system('echo "' + str(get_rgb(list_hex[i])) + '" >> '+ HOME +'/.cache/dermodex/colors_rgb.txt')
+        #os.system('echo "' + list_hex[i] + '" >> '+ HOME +'/.cache/dermodex/colors_hex.txt')
+        #os.system('echo "' + str(get_rgb(list_hex[i])) + '" >> '+ HOME +'/.cache/dermodex/colors_rgb.txt')
     
     
     list_precent = [int(i) for i in list(df_color['occurence'])]
