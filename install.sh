@@ -30,6 +30,7 @@ if simlink? "${FILE}"; then
 else
   echo "[i] Creating DermoDex Symlink in Pictures"
   ln -s ~/.local/share/dermodex/wallpapers ~/Pictures/DermoDeX
+  echo "$HOME/Pictures/DermoDeX" >> "$HOME/.cinnamon/backgrounds/user-folders.lst"
 fi
 
 
