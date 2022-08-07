@@ -430,9 +430,9 @@ if len(list_hex) < 2:
     
 else:
     if list_hex[1].lower() == "#ffffff":
-        shade1 = list_hex[1]
+        shade1 = "#202020"
     else:
-        shade1 = list_hex[2]
+        shade1 = list_hex[1]
     
     print("Shade0: " + shade_hex + " - rgb" + str(shade_rgb))
     print("Shade1: " + shade1 + " - rgb" + str(get_rgb(shade1)))
@@ -450,9 +450,9 @@ else:
     shade_hex_bits = str(get_rgb(shade_hex)).replace("(", "").replace(")", "").split(",")
     shade_hex_lighter = str(lighten_color(get_hex(int(shade_hex_bits[0]), int(shade_hex_bits[1]), int(shade_hex_bits[2])), 0.1))
 
-    config.set('colors', 'savehex0', shade_hex)
-    config.set('colors', 'savehex1', shade_1)
-    config.set('colors', 'savehex2', shade_2)
+    config.set('colors', 'savehex0', shade_hex.replace("#", ""))
+    config.set('colors', 'savehex1', shade_1.replace("#", ""))
+    config.set('colors', 'savehex2', shade_2.replace("#", ""))
     
     config.set('colors', 'savergb0', str(get_rgb_strip(shade_hex)))
     config.set('colors', 'savergb1', str(get_rgb_strip(shade_1)))

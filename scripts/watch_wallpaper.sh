@@ -19,6 +19,8 @@ done < $CONF_FILE.unix
 shopt -u extglob # Switching it back off after use
 
 
+echo $savehex1
+
 mkdir -p $HOME/.cache/dermodex/common-assets/icons/emblems
 mkdir -p $HOME/.cache/dermodex/common-assets/icons/places
 
