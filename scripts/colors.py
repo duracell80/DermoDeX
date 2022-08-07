@@ -50,10 +50,10 @@ cfg.read(CONF_FILE)
 cfg_colorcollect = str(cfg.get('dd_conf', 'colorcollect', fallback=8))
 cfg_pastel = str(cfg.get('dd_conf', 'pastel', fallback=0.1))
 cfg_tollerance = int(cfg.get('dd_conf', 'tollerance', fallback=24))
-cfg_override0 = str(cfg.get('dd_conf', 'cfg_override0', fallback="#668CB1"))
-cfg_override1 = str(cfg.get('dd_conf', 'cfg_override1', fallback="#2C4E6A"))
-cfg_override2 = str(cfg.get('dd_conf', 'cfg_override2', fallback="#668CB1"))
-cfg_override3 = str(cfg.get('dd_conf', 'cfg_override3', fallback="#B2D0F4"))
+cfg_override0 = str(cfg.get('colors', 'cfg_override0', fallback="#668CB1"))
+cfg_override1 = str(cfg.get('colors', 'cfg_override1', fallback="#2C4E6A"))
+cfg_override2 = str(cfg.get('colors', 'cfg_override2', fallback="#668CB1"))
+cfg_override3 = str(cfg.get('colors', 'cfg_override3', fallback="#B2D0F4"))
 
 cfg_saturation = str(cfg.get('dd_conf', 'saturation', fallback=1.2))
 cfg_brightness = str(cfg.get('dd_conf', 'brightness', fallback=1.2))
@@ -77,16 +77,12 @@ cin_menuavatar = str(cfg.get('cinnamon', 'menuavatar', fallback="true"))
 
 
 
-#global RES_PRIMARY, RES_PRIMARY_W
-#RES_PRIMARY = os.system('xrandr | grep -i "primary" | cut --delimiter=" " -f 4 | cut --delimiter="+" -f 1 | cut --delimiter="x" -f 2')
-#RES_PRIMARY_H = RES_PRIMARY
-#RES_PRIMARY_W = os.system('xrandr | grep -i "primary" | cut --delimiter=" " -f 4 | cut --delimiter="+" -f 1 | cut --delimiter="x" -f 1')
-
-
-
-
 def get_rgb(h):
     return ImageColor.getcolor(h, "RGB")
+
+def get_rgb_strip(h):
+    rgb_raw = str(ImageColor.getcolor(h, "RGB"))
+    return rgb_raw.replace("(", "").replace(")", "").replace(" ", "")
 
 def get_hex(r, g, b):
     
@@ -159,10 +155,6 @@ def adjust_brightness(img, brightness_factor):
 
 #https://stackoverflow.com/questions/141855/programmatically-lighten-a-color
 def lighten_color(hex, amount):
-    """ Lighten an RGB color by an amount (between 0 and 1),
-
-    e.g. lighten('#4290e5', .5) = #C1FFFF
-    """
     if amount < 0.1:
         amount = 0.1
     if amount > 1:
@@ -428,9 +420,13 @@ if len(list_hex) < 2:
     
     shade_hex_lighter = shade_hex_lighter
  
-    config.set('cinnamon', 'saveshade0', shade_hex)
-    config.set('cinnamon', 'saveshade1', list_hex[0])
-    config.set('cinnamon', 'saveshade2', list_hex[0])
+    config.set('colors', 'savehex0', shade_hex)
+    config.set('colors', 'savehex1', list_hex[0])
+    config.set('colors', 'savehex2', list_hex[0])
+    
+    config.set('colors', 'savergb0', str(get_rgb_strip(shade_hex)))
+    config.set('colors', 'savergb1', str(get_rgb_strip(list_hex[0])))
+    config.set('colors', 'savergb2', str(get_rgb_strip(list_hex[0])))
     
 else:
     if list_hex[1].lower() == "#ffffff":
@@ -454,9 +450,13 @@ else:
     shade_hex_bits = str(get_rgb(shade_hex)).replace("(", "").replace(")", "").split(",")
     shade_hex_lighter = str(lighten_color(get_hex(int(shade_hex_bits[0]), int(shade_hex_bits[1]), int(shade_hex_bits[2])), 0.1))
 
-    config.set('cinnamon', 'saveshade0', shade_hex)
-    config.set('cinnamon', 'saveshade1', shade1)
-    config.set('cinnamon', 'saveshade2', list_hex[-1])
+    config.set('colors', 'savehex0', shade_hex)
+    config.set('colors', 'savehex1', shade_1)
+    config.set('colors', 'savehex2', shade_2)
+    
+    config.set('colors', 'savergb0', str(get_rgb_strip(shade_hex)))
+    config.set('colors', 'savergb1', str(get_rgb_strip(shade_1)))
+    config.set('colors', 'savergb2', str(get_rgb_strip(shade_2)))
 
 
 
@@ -484,5 +484,3 @@ if isLightOrDark(tri[0],tri[1],tri[2]) == "dark":
     os.system('sed -i "s|--slider-active-background-color: #ffffff;|-slider-active-background-color: '+ shade_1_lighter +';|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
 else:
     os.system('sed -i "s|--slider-active-background-color: #ffffff;|-slider-active-background-color: '+ shade_hex_lighter +';|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    
-#os.system('rm -rf '+ HOME +'/.cache/dermodex/*.jpg')

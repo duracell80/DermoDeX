@@ -18,6 +18,11 @@ do
 done < $CONF_FILE.unix
 shopt -u extglob # Switching it back off after use
 
+
+mkdir -p $HOME/.cache/dermodex/common-assets/icons/emblems
+mkdir -p $HOME/.cache/dermodex/common-assets/icons/places
+
+
 if [ -f "$HOLD_FILE" ]; then
     ACT="0"
 else
@@ -37,6 +42,8 @@ else
         echo ""
         #notify-send --urgency=normal --category=im.recieved --icon=help-info-symbolic "DermoDeX Color Extractor Active" "DermoDeX reloads Cinnamon with accent colors from the wallpaper image! DermoDeX is active for 15 minutes after launching."
     fi
+    
+    
 
     while true
     do
@@ -79,22 +86,12 @@ else
                 CONF_SLIDETIME=$(gsettings get org.cinnamon.desktop.background.slideshow delay)
                 CONF_ASPECT=$(gsettings get org.cinnamon.desktop.background picture-options)
 
-                cp -f $HOME/.local/share/dermodex/common-assets/switch/switch-on.svg $HOME/.cache/dermodex/
-                cp -f $HOME/.local/share/dermodex/common-assets/misc/close.svg $HOME/.cache/dermodex/
-                cp -f $HOME/.local/share/dermodex/common-assets/misc/close-hover.svg $HOME/.cache/dermodex/
-                cp -f $HOME/.local/share/dermodex/common-assets/misc/close-active.svg $HOME/.cache/dermodex/
-                cp -f $HOME/.local/share/dermodex/common-assets/misc/calendar-arrow-left-hover.svg $HOME/.cache/dermodex/
-                cp -f $HOME/.local/share/dermodex/common-assets/misc/calendar-arrow-right-hover.svg $HOME/.cache/dermodex/
-                cp -f $HOME/.local/share/dermodex/common-assets/misc/corner-ripple.svg $HOME/.cache/dermodex/
-                cp -f $HOME/.local/share/dermodex/common-assets/misc/grouped-window-dot-active.svg $HOME/.cache/dermodex/
-                cp -f $HOME/.local/share/dermodex/common-assets/misc/grouped-window-dot-hover.svg $HOME/.cache/dermodex/
+                cp -f $HOME/.local/share/dermodex/common-assets/switch/*.svg $HOME/.cache/dermodex/
+                cp -f $HOME/.local/share/dermodex/common-assets/misc/*.svg $HOME/.cache/dermodex/
                 
                 cp -f $HOME/.local/share/dermodex/gtk-3.0/assets/*.svg $HOME/.cache/dermodex/gtk-3.0
-                
-                mkdir -p $HOME/.cache/dermodex/common-assets/icons/emblems
                 cp -f $HOME/.local/share/dermodex/icons/breeze-dark_white/emblems/*.svg $HOME/.cache/dermodex/common-assets/icons/emblems
                 
-                mkdir -p $HOME/.cache/dermodex/common-assets/icons/places
                 cp -f $HOME/.local/share/dermodex/icons/breeze-dark_white/places/*.svg $HOME/.cache/dermodex/common-assets/icons/places
                 
                 
