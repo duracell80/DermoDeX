@@ -30,15 +30,13 @@ from PIL import ImageColor
 from PIL import ImageEnhance
 from PIL import ImageFilter
 
-
-#import cv2
 import extcolors, colorsys
-from colormap import rgb2hex
+from colormap import rgb2hex, rgb2hls, hls2rgb
 
 
 
 
-global cfg, cfg_colorcollect, cfg_pastel, cfg_tollerance, cfg_splitimage, cfg_splitfocus, cfg_override0, cfg_override1, cfg_override2, cfg_override3
+global cfg, cfg_colorcollect, cfg_pastel, cfg_vibrancy, cfg_tollerance, cfg_splitimage, cfg_splitfocus, cfg_override0, cfg_override1, cfg_override2, cfg_override3
 
 CONF_FILE = HOME + '/.local/share/dermodex/config.ini'
 
@@ -48,7 +46,6 @@ cfg.read(CONF_FILE)
 
 
 cfg_colorcollect = str(cfg.get('dd_conf', 'colorcollect', fallback=8))
-cfg_pastel = str(cfg.get('dd_conf', 'pastel', fallback=0.1))
 cfg_tollerance = int(cfg.get('dd_conf', 'tollerance', fallback=24))
 cfg_override0 = str(cfg.get('colors', 'cfg_override0', fallback="#668CB1"))
 cfg_override1 = str(cfg.get('colors', 'cfg_override1', fallback="#2C4E6A"))
@@ -58,6 +55,7 @@ cfg_override3 = str(cfg.get('colors', 'cfg_override3', fallback="#B2D0F4"))
 cfg_saturation = str(cfg.get('dd_conf', 'saturation', fallback=1.2))
 cfg_brightness = str(cfg.get('dd_conf', 'brightness', fallback=1.2))
 cfg_contrast = str(cfg.get('dd_conf', 'contrast', fallback=1.1))
+cfg_vibrancy = str(cfg.get('dd_conf', 'vibrancy', fallback=0.1))
 
 cfg_splitimage = str(cfg.get('dd_conf', 'splitimage', fallback=2))
 cfg_splitfocus = str(cfg.get('dd_conf', 'splitfocus', fallback="v2"))
@@ -153,19 +151,20 @@ def adjust_brightness(img, brightness_factor):
 
 
 
-#https://stackoverflow.com/questions/141855/programmatically-lighten-a-color
-def lighten_color(hex, amount):
-    if amount < 0.1:
-        amount = 0.1
-    if amount > 1:
-        amount = 1
-        
-    hex = hex.replace('#','')
-    red = min(255, int(hex[0:2], 16) + 255 * amount)
-    green = min(255, int(hex[2:4], 16) + 255 * amount)
-    blue = min(255, int(hex[4:6], 16) + 255 * amount)
-    return "#%X%X%X" % (int(red), int(green), int(blue))
 
+
+# https://stackoverflow.com/questions/56729710/how-to-generate-dark-shades-of-hex-color-codes-in-python
+def adjust_color_lightness(r, g, b, factor):
+    h, l, s = rgb2hls(r / 255.0, g / 255.0, b / 255.0)
+    l = max(min(l * factor, 1.0), 0.0)
+    r, g, b = hls2rgb(h, l, s)
+    return rgb2hex(int(r * 255), int(g * 255), int(b * 255))
+
+def darken_color(r, g, b, factor=0.1):
+    return adjust_color_lightness(r, g, b, float(1 - float(factor)))
+
+def lighten_color(r, g, b, factor=0.1):
+    return adjust_color_lightness(r, g, b, float(1 + float(factor)))
 
 #https://stackoverflow.com/questions/64838050/how-to-split-an-image-horizontally-into-equal-sized-pieces
 def save_crops(image_file, image_slices = 2):
@@ -289,6 +288,7 @@ def extract_color(input_image, resize, tolerance, zoom, crop_variant = "h_1"):
     list_color = list(df_color['c_code'])
     length = len(list_color)
     
+    print("\n\nDermoDeX found these colors in the image: ")
     print(list_color)
     
     global list_rgb
@@ -307,22 +307,15 @@ def extract_color(input_image, resize, tolerance, zoom, crop_variant = "h_1"):
     list_rgb.sort(key=lambda rgb: get_step(*rgb))
     for i in range(length):
         list_bits = str(list_rgb[i]).replace("[", "").replace("]", "").split(",")
-        if float(cfg_pastel) > 0:
-            new_hex = str(lighten_color(get_hex(int(list_bits[0]), int(list_bits[1]), int(list_bits[2])), float(cfg_pastel)))
-        else:
-            new_hex = "#" + str(get_hex(int(list_bits[0]), int(list_bits[1]), int(list_bits[2])))
+        new_hex = "#" + str(get_hex(int(list_bits[0]), int(list_bits[1]), int(list_bits[2])))
         
         if new_hex.lower() == "#ffffff":
-            list_hex.append(cfg_override0)
+            list_hex.append(list_color[0])
         else:
             list_hex.append(new_hex)
     
     
-    if float(cfg_pastel) > 0:
-        shade_hex = str(lighten_color(list_color[0], float(cfg_pastel)))
-    else:
-        shade_hex = str(list_color[0])
-    
+    shade_hex = str(list_color[0])
     shade_rgb = str(get_rgb(shade_hex))
     
     
@@ -371,11 +364,8 @@ def extract_color(input_image, resize, tolerance, zoom, crop_variant = "h_1"):
             ax2.add_artist(rect)
             ax2.text(x = x_posi+1400, y = y_posi2+100, s = c, fontdict={'fontsize': 190})
     
-    ax2.text(x = 150, y = -350, s = "Main Shade: " + shade_hex, fontdict={'fontsize': 275})
-    if len(list_hex) < 2:
-        ax2.text(x = 150, y = -200, s = "Shade1: " + list_hex[0] + " Shade2: " + list_hex[0], fontdict={'fontsize': 190})
-    else:
-        ax2.text(x = 150, y = -200, s = "Shade1: " + list_hex[1] + " Shade2: " + list_hex[-1], fontdict={'fontsize': 190})
+    #ax2.text(x = 150, y = -350, s = "Main Shade: " + shade_hex, fontdict={'fontsize': 275})
+    #ax2.text(x = 150, y = -200, s = "Shade1: " + list_hex[1] + " Shade2: " + list_hex[-1], fontdict={'fontsize': 190})
 
     
     fig.set_facecolor('white')
@@ -405,60 +395,53 @@ extract_color(HOME +'/.cache/dermodex/wallpaper.jpg', 900, int(cfg_tollerance), 
 config = configparser.ConfigParser()
 config.read(CONF_FILE)
 
-if len(list_hex) < 2:
-    print("Shade0: " + shade_hex + " - rgb" + str(shade_rgb))
-    print("Shade1: " + list_hex[0] + " - rgb" + str(get_rgb(list_hex[0])))
-    print("Shade2: " + list_hex[0] + " - rgb" + str(get_rgb(list_hex[0])))
-    shade_txt = get_rgb(list_hex[0])
-    shade_1 = list_hex[0]
-    
-    shade_1_bits = str(get_rgb(list_hex[0])).replace("(", "").replace(")", "").split(",")
-    shade_1_lighter = str(lighten_color(get_hex(int(shade_1_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[0])), 0.1)) 
-    
-    shade_2 = shade_1
-    shade_2_lighter = shade_1_lighter
-    
-    shade_hex_lighter = shade_hex_lighter
- 
-    config.set('colors', 'savehex0', shade_hex)
-    config.set('colors', 'savehex1', list_hex[0])
-    config.set('colors', 'savehex2', list_hex[0])
-    
-    config.set('colors', 'savergb0', str(get_rgb_strip(shade_hex)))
-    config.set('colors', 'savergb1', str(get_rgb_strip(list_hex[0])))
-    config.set('colors', 'savergb2', str(get_rgb_strip(list_hex[0])))
-    
+
+if list_hex[1].lower() == "#ffffff":
+    shade1 = list_hex[0]
 else:
-    if list_hex[1].lower() == "#ffffff":
-        shade1 = "#202020"
-    else:
-        shade1 = list_hex[1]
+    shade1 = list_hex[1]
+
+shade_txt = get_rgb(shade1)
     
-    print("Shade0: " + shade_hex + " - rgb" + str(shade_rgb))
-    print("Shade1: " + shade1 + " - rgb" + str(get_rgb(shade1)))
-    print("Shade2: " + list_hex[-1] + " - rgb" + str(get_rgb(list_hex[-1])))
-    shade_txt = get_rgb(shade1)
-    
+shade_1_bits = str(get_rgb(shade1)).replace("(", "").replace(")", "").split(",")
+shade_1_lighter = lighten_color(int(shade_1_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2]), cfg_vibrancy)
+shade_1_darker  = darken_color(int(shade_1_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2]), cfg_vibrancy)
+
+
+if isLightOrDark(int(shade_1_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2])) == "light":
+    shade_1 = shade_1_darker
+elif isLightOrDark(int(shade_1_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2])) == "dark":
+    shade_1 = shade_1_lighter
+else:
     shade_1 = shade1
-    shade_1_bits = str(get_rgb(shade1)).replace("(", "").replace(")", "").split(",")
-    shade_1_lighter = str(lighten_color(get_hex(int(shade_1_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2])), 0.1)) 
-    
-    shade_2 = list_hex[-1]
-    shade_2_bits = str(get_rgb(list_hex[-1])).replace("(", "").replace(")", "").split(",")
-    shade_2_lighter = str(lighten_color(get_hex(int(shade_2_bits[0]), int(shade_2_bits[1]), int(shade_2_bits[2])), 0.1))
-
-    shade_hex_bits = str(get_rgb(shade_hex)).replace("(", "").replace(")", "").split(",")
-    shade_hex_lighter = str(lighten_color(get_hex(int(shade_hex_bits[0]), int(shade_hex_bits[1]), int(shade_hex_bits[2])), 0.1))
-
-    config.set('colors', 'savehex0', shade_hex.replace("#", ""))
-    config.set('colors', 'savehex1', shade_1.replace("#", ""))
-    config.set('colors', 'savehex2', shade_2.replace("#", ""))
-    
-    config.set('colors', 'savergb0', str(get_rgb_strip(shade_hex)))
-    config.set('colors', 'savergb1', str(get_rgb_strip(shade_1)))
-    config.set('colors', 'savergb2', str(get_rgb_strip(shade_2)))
 
 
+shade_2 = list_hex[-1]
+shade_2_bits = str(get_rgb(list_hex[-1])).replace("(", "").replace(")", "").split(",")
+shade_2_lighter = lighten_color(int(shade_2_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2]), cfg_vibrancy)
+shade_2_darker  = darken_color(int(shade_2_bits[0]), int(shade_2_bits[1]), int(shade_2_bits[2]), cfg_vibrancy)
+
+
+
+shade_hex_bits = str(get_rgb(shade_hex)).replace("(", "").replace(")", "").split(",")
+shade_hex_lighter = lighten_color(int(shade_hex_bits[0]), int(shade_hex_bits[1]), int(shade_hex_bits[2]), 0.3)
+shade_hex_darker  = darken_color(int(shade_hex_bits[0]), int(shade_hex_bits[1]), int(shade_hex_bits[2]), 0.5)
+
+print("\n\nDermoDeX thinks these are some really great base colors: ")
+
+print("- Shade0: " + shade_hex + " - rgb" + str(shade_rgb))
+print("- Shade1: " + shade_1 + " - rgb" + str(get_rgb(shade_1)))
+print("- Shade2: " + list_hex[-1] + " - rgb" + str(get_rgb(list_hex[-1])))
+
+config.set('colors', 'savehex0', shade_hex.replace("#", ""))
+config.set('colors', 'savehex1', shade_1.replace("#", ""))
+config.set('colors', 'savehex2', shade_2.replace("#", ""))
+
+config.set('colors', 'savergb0', str(get_rgb_strip(shade_hex)))
+config.set('colors', 'savergb1', str(get_rgb_strip(shade_1)))
+config.set('colors', 'savergb2', str(get_rgb_strip(shade_2)))
+
+print("\n\n")
 
 
 

@@ -1,5 +1,6 @@
 [/]
 alttab-switcher-delay=100
+alttab-switcher-style='icons'
 applet-cache-updated=1593057270
 command-history=['r', 'dd_release', 'dd_hold', 'dd_sleep', 'dd_wake', 'dd_refresh', 'dd_reload']
 desklet-cache-updated=1593325530
@@ -29,6 +30,7 @@ enabled-applets=['panel1:left:1:menu@cinnamon.org:0', 'panel1:left:3:grouped-win
 enabled-desklets=['clock@cinnamon.org:2:3925:75']
 enabled-extensions=@as []
 favorite-apps=['cinnamon-settings.desktop', 'org.gnome.Terminal.desktop', 'nemo.desktop']
+hotcorner-layout=['expo:false:0', 'expo:false:500', 'scale:true:1000', 'desktop:true:1000']
 next-applet-id=37
 next-desklet-id=4
 no-adjacent-panel-barriers=false
@@ -42,6 +44,7 @@ panels-enabled=['1:0:bottom']
 panels-height=['1:60']
 panels-hide-delay=['1:0', '2:0']
 panels-show-delay=['1:0', '2:0']
+workspace-expo-view-as-grid=false
 
 [cinnamon-session]
 quit-time-delay=60
@@ -51,6 +54,7 @@ show-fractional-scaling-controls=true
 
 [desktop/a11y/applications]
 screen-keyboard-enabled=true
+screen-reader-enabled=false
 
 [desktop/a11y/keyboard]
 bouncekeys-delay=300
@@ -58,6 +62,10 @@ mousekeys-accel-time=300
 mousekeys-init-delay=300
 mousekeys-max-speed=10
 slowkeys-delay=300
+togglekeys-enable-beep=true
+togglekeys-enable-osd=true
+togglekeys-sound-off='/usr/share/sounds/linux-a11y/stereo/scroll-left.oga'
+togglekeys-sound-on='/usr/share/sounds/linux-a11y/stereo/scroll-right.oga'
 
 [desktop/a11y/mouse]
 dwell-threshold=10
@@ -73,13 +81,13 @@ exec='gnome-terminal'
 [desktop/background]
 color-shading-type='vertical'
 picture-options='zoom'
-picture-uri='file:///home/lee/Pictures/DermoDeX/Africa_Nambia.jpg'
-primary-color='#434047'
-secondary-color='#A53F19'
+picture-uri='file:///usr/share/backgrounds/linuxmint-ulyssa/lblunk_golden_gate.jpg'
+primary-color='#000000'
+secondary-color='#D45730'
 
 [desktop/background/slideshow]
 delay=15
-image-source='directory:///home/lee/Pictures/DermoDeX'
+image-source='xml:///usr/share/cinnamon-background-properties/linuxmint-ulyssa.xml'
 slideshow-enabled=false
 
 [desktop/interface]
@@ -88,9 +96,11 @@ clock-show-seconds=false
 font-name='Ubuntu 14'
 gtk-overlay-scrollbars=true
 gtk-theme='DermoDeX'
+gtk-theme-backup='DermoDeX'
 icon-theme='White-Icons'
+icon-theme-backup='White-Icons'
 scaling-factor=uint32 1
-text-scaling-factor=0.84999999999999998
+text-scaling-factor=0.90000000000000002
 toolkit-accessibility=true
 
 [desktop/media-handling]
@@ -125,12 +135,22 @@ volume-sound-file='/usr/share/sounds/linux-a11y/stereo/bell.oga'
 min-window-opacity=30
 num-workspaces=3
 theme='Mint-Y'
+theme-backup='Mint-Y'
 titlebar-font='Ubuntu Medium 12'
 workspace-names=@as []
 
+[keyboard]
+activation-mode='on-demand'
+
+[launcher]
+check-frequency=300
+memory-limit=2048
+
 [muffin]
+invert-workspace-flip-direction=false
 resize-threshold=24
 tile-hud-threshold=25
+workspace-cycle=false
 
 [settings-daemon/peripherals/keyboard]
 numlock-state='off'
@@ -145,12 +165,14 @@ idle-brightness=10
 idle-dim-time=300
 lid-close-ac-action='nothing'
 lid-close-battery-action='suspend'
+lid-close-suspend-with-external-monitor=false
 sleep-display-ac=0
 sleep-display-battery=300
 sleep-inactive-ac-timeout=0
 sleep-inactive-battery-timeout=7200
 
 [settings-daemon/plugins/xsettings]
+buttons-have-icons=false
 hinting='slight'
 menus-have-icons=false
 rgba-order='vbgr'

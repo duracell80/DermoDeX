@@ -83,14 +83,16 @@ else
                 # RECOMBINE STORED DATA FROM CONFIG FILE
                 HOS="#${savehex2}"
                 HOE="#${savehex1}"
+                MAINSHADE_HEX="#${savehex0}"
                 
                 COS="(${savergb2}"
                 COE="(${savergb1}"
+                MAINSHADE_RGB="(${savergb0}"
                 
-                echo $COE
                 
-                MAINSHADE_RGB=$(head -n 1 $HOME/.cache/dermodex/colors_rgb.txt | tail -1 | rev | cut -c2- | rev)
-                MAINSHADE_HEX=$(head -n 1 $HOME/.cache/dermodex/colors_hex.txt | tail -1 | rev | cut -c1- | rev)
+                #MAINSHADE_RGB=$(head -n 1 $HOME/.cache/dermodex/colors_rgb.txt | tail -1 | rev | cut -c2- | rev)
+                #MAINSHADE_HEX=$(head -n 1 $HOME/.cache/dermodex/colors_hex.txt | tail -1 | rev | cut -c1- | rev)
+
 
                 gsettings set org.cinnamon.desktop.background primary-color "${MAINSHADE_HEX}"
                 gsettings set org.cinnamon.desktop.background secondary-color "${HOE}"
