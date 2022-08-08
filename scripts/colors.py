@@ -36,7 +36,7 @@ from colormap import rgb2hex, rgb2hls, hls2rgb
 
 
 
-global cfg, cfg_colorcollect, cfg_pastel, cfg_vibrancy, cfg_tollerance, cfg_splitimage, cfg_splitfocus, cfg_override0, cfg_override1, cfg_override2, cfg_override3
+global cfg, cfg_colorcollect, cfg_pastel, cfg_vibrancy, cfg_tollerance, cfg_splitimage, cfg_splitfocus, cfg_override0, cfg_override1, cfg_override2
 
 CONF_FILE = HOME + '/.local/share/dermodex/config.ini'
 
@@ -47,10 +47,9 @@ cfg.read(CONF_FILE)
 
 cfg_colorcollect = str(cfg.get('dd_conf', 'colorcollect', fallback=8))
 cfg_tollerance = int(cfg.get('dd_conf', 'tollerance', fallback=24))
-cfg_override0 = str(cfg.get('colors', 'cfg_override0', fallback="#668CB1"))
-cfg_override1 = str(cfg.get('colors', 'cfg_override1', fallback="#2C4E6A"))
-cfg_override2 = str(cfg.get('colors', 'cfg_override2', fallback="#668CB1"))
-cfg_override3 = str(cfg.get('colors', 'cfg_override3', fallback="#B2D0F4"))
+cfg_override0 = str(cfg.get('colors', 'override0', fallback="none"))
+cfg_override1 = str(cfg.get('colors', 'override1', fallback="none"))
+cfg_override2 = str(cfg.get('colors', 'override2', fallback="none"))
 
 cfg_saturation = str(cfg.get('dd_conf', 'saturation', fallback=1.2))
 cfg_brightness = str(cfg.get('dd_conf', 'brightness', fallback=1.2))
@@ -217,10 +216,9 @@ def color_to_df(input):
     return df
 
 
+
+
 def extract_color(input_image, resize, tolerance, zoom, crop_variant = "h_1"):
-    
-    
-    
     # Background
     bg = HOME + '/.cache/dermodex/bg.png'
     fig, ax = plt.subplots(figsize=(192,108),dpi=10)
@@ -319,17 +317,17 @@ def extract_color(input_image, resize, tolerance, zoom, crop_variant = "h_1"):
     shade_rgb = str(get_rgb(shade_hex))
     
     
-    #os.system('rm -rf '+ HOME +'/.cache/dermodex/colors_hex.txt')
-    #os.system('touch '+ HOME +'/.cache/dermodex/colors_hex.txt')
-    #os.system('rm -rf '+ HOME +'/.cache/dermodex/colors_rgb.txt')
-    #os.system('touch '+ HOME +'/.cache/dermodex/colors_rgb.txt')
+    os.system('rm -rf '+ HOME +'/.cache/dermodex/colors_hex.txt')
+    os.system('touch '+ HOME +'/.cache/dermodex/colors_hex.txt')
+    os.system('rm -rf '+ HOME +'/.cache/dermodex/colors_rgb.txt')
+    os.system('touch '+ HOME +'/.cache/dermodex/colors_rgb.txt')
     
-    #os.system('echo "' + shade_hex + '" > '+ HOME +'/.cache/dermodex/colors_hex.txt')
-    #os.system('echo "' + shade_rgb + '" > '+ HOME +'/.cache/dermodex/colors_rgb.txt')
-    #for i in range(length):
+    os.system('echo "' + shade_hex + '" > '+ HOME +'/.cache/dermodex/colors_hex.txt')
+    os.system('echo "' + shade_rgb + '" > '+ HOME +'/.cache/dermodex/colors_rgb.txt')
+    for i in range(length):
         
-        #os.system('echo "' + list_hex[i] + '" >> '+ HOME +'/.cache/dermodex/colors_hex.txt')
-        #os.system('echo "' + str(get_rgb(list_hex[i])) + '" >> '+ HOME +'/.cache/dermodex/colors_rgb.txt')
+        os.system('echo "' + list_hex[i] + '" >> '+ HOME +'/.cache/dermodex/colors_hex.txt')
+        os.system('echo "' + str(get_rgb(list_hex[i])) + '" >> '+ HOME +'/.cache/dermodex/colors_rgb.txt')
     
     
     list_precent = [int(i) for i in list(df_color['occurence'])]
@@ -401,7 +399,13 @@ if list_hex[1].lower() == "#ffffff":
 else:
     shade1 = list_hex[1]
 
-shade_txt = get_rgb(shade1)
+if cfg_override1 != "none":
+    config.set('colors', 'savehex1', cfg_override1.replace("#", ""))
+    shade1 = "#" + cfg_override1
+    shade_txt = get_rgb(shade1)
+    print(shade1)
+else:
+    shade_txt = get_rgb(shade1)
     
 shade_1_bits = str(get_rgb(shade1)).replace("(", "").replace(")", "").split(",")
 shade_1_lighter = lighten_color(int(shade_1_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2]), cfg_vibrancy)
@@ -431,17 +435,35 @@ print("\n\nDermoDeX thinks these are some really great base colors: ")
 
 print("- Shade0: " + shade_hex + " - rgb" + str(shade_rgb))
 print("- Shade1: " + shade_1 + " - rgb" + str(get_rgb(shade_1)))
-print("- Shade2: " + list_hex[-1] + " - rgb" + str(get_rgb(list_hex[-1])))
+print("- Shade2: " + list_hex[-1] + " - rgb" + str(get_rgb(list_hex[-1])) + "\n\n")
 
-config.set('colors', 'savehex0', shade_hex.replace("#", ""))
-config.set('colors', 'savehex1', shade_1.replace("#", ""))
-config.set('colors', 'savehex2', shade_2.replace("#", ""))
+
+# LOOK FOR OVERRIDES, IF SO THEN SET THOSE
+if cfg_override0 != "none":
+    print("[i] Color Override Active for Shade 0: " + cfg_override0)
+    config.set('colors', 'savehex0', cfg_override0.replace("#", ""))
+else:
+    config.set('colors', 'savehex0', shade_hex.replace("#", ""))
+    
+if cfg_override1 != "none":
+    print("[i] Color Override Active for Shade 1: " + cfg_override1)
+    config.set('colors', 'savehex1', cfg_override1.replace("#", ""))
+else:
+    config.set('colors', 'savehex1', shade_1.replace("#", ""))
+
+if cfg_override2 != "none":
+    print("[i] Color Override Active for Shade 2: " + cfg_override2)
+    config.set('colors', 'savehex2', cfg_override1.replace("#", ""))
+else:
+    config.set('colors', 'savehex2', shade_2.replace("#", ""))
+
+
 
 config.set('colors', 'savergb0', str(get_rgb_strip(shade_hex)))
 config.set('colors', 'savergb1', str(get_rgb_strip(shade_1)))
 config.set('colors', 'savergb2', str(get_rgb_strip(shade_2)))
 
-print("\n\n")
+print("\n")
 
 
 
