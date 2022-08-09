@@ -257,6 +257,10 @@ else
                 sed -i "s|--panel-blur-background-position: 0px -0px;|background-position: 0px -${RES_PRIMARY}px;|g" $CINN_FILE
                 sed -i "s|background-image: url(~/.themes/|background-image: url(${HOME}/.themes/|g" $CINN_FILE
                 
+                # DESKLET CONFIGURATION BACKGROUND
+                sed -i "s|--desklet-highlight-background-color: #999999;|background-color: ${HOE};|g" $CINN_FILE
+                # DESKLET DRAG BACKGROUND
+                sed -i "s|--desklet-drag-background-color: rgba(44, 44, 44, 0.3);|background-color: rgba${COE}, 0.3);|g" $CINN_FILE
                 
                 
                 
