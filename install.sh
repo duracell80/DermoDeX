@@ -81,6 +81,7 @@ chmod u+rw ~/.local/share/dermodex/gtk-3.0
 cp -r $CWD/theme/gtk-3.20/dist ~/.local/share/dermodex/gtk-3.20
 cp ./scripts/watch_wallpaper.sh ~/.local/share/dermodex
 cp ./scripts/cinnamon_dd.txt ~/.local/share/dermodex
+cp ./scripts/config_update.py ~/.local/share/dermodex
 cp ./scripts/*.ini ~/.local/share/dermodex
 cp ./scripts/colors.py ~/.local/share/dermodex
 touch ~/.local/share/dermodex/text_hover.txt
