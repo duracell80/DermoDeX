@@ -1,0 +1,10 @@
+{
+    "vibrancy" : {
+        "type": "scale",
+        "description": "Accent Color Vibrancy",
+        "min": 0,
+        "max": 1,
+        "default": 0.5,
+        "step": 0.1
+    }
+}
