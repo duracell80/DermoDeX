@@ -19,8 +19,9 @@
     },
     "flipcolors" : {
         "type" : "checkbox",
-        "description" : "Flip Colors",
-        "default" : true
+        "description" : "Color Flow",
+        "default" : true,
+        "tooltip" : "Use the color from the Cinnamon menu hover selects to accent the GTK controls also. Note that the color in the menu may not be a good fit for GTK controls, try turning this off if that's the case."
     },
     
     "div1" : {
@@ -122,6 +123,26 @@
         "step": 1,
         "description": "Split Image",
         "tooltip": "To speed up image processing and to help isolate a focal point in the wallpaper"
+    },
+    "splitfocus": {
+        "type": "spinbutton",
+        "default": 2,
+        "min": 1,
+        "max": 4,
+        "units": "segment",
+        "step": 1,
+        "description": "Split Image Focus",
+        "tooltip": "Choose which segment to focus on, for example spliting the image into 2 segments either focus on the first or second segment"
+    },
+    "splitdirection" : {
+        "type": "combobox",
+        "default" : "v",
+        "description" : "Split Image Direction ",
+        "options" : {
+            "Vertical" : "v",
+            "Horizontal" : "h"
+        },
+        "tooltip" : "Split the wallpaper into segments sideways (Vertical) or from top to bottom (Horizontal)"
     },
     "saturation" : {
         "type": "scale",

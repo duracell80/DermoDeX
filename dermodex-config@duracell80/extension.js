@@ -59,8 +59,15 @@ DermoDeXSettings.prototype = {
         this.settings.bindProperty(Settings.BindingDirection.IN, 'flipcolors', 'flipcolors', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'colorcollect', 'colorcollect', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'splitimage', 'splitimage', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'splitfocus', 'splitfocus', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'splitdirection', 'splitdirection', null);
+        
         this.settings.bindProperty(Settings.BindingDirection.IN, 'pblur', 'pblur', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'lblur', 'lblur', null);
+     
+        
+        
+        
         
         this.settings.bind('vibrancy', 'vibrancy', this.on_vibrancy_changed);
         this.settings.bind('saturation', 'saturation', this.on_saturation_changed);
@@ -77,6 +84,9 @@ DermoDeXSettings.prototype = {
         this.settings.bind('menuavatar', 'menuavatar', this.on_menuavatar_changed);
         this.settings.bind('flipcolors', 'flipcolors', this.on_flipcolors_changed);
         this.settings.bind('splitimage', 'splitimage', this.on_splitimage_changed);
+        this.settings.bind('splitfocus', 'splitfocus', this.on_splitfocus_changed);
+        this.settings.bind('splitdirection', 'splitdirection', this.on_splitfocus_changed);
+        
         this.settings.bind('pblur', 'pblur', this.on_pblur_changed);
         this.settings.bind('lblur', 'lblur', this.on_lblur_changed);
     },
@@ -174,6 +184,20 @@ DermoDeXSettings.prototype = {
     on_lblur_changed: function () {
         var cfg_lblur = this.settings.getValue('lblur')
         let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'login', '-k', 'lblur', '-v' + cfg_lblur]);
+        let error = process.spawn_sync_and_get_error();
+	},
+    
+    on_splitfocus_changed: function () {
+        var cfg_splitimage = this.settings.getValue('splitimage')
+        var cfg_splitdirection = this.settings.getValue('splitdirection')
+        var cfg_splitfocus = this.settings.getValue('splitfocus')
+        
+        
+        if(cfg_splitfocus > cfg_splitimage) {
+            cfg_splitfocus = cfg_splitimage;
+        }
+        
+        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'dd_conf', '-k', 'splitfocus', '-v' + cfg_splitdirection + cfg_splitfocus]);
         let error = process.spawn_sync_and_get_error();
 	}
     
