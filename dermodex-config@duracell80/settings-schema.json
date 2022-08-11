@@ -1,18 +1,134 @@
-{
+{   
+    
+    "headcolor" : {
+        "type" : "header",
+        "description" : "Coloration Adjustments: "
+    },
     "vibrancy" : {
         "type": "scale",
         "description": "Accent Color Tone",
         "min": 0,
         "max": 1,
-        "default": 0.5,
+        "default": 0.4,
         "step": 0.1
+    },
+    "mainshade" : {
+        "type" : "checkbox",
+        "description" : "Choose Main Shade In Wallpaper",
+        "default" : false
+    },
+    "flipcolors" : {
+        "type" : "checkbox",
+        "description" : "Flip Colors",
+        "default" : true
+    },
+    
+    "div1" : {
+        "type" : "separator"
+    },
+    "headcinn" : {
+        "type" : "header",
+        "description" : "Cinnamon Tweaks: "
+    },
+    "paneltrans" : {
+        "type": "scale",
+        "description": "Panel Transparancy",
+        "min": 0,
+        "max": 1,
+        "default": 0.9,
+        "step": 0.1
+    },
+    "panelstyle" : {
+        "type": "combobox",
+        "default" : "modern",
+        "description" : "Panel Style ",
+        "options" : {
+            "Modern (Rounded UI)" : "modern",
+            "Flat (Windows UI)" : "flat"
+        },
+        "tooltip" : "There are two panel classes in Cinnamon, an outer layer known as the Panel and then a Panel Left, Center and Right. Modern rounded styles apply to the inner panel segments."
+    },
+    "panellocat" : {
+        "type": "combobox",
+        "default" : "bottom",
+        "description" : "Panel Location ",
+        "options" : {
+            "Bottom" : "bottom",
+            "Top" : "top",
+            "Left" : "left",
+            "Right" : "right"
+        },
+        "tooltip" : "For the background image blur to be effective, set the location of where the main panel normally lives"
+    },
+    "panelblur" : {
+        "type" : "checkbox",
+        "description" : "Panel Blur",
+        "default" : true
+    },
+    "menubckgrd" : {
+        "type" : "checkbox",
+        "description" : "Menu Blur",
+        "default" : true
+    },
+    "pblur": {
+        "type": "spinbutton",
+        "default": 100,
+        "min": 50,
+        "max": 150,
+        "units": "pixels",
+        "step": 1,
+        "description": "Panel Blur Amount",
+        "tooltip": "Tweak the amount of blur for the panel and menu"
+    },
+    "lblur": {
+        "type": "spinbutton",
+        "default": 100,
+        "min": 50,
+        "max": 150,
+        "units": "pixels",
+        "step": 1,
+        "description": "Login Blur Amount",
+        "tooltip": "Tweak the amount of blur for the login screen (not the lock screen)"
+    },
+    "menuavatar" : {
+        "type" : "checkbox",
+        "description" : "Menu User Picture",
+        "default" : true
+    },
+    
+    "div2" : {
+        "type" : "separator"
+    },
+    "headimage" : {
+        "type" : "header",
+        "description" : "Image Processing Tweaks: "
+    },
+    "colorcollect": {
+        "type": "spinbutton",
+        "default": 8,
+        "min": 5,
+        "max": 13,
+        "units": "swatches",
+        "step": 1,
+        "description": "Color Collect",
+        "tooltip": "To allow for variation in found colors in complex wallpapers, increases the chance of isolating a lesser occuring pop of color"
+    },
+    "splitimage": {
+        "type": "spinbutton",
+        "default": 2,
+        "min": 2,
+        "max": 4,
+        "units": "segments",
+        "step": 1,
+        "description": "Split Image",
+        "tooltip": "To speed up image processing and to help isolate a focal point in the wallpaper"
     },
     "saturation" : {
         "type": "scale",
         "description": "Image Saturation",
         "min": 1,
         "max": 1.5,
-        "default": 1,
+        "default": 1.1,
         "step": 0.1
     },
     "brightness" : {
@@ -20,7 +136,7 @@
         "description": "Image Brightness",
         "min": 1,
         "max": 1.5,
-        "default": 1,
+        "default": 1.1,
         "step": 0.1
     },
     "contrast" : {
@@ -28,7 +144,7 @@
         "description": "Image Contrast",
         "min": 1,
         "max": 1.5,
-        "default": 1,
+        "default": 1.1,
         "step": 0.1
     }
 }
