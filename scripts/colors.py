@@ -394,10 +394,10 @@ config = configparser.ConfigParser()
 config.read(CONF_FILE)
 
 
-if list_hex[1].lower() == "#ffffff":
+if list_hex[2].lower() == "#ffffff":
     shade1 = list_hex[0]
 else:
-    shade1 = list_hex[1]
+    shade1 = list_hex[2]
 
 if cfg_override1 != "none":
     config.set('colors', 'savehex1', cfg_override1.replace("#", ""))
@@ -408,22 +408,24 @@ else:
     shade_txt = get_rgb(shade1)
     
 shade_1_bits = str(get_rgb(shade1)).replace("(", "").replace(")", "").split(",")
-shade_1_lighter = lighten_color(int(shade_1_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2]), cfg_vibrancy)
-shade_1_darker  = darken_color(int(shade_1_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2]), cfg_vibrancy)
+shade_1_lighter = lighten_color(int(shade_1_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2]), 0.2)
+shade_1_darker  = darken_color(int(shade_1_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2]), 0.2)
 
 
 if isLightOrDark(int(shade_1_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2])) == "light":
-    shade_1 = shade_1_darker
+    #shade_1 = shade_1_darker
+    shade_1 = list_hex[1]
 elif isLightOrDark(int(shade_1_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2])) == "dark":
-    shade_1 = shade_1_lighter
+    #shade_1 = shade_1_lighter
+    shade_1 = list_hex[3]
 else:
     shade_1 = shade1
 
 
 shade_2 = list_hex[-1]
 shade_2_bits = str(get_rgb(list_hex[-1])).replace("(", "").replace(")", "").split(",")
-shade_2_lighter = lighten_color(int(shade_2_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2]), cfg_vibrancy)
-shade_2_darker  = darken_color(int(shade_2_bits[0]), int(shade_2_bits[1]), int(shade_2_bits[2]), cfg_vibrancy)
+shade_2_lighter = lighten_color(int(shade_2_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2]), 0.2)
+shade_2_darker  = darken_color(int(shade_2_bits[0]), int(shade_2_bits[1]), int(shade_2_bits[2]), 0.2)
 
 
 
@@ -435,7 +437,7 @@ print("\n\nDermoDeX thinks these are some really great base colors: ")
 
 print("- Shade0: " + shade_hex + " - rgb" + str(shade_rgb))
 print("- Shade1: " + shade_1 + " - rgb" + str(get_rgb(shade_1)))
-print("- Shade2: " + list_hex[-1] + " - rgb" + str(get_rgb(list_hex[-1])) + "\n\n")
+print("- Shade2: " + shade_2 + " - rgb" + str(get_rgb(shade_2)) + "\n\n")
 
 
 # LOOK FOR OVERRIDES, IF SO THEN SET THOSE
