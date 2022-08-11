@@ -44,21 +44,40 @@ function DermoDeXSettings(uuid) {
 DermoDeXSettings.prototype = {
     _init: function(uuid) {
         this.settings = new Settings.ExtensionSettings(this, uuid);
+        
         this.settings.bindProperty(Settings.BindingDirection.IN, 'vibrancy', 'vibrancy', null);
-        this.settings.bind('vibrancy', 'vibrancy', this.on_settings_changed);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'saturation', 'saturation', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'brightness', 'brightness', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'contrast', 'contrast', null);
+        
+        this.settings.bind('vibrancy', 'vibrancy', this.on_vibrancy_changed);
+        this.settings.bind('saturation', 'saturation', this.on_saturation_changed);
+        this.settings.bind('brightness', 'brightness', this.on_brightness_changed);
+        this.settings.bind('contrast', 'contrast', this.on_contrast_changed);
     },
     
-    on_settings_changed: function () {
-        let mymsg = this.settings.getValue('vibrancy')
-        
-        
-        let process = new ShellUtils.ShellOutputProcess(['/home/lee/derm/test.sh', 'test']);
+    on_vibrancy_changed: function () {
+        var cfg_vibrancy = this.settings.getValue('vibrancy')
+        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'dd_conf', '-k', 'vibrancy', '-v' + cfg_vibrancy]);
         let error = process.spawn_sync_and_get_error();
-        
-        
-		let dialog_message = 'Settings Changed' + mymsg;
-        let dialog = new ModalDialog.NotifyDialog(dialog_message);
-        dialog.open();
+	},
+    
+    on_saturation_changed: function () {
+        var cfg_saturation = this.settings.getValue('saturation')
+        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'dd_conf', '-k', 'saturation', '-v' + cfg_saturation]);
+        let error = process.spawn_sync_and_get_error();
+	},
+    
+    on_brightness_changed: function () {
+        var cfg_brightness = this.settings.getValue('brightness')
+        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'dd_conf', '-k', 'brightness', '-v' + cfg_brightness]);
+        let error = process.spawn_sync_and_get_error();
+	},
+    
+    on_contrast_changed: function () {
+        var cfg_contrast = this.settings.getValue('contrast')
+        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'dd_conf', '-k', 'contrast', '-v' + cfg_contrast]);
+        let error = process.spawn_sync_and_get_error();
 	}
     
 };
