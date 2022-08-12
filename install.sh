@@ -33,6 +33,9 @@ else
   echo "$HOME/Pictures/DermoDeX" >> "$HOME/.cinnamon/backgrounds/user-folders.lst"
 fi
 
+# COPY OVER THE EXTENSION
+mkdir -p ~/.local/share/cinnamon/extensions/dermodex-config@duracell80
+cp -r dermodex-config@duracell80 ~/.local/share/cinnamon/extensions/
 
 
 # GRANULAR CONTROL OVER WHICH SUB THEMES TO COPY OVER

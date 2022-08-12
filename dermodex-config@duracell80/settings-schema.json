@@ -21,7 +21,7 @@
         "type" : "checkbox",
         "description" : "Color Flow",
         "default" : true,
-        "tooltip" : "Use the color from the Cinnamon menu hover selects to accent the GTK controls also. Note that the color in the menu may not be a good fit for GTK controls, try turning this off if that's the case to flow a different color to GTK."
+        "tooltip" : "When active, DermoDeX will make an attempt to transfer the hover color from the Applictaions Menu into GTK. Set this on or off depending on your results. If DermoDeX detects a shade that is too dark for GTK it will attempt avoiding flowing it through."
     },
     "div1" : {
         "type" : "separator"
