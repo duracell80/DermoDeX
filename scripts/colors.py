@@ -70,6 +70,7 @@ login_blur = str(cfg.get('login', 'lblur', fallback="100"))
 cin_textfactor = str(cfg.get('cinnamon', 'textfactor', fallback=0.9))
 cin_menubckgrd = str(cfg.get('cinnamon', 'menubckgrd', fallback="true"))
 cin_menuavatar = str(cfg.get('cinnamon', 'menuavatar', fallback="true"))
+cin_flowcolors = str(cfg.get('cinnamon', 'flowcolors', fallback="false"))
   
 
 
@@ -422,12 +423,17 @@ else:
     shade_1 = shade1
 
 
-shade_2 = list_hex[-1]
-shade_2_bits = str(get_rgb(list_hex[-1])).replace("(", "").replace(")", "").split(",")
+    
+    
+shade_2 = list_hex[-2]
+shade_2_bits = str(get_rgb(shade_2)).replace("(", "").replace(")", "").split(",")
 shade_2_lighter = lighten_color(int(shade_2_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2]), 0.2)
 shade_2_darker  = darken_color(int(shade_2_bits[0]), int(shade_2_bits[1]), int(shade_2_bits[2]), 0.2)
 
-
+if cin_flowcolors == "true":
+    shade_2 = shade_1
+else:
+    shade_2 = shade_2
 
 shade_hex_bits = str(get_rgb(shade_hex)).replace("(", "").replace(")", "").split(",")
 shade_hex_lighter = lighten_color(int(shade_hex_bits[0]), int(shade_hex_bits[1]), int(shade_hex_bits[2]), 0.3)

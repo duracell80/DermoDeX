@@ -156,7 +156,12 @@ else
                         sed -i "s|#707073|${MAINSHADE_HEX}|g" $filename
                     done
                 else
-                    sed -i "s|#478db2|${HOE}|g" $CINN_FILE
+                    if [ "$flowcolors" = true ]; then
+                        sed -i "s|#478db2|${HOS}|g" $CINN_FILE
+                    else
+                        sed -i "s|#478db2|${HOE}|g" $CINN_FILE
+                    fi
+                    
                     sed -i "s|#478db2|${HOS}|g" $HOME/.cache/dermodex/switch-on.svg
                     sed -i "s|#f70505|${HOS}|g" $HOME/.cache/dermodex/close.svg
                     sed -i "s|#f70505|${HOS}|g" $HOME/.cache/dermodex/close-hover.svg
@@ -293,7 +298,7 @@ else
                 
                 cp $HOME/.local/share/dermodex/gtk-3.20/gtk.gresource $HOME/.cache/dermodex/gtk-3.20
                 cp $HOME/.local/share/dermodex/gtk-3.20/dist/gtk.css $HOME/.cache/dermodex/gtk-3.20/dist/
-                if [ "$flipcolors" = true ]; then
+                if [ "$flowcolors" = true ]; then
                     sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css
                     sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
                     sed -i "s|#637f9e|${HOS}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource

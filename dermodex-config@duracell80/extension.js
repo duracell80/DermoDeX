@@ -56,7 +56,7 @@ DermoDeXSettings.prototype = {
         this.settings.bindProperty(Settings.BindingDirection.IN, 'panellocat', 'panellocat', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'menubckgrd', 'menubckgrd', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'menuavatar', 'menuavatar', null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, 'flipcolors', 'flipcolors', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'flowcolors', 'flowcolors', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'colorcollect', 'colorcollect', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'splitimage', 'splitimage', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'splitfocus', 'splitfocus', null);
@@ -82,7 +82,7 @@ DermoDeXSettings.prototype = {
         this.settings.bind('panelblur', 'panelblur', this.on_panelblur_changed);
         this.settings.bind('menubckgrd', 'menubckgrd', this.on_menubckgrd_changed);
         this.settings.bind('menuavatar', 'menuavatar', this.on_menuavatar_changed);
-        this.settings.bind('flipcolors', 'flipcolors', this.on_flipcolors_changed);
+        this.settings.bind('flowcolors', 'flowcolors', this.on_flowcolors_changed);
         this.settings.bind('splitimage', 'splitimage', this.on_splitimage_changed);
         this.settings.bind('splitfocus', 'splitfocus', this.on_splitfocus_changed);
         this.settings.bind('splitdirection', 'splitdirection', this.on_splitfocus_changed);
@@ -133,9 +133,9 @@ DermoDeXSettings.prototype = {
         let error = process.spawn_sync_and_get_error();
 	},
     
-    on_flipcolors_changed: function () {
-        var cfg_flipcolors = this.settings.getValue('flipcolors')
-        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'flipcolors', '-v' + cfg_flipcolors]);
+    on_flowcolors_changed: function () {
+        var cfg_flowcolors = this.settings.getValue('flowcolors')
+        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'flowcolors', '-v' + cfg_flowcolors]);
         let error = process.spawn_sync_and_get_error();
 	},
     

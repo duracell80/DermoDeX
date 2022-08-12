@@ -17,11 +17,11 @@
         "description" : "Choose Main Shade In Wallpaper",
         "default" : false
     },
-    "flipcolors" : {
+    "flowcolors" : {
         "type" : "checkbox",
         "description" : "Color Flow",
-        "default" : true,
-        "tooltip" : "Use the color from the Cinnamon menu hover selects to accent the GTK controls also. Note that the color in the menu may not be a good fit for GTK controls, try turning this off if that's the case."
+        "default" : false,
+        "tooltip" : "Use the color from the Cinnamon menu hover selects to accent the GTK controls also. Note that the color in the menu may not be a good fit for GTK controls, try turning this off if that's the case to flow a different color to GTK."
     },
     
     "div1" : {
