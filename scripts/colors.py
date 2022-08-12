@@ -400,7 +400,7 @@ if list_hex[2].lower() == "#ffffff":
 else:
     shade1 = list_hex[2]
 
-if cfg_override1 != "none":
+if cfg_override1 != "aN":
     config.set('colors', 'savehex1', cfg_override1.replace("#", ""))
     shade1 = "#" + cfg_override1
     shade_txt = get_rgb(shade1)
@@ -418,14 +418,14 @@ if isLightOrDark(int(shade_1_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2]
     shade_1 = list_hex[1]
 elif isLightOrDark(int(shade_1_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2])) == "dark":
     #shade_1 = shade_1_lighter
-    shade_1 = list_hex[3]
+    shade_1 = list_hex[2]
 else:
     shade_1 = shade1
 
 
     
     
-shade_2 = list_hex[-2]
+shade_2 = list_hex[-1]
 shade_2_bits = str(get_rgb(shade_2)).replace("(", "").replace(")", "").split(",")
 shade_2_lighter = lighten_color(int(shade_2_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2]), 0.2)
 shade_2_darker  = darken_color(int(shade_2_bits[0]), int(shade_2_bits[1]), int(shade_2_bits[2]), 0.2)
@@ -447,19 +447,19 @@ print("- Shade2: " + shade_2 + " - rgb" + str(get_rgb(shade_2)) + "\n\n")
 
 
 # LOOK FOR OVERRIDES, IF SO THEN SET THOSE
-if cfg_override0 != "none":
+if cfg_override0 != "aN":
     print("[i] Color Override Active for Shade 0: " + cfg_override0)
     config.set('colors', 'savehex0', cfg_override0.replace("#", ""))
 else:
     config.set('colors', 'savehex0', shade_hex.replace("#", ""))
     
-if cfg_override1 != "none":
+if cfg_override1 != "aN":
     print("[i] Color Override Active for Shade 1: " + cfg_override1)
     config.set('colors', 'savehex1', cfg_override1.replace("#", ""))
 else:
     config.set('colors', 'savehex1', shade_1.replace("#", ""))
 
-if cfg_override2 != "none":
+if cfg_override2 != "aN":
     print("[i] Color Override Active for Shade 2: " + cfg_override2)
     config.set('colors', 'savehex2', cfg_override1.replace("#", ""))
 else:

@@ -64,6 +64,12 @@ DermoDeXSettings.prototype = {
         
         this.settings.bindProperty(Settings.BindingDirection.IN, 'pblur', 'pblur', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'lblur', 'lblur', null);
+        
+        
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'coloroverrides', 'coloroverrides', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'override0', 'override0', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'override1', 'override1', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'override2', 'override2', null);
      
         
         
@@ -89,6 +95,11 @@ DermoDeXSettings.prototype = {
         
         this.settings.bind('pblur', 'pblur', this.on_pblur_changed);
         this.settings.bind('lblur', 'lblur', this.on_lblur_changed);
+        
+        this.settings.bind('coloroverrides', 'coloroverrides', this.on_coloroverrides_changed);
+        this.settings.bind('override0', 'override0', this.on_override0_changed);
+        this.settings.bind('override1', 'override1', this.on_override1_changed);
+        this.settings.bind('override2', 'override2', this.on_override2_changed);
     },
     
     on_vibrancy_changed: function () {
@@ -184,6 +195,76 @@ DermoDeXSettings.prototype = {
     on_lblur_changed: function () {
         var cfg_lblur = this.settings.getValue('lblur')
         let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'login', '-k', 'lblur', '-v' + cfg_lblur]);
+        let error = process.spawn_sync_and_get_error();
+	},
+    
+    on_coloroverrides_changed: function () {
+        var cfg_coloroverrides = this.settings.getValue('coloroverrides')
+        var cfg_override0 = this.settings.getValue('override0')
+        var cfg_override1 = this.settings.getValue('override1')
+        var cfg_override2 = this.settings.getValue('override2')
+        
+        
+        
+        
+        
+        if(cfg_coloroverrides == false) {
+            let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override0', '-v' + 'none']);
+            let error = process.spawn_sync_and_get_error();
+            
+            process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override1', '-v' + 'none']);
+            error = process.spawn_sync_and_get_error();
+            
+            process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override2', '-v' + 'none']);
+            error = process.spawn_sync_and_get_error();
+            
+            this.settings.setValue('override0', 'aN');
+            this.settings.setValue('override1', 'aN');
+            this.settings.setValue('override2', 'aN');
+            
+        } else if(cfg_coloroverrides == true) {
+            this.settings.setValue('override0', cfg_override0);
+            this.settings.setValue('override1', cfg_override1);
+            this.settings.setValue('override2', cfg_override2);
+            
+        } else {
+            cfg_coloroverrides = 'false';
+        }
+        
+        
+        
+        
+        
+	},
+    
+    on_override0_changed: function () {
+        var cfg_override0 = this.settings.getValue('override0')
+        
+        const rgba = cfg_override0.replace(/^rgba?\(|\s+|\)$/g, '').split(',');
+        const hex = `${((1 << 24) + (parseInt(rgba[0]) << 16) + (parseInt(rgba[1]) << 8) + parseInt(rgba[2])).toString(16).slice(1)}`;
+
+        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override0', '-v' + hex]);
+        let error = process.spawn_sync_and_get_error();
+	},
+    
+    on_override1_changed: function () {
+        var cfg_override1 = this.settings.getValue('override1')
+        
+        const rgba = cfg_override1.replace(/^rgba?\(|\s+|\)$/g, '').split(',');
+        const hex = `${((1 << 24) + (parseInt(rgba[0]) << 16) + (parseInt(rgba[1]) << 8) + parseInt(rgba[2])).toString(16).slice(1)}`;
+
+        
+        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override1', '-v' + hex]);
+        let error = process.spawn_sync_and_get_error();
+	},
+    
+    on_override2_changed: function () {
+        var cfg_override2 = this.settings.getValue('override2')
+        
+        const rgba = cfg_override2.replace(/^rgba?\(|\s+|\)$/g, '').split(',');
+        const hex = `${((1 << 24) + (parseInt(rgba[0]) << 16) + (parseInt(rgba[1]) << 8) + parseInt(rgba[2])).toString(16).slice(1)}`;
+        
+        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override2', '-v' + hex]);
         let error = process.spawn_sync_and_get_error();
 	},
     

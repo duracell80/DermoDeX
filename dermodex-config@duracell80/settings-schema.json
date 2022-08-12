@@ -6,10 +6,10 @@
     },
     "vibrancy" : {
         "type": "scale",
-        "description": "Accent Color Tone",
+        "description": "Darken Accent Color",
         "min": 0,
         "max": 1,
-        "default": 0.4,
+        "default": 0.5,
         "step": 0.1
     },
     "mainshade" : {
@@ -20,11 +20,41 @@
     "flowcolors" : {
         "type" : "checkbox",
         "description" : "Color Flow",
-        "default" : false,
+        "default" : true,
         "tooltip" : "Use the color from the Cinnamon menu hover selects to accent the GTK controls also. Note that the color in the menu may not be a good fit for GTK controls, try turning this off if that's the case to flow a different color to GTK."
     },
-    
     "div1" : {
+        "type" : "separator"
+    },
+    "headoverrides" : {
+        "type" : "header",
+        "description" : "Color Overrides: "
+    },
+    "coloroverrides" : {
+        "type" : "checkbox",
+        "description" : "Active",
+        "default" : false,
+        "tooltip" : "Override DermoDex's chosen colors with your own selections"
+    },
+    "override0": {
+        "type": "colorchooser",
+        "default": "aN",
+        "dependency" : "coloroverrides",
+        "description": "Override Shade 0"
+    },
+    "override1": {
+        "type": "colorchooser",
+        "default": "aN",
+        "dependency" : "coloroverrides",
+        "description": "Override Shade 1"
+    },
+    "override2": {
+        "type": "colorchooser",
+        "default": "aN",
+        "dependency" : "coloroverrides",
+        "description": "Override Shade 2"
+    },
+    "div2" : {
         "type" : "separator"
     },
     "headcinn" : {
@@ -97,7 +127,7 @@
         "default" : true
     },
     
-    "div2" : {
+    "div3" : {
         "type" : "separator"
     },
     "headimage" : {
