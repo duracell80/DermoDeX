@@ -311,7 +311,7 @@ else
                 cp -f $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css $HOME/.themes/DermoDeX/gtk-3.20/dist/
                 
                 # TEXT SCALING
-                gsettings set org.cinnamon.desktop.interface text-scaling-factor "$textfactor"
+                #gsettings set org.cinnamon.desktop.interface text-scaling-factor "$textfactor"
                 
                 # Give Possibility to change sounds based on wallpaper too
                 # gsettings set org.cinnamon.sounds login-file /usr/share/sounds/linux-a11y/stereo/desktop-login.oga
