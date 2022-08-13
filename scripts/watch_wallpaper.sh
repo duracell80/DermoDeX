@@ -298,14 +298,20 @@ else
                 cp -f $HOME/.cache/dermodex/common-assets/icons/places/*.svg $HOME/.local/share/icons/White-Icons/scalable/places
                 
                 
-                # GTK CSS
+                # GTK CSS 
                 
                 if [ "$flowcolors" = true ]; then
                     sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css
+                    sed -i "s|#ff630d|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
+                    sed -i "s|#ff5b00|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
+                    sed -i "s|#ff6b1a|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
                     sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
                     sed -i "s|#637f9e|${HOS}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
                 else
                     sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css
+                    sed -i "s|#ff630d|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
+                    sed -i "s|#ff5b00|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
+                    sed -i "s|#ff6b1a|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
                     sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
                     sed -i "s|#637f9e|${HOE}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
                 fi

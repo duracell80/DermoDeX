@@ -33,11 +33,11 @@
 @define-color question_fg_color #1a1a1a;
 @define-color question_bg_color #c0c1e8;
 @define-color error_fg_color #1a1a1a;
-@define-color error_bg_color #ff5b00;
+@define-color error_bg_color #5e7997;
 @define-color link_color #c08ee8;
 @define-color success_color #ffc100;
 @define-color warning_color #fff44f;
-@define-color error_color #ff5b00;
+@define-color error_color #5e7997;
 /* widget colors */
 @define-color titlebar_bg_focused @dark_bg_color;
 @define-color titlebar_bg_unfocused @theme_bg_color;
@@ -740,38 +740,38 @@ combobox menu menuitem {
   #XfceNotifyWindow entry.error, popover.background entry.error, entry.error {
     color: #1a1a1a;
     border-color: #cc4900;
-    background-color: mix(#444444,#ff5b00,0.6); }
+    background-color: mix(#444444,#5e7997,0.6); }
     #login_window entry.error image,
     #XfceNotifyWindow entry.error image, entry.error image {
       color: #1a1a1a; }
     #login_window entry.error:focus,
     #XfceNotifyWindow entry.error:focus, entry.error:focus {
       color: #1a1a1a;
-      border-color: mix(#5e7997,#ff5b00,0.3);
-      background-color: #ff5b00;
+      border-color: mix(#5e7997,#5e7997,0.3);
+      background-color: #5e7997;
       box-shadow: none; }
     #login_window entry.error selection,
     #XfceNotifyWindow entry.error selection, entry.error selection {
       background-color: #1a1a1a;
-      color: #ff5b00; }
+      color: #5e7997; }
   #login_window entry.search-missing,
   #XfceNotifyWindow entry.search-missing, popover.background entry.search-missing, entry.search-missing {
     color: #1a1a1a;
     border-color: #cc4900;
-    background-color: mix(#444444,#ff5b00,0.6); }
+    background-color: mix(#444444,#5e7997,0.6); }
     #login_window entry.search-missing image,
     #XfceNotifyWindow entry.search-missing image, entry.search-missing image {
       color: #1a1a1a; }
     #login_window entry.search-missing:focus,
     #XfceNotifyWindow entry.search-missing:focus, entry.search-missing:focus {
       color: #1a1a1a;
-      border-color: mix(#5e7997,#ff5b00,0.3);
-      background-color: #ff5b00;
+      border-color: mix(#5e7997,#5e7997,0.3);
+      background-color: #5e7997;
       box-shadow: none; }
     #login_window entry.search-missing selection,
     #XfceNotifyWindow entry.search-missing selection, entry.search-missing selection {
       background-color: #1a1a1a;
-      color: #ff5b00; }
+      color: #5e7997; }
 
 entry {
   background-color: #444444;
@@ -1783,7 +1783,7 @@ searchbar,
     background-image: image(mix(#ffffff,#ffc100,0.9)); }
 
 .destructive-action {
-  background-color: #ff5b00;
+  background-color: #5e7997;
   background-image: none;
   border-color: rgba(204, 204, 204, 0.22);
   color: #ffffff;
@@ -1827,7 +1827,7 @@ searchbar,
     background-image: none;
     box-shadow: none; }
   .destructive-action:hover, .destructive-action.flat:hover {
-    background-color: #ff630d;
+    background-color: #5e7997;
     background-image: none;
     border-color: rgba(204, 204, 204, 0.3);
     color: #ffffff;
@@ -1841,7 +1841,7 @@ searchbar,
     .destructive-action:hover:active:disabled, .destructive-action:hover:checked:disabled, .destructive-action.flat:hover:active:disabled, .destructive-action.flat:hover:checked:disabled {
       border-color: rgba(204, 204, 204, 0.3); }
   .destructive-action:focus, .destructive-action.flat:focus {
-    background-color: #ff630d;
+    background-color: #5e7997;
     background-image: none;
     border-color: rgba(255, 255, 255, 0.22);
     outline-color: rgba(94, 121, 151, 0.5);
@@ -1851,7 +1851,7 @@ searchbar,
     color: #ffffff;
     box-shadow: 0 1px 2px -1px rgba(46, 46, 46, 0.42); }
     .destructive-action:focus:hover, .destructive-action.flat:focus:hover {
-      background-color: #ff6b1a;
+      background-color: #5e7997;
       background-image: none;
       border-color: rgba(204, 204, 204, 0.3);
       box-shadow: 0 1px 2px -1px rgba(46, 46, 46, 0.48); }
@@ -1886,14 +1886,14 @@ searchbar,
   .destructive-action:focus, .destructive-action:hover, .destructive-action.flat:focus, .destructive-action.flat:hover {
     color: #ffffff; }
   .destructive-action:disabled:disabled, .destructive-action.flat:disabled:disabled {
-    background-color: alpha(mix(#ff5b00,#ffffff,0.2),0.4);
+    background-color: alpha(mix(#5e7997,#ffffff,0.2),0.4);
     background-image: none;
     /*border: 1px solid alpha($bg, .2);*/
     opacity: .6;
-    color: mix(#ff5b00,#ffffff,0.6);
+    color: mix(#5e7997,#ffffff,0.6);
     box-shadow: none; }
     .destructive-action:disabled:disabled :disabled, .destructive-action.flat:disabled:disabled :disabled {
-      color: mix(#ff5b00,#ffffff,0.6); }
+      color: mix(#5e7997,#ffffff,0.6); }
   .destructive-action:active:disabled, .destructive-action:checked:disabled, .destructive-action.flat:active:disabled, .destructive-action.flat:checked:disabled {
     background-color: rgba(94, 121, 151, 0.6);
     background-image: none;
@@ -1909,7 +1909,7 @@ searchbar,
     .destructive-action.separator:disabled, .destructive-action .separator:disabled {
       color: rgba(255, 91, 0, 0.85); }
   .destructive-action separator {
-    background-image: image(mix(#ffffff,#ff5b00,0.9)); }
+    background-image: image(mix(#ffffff,#5e7997,0.9)); }
 
 /******************
  ! Selection mode *
@@ -3261,14 +3261,14 @@ infobar {
     infobar.question button separator, infobar.question button.nautilus-circular-button.image-button separator {
       background-image: image(mix(#1a1a1a,#c0c1e8,0.9)); }
   infobar.error, infobar.error:backdrop {
-    background-color: #ff5b00;
+    background-color: #5e7997;
     background-image: none;
     border: 1px solid #cc4900;
     caret-color: currentColor; }
     infobar.error label, infobar.error, infobar.error:backdrop label, infobar.error:backdrop {
       color: #1a1a1a; }
   infobar.error button, infobar.error button.nautilus-circular-button.image-button {
-    background-color: #ff5b00;
+    background-color: #5e7997;
     background-image: none;
     border-color: rgba(21, 21, 21, 0.32);
     color: #1a1a1a;
@@ -3312,7 +3312,7 @@ infobar {
       background-image: none;
       box-shadow: none; }
     infobar.error button:hover, infobar.error button.flat:hover {
-      background-color: #ff630d;
+      background-color: #5e7997;
       background-image: none;
       border-color: rgba(21, 21, 21, 0.4);
       color: #1a1a1a;
@@ -3326,7 +3326,7 @@ infobar {
       infobar.error button:hover:active:disabled, infobar.error button:hover:checked:disabled, infobar.error button.flat:hover:active:disabled, infobar.error button.flat:hover:checked:disabled {
         border-color: rgba(21, 21, 21, 0.4); }
     infobar.error button:focus, infobar.error button.flat:focus {
-      background-color: #ff630d;
+      background-color: #5e7997;
       background-image: none;
       border-color: rgba(26, 26, 26, 0.32);
       outline-color: rgba(94, 121, 151, 0.5);
@@ -3336,7 +3336,7 @@ infobar {
       color: #1a1a1a;
       box-shadow: 0 1px 2px -1px rgba(46, 46, 46, 0.42); }
       infobar.error button:focus:hover, infobar.error button.flat:focus:hover {
-        background-color: #ff6b1a;
+        background-color: #5e7997;
         background-image: none;
         border-color: rgba(21, 21, 21, 0.4);
         box-shadow: 0 1px 2px -1px rgba(46, 46, 46, 0.48); }
@@ -3371,14 +3371,14 @@ infobar {
     infobar.error button:focus, infobar.error button:hover, infobar.error button.flat:focus, infobar.error button.flat:hover {
       color: #1a1a1a; }
     infobar.error button:disabled:disabled, infobar.error button.flat:disabled:disabled {
-      background-color: alpha(mix(#ff5b00,#1a1a1a,0.2),0.4);
+      background-color: alpha(mix(#5e7997,#1a1a1a,0.2),0.4);
       background-image: none;
       /*border: 1px solid alpha($bg, .2);*/
       opacity: .6;
-      color: mix(#ff5b00,#1a1a1a,0.6);
+      color: mix(#5e7997,#1a1a1a,0.6);
       box-shadow: none; }
       infobar.error button:disabled:disabled :disabled, infobar.error button.flat:disabled:disabled :disabled {
-        color: mix(#ff5b00,#1a1a1a,0.6); }
+        color: mix(#5e7997,#1a1a1a,0.6); }
     infobar.error button:active:disabled, infobar.error button:checked:disabled, infobar.error button.flat:active:disabled, infobar.error button.flat:checked:disabled {
       background-color: rgba(94, 121, 151, 0.6);
       background-image: none;
@@ -3394,7 +3394,7 @@ infobar {
       infobar.error button.separator:disabled, infobar.error button .separator:disabled {
         color: rgba(255, 91, 0, 0.85); }
     infobar.error button separator, infobar.error button.nautilus-circular-button.image-button separator {
-      background-image: image(mix(#1a1a1a,#ff5b00,0.9)); }
+      background-image: image(mix(#1a1a1a,#5e7997,0.9)); }
 
 /*********
  ! Entry *
@@ -3511,38 +3511,38 @@ infobar {
   #XfceNotifyWindow entry.error, popover.background entry.error, entry.error {
     color: #1a1a1a;
     border-color: #cc4900;
-    background-color: mix(#444444,#ff5b00,0.6); }
+    background-color: mix(#444444,#5e7997,0.6); }
     #login_window entry.error image,
     #XfceNotifyWindow entry.error image, entry.error image {
       color: #1a1a1a; }
     #login_window entry.error:focus,
     #XfceNotifyWindow entry.error:focus, entry.error:focus {
       color: #1a1a1a;
-      border-color: mix(#5e7997,#ff5b00,0.3);
-      background-color: #ff5b00;
+      border-color: mix(#5e7997,#5e7997,0.3);
+      background-color: #5e7997;
       box-shadow: none; }
     #login_window entry.error selection,
     #XfceNotifyWindow entry.error selection, entry.error selection {
       background-color: #1a1a1a;
-      color: #ff5b00; }
+      color: #5e7997; }
   #login_window entry.search-missing,
   #XfceNotifyWindow entry.search-missing, popover.background entry.search-missing, entry.search-missing {
     color: #1a1a1a;
     border-color: #cc4900;
-    background-color: mix(#444444,#ff5b00,0.6); }
+    background-color: mix(#444444,#5e7997,0.6); }
     #login_window entry.search-missing image,
     #XfceNotifyWindow entry.search-missing image, entry.search-missing image {
       color: #1a1a1a; }
     #login_window entry.search-missing:focus,
     #XfceNotifyWindow entry.search-missing:focus, entry.search-missing:focus {
       color: #1a1a1a;
-      border-color: mix(#5e7997,#ff5b00,0.3);
-      background-color: #ff5b00;
+      border-color: mix(#5e7997,#5e7997,0.3);
+      background-color: #5e7997;
       box-shadow: none; }
     #login_window entry.search-missing selection,
     #XfceNotifyWindow entry.search-missing selection, entry.search-missing selection {
       background-color: #1a1a1a;
-      color: #ff5b00; }
+      color: #5e7997; }
 
 /*********
  ! Menubar
@@ -7498,7 +7498,7 @@ GeditViewFrame .gedit-search-slider {
   border-color: #363636;
   background-color: #444444; }
   GeditViewFrame .gedit-search-slider .not-found {
-    background-color: #ff5b00;
+    background-color: #5e7997;
     background-image: none;
     color: #1a1a1a; }
 
@@ -7572,10 +7572,10 @@ paned.titlebar {
 
 .conflict-row.activatable, .conflict-row.activatable:active {
   color: #1a1a1a;
-  background-color: #ff5b00; }
+  background-color: #5e7997; }
 
 .conflict-row.activatable:hover {
-  background-color: #ff6b1a; }
+  background-color: #5e7997; }
 
 .conflict-row.activatable:selected {
   color: #ffffff;
@@ -8019,7 +8019,7 @@ SheetStyleDialog.unity-force-quit {
 
 /* shutdown button */
 #shutdown_button button {
-  background-color: #ff5b00;
+  background-color: #5e7997;
   background-image: none;
   border-color: rgba(21, 21, 21, 0.32);
   color: #1a1a1a;
@@ -8063,7 +8063,7 @@ SheetStyleDialog.unity-force-quit {
     background-image: none;
     box-shadow: none; }
   #shutdown_button button:hover, #shutdown_button button.flat:hover {
-    background-color: #ff630d;
+    background-color: #5e7997;
     background-image: none;
     border-color: rgba(21, 21, 21, 0.4);
     color: #1a1a1a;
@@ -8077,7 +8077,7 @@ SheetStyleDialog.unity-force-quit {
     #shutdown_button button:hover:active:disabled, #shutdown_button button:hover:checked:disabled, #shutdown_button button.flat:hover:active:disabled, #shutdown_button button.flat:hover:checked:disabled {
       border-color: rgba(21, 21, 21, 0.4); }
   #shutdown_button button:focus, #shutdown_button button.flat:focus {
-    background-color: #ff630d;
+    background-color: #5e7997;
     background-image: none;
     border-color: rgba(26, 26, 26, 0.32);
     outline-color: rgba(94, 121, 151, 0.5);
@@ -8087,7 +8087,7 @@ SheetStyleDialog.unity-force-quit {
     color: #1a1a1a;
     box-shadow: 0 1px 2px -1px rgba(46, 46, 46, 0.42); }
     #shutdown_button button:focus:hover, #shutdown_button button.flat:focus:hover {
-      background-color: #ff6b1a;
+      background-color: #5e7997;
       background-image: none;
       border-color: rgba(21, 21, 21, 0.4);
       box-shadow: 0 1px 2px -1px rgba(46, 46, 46, 0.48); }
@@ -8122,14 +8122,14 @@ SheetStyleDialog.unity-force-quit {
   #shutdown_button button:focus, #shutdown_button button:hover, #shutdown_button button.flat:focus, #shutdown_button button.flat:hover {
     color: #1a1a1a; }
   #shutdown_button button:disabled:disabled, #shutdown_button button.flat:disabled:disabled {
-    background-color: alpha(mix(#ff5b00,#1a1a1a,0.2),0.4);
+    background-color: alpha(mix(#5e7997,#1a1a1a,0.2),0.4);
     background-image: none;
     /*border: 1px solid alpha($bg, .2);*/
     opacity: .6;
-    color: mix(#ff5b00,#1a1a1a,0.6);
+    color: mix(#5e7997,#1a1a1a,0.6);
     box-shadow: none; }
     #shutdown_button button:disabled:disabled :disabled, #shutdown_button button.flat:disabled:disabled :disabled {
-      color: mix(#ff5b00,#1a1a1a,0.6); }
+      color: mix(#5e7997,#1a1a1a,0.6); }
   #shutdown_button button:active:disabled, #shutdown_button button:checked:disabled, #shutdown_button button.flat:active:disabled, #shutdown_button button.flat:checked:disabled {
     background-color: rgba(94, 121, 151, 0.6);
     background-image: none;
@@ -8145,7 +8145,7 @@ SheetStyleDialog.unity-force-quit {
     #shutdown_button button.separator:disabled, #shutdown_button button .separator:disabled {
       color: rgba(255, 91, 0, 0.85); }
   #shutdown_button button separator {
-    background-image: image(mix(#1a1a1a,#ff5b00,0.9)); }
+    background-image: image(mix(#1a1a1a,#5e7997,0.9)); }
 
 /* restart button */
 #restart_button button {
