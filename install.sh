@@ -1,4 +1,8 @@
 #!/bin/bash
+
+
+CINN_VERSION=$(cinnamon --version)
+
 #sudo apt install python3-pip
 
 #pip3 install easydev
@@ -35,7 +39,7 @@ fi
 
 # COPY OVER THE EXTENSION
 mkdir -p ~/.local/share/cinnamon/extensions/dermodex-config@duracell80
-cp -r dermodex-config@duracell80 ~/.local/share/cinnamon/extensions/
+cp -r extension/dermodex-config@duracell80/files/* ~/.local/share/cinnamon/extensions/dermodex-config@duracell80
 
 
 # GRANULAR CONTROL OVER WHICH SUB THEMES TO COPY OVER
@@ -151,7 +155,10 @@ else
     echo "[i] Cinnamon is Ready to be reloaded by pressing CTRL+Alt+Esc!"
 fi
 
-echo "[i] Install Complete"
+
+echo "\n\n[i] Cinnamon Version ${CINN_VERSION}"
+
+echo "\n[i] Install Complete"
 echo ""
 echo "Run dd-wake to wake DermoDeX before changing the wallpaper."
 echo "Run dd-hold to keep your accent colors static when changing the wallpaper"

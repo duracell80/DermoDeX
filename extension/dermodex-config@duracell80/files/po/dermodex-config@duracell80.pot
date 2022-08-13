@@ -18,13 +18,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. metadata.json->name
-msgid "Blur Overview"
+msgid "DermoDex Dyanmic Theme Engine"
 msgstr ""
 
 #. metadata.json->description
-msgid "Blur background in overview ([Ctrl]+[Alt]+[Down Arrow])"
+msgid "Configuration for DermoDeX - A Desktop Experience for Cinnamon DE"
 msgstr ""
 
 #. settings-schema.json->opacity->description
-msgid "Background opacity in overview ([Ctrl]+[Alt]+[Down Arrow])"
+msgid "Configuration for DermoDeX"
 msgstr ""

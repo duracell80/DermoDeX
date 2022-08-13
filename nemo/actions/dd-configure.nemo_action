@@ -1,10 +1,10 @@
 [Nemo Action]
-# Loads DermoDeX Main Configuration File For Editing
+# Loads DermoDeX Configuration
 Name=DermoDeX - Configure
-Comment=Edit the DermoDex Configuration File
-Exec=xed .local/share/dermodex/config.ini
-Icon-Name=terminal
+Comment=Edit the DermoDex Configuration
+Exec=cinnamon-settings extensions dermodex-config@duracell80
+Icon-Name=cs-backgrounds-symbolic
 Selection=none
 Extensions=any;
 Conditions=desktop;
-Dependencies=xed
+Dependencies=cinnamon-settings
