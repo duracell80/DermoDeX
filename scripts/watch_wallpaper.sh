@@ -54,6 +54,11 @@ else
                 echo $CUR > $HOME/.cache/dermodex/wallpaper_current.txt
                 cp $HOME/.local/share/dermodex/cinnamon_base.css $CINN_FILE
                 
+                mkdir -p $HOME/.cache/dermodex/gtk-3.20/dist
+                
+                cp $HOME/.local/share/dermodex/gtk-3.20/gtk.gresource $HOME/.cache/dermodex/gtk-3.20
+                cp $HOME/.local/share/dermodex/gtk-3.20/dist/gtk.css $HOME/.cache/dermodex/gtk-3.20/dist/
+                
                 # GENERATE THE COLORS AND UPDATE THE CONFIG
                 python3 $HOME/.local/share/dermodex/colors.py
                 
@@ -294,10 +299,7 @@ else
                 
                 
                 # GTK CSS
-                mkdir -p $HOME/.cache/dermodex/gtk-3.20/dist
                 
-                cp $HOME/.local/share/dermodex/gtk-3.20/gtk.gresource $HOME/.cache/dermodex/gtk-3.20
-                cp $HOME/.local/share/dermodex/gtk-3.20/dist/gtk.css $HOME/.cache/dermodex/gtk-3.20/dist/
                 if [ "$flowcolors" = true ]; then
                     sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css
                     sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
@@ -310,8 +312,6 @@ else
                 cp -f $HOME/.cache/dermodex/gtk-3.20/gtk.gresource $HOME/.themes/DermoDeX/gtk-3.20/
                 cp -f $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css $HOME/.themes/DermoDeX/gtk-3.20/dist/
                 
-                # TEXT SCALING
-                #gsettings set org.cinnamon.desktop.interface text-scaling-factor "$textfactor"
                 
                 # Give Possibility to change sounds based on wallpaper too
                 # gsettings set org.cinnamon.sounds login-file /usr/share/sounds/linux-a11y/stereo/desktop-login.oga

@@ -126,6 +126,8 @@ gsettings set org.cinnamon.theme name "Mint-Y-Dark-Aqua"
 gsettings set org.cinnamon.desktop.notifications bottom-notifications "true"
 gsettings set org.cinnamon.desktop.notifications display-notifications "true"
 
+# gsettings set org.cinnamon.desktop.interface text-scaling-factor "1"
+
 echo "[i] Adjusting The Height Of The Panels"
 dconf load /org/cinnamon/ < ./scripts/cinnamon_dd.txt
 dconf write /org/cinnamon/panels-height "['1:60']"

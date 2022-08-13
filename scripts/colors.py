@@ -67,7 +67,6 @@ cin_panelblur = str(cfg.get('cinnamon', 'panelblur', fallback="true"))
 panel_blur = str(cfg.get('cinnamon', 'pblur', fallback="100"))
 login_blur = str(cfg.get('login', 'lblur', fallback="100"))
 
-cin_textfactor = str(cfg.get('cinnamon', 'textfactor', fallback=0.9))
 cin_menubckgrd = str(cfg.get('cinnamon', 'menubckgrd', fallback="true"))
 cin_menuavatar = str(cfg.get('cinnamon', 'menuavatar', fallback="true"))
 cin_flowcolors = str(cfg.get('cinnamon', 'flowcolors', fallback="false"))
@@ -400,13 +399,14 @@ if list_hex[2].lower() == "#ffffff":
 else:
     shade1 = list_hex[2]
 
-if cfg_override1 != "aN":
+if cfg_override1 == "aN" or cfg_override1 == "none":
+    shade_txt = get_rgb(shade1)
+else:
     config.set('colors', 'savehex1', cfg_override1.replace("#", ""))
     shade1 = "#" + cfg_override1
     shade_txt = get_rgb(shade1)
-    print(shade1)
-else:
-    shade_txt = get_rgb(shade1)
+    #print(shade1)
+    
     
 shade_1_bits = str(get_rgb(shade1)).replace("(", "").replace(")", "").split(",")
 shade_1_lighter = lighten_color(int(shade_1_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2]), 0.2)
@@ -493,7 +493,21 @@ else:
     os.system('sed -i "s|--menu-text-selected-color: #202020;|color: #ffffff;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
 
 tri = str(get_rgb(shade_1)).replace('(', '').replace(')', '').replace(' ', '').split(',')
-if isLightOrDark(tri[0],tri[1],tri[2]) == "dark":
-    os.system('sed -i "s|--slider-active-background-color: #ffffff;|-slider-active-background-color: '+ shade_1_lighter +';|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-else:
+if isLightOrDark(tri[0],tri[1],tri[2]) == "light":
     os.system('sed -i "s|--slider-active-background-color: #ffffff;|-slider-active-background-color: '+ shade_hex_lighter +';|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+else:
+    os.system('sed -i "s|--slider-active-background-color: #ffffff;|-slider-active-background-color: '+ shade_1_lighter +';|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+    
+    
+tri = str(get_rgb(shade_2)).replace('(', '').replace(')', '').replace(' ', '').split(',')
+if isLightOrDark(tri[0],tri[1],tri[2]) == "light":
+    os.system('sed -i "s|#ffffff|#202020|g" ' + HOME + '/.cache/dermodex/gtk-3.20/gtk.gresource')
+    print("[i] GTK Selected Text Darken Needed")
+else:
+    os.system('sed -i "s|#ffffff|#eeeeee|g" ' + HOME + '/.cache/dermodex/gtk-3.20/gtk.gresource')
+    
+    
+
+    
+    
+    
