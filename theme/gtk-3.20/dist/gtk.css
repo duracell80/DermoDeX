@@ -6564,7 +6564,7 @@ scrollbar {
 **********/
 .sidebar {
   border-style: none;
-  background-color: mix(#4d4d4d,#444444,0.5); }
+  background-color: mix(#4d4d4d,#444444,0.5); font-size : 16pt;}
   stacksidebar.sidebar:dir(ltr) list, stacksidebar.sidebar.left list, stacksidebar.sidebar.left:dir(rtl) list, .sidebar:dir(ltr), .sidebar.left {
     border-right: 1px solid mix(#4d4d4d,#e5e5e5,0.18);
     border-left-style: none; }
