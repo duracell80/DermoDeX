@@ -9,7 +9,7 @@
 /*$selected_borders_color: if($variant == 'light', darken($selected_bg_color, 30%), darken($selected_bg_color, 20%));*/
 /*$borders_color: if($variant == 'light', shade($bg_color, .85), shade($bg_color, .88));*/
 /*$button_border_strength: if(lightness($bg) > 50, 0, .1);*/
-/*$button_shadow_strength: if(lightness($bg) > 50, 0, .1);*/
+/*$button_shadow_strength: if(lighftness($bg) > 50, 0, .1);*/
 /* dark color scheme */
 @define-color dark_bg_color #d9d9d9;
 @define-color dark_fg_color #4d4d4d;
@@ -721,8 +721,8 @@ combobox menu menuitem {
   #login_window entry.warning,
   #XfceNotifyWindow entry.warning, popover.background entry.warning, entry.warning {
     color: #1a1a1a;
-    border-color: #fff00c;
-    background-color: mix(#444444,#5e7997,0.6); }
+    border-color: #5e7997;
+    background-color: mix(#eeeeee,#5e7997,0.6); }
     #login_window entry.warning image,
     #XfceNotifyWindow entry.warning image, entry.warning image {
       color: #1a1a1a; }
