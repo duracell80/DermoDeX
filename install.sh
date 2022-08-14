@@ -85,6 +85,7 @@ mkdir -p ~/.local/share/dermodex/gtk-3.20/dist
 chmod u+rw ~/.cache/dermodex/gtk-3.0
 chmod u+rw ~/.local/share/dermodex/gtk-3.0
 
+cp -r $CWD/theme/gtk-3.0/colors.css ~/.local/share/dermodex/gtk-3.0
 cp -r $CWD/theme/gtk-3.20/dist ~/.local/share/dermodex/gtk-3.20
 cp ./scripts/watch_wallpaper.sh ~/.local/share/dermodex
 cp ./scripts/cinnamon_dd.txt ~/.local/share/dermodex

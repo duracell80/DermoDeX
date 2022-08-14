@@ -54,8 +54,10 @@ else
                 echo $CUR > $HOME/.cache/dermodex/wallpaper_current.txt
                 cp $HOME/.local/share/dermodex/cinnamon_base.css $CINN_FILE
                 
+                mkdir -p $HOME/.cache/dermodex/gtk-3.0
                 mkdir -p $HOME/.cache/dermodex/gtk-3.20/dist
                 
+                cp $HOME/.local/share/dermodex/gtk-3.0/colors.css $HOME/.cache/dermodex/gtk-3.0
                 cp $HOME/.local/share/dermodex/gtk-3.20/gtk.gresource $HOME/.cache/dermodex/gtk-3.20
                 cp $HOME/.local/share/dermodex/gtk-3.20/dist/gtk.css $HOME/.cache/dermodex/gtk-3.20/dist/
                 
@@ -310,6 +312,7 @@ else
                 
                 
                 if [ "$flowcolors" = true ]; then
+                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/colors.css
                     sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css
                     sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
                     sed -i "s|#637f9e|${HOS}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
@@ -319,6 +322,7 @@ else
                     fi
                     
                 else
+                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/colors.css
                     sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css
                     sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
                     sed -i "s|#637f9e|${HOE}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
@@ -331,7 +335,7 @@ else
                 
                 
                 
-                
+                cp -f $HOME/.cache/dermodex/gtk-3.0/colors.css $HOME/.themes/DermoDeX/gtk-3.0/
                 cp -f $HOME/.cache/dermodex/gtk-3.20/gtk.gresource $HOME/.themes/DermoDeX/gtk-3.20/
                 cp -f $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css $HOME/.themes/DermoDeX/gtk-3.20/dist/
                 
