@@ -721,8 +721,8 @@ combobox menu menuitem {
   #login_window entry.warning,
   #XfceNotifyWindow entry.warning, popover.background entry.warning, entry.warning {
     color: #1a1a1a;
-    border-color: #5e7997;
-    background-color: mix(#eeeeee,#5e7997,0.6); }
+    border-color: #444444;
+    background-color: mix(#444444,#eeeeee,0.6); }
     #login_window entry.warning image,
     #XfceNotifyWindow entry.warning image, entry.warning image {
       color: #1a1a1a; }
