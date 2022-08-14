@@ -30,7 +30,7 @@ simlink? () {
 FILE=~/Pictures/DermoDeX
 
 if simlink? "${FILE}"; then
-  echo "[i] DermoDeX Directory in Pictures already exists"
+  echo " "
 else
   echo "[i] Creating DermoDex Symlink in Pictures"
   ln -s ~/.local/share/dermodex/wallpapers ~/Pictures/DermoDeX
@@ -155,10 +155,11 @@ else
     echo "[i] Cinnamon is Ready to be reloaded by pressing CTRL+Alt+Esc!"
 fi
 
-
-echo "\n\n[i] Cinnamon Version ${CINN_VERSION}"
-
-echo "\n[i] Install Complete"
+echo ""
+echo ""
+echo "[i] Cinnamon Version ${CINN_VERSION}"
+echo ""
+echo "[i] Install Complete"
 echo ""
 echo "Run dd-wake to wake DermoDeX before changing the wallpaper."
 echo "Run dd-hold to keep your accent colors static when changing the wallpaper"
@@ -167,19 +168,26 @@ echo
 echo "Check the Startup Applications to toggle DermoDeX Monitor on/off at startup"
 echo ""
 echo "Login screen can be 'blured' using the login_blur.png file in ~/.local/share/dermodex. To do this search for Login Window in the Control Panel."
+echo ""
 
 mkdir -p ~/.cache/dermodex/common-assets/sounds/
-cd ~/.cache/dermodex/common-assets/sounds/
-git clone --quiet https://github.com/coffeeking/linux-a11y-sound-theme.git
 
-echo ""
-echo "A directory in /usr/share/backgrounds needs to be writeable to allow for blured login backgrounds. A soft set of sounds from the linux-a11y sound theme project will also be dropped into the /usr/share/sounds directory. This too would need sudo to complete."
-echo ""
-echo ""
+if simlink? "${FILE}"; then
+    echo "[i] DermoDeX Background Location and Sound Location Already Set"
+else
+    echo ""
+    echo "[i] A directory in /usr/share/backgrounds needs to be writeable to allow for blured login backgrounds. A soft set of sounds from the linux-a11y sound theme project will also be dropped into the /usr/share/sounds directory. This too would need sudo to complete."
+    echo ""
+    echo ""
+    
+    cd ~/.cache/dermodex/common-assets/sounds/
+    git clone --quiet https://github.com/coffeeking/linux-a11y-sound-theme.git
+    
+    sudo mkdir -p /usr/share/backgrounds/dermodex
+    sudo chmod a+rw /usr/share/backgrounds/dermodex
+    sudo cp -fr ~/.cache/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/ /usr/share/sounds/
+fi
 
-sudo mkdir -p /usr/share/backgrounds/dermodex
-sudo chmod a+rw /usr/share/backgrounds/dermodex
-sudo cp -fr ~/.cache/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/ /usr/share/sounds/
 
 
 gsettings set org.cinnamon.sounds tile-file /usr/share/sounds/linux-a11y/stereo/window-switch.oga
