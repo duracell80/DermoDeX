@@ -1,0 +1,6 @@
+[Sound Theme]
+Name=11X
+Directories=stereo
+
+[stereo]
+OutputProfile=stereo
