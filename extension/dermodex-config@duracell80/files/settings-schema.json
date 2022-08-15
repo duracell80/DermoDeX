@@ -1,5 +1,25 @@
 {   
     
+    
+    "headsound" : {
+        "type" : "header",
+        "description" : "Sound Theme Seletcion: "
+    },
+    "soundtheme" : {
+        "type": "combobox",
+        "default" : "linux-a11y",
+        "description" : "Sound Theme",
+        "options" : {
+            "Linux-A11y" : "linux-a11y",
+            "Xeroxed 11" : "x11",
+            "MiUi" : "miui",
+            "Zorin" : "zorin"
+        },
+        "tooltip" : "Choose a sound theme based on a few selections installed by DermoDeX to /usr/share/sounds"
+    },
+    "div4" : {
+        "type" : "separator"
+    },
     "headcolor" : {
         "type" : "header",
         "description" : "Coloration Adjustments: "

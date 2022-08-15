@@ -173,7 +173,21 @@ echo ""
 
 #mkdir -p ~/.cache/dermodex/common-assets/sounds/
 
-
+    # SOUND - ZORIN
+    sudo cp -fr $CWD/sounds/zorin/ /usr/share/sounds/
+    sudo chmod -R a+rx /usr/share/sounds/zorin/
+    
+    # SOUND - X11
+    sudo cp -fr $CWD/sounds/x11/ /usr/share/sounds/
+    sudo chmod -R a+rx /usr/share/sounds/x11/
+    
+    # SOUND - MIUI
+    sudo cp -fr $CWD/sounds/miui/ /usr/share/sounds/
+    sudo chmod -R a+rx /usr/share/sounds/miui/
+    
+    # SOUND - LINUX-A11Y
+    sudo cp -fr $CWD/sounds/linux-a11y/ /usr/share/sounds/
+    sudo chmod -R a+rx /usr/share/sounds/linux-a11y/
 
 if simlink? "${FILE}"; then
     echo "[i] DermoDeX Background Location and Sound Location Already Set"
@@ -192,8 +206,6 @@ else
 
     
     # SOUND - LINUX-A11Y
-    sudo cp -fr $CWD/sounds/linux-a11y/ /usr/share/sounds/
-
     gsettings set org.cinnamon.sounds tile-file /usr/share/sounds/linux-a11y/stereo/window-switch.oga
     gsettings set org.cinnamon.sounds plug-file /usr/share/sounds/linux-a11y/stereo/message-sent.oga
     gsettings set org.cinnamon.sounds unplug-file /usr/share/sounds/linux-a11y/stereo/message.oga
@@ -208,8 +220,7 @@ else
     gsettings set org.cinnamon.sounds login-file /usr/share/sounds/linux-a11y/stereo/desktop-login.oga
     
     # SOUND - ZORIN
-    #sudo cp -fr $CWD/sounds/zorin/ /usr/share/sounds/
-    #sudo chmod -R a+rx /usr/share/sounds/zorin/
+    
 
     #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/zorin/stereo/button-pressed.ogg'
     #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/zorin/stereo/device-added.oga'
@@ -225,8 +236,7 @@ else
     #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/zorin/stereo/desktop-logout.ogg'
     
     # SOUND - x11
-    #sudo cp -fr $CWD/sounds/x11/ /usr/share/sounds/
-    #sudo chmod -R a+rx /usr/share/sounds/x11/
+    
 
     #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/x11/stereo/system-ready.ogg'
     #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/x11/stereo/device-added.ogg'
@@ -242,8 +252,7 @@ else
     #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/x11/stereo/complete.ogg'
     
     # SOUND - miui
-    #sudo cp -fr $CWD/sounds/miui/ /usr/share/sounds/
-    #sudo chmod -R a+rx /usr/share/sounds/miui/
+    
 
     #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/miui/stereo/dialog-information.ogg'
     #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/miui/stereo/device-added.ogg'
