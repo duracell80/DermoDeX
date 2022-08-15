@@ -241,10 +241,26 @@ else
     #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/x11/stereo/camera-shutter.ogg'
     #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/x11/stereo/complete.ogg'
     
+    # SOUND - miui
+    #sudo cp -fr $CWD/sounds/miui/ /usr/share/sounds/
+    #sudo chmod -R a+rx /usr/share/sounds/miui/
+
+    #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/miui/stereo/dialog-information.ogg'
+    #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/miui/stereo/device-added.ogg'
+    #gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/miui/stereo/device-removed.ogg'
+    #gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/miui/stereo/window-close.ogg'
+    #gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/miui/stereo/window-close.ogg'
+    #gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/miui/stereo/window-close.ogg'
+    #gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/miui/stereo/system-ready.ogg'
+    #gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/miui/stereo/window-close.ogg'
+    #gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/miui/stereo/count-down.ogg'
+    #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/miui/stereo/message-sent-instant.ogg'
+    #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/miui/stereo/window-close.ogg'
+    #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/miui/stereo/desktop-login.ogg'
+    
 fi
 
 gsettings set org.cinnamon.sounds notification-enabled "true"
-
 
 
 
