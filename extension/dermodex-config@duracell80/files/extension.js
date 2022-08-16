@@ -295,7 +295,7 @@ DermoDeXSettings.prototype = {
         var cfg_soundtheme = this.settings.getValue('soundtheme')
         let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'soundtheme', '-v' + cfg_soundtheme]);
         let error = process.spawn_sync_and_get_error();
-	},
+	}
     
 };
 

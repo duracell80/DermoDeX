@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
+BASE_FILE="$HOME/.local/share/dermodex"
 HOLD_FILE="$HOME/.local/share/dermodex/dermodex_hold"
 CONF_FILE="$HOME/.local/share/dermodex/config.ini"
 CINN_FILE="$HOME/.cache/dermodex/cinnamon.css"
 
 
+$BASE_FILE/watch_sounds.sh
 
 mkdir -p $HOME/.cache/dermodex/common-assets/icons/emblems
 mkdir -p $HOME/.cache/dermodex/common-assets/icons/places
@@ -19,6 +21,7 @@ else
     touch $HOME/.cache/dermodex/bg.png
     #touch $HOME/.cache/dermodex/colors_hex.txt
     #touch $HOME/.cache/dermodex/colors_rgb.txt
+    
 
     if ! type "xdotool" > /dev/null 2>&1; then
         notify-send --urgency=normal --category=im.recieved --icon=help-info-symbolic "DermoDeX Color Extractor Active" "DermoDeX reloads Cinnamon with accent colors from the wallpaper image! DermoDeX is active for 15 minutes after launching, press CTRL+Alt+Esc to reload Cinnamon"
@@ -396,17 +399,17 @@ else
                 elif [ "$soundtheme" == "miui" ]; then
                     # MiUi
                     gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/miui/stereo/dialog-information.ogg'
-                    gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/miui/stereo/device-added.ogg'
-                    gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/miui/stereo/device-removed.ogg'
+                    gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/miui/stereo/power-plug.ogg'
+                    gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/miui/stereo/power-unplug.ogg'
                     gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/miui/stereo/window-close.ogg'
                     gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/miui/stereo/window-close.ogg'
                     gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/miui/stereo/window-close.ogg'
-                    gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/miui/stereo/system-ready.ogg'
+                    gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/miui/stereo/device-removed.ogg'
                     gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/miui/stereo/window-close.ogg'
                     gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/miui/stereo/count-down.ogg'
                     gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/miui/stereo/message-sent-instant.ogg'
                     gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/miui/stereo/window-close.ogg'
-                    gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/miui/stereo/desktop-login.ogg'
+                    gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/miui/stereo/device-added.ogg'
                 
                 else
                     # Linux-A11y

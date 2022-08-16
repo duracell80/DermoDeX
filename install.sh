@@ -87,6 +87,7 @@ chmod u+rw ~/.local/share/dermodex/gtk-3.0
 
 cp -r $CWD/theme/gtk-3.0/colors.css ~/.local/share/dermodex/gtk-3.0
 cp -r $CWD/theme/gtk-3.20/dist ~/.local/share/dermodex/gtk-3.20
+cp ./scripts/watch_sounds.sh ~/.local/share/dermodex
 cp ./scripts/watch_wallpaper.sh ~/.local/share/dermodex
 cp ./scripts/cinnamon_dd.txt ~/.local/share/dermodex
 cp ./scripts/config_update.py ~/.local/share/dermodex
@@ -255,17 +256,17 @@ else
     
 
     #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/miui/stereo/dialog-information.ogg'
-    #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/miui/stereo/device-added.ogg'
-    #gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/miui/stereo/device-removed.ogg'
+    #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/miui/stereo/power-plug.ogg'
+    #gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/miui/stereo/power-unplug.ogg'
     #gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/miui/stereo/window-close.ogg'
     #gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/miui/stereo/window-close.ogg'
     #gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/miui/stereo/window-close.ogg'
-    #gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/miui/stereo/system-ready.ogg'
+    #gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/miui/stereo/device-removed.ogg'
     #gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/miui/stereo/window-close.ogg'
     #gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/miui/stereo/count-down.ogg'
     #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/miui/stereo/message-sent-instant.ogg'
     #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/miui/stereo/window-close.ogg'
-    #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/miui/stereo/desktop-login.ogg'
+    #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/miui/stereo/device-added.ogg'
     
 fi
 

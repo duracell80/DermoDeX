@@ -28,9 +28,14 @@ def main(argv):
     config = configparser.ConfigParser()
     config.read(CONF_FILE)
     config.set(cfg_section, cfg_key, cfg_value)
-
+    
     with open(CONF_FILE, 'w') as configfile:
         config.write(configfile)
+        
+        
+        
+    if "soundtheme" in cfg_key:
+        os.system(HOME + '/.local/share/dermodex/watch_sounds.sh');
     
     
     
