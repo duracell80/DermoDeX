@@ -12,7 +12,9 @@
         "options" : {
             "Linux-A11y" : "linux-a11y",
             "Xeroxed 11" : "x11",
+            "MacOS" : "macos",
             "MiUi" : "miui",
+            "Ubuntu" : "ubuntu-original",
             "Zorin" : "zorin"
         },
         "tooltip" : "Choose a sound theme based on a few selections installed by DermoDeX to /usr/share/sounds"

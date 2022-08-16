@@ -182,6 +182,10 @@ echo ""
     sudo cp -fr $CWD/sounds/x11/ /usr/share/sounds/
     sudo chmod -R a+rx /usr/share/sounds/x11/
     
+    # SOUND - MACOS
+    sudo cp -fr $CWD/sounds/macos/ /usr/share/sounds/
+    sudo chmod -R a+rx /usr/share/sounds/macos/
+    
     # SOUND - MIUI
     sudo cp -fr $CWD/sounds/miui/ /usr/share/sounds/
     sudo chmod -R a+rx /usr/share/sounds/miui/
@@ -189,6 +193,10 @@ echo ""
     # SOUND - LINUX-A11Y
     sudo cp -fr $CWD/sounds/linux-a11y/ /usr/share/sounds/
     sudo chmod -R a+rx /usr/share/sounds/linux-a11y/
+    
+    # SOUND - LINUX-UBUNTU
+    sudo cp -fr $CWD/sounds/linux-ubuntu/ /usr/share/sounds/
+    sudo chmod -R a+rx /usr/share/sounds/linux-ubuntu/
 
 if simlink? "${FILE}"; then
     echo "[i] DermoDeX Background Location and Sound Location Already Set"
@@ -220,9 +228,36 @@ else
     gsettings set org.cinnamon.sounds unmaximize-file /usr/share/sounds/linux-a11y/stereo/window-minimized.oga
     gsettings set org.cinnamon.sounds login-file /usr/share/sounds/linux-a11y/stereo/desktop-login.oga
     
-    # SOUND - ZORIN
     
-
+    # SOUND - LINUX-UBUNTU
+    #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/linux-ubuntu/question.ogg'
+    #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/linux-ubuntu/disconnect.ogg'
+    #gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/linux-ubuntu/connect.ogg'
+    #gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/linux-ubuntu/default.ogg'
+    #gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/linux-ubuntu/default.ogg'
+    #gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/linux-ubuntu/menu-popup.ogg'
+    #gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/linux-a11y/stereo/desktop-logout.oga'
+    #gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/linux-ubuntu/menu-popup.ogg'
+    #gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/linux-ubuntu/default.ogg'
+    #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/linux-ubuntu/new-mail.ogg'
+    #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/linux-ubuntu/menu-popup.ogg'
+    #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/linux-a11y/stereo/desktop-login.oga'
+    
+    # SOUND - MACOS
+    #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/macos/restore-up.ogg'
+    #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/macos/device-connect.ogg'
+    #gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/macos/device-disconnect.ogg'
+    #gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/macos/open.ogg'
+    #gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/macos/close.ogg'
+    #gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/macos/minimize.ogg'
+    #gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/macos/logoff.ogg'
+    #gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/macos/maximize.ogg'
+    #gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/macos/close.ogg'
+    #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/macos/contact-online.ogg'
+    #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/macos/restore-down.ogg'
+    #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/macos/logon.ogg'
+    
+    # SOUND - ZORIN
     #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/zorin/stereo/button-pressed.ogg'
     #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/zorin/stereo/device-added.oga'
     #gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/zorin/stereo/device-removed.oga'
