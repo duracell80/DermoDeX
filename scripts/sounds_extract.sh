@@ -17,6 +17,10 @@ while read -r LINE; do
 		SETLINE=$(echo -e "gsettings set org.cinnamon.sounds ${LINE} ${SOUND}\n")
 		echo $SETLINE >> $SUND
 	fi
+	if [[ $SOUND == *".oga"* ]]; then
+                SETLINE=$(echo -e "gsettings set org.cinnamon.sounds ${LINE} ${SOUND}\n")
+                echo $SETLINE >> $SUND
+        fi
 done < $FILE
 
 cat $SUND

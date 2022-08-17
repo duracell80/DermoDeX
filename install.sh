@@ -206,9 +206,13 @@ echo ""
     sudo cp -fr $CWD/sounds/enchanted/ /usr/share/sounds/
     sudo chmod -R a+rx /usr/share/sounds/enchanted/
     
-    # SOUND - Enchanted
+    # SOUND - Borealis
     sudo cp -fr $CWD/sounds/borealis/ /usr/share/sounds/
     sudo chmod -R a+rx /usr/share/sounds/borealis/
+    
+    # SOUND - HARMONY
+    sudo cp -fr $CWD/sounds/harmony/ /usr/share/sounds/
+    sudo chmod -R a+rx /usr/share/sounds/harmony/
     
     # SOUND - LINUX-A11Y
     sudo cp -fr $CWD/sounds/linux-a11y/ /usr/share/sounds/
@@ -389,6 +393,20 @@ else
     #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/borealis/notification.ogg'
     #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/enchanted/window-unmaximized.ogg'
     #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/borealis/startup1_2.ogg'
+    
+    # SOUND - harmony
+    #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/harmony/restore.ogg'
+    #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/harmony/network-added.ogg'
+    #gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/harmony/network-removed.ogg'
+    #gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/harmony/dialog-information.oga'
+    #gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/harmony/dialog-question.oga'
+    #gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/harmony/window-new.oga'
+    #gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/harmony/desktop-logout.oga'
+    #gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/harmony/window-new.oga'
+    #gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/harmony/window-new.oga'
+    #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/harmony/notification-brighter.ogg'
+    #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/harmony/window-new.oga'
+    #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/harmony/desktop-login.oga'
     
 fi
 
