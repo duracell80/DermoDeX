@@ -13,8 +13,10 @@ gsettings list-keys org.cinnamon.sounds > $FILE
 
 while read -r LINE; do
 	SOUND=$(gsettings get org.cinnamon.sounds "${LINE}")
-	if [[ $SOUND == *".oga"* ]]; then
+	if [[ $SOUND == *".ogg"* ]]; then
 		SETLINE=$(echo -e "gsettings set org.cinnamon.sounds ${LINE} ${SOUND}\n")
 		echo $SETLINE >> $SUND
 	fi
-done <$FILE
+done < $FILE
+
+cat $SUND

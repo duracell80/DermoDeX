@@ -12,8 +12,10 @@
         "options" : {
             "Linux-A11y" : "linux-a11y",
             "Xeroxed 11" : "x11",
-            "MacOS" : "macos",
+            "Enchanted" : "enchanted",
+            "MackOS" : "macos",
             "MiUi" : "miui",
+            "Deepin" : "deepin",
             "Ubuntu" : "ubuntu-original",
             "Zorin" : "zorin"
         },
