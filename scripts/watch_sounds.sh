@@ -22,7 +22,7 @@ echo "[i] Sound Theme: ${soundtheme}"
 
 # SET SOUNDS
 if [ "$soundtheme" == "zorin" ]; then
-    # Zorin
+    # SOUND - Zorin
     gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/zorin/stereo/button-pressed.ogg'
     gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/zorin/stereo/device-added.oga'
     gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/zorin/stereo/device-removed.oga'
@@ -37,7 +37,7 @@ if [ "$soundtheme" == "zorin" ]; then
     gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/zorin/stereo/desktop-logout.ogg'
 
 elif [ "$soundtheme" == "x11" ]; then
-    # Windows 11
+    # SOUND - Windows 11
     gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/x11/stereo/system-ready.ogg'
     gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/x11/stereo/device-added.ogg'
     gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/x11/stereo/device-removed.ogg'
@@ -52,7 +52,7 @@ elif [ "$soundtheme" == "x11" ]; then
     gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/x11/stereo/complete.ogg'
 
 elif [ "$soundtheme" == "macos" ]; then
-    # MACOS
+    # SOUND - MACOS
     gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/macos/restore-up.ogg'
     gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/macos/device-connect.ogg'
     gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/macos/device-disconnect.ogg'
@@ -67,7 +67,7 @@ elif [ "$soundtheme" == "macos" ]; then
     gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/macos/logon.ogg'
 
 elif [ "$soundtheme" == "miui" ]; then
-    # MiUi
+    # SOUND - MiUi
     gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/miui/stereo/dialog-information.ogg'
     gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/miui/stereo/power-plug.ogg'
     gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/miui/stereo/power-unplug.ogg'
@@ -82,6 +82,7 @@ elif [ "$soundtheme" == "miui" ]; then
     gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/miui/stereo/device-added.ogg'
 
 elif [ "$soundtheme" == "deepin" ]; then
+    # SOUND - deepin
     gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/deepin/dialog-error-critical.ogg'
     gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/deepin/device-added.ogg'
     gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/deepin/device-removed.ogg'
@@ -96,6 +97,7 @@ elif [ "$soundtheme" == "deepin" ]; then
     gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/deepin/desktop-login.ogg'
 
 elif [ "$soundtheme" == "enchanted" ]; then
+    # SOUND - enchanted
     gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/enchanted/bell.ogg'
     gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/enchanted/dialog-question.ogg'
     gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/enchanted/dialog-error.ogg'
@@ -108,6 +110,21 @@ elif [ "$soundtheme" == "enchanted" ]; then
     gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/enchanted/message-sent-instant.ogg'
     gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/enchanted/window-unmaximized.ogg'
     gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/enchanted/system-ready.ogg'
+
+elif [ "$soundtheme" == "borealis" ]; then
+    # SOUND - borealis
+    gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/enchanted/window-unmaximized.ogg'
+    gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/enchanted/dialog-question.ogg'
+    gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/enchanted/dialog-error.ogg'
+    gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/enchanted/button-released.ogg'
+    gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/enchanted/dialog-question.ogg'
+    gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/enchanted/window-minimized.ogg'
+    gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/borealis/exit1_2.ogg'
+    gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/enchanted/window-minimized.ogg'
+    gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/enchanted/notebook-tab-changed.ogg'
+    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/borealis/notification.ogg'
+    gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/enchanted/window-unmaximized.ogg'
+    gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/borealis/startup1_2.ogg'
 
 elif [ "$soundtheme" == "ubuntu-original" ]; then
     # SOUND - LINUX-UBUNTU
@@ -125,7 +142,7 @@ elif [ "$soundtheme" == "ubuntu-original" ]; then
     gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/linux-a11y/stereo/desktop-login.oga'
 
 else
-    # Linux-A11y
+    # SOUND - Linux-A11y
     gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/linux-a11y/stereo/window-switch.oga'
     gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/linux-a11y/stereo/message-sent.oga'
     gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/linux-a11y/stereo/message.oga'

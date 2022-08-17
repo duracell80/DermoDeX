@@ -198,6 +198,10 @@ echo ""
     sudo cp -fr $CWD/sounds/enchanted/ /usr/share/sounds/
     sudo chmod -R a+rx /usr/share/sounds/enchanted/
     
+    # SOUND - Enchanted
+    sudo cp -fr $CWD/sounds/borealis/ /usr/share/sounds/
+    sudo chmod -R a+rx /usr/share/sounds/borealis/
+    
     # SOUND - LINUX-A11Y
     sudo cp -fr $CWD/sounds/linux-a11y/ /usr/share/sounds/
     sudo chmod -R a+rx /usr/share/sounds/linux-a11y/
@@ -334,6 +338,20 @@ else
     #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/enchanted/message-sent-instant.ogg'
     #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/enchanted/window-unmaximized.ogg'
     #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/enchanted/system-ready.ogg'
+    
+    # SOUND - borealis
+    #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/enchanted/window-unmaximized.ogg'
+    #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/enchanted/dialog-question.ogg'
+    #gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/enchanted/dialog-error.ogg'
+    #gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/enchanted/button-released.ogg'
+    #gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/enchanted/dialog-question.ogg'
+    #gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/enchanted/window-minimized.ogg'
+    #gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/borealis/exit1_2.ogg'
+    #gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/enchanted/window-minimized.ogg'
+    #gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/enchanted/notebook-tab-changed.ogg'
+    #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/borealis/notification.ogg'
+    #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/enchanted/window-unmaximized.ogg'
+    #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/borealis/startup1_2.ogg'
     
 fi
 
