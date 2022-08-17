@@ -11,11 +11,14 @@
         "description" : "Sound Theme",
         "options" : {
             "Linux-A11y" : "linux-a11y",
+            "Xeroxed XP" : "xxp",
+            "Xeroxed 10" : "x10",
             "Xeroxed 11" : "x11",
             "Enchanted" : "enchanted",
             "Borealis" : "borealis",
-            "MackOS" : "macos",
-            "MiUi" : "miui",
+            "Mint 20": "mint20",
+            "MackSYS" : "macos",
+            "MiUI" : "miui",
             "Deepin" : "deepin",
             "Ubuntu" : "ubuntu-original",
             "Zorin" : "zorin"

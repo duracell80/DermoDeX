@@ -395,9 +395,24 @@ else
                     gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/macos/contact-online.ogg'
                     gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/macos/restore-down.ogg'
                     gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/macos/logon.ogg'
+                    
+                elif [ "$soundtheme" == "mint20" ]; then
+                    # SOUND - MINT20
+                    gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/LinuxMint/stereo/button-toggle-on.ogg'
+                    gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/LinuxMint/stereo/dialog-information.ogg'
+                    gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/LinuxMint/stereo/dialog-question.ogg'
+                    gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/LinuxMint/stereo/button-toggle-on.ogg'
+                    gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/LinuxMint/stereo/button-toggle-on.ogg'
+                    gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/LinuxMint/stereo/button-toggle-on.ogg'
+                    gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/LinuxMint/stereo/desktop-logout.ogg'
+                    gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/LinuxMint/stereo/button-toggle-on.ogg'
+                    gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/LinuxMint/stereo/window-slide.ogg'
+                    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/LinuxMint/stereo/system-ready.ogg'
+                    gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/LinuxMint/stereo/button-toggle-on.ogg'
+                    gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/LinuxMint/stereo/desktop-login.ogg'
                 
                 elif [ "$soundtheme" == "x11" ]; then
-                    # SOUND - Windows 11
+                    # SOUND - x11
                     gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/x11/stereo/system-ready.ogg'
                     gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/x11/stereo/device-added.ogg'
                     gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/x11/stereo/device-removed.ogg'
@@ -410,6 +425,36 @@ else
                     gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/x11/stereo/message-new-instant.ogg'
                     gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/x11/stereo/camera-shutter.ogg'
                     gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/x11/stereo/complete.ogg'
+                    
+                elif [ "$soundtheme" == "x10" ]; then
+                    # SOUND - x10
+                    gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/x10/feed-discovered.ogg'
+                    gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/x10/hardware-insert.ogg'
+                    gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/x10/hardware-remove.ogg'
+                    gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/x10/battery-low.ogg'
+                    gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/x10/print-complete.ogg'
+                    gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/x10/minimize.ogg'
+                    gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/x10/linux-shutdown.ogg'
+                    gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/x10/minimize.ogg'
+                    gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/x10/navigation -start.ogg'
+                    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/x10/notify-system-generic.ogg'
+                    gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/x10/minimize.ogg'
+                    gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/x10/logon.ogg'
+                    
+                elif [ "$soundtheme" == "xxp" ]; then
+                    # SOUND - xxp
+                    gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/xxp/ding.ogg'
+                    gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/xxp/logon.ogg'
+                    gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/xxp/logoff.ogg'
+                    gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/xxp/menu-command.ogg'
+                    gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/xxp/open-program.ogg'
+                    gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/xxp/maximize.ogg'
+                    gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/xxp/shutdown.ogg'
+                    gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/xxp/maximize.ogg'
+                    gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/xxp/menu-popup.ogg'
+                    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/xxp/notify.ogg'
+                    gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/xxp/restore.ogg'
+                    gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/xxp/start-linux.ogg'
                 
                 elif [ "$soundtheme" == "miui" ]; then
                     # SOUND - MiUi
@@ -517,7 +562,7 @@ else
                 # No Rush
                 sleep 7200
             else
-                # Rush Mixtape and Space Invaders
+                # Mixtape and Space Invaders
                 sleep 1
             fi
         fi

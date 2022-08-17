@@ -182,6 +182,14 @@ echo ""
     sudo cp -fr $CWD/sounds/x11/ /usr/share/sounds/
     sudo chmod -R a+rx /usr/share/sounds/x11/
     
+    # SOUND - X10
+    sudo cp -fr $CWD/sounds/x10/ /usr/share/sounds/
+    sudo chmod -R a+rx /usr/share/sounds/x10/
+    
+    # SOUND - XXP
+    sudo cp -fr $CWD/sounds/xxp/ /usr/share/sounds/
+    sudo chmod -R a+rx /usr/share/sounds/xxp/
+    
     # SOUND - MACOS
     sudo cp -fr $CWD/sounds/macos/ /usr/share/sounds/
     sudo chmod -R a+rx /usr/share/sounds/macos/
@@ -296,6 +304,35 @@ else
     #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/x11/stereo/message-new-instant.ogg'
     #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/x11/stereo/camera-shutter.ogg'
     #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/x11/stereo/complete.ogg'
+    
+    # SOUND - x10
+    #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/x10/feed-discovered.ogg'
+    #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/x10/hardware-insert.ogg'
+    #gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/x10/hardware-remove.ogg'
+    #gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/x10/battery-low.ogg'
+    #gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/x10/print-complete.ogg'
+    #gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/x10/minimize.ogg'
+    #gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/x10/linux-shutdown.ogg'
+    #gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/x10/minimize.ogg'
+    #gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/x10/navigation -start.ogg'
+    #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/x10/notify-system-generic.ogg'
+    #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/x10/minimize.ogg'
+    #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/x10/logon.ogg'
+    
+    # SOUND - xxp
+    #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/xxp/ding.ogg'
+    #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/xxp/logon.ogg'
+    #gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/xxp/logoff.ogg'
+    #gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/xxp/menu-command.ogg'
+    #gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/xxp/open-program.ogg'
+    #gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/xxp/maximize.ogg'
+    #gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/xxp/shutdown.ogg'
+    #gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/xxp/maximize.ogg'
+    #gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/xxp/menu-popup.ogg'
+    #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/xxp/notify.ogg'
+    #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/xxp/restore.ogg'
+    #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/xxp/start-linux.ogg'
+
     
     # SOUND - miui
     #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/miui/stereo/dialog-information.ogg'
