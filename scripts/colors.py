@@ -60,13 +60,14 @@ cfg_splitimage = str(cfg.get('dd_conf', 'splitimage', fallback=2))
 cfg_splitfocus = str(cfg.get('dd_conf', 'splitfocus', fallback="v2"))
 
 
-cin_panelstyle = str(cfg.get('cinnamon', 'panelstyle', fallback="modern"))
-cin_paneltrans = str(cfg.get('cinnamon', 'paneltrans', fallback=0.9))
-cin_panellocat = str(cfg.get('cinnamon', 'panellocat', fallback="bottom"))
+cin_panelstyle = str(cfg.get('cinnamon', 'panelstyle', fallback="flat"))
+cin_paneltrans = str(cfg.get('cinnamon', 'paneltrans', fallback=1.0))
+cin_panellocat = str(cfg.get('cinnamon', 'panellocat', fallback="top"))
 cin_panelblur = str(cfg.get('cinnamon', 'panelblur', fallback="true"))
 panel_blur = str(cfg.get('cinnamon', 'pblur', fallback="100"))
 login_blur = str(cfg.get('login', 'lblur', fallback="100"))
 
+cin_menutrans = str(cfg.get('cinnamon', 'menutrans', fallback=0.9))
 cin_menubckgrd = str(cfg.get('cinnamon', 'menubckgrd', fallback="true"))
 cin_menuavatar = str(cfg.get('cinnamon', 'menuavatar', fallback="true"))
 cin_flowcolors = str(cfg.get('cinnamon', 'flowcolors', fallback="false"))
@@ -236,6 +237,14 @@ def extract_color(input_image, resize, tolerance, zoom, crop_variant = "h_1"):
     imgpanel = adjust_brightness(imgpanel_pre, float("0.8"))
     imggauss.save(HOME + '/.local/share/dermodex/login_blur.jpg')
     imgpanel.save(HOME + '/.local/share/dermodex/panel_blur.jpg')
+    
+    # Convert Wallpaper to PNG and add transparency to panel blur
+    
+    imgpanel_rgba = imgpanel.copy()
+    imgpanel_rgba.putalpha(int((((float(cin_paneltrans) * 100)/100)*255)))
+    imgpanel_rgba.save(HOME + '/.local/share/dermodex/panel_blur.png')
+    
+    # Save Wallpaper Copies
     img.save(HOME + '/.local/share/dermodex/wallpaper.jpg')
     img.save(HOME + '/Pictures/wallpaper.jpg')
     

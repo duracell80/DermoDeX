@@ -1163,7 +1163,7 @@ margin-top :16px;}
  * Menu applet (menu@cinnamon.org/applet.js)
  * ===================================================================*/
 .menu-background {
-    background-color: rgba(64, 64, 64, 0.95);
+    --menu-background-color: rgba(64, 64, 64, 0.95);
     --menu-background-image : url(~/.local/share/dermodex/menu_blur.jpg);
     background-position: 0px 0px;
     background-repeat: no-repeat;

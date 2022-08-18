@@ -101,12 +101,12 @@
         "description": "Panel Transparancy",
         "min": 0,
         "max": 1,
-        "default": 0.9,
+        "default": 1.0,
         "step": 0.1
     },
     "panelstyle" : {
         "type": "combobox",
-        "default" : "modern",
+        "default" : "flat",
         "description" : "Panel Style ",
         "options" : {
             "Modern (Rounded UI)" : "modern",
@@ -116,7 +116,7 @@
     },
     "panellocat" : {
         "type": "combobox",
-        "default" : "bottom",
+        "default" : "top",
         "description" : "Panel Location ",
         "options" : {
             "Bottom" : "bottom",
@@ -135,6 +135,15 @@
         "type" : "checkbox",
         "description" : "Menu Blur",
         "default" : true
+    },
+    "menutrans" : {
+        "type": "scale",
+        "description": "Menu Transparancy",
+        "min": 0.5,
+        "max": 1,
+        "default": 0.9,
+        "step": 0.1,
+        "tooltip": "Use this when the menu blur is off, don't go too crazy below 0.5 things can get hard to read."
     },
     "pblur": {
         "type": "spinbutton",

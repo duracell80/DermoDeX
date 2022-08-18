@@ -55,6 +55,7 @@ DermoDeXSettings.prototype = {
         this.settings.bindProperty(Settings.BindingDirection.IN, 'panelstyle', 'panelstyle', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'paneltrans', 'paneltrans', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'panellocat', 'panellocat', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'menutrans', 'menutrans', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'menubckgrd', 'menubckgrd', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'menuavatar', 'menuavatar', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'flowcolors', 'flowcolors', null);
@@ -89,6 +90,7 @@ DermoDeXSettings.prototype = {
         this.settings.bind('paneltrans', 'paneltrans', this.on_paneltrans_changed);
         this.settings.bind('panellocat', 'panellocat', this.on_panellocat_changed);
         this.settings.bind('panelblur', 'panelblur', this.on_panelblur_changed);
+        this.settings.bind('menutrans', 'menutrans', this.on_menutrans_changed);
         this.settings.bind('menubckgrd', 'menubckgrd', this.on_menubckgrd_changed);
         this.settings.bind('menuavatar', 'menuavatar', this.on_menuavatar_changed);
         this.settings.bind('flowcolors', 'flowcolors', this.on_flowcolors_changed);
@@ -133,6 +135,12 @@ DermoDeXSettings.prototype = {
     on_paneltrans_changed: function () {
         var cfg_paneltrans = this.settings.getValue('paneltrans')
         let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'paneltrans', '-v' + cfg_paneltrans]);
+        let error = process.spawn_sync_and_get_error();
+	},
+    
+    on_menutrans_changed: function () {
+        var cfg_menutrans = this.settings.getValue('menutrans')
+        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'menutrans', '-v' + cfg_menutrans]);
         let error = process.spawn_sync_and_get_error();
 	},
     

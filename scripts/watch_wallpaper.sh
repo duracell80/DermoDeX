@@ -221,8 +221,13 @@ else
                 # BLUR COPY OF WALLPAPER ON START MENU OR NOT
                 if [ "$menubckgrd" = "true" ]; then
                     sed -i "s|--menu-background-image : url(~/.local/share/dermodex/menu_blur.jpg);|background-image : url($HOME/.local/share/dermodex/menu_blur.jpg);|g" $CINN_FILE
+                    
+                    sed -i "s|--menu-background-color: rgba(64, 64, 64, 0.95);|background-color: rgba(64, 64, 64, 0.95);|g" $CINN_FILE
                 else 
                     sed -i "s|--menu-background-image : url(~/.local/share/dermodex/menu_blur.jpg);|background-image : url();|g" $CINN_FILE
+                    
+                    sed -i "s|--menu-background-color: rgba(64, 64, 64, 0.95);|background-color: rgba(64, 64, 64, ${menutrans});|g" $CINN_FILE
+
                 fi
                 
                 
@@ -248,7 +253,7 @@ else
                 
                 # PANEL BLUR NOT INNER PANEL
                 if [ "$panelblur" = "true" ]; then
-                    sed -i "s|background-image : url(/usr/share/backgrounds/dermodex/panel_blur.jpg);|background-image : url($HOME/.local/share/dermodex/panel_blur.jpg);|g" $CINN_FILE
+                    sed -i "s|background-image : url(/usr/share/backgrounds/dermodex/panel_blur.jpg);|background-image : url($HOME/.local/share/dermodex/panel_blur.png);|g" $CINN_FILE
                     sed -i "s|--panel-blur-background-color : rgba(64, 64, 64, 0.6);|background-color : rgba(64, 64, 64, 0.6);|g" $CINN_FILE
                     
                     if [[ "$panellocat" == "top" || "$panellocat" == "left" || "$panellocat" == "right" ]]; then
