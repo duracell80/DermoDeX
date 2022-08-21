@@ -1,5 +1,5 @@
-# DermoDeX - Mint 20
-Linux Mint Cinnamon Theme Engine
+# DermoDeX - Linux Mint Desktop Experience
+A Cinnamon Theme Engine built on Linux Mint 20
 
 DermoDeX is a dynamic cinnamon theme that responds to the currently selected background wallpaper. It uses a function based python script to determin not the main color in a wallpaper but a color that may be considered an accent. For example in an image of the milkyway with brown mountains in the forground, DermoDeX will attempt to extract a color that would be complimentary to the image.
 
@@ -33,7 +33,7 @@ Run the install.sh script which runs most things as the current user, a few need
 ## How Does it Work?
 It uses a series of Python functions to analyse a section of the wallpaper. By default this is the right half of the image since a lot of desktop wallpapers have a focus area in that part of the screen. A pallete and color wheel will appear in the notifcations area and shortly after cinnamon will be refreshed.
 
-Directly after login DermoDex will remain active for about 15 minutes. If it falls asleep you can right click on the desktop and refresh DermoDex after changing the wallpaper.
+Directly after login DermoDeX will remain active for about 15 minutes. If it falls asleep you can right click on the desktop and refresh DermoDeX after changing the wallpaper.
 
 ## Helpful Shortcuts
 Press Alt+F2 to bring up the run box
