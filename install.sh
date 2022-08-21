@@ -3,16 +3,16 @@
 
 CINN_VERSION=$(cinnamon --version)
 
-#sudo apt install python3-pip
+sudo apt install python3-pip
 
-#pip3 install easydev
-#pip3 install colormap
-#pip3 install pandas
-#pip3 install numpy
-#pip3 install colorgram.py
-#pip3 install extcolors
-#pip3 install matplotlib
-#pip3 install configparser
+pip3 install easydev
+pip3 install colormap
+pip3 install pandas
+pip3 install numpy
+pip3 install colorgram.py
+pip3 install extcolors
+pip3 install matplotlib
+pip3 install configparser
 
 dconf dump /org/cinnamon/ > ~/cinnamon_desktop.backup
 
