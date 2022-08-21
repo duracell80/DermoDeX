@@ -5,6 +5,8 @@ DermoDeX is a dynamic cinnamon theme that responds to the currently selected bac
 
 This accent color is then passed to the cinnamon.css and the gtk stylesheets too. You can override the colors also!
 
+## One Theme, Infinite Colors
+
 ![Winterball](https://raw.githubusercontent.com/duracell80/DermoDeX/master/deps/001.png)
 The Una Winterball wallpaper
 
@@ -27,7 +29,7 @@ It uses a series of Python functions to analyse a section of the wallpaper. By d
 
 Directly after login DermoDex will remain active for about 15 minutes. If it falls asleep you can right click on the desktop and refresh DermoDex after changing the wallpaper.
 
-## Helpful shortcuts
+## Helpful Shortcuts
 Press Alt+F2 to bring up the run box
 - dd_wake (Forces a rebuild of the theme)
 - dd_hold (Once you like the result, holding it means that changing the wallpaper again won't change the theme colors)
@@ -46,7 +48,7 @@ Press Alt+F2 to bring up the run box
 - extcolors
 - colorgram
 
-## Credits for image processing
+## Credits for Image Processing
 https://towardsdatascience.com/image-color-extraction-with-python-in-4-steps-8d9370d9216e
 https://www.alanzucconi.com/2015/09/30/colour-sorting/
 
