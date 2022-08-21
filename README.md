@@ -20,9 +20,13 @@ The Una Lush wallpaper
 - Desktop shortcuts
 - Panel configuration
 - Panel and menu faux Blur
+- Login Screen Blur
 - Complimentary icon install (Color Icons - White)
 - Folder icon remix, replaces places icons with Breeze
 - Several sound themes
+
+## How to Install?
+Run the install.sh script which runs most things as the current user, a few need sudo for example to transfer sounds to /usr/share/sounds and make /usr/share/backgrounds writable for the login image blur.
 
 ## How Does it Work?
 It uses a series of Python functions to analyse a section of the wallpaper. By default this is the right half of the image since a lot of desktop wallpapers have a focus area in that part of the screen. A pallete and color wheel will appear in the notifcations area and shortly after cinnamon will be refreshed.
