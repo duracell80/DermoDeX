@@ -1167,7 +1167,7 @@ margin-top :16px;}
     --menu-background-image : url(~/.local/share/dermodex/menu_blur.jpg);
     background-position: 0px 0px;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 1000px 1000px;
     border: 1px solid #202020;
     border-left-width: 32px;
 }
