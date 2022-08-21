@@ -5,6 +5,12 @@ DermoDeX is a dynamic cinnamon theme that responds to the currently selected bac
 
 This accent color is then passed to the cinnamon.css and the gtk stylesheets too. You can override the colors also!
 
+![Winterball](https://raw.githubusercontent.com/duracell80/DermoDeX/master/deps/001.png)
+The Una Winterball wallpaper
+
+![Lush](https://raw.githubusercontent.com/duracell80/DermoDeX/master/deps/002.png)
+The Una Lush wallpaper
+
 ## Main Features:
 - Cinnamon Extention to tweak the configuration settings
 - Accent color extraction from wallpaper
@@ -39,6 +45,15 @@ Press Alt+F2 to bring up the run box
 - colormap
 - extcolors
 - colorgram
+
+## Credits for image processing
+https://towardsdatascience.com/image-color-extraction-with-python-in-4-steps-8d9370d9216e
+https://www.alanzucconi.com/2015/09/30/colour-sorting/
+
+- medium@borih.k
+- medium@programming-fever
+- stackoverflow@Aidan
+
 
 ## Caution
 The image processing with python may produce a stylesheet that can crash Cinnamon, when using the brightness and contrast sliders. For example using a very bright background or a background with not a lot of color variation may result in a narrow color selection. The routines do detect #ffffff which can be problematic for things like menu hover backgrounds. There are also routines to detect if the text color needs inverting at certain shades.
