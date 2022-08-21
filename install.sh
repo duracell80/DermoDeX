@@ -19,6 +19,7 @@ dconf dump /org/cinnamon/ > ~/cinnamon_desktop.backup
 dd_sleep
 CWD=$(pwd)
 
+sed -i "s|file:///~/|file:///$HOME/|g" $CWD/scripts/cinnamon_dd.txt
 mkdir -p ~/.local/share/dermodex
 mkdir -p ~/.themes/DermoDeX
 
@@ -413,6 +414,7 @@ fi
 gsettings set org.cinnamon.sounds notification-enabled "true"
 
 sed -i "s|~/|$HOME/|g" $HOME/.local/share/cinnamon/extensions/dermodex-config@duracell80/extension.js
+
 
 
 #rm -rf ~/.cache/dermodex/common-assets/sounds/linux-a11y-sound-theme

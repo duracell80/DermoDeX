@@ -82,7 +82,7 @@ exec='gnome-terminal'
 [desktop/background]
 color-shading-type='vertical'
 picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/linuxmint-una/aburden_frozen_winter_ball.jpg'
+picture-uri='file:////home/lee/Pictures/DermoDeX/pexels-mengliu-di-3064258.jpg'
 primary-color='#4B5F78'
 secondary-color='#15161E'
 
@@ -101,7 +101,7 @@ gtk-theme-backup='DermoDeX'
 icon-theme='White-Icons'
 icon-theme-backup='White-Icons'
 scaling-factor=uint32 1
-text-scaling-factor=0.90000000000000002
+text-scaling-factor=1
 toolkit-accessibility=true
 
 [desktop/media-handling]
@@ -130,7 +130,7 @@ idle-delay=uint32 300
 [desktop/sound]
 event-sounds=false
 volume-sound-enabled=true
-volume-sound-file='/usr/share/sounds/linux-a11y/stereo/bell.oga'
+volume-sound-file='/usr/share/sounds/enchanted/bell.ogg'
 
 [desktop/wm/preferences]
 min-window-opacity=30
