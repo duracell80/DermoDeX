@@ -31,7 +31,7 @@ The Una Lush wallpaper
 Run the install.sh script which runs most things as the current user, a few need sudo for example to transfer sounds to /usr/share/sounds and make /usr/share/backgrounds writable for the login image blur.
 
 ## How Does it Work?
-DermoDex uses files in the ~/.local/share/dermodex directory to completly overrites the stylesheets and assets in the ~/.themes/DermoDeX directory when a change is detected. Is it Sass? Nope it's more like sed on steroids. It uses a series of Python functions to analyse a section of the wallpaper. By default this is the right half of the image since a lot of desktop wallpapers have a focus area in that part of the screen. A pallete and color wheel will appear in the notifcations area and shortly after cinnamon will be refreshed.
+DermoDex uses files in the ~/.local/share/dermodex directory to overwrite the stylesheets and assets in the ~/.themes/DermoDeX directory when a change is detected. The main scripts are more like sed on steroids using a find and replace approach tio rebuildig a theme file. By default DermoDeX scans the right half of a wallpaper since a lot of desktop wallpapers have a focus area in that part of the screen. A pallete and color wheel will appear in the notifcations area and shortly after cinnamon will be refreshed.
 
 Directly after login DermoDeX will remain active for about 15 minutes. If it falls asleep you can right click on the desktop and refresh DermoDeX after changing the wallpaper.
 
@@ -68,7 +68,7 @@ Press Alt+F2 to bring up the run box
 The image processing with python may produce a stylesheet that can crash Cinnamon, when using the brightness and contrast sliders. For example using a very bright background or a background with not a lot of color variation may result in a narrow color selection. The routines do detect #ffffff which can be problematic for things like menu hover backgrounds. There are also routines to detect if the text color needs inverting at certain shades.
 
 ## Commit to Cinnamon Spices?
-If asked, yeah I would love to have DermoDeX as Cinnamon Extension. For now it's a playground. It looks like they favour stability which is understandable. These scripts can make a lot of significant changes to the environment. I wouldn't be confident in submitting DermoDeX to Spices though it offers a lot of inspiration for advanced themeing in Cinnamon.
+If asked, yeah I would love to have DermoDeX as Cinnamon Extension. For now it's a playground. It looks like they favour stability which is understandable. These scripts can make a lot of significant changes to the environment. The project offers a lot of inspiration for advanced themeing in Cinnamon.
 
 ## Mint 21?
-Working on it, I haven't upgraded yet
+Working on it, I haven't upgraded yet, dropping metacity looks nice.
