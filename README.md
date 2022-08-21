@@ -68,7 +68,7 @@ Press Alt+F2 to bring up the run box
 The image processing with python may produce a stylesheet that can crash Cinnamon, when using the brightness and contrast sliders. For example using a very bright background or a background with not a lot of color variation may result in a narrow color selection. The routines do detect #ffffff which can be problematic for things like menu hover backgrounds. There are also routines to detect if the text color needs inverting at certain shades.
 
 ## Commit to Cinnamon Spices?
-Nope, it looks like they favour stability which is understandable. These scripts can make a lot of significant changes to the environment. I wouldn't be confident in submitting DermoDeX to Spices though it offers a lot of inspiration for advanced themeing in Cinnamon.
+If asked, yeah I would love to have DermoDeX as Cinnamon Extension. For now it's a playground. It looks like they favour stability which is understandable. These scripts can make a lot of significant changes to the environment. I wouldn't be confident in submitting DermoDeX to Spices though it offers a lot of inspiration for advanced themeing in Cinnamon.
 
 ## Mint 21?
 Working on it, I haven't upgraded yet
