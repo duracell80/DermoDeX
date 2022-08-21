@@ -65,8 +65,8 @@ mousekeys-max-speed=10
 slowkeys-delay=300
 togglekeys-enable-beep=true
 togglekeys-enable-osd=true
-togglekeys-sound-off='/usr/share/sounds/linux-a11y/stereo/scroll-left.oga'
-togglekeys-sound-on='/usr/share/sounds/linux-a11y/stereo/scroll-right.oga'
+togglekeys-sound-off='/usr/share/sounds/borealis/restore_down.ogg'
+togglekeys-sound-on='/usr/share/sounds/borealis/restore_up.ogg'
 
 [desktop/a11y/mouse]
 dwell-threshold=10
@@ -130,7 +130,7 @@ idle-delay=uint32 300
 [desktop/sound]
 event-sounds=false
 volume-sound-enabled=true
-volume-sound-file='/usr/share/sounds/enchanted/bell.ogg'
+volume-sound-file='/usr/share/sounds/borealis/bell.ogg'
 
 [desktop/wm/preferences]
 min-window-opacity=30
@@ -179,22 +179,22 @@ menus-have-icons=false
 rgba-order='vbgr'
 
 [sounds]
-close-file='/usr/share/sounds/linux-a11y/stereo/tooltip-popup.oga'
-login-file='/usr/share/sounds/linux-a11y/stereo/desktop-login.oga'
-logout-file='/usr/share/sounds/linux-a11y/stereo/desktop-logout.oga'
+close-file='/usr/share/sounds/enchanted/button-released.ogg'
+login-file='/usr/share/sounds/borealis/startup1_2.ogg'
+logout-file='/usr/share/sounds/borealis/exit1_2.ogg'
 map-enabled=false
-map-file='/usr/share/sounds/linux-a11y/stereo/tooltip-popup.oga'
-maximize-file='/usr/share/sounds/linux-a11y/stereo/window-minimized.oga'
-minimize-file='/usr/share/sounds/linux-a11y/stereo/window-minimized.oga'
+map-file='/usr/share/sounds/enchanted/dialog-question.ogg'
+maximize-file='/usr/share/sounds/enchanted/window-minimized.ogg'
+minimize-file='/usr/share/sounds/enchanted/window-minimized.ogg'
 notification-enabled=true
-notification-file='/usr/share/sounds/linux-a11y/stereo/window-attention.oga'
-plug-file='/usr/share/sounds/linux-a11y/stereo/message-sent.oga'
+notification-file='/usr/share/sounds/borealis/notification.ogg'
+plug-file='/usr/share/sounds/enchanted/dialog-question.ogg'
 switch-enabled=false
-switch-file='/usr/share/sounds/linux-a11y/stereo/menu-popup.oga'
+switch-file='/usr/share/sounds/enchanted/notebook-tab-changed.ogg'
 tile-enabled=false
-tile-file='/usr/share/sounds/linux-a11y/stereo/window-switch.oga'
-unmaximize-file='/usr/share/sounds/linux-a11y/stereo/window-minimized.oga'
-unplug-file='/usr/share/sounds/linux-a11y/stereo/message.oga'
+tile-file='/usr/share/sounds/enchanted/window-unmaximized.ogg'
+unmaximize-file='/usr/share/sounds/enchanted/window-unmaximized.ogg'
+unplug-file='/usr/share/sounds/enchanted/dialog-error.ogg'
 
 [theme]
 name='DermoDeX'
