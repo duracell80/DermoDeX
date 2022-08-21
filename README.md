@@ -15,6 +15,7 @@ The Una Lush wallpaper
 
 ## Main Features:
 - Cinnamon Extention to tweak the configuration settings
+- Privacy focused install script changes some cinnamon settings for enhanced privacy
 - Accent color extraction from wallpaper
 - Color picker overrides
 - Desktop shortcuts
