@@ -157,6 +157,12 @@ def adjust_brightness(img, brightness_factor):
 def adjust_color_lightness(r, g, b, factor):
     h, l, s = rgb2hls(r / 255.0, g / 255.0, b / 255.0)
     l = max(min(l * factor, 1.0), 0.0)
+    if h > 1:
+        h = 1
+    if l > 1:
+        l = 1
+    if s > 1:
+        s = 1
     r, g, b = hls2rgb(h, l, s)
     return rgb2hex(int(r * 255), int(g * 255), int(b * 255))
 
