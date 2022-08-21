@@ -412,7 +412,7 @@ fi
 
 gsettings set org.cinnamon.sounds notification-enabled "true"
 
-
+sed -i "s|~/|$HOME/|g" $HOME/.local/share/cinnamon/extensions/dermodex-config@duracell80/extension.js
 
 
 #rm -rf ~/.cache/dermodex/common-assets/sounds/linux-a11y-sound-theme

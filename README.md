@@ -30,6 +30,12 @@ The Una Lush wallpaper
 ## How to Install?
 Run the install.sh script which runs most things as the current user, a few need sudo for example to transfer sounds to /usr/share/sounds and make /usr/share/backgrounds writable for the login image blur.
 
+- Use the start menu or open the system settings panel and search for "extensions"
+- Select the DermoDex Configuration item
+- Click the plus icon to enable
+- Click the settings icon or right click the desktop to open the configuration
+- After making changes right click the desktop and select "DermoDeX - Refresh"
+
 ## How Does it Work?
 DermoDex uses files in the ~/.local/share/dermodex directory to overwrite the stylesheets and assets in the ~/.themes/DermoDeX directory when a change is detected. The main scripts are more like sed on steroids using a find and replace approach tio rebuildig a theme file. By default DermoDeX scans the right half of a wallpaper since a lot of desktop wallpapers have a focus area in that part of the screen. A pallete and color wheel will appear in the notifcations area and shortly after cinnamon will be refreshed.
 

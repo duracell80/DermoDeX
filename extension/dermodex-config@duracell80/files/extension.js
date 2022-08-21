@@ -110,109 +110,109 @@ DermoDeXSettings.prototype = {
     
     on_vibrancy_changed: function () {
         var cfg_vibrancy = this.settings.getValue('vibrancy')
-        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'dd_conf', '-k', 'vibrancy', '-v' + cfg_vibrancy]);
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'dd_conf', '-k', 'vibrancy', '-v' + cfg_vibrancy]);
         let error = process.spawn_sync_and_get_error();
 	},
     
     on_saturation_changed: function () {
         var cfg_saturation = this.settings.getValue('saturation')
-        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'dd_conf', '-k', 'saturation', '-v' + cfg_saturation]);
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'dd_conf', '-k', 'saturation', '-v' + cfg_saturation]);
         let error = process.spawn_sync_and_get_error();
 	},
     
     on_brightness_changed: function () {
         var cfg_brightness = this.settings.getValue('brightness')
-        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'dd_conf', '-k', 'brightness', '-v' + cfg_brightness]);
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'dd_conf', '-k', 'brightness', '-v' + cfg_brightness]);
         let error = process.spawn_sync_and_get_error();
 	},
     
     on_contrast_changed: function () {
         var cfg_contrast = this.settings.getValue('contrast')
-        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'dd_conf', '-k', 'contrast', '-v' + cfg_contrast]);
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'dd_conf', '-k', 'contrast', '-v' + cfg_contrast]);
         let error = process.spawn_sync_and_get_error();
 	},
     
     on_paneltrans_changed: function () {
         var cfg_paneltrans = this.settings.getValue('paneltrans')
-        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'paneltrans', '-v' + cfg_paneltrans]);
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'paneltrans', '-v' + cfg_paneltrans]);
         let error = process.spawn_sync_and_get_error();
 	},
     
     on_menutrans_changed: function () {
         var cfg_menutrans = this.settings.getValue('menutrans')
-        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'menutrans', '-v' + cfg_menutrans]);
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'menutrans', '-v' + cfg_menutrans]);
         let error = process.spawn_sync_and_get_error();
 	},
     
     on_panelblur_changed: function () {
         var cfg_panelblur = this.settings.getValue('panelblur')
-        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'panelblur', '-v' + cfg_panelblur]);
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'panelblur', '-v' + cfg_panelblur]);
         let error = process.spawn_sync_and_get_error();
 	},
     
     on_menubckgrd_changed: function () {
         var cfg_menubckgrd = this.settings.getValue('menubckgrd')
-        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'menubckgrd', '-v' + cfg_menubckgrd]);
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'menubckgrd', '-v' + cfg_menubckgrd]);
         let error = process.spawn_sync_and_get_error();
 	},
     
     on_flowcolors_changed: function () {
         var cfg_flowcolors = this.settings.getValue('flowcolors')
-        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'flowcolors', '-v' + cfg_flowcolors]);
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'flowcolors', '-v' + cfg_flowcolors]);
         let error = process.spawn_sync_and_get_error();
 	},
     
     on_flowsidebar_changed: function () {
         var cfg_flowsidebar = this.settings.getValue('flowsidebar')
-        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'flowsidebar', '-v' + cfg_flowsidebar]);
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'flowsidebar', '-v' + cfg_flowsidebar]);
         let error = process.spawn_sync_and_get_error();
 	},
     
     on_menuavatar_changed: function () {
         var cfg_menuavatar = this.settings.getValue('menuavatar')
-        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'menuavatar', '-v' + cfg_menuavatar]);
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'menuavatar', '-v' + cfg_menuavatar]);
         let error = process.spawn_sync_and_get_error();
 	},
     
     on_mainshade_changed: function () {
         var cfg_mainshade = this.settings.getValue('mainshade')
-        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'dd_conf', '-k', 'mainshade', '-v' + cfg_mainshade]);
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'dd_conf', '-k', 'mainshade', '-v' + cfg_mainshade]);
         let error = process.spawn_sync_and_get_error();
 	},
     
     on_colorcollect_changed: function () {
         var cfg_colorcollect = this.settings.getValue('colorcollect')
-        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'dd_conf', '-k', 'colorcollect', '-v' + cfg_colorcollect]);
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'dd_conf', '-k', 'colorcollect', '-v' + cfg_colorcollect]);
         let error = process.spawn_sync_and_get_error();
 	},
     
     on_splitimage_changed: function () {
         var cfg_splitimage = this.settings.getValue('splitimage')
-        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'dd_conf', '-k', 'splitimage', '-v' + cfg_splitimage]);
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'dd_conf', '-k', 'splitimage', '-v' + cfg_splitimage]);
         let error = process.spawn_sync_and_get_error();
 	},
     
     on_panelstyle_changed: function () {
         var cfg_panelstyle = this.settings.getValue('panelstyle')
-        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'panelstyle', '-v' + cfg_panelstyle]);
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'panelstyle', '-v' + cfg_panelstyle]);
         let error = process.spawn_sync_and_get_error();
 	},
     
     on_panellocat_changed: function () {
         var cfg_panellocat = this.settings.getValue('panellocat')
-        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'panellocat', '-v' + cfg_panellocat]);
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'panellocat', '-v' + cfg_panellocat]);
         let error = process.spawn_sync_and_get_error();
 	},
     
     on_pblur_changed: function () {
         var cfg_pblur = this.settings.getValue('pblur')
-        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'pblur', '-v' + cfg_pblur]);
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'pblur', '-v' + cfg_pblur]);
         let error = process.spawn_sync_and_get_error();
 	},
     
     on_lblur_changed: function () {
         var cfg_lblur = this.settings.getValue('lblur')
-        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'login', '-k', 'lblur', '-v' + cfg_lblur]);
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'login', '-k', 'lblur', '-v' + cfg_lblur]);
         let error = process.spawn_sync_and_get_error();
 	},
     
@@ -227,13 +227,13 @@ DermoDeXSettings.prototype = {
         
         
         if(cfg_coloroverrides == false) {
-            let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override0', '-v' + 'none']);
+            let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override0', '-v' + 'none']);
             let error = process.spawn_sync_and_get_error();
             
-            process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override1', '-v' + 'none']);
+            process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override1', '-v' + 'none']);
             error = process.spawn_sync_and_get_error();
             
-            process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override2', '-v' + 'none']);
+            process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override2', '-v' + 'none']);
             error = process.spawn_sync_and_get_error();
             
             this.settings.setValue('override0', 'aN');
@@ -261,7 +261,7 @@ DermoDeXSettings.prototype = {
         const rgba = cfg_override0.replace(/^rgba?\(|\s+|\)$/g, '').split(',');
         const hex = `${((1 << 24) + (parseInt(rgba[0]) << 16) + (parseInt(rgba[1]) << 8) + parseInt(rgba[2])).toString(16).slice(1)}`;
 
-        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override0', '-v' + hex]);
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override0', '-v' + hex]);
         let error = process.spawn_sync_and_get_error();
 	},
     
@@ -272,7 +272,7 @@ DermoDeXSettings.prototype = {
         const hex = `${((1 << 24) + (parseInt(rgba[0]) << 16) + (parseInt(rgba[1]) << 8) + parseInt(rgba[2])).toString(16).slice(1)}`;
 
         
-        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override1', '-v' + hex]);
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override1', '-v' + hex]);
         let error = process.spawn_sync_and_get_error();
 	},
     
@@ -282,7 +282,7 @@ DermoDeXSettings.prototype = {
         const rgba = cfg_override2.replace(/^rgba?\(|\s+|\)$/g, '').split(',');
         const hex = `${((1 << 24) + (parseInt(rgba[0]) << 16) + (parseInt(rgba[1]) << 8) + parseInt(rgba[2])).toString(16).slice(1)}`;
         
-        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override2', '-v' + hex]);
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override2', '-v' + hex]);
         let error = process.spawn_sync_and_get_error();
 	},
     
@@ -296,12 +296,12 @@ DermoDeXSettings.prototype = {
             cfg_splitfocus = cfg_splitimage;
         }
         
-        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'dd_conf', '-k', 'splitfocus', '-v' + cfg_splitdirection + cfg_splitfocus]);
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'dd_conf', '-k', 'splitfocus', '-v' + cfg_splitdirection + cfg_splitfocus]);
         let error = process.spawn_sync_and_get_error();
 	},
     on_soundtheme_changed: function () {
         var cfg_soundtheme = this.settings.getValue('soundtheme')
-        let process = new ShellUtils.ShellOutputProcess(['/home/lee/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'soundtheme', '-v' + cfg_soundtheme]);
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'soundtheme', '-v' + cfg_soundtheme]);
         let error = process.spawn_sync_and_get_error();
 	}
     
