@@ -19,9 +19,10 @@ The Una Lush wallpaper
 - Accent color extraction from wallpaper
 - Color picker overrides
 - Desktop shortcuts
+- Enhanced productivity with hot corners, expo in center and workspace switcher
 - Panel configuration
-- Panel and menu faux Blur
-- Login Screen Blur
+- Panel and menu faux blur
+- Login screen blur
 - Complimentary icon install (Color Icons - White)
 - Folder icon remix, replaces places icons with Breeze
 - Several sound themes
