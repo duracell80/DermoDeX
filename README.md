@@ -3,7 +3,7 @@ A Cinnamon Theme Engine built on Linux Mint 20
 
 DermoDeX is a dynamic cinnamon theme that responds to the currently selected background wallpaper. It uses a function based python script to determine not quite the main color in a wallpaper but a color that may be considered an accent. For example in an image of the milkyway with brown mountains in the forground, DermoDeX will attempt to extract a color that would be complimentary to the image.
 
-This accent color is then passed to the cinnamon.css using sed on a cinnamon_bas.css file and the gtk stylesheets too. You can override the colors also!
+This accent color is then passed to the cinnamon.css using sed on a cinnamon_base.css file and the gtk stylesheets too. You can override the colors also!
 
 ## One Theme, Infinite Colors
 
@@ -31,7 +31,7 @@ The Una Lush wallpaper
 Run the install.sh script which runs most things as the current user, a few need sudo for example to transfer sounds to /usr/share/sounds and make /usr/share/backgrounds writable for the login image blur.
 
 ## How Does it Work?
-It uses a series of Python functions to analyse a section of the wallpaper. By default this is the right half of the image since a lot of desktop wallpapers have a focus area in that part of the screen. A pallete and color wheel will appear in the notifcations area and shortly after cinnamon will be refreshed.
+DermoDex uses files in the ~/.local/share/dermodex directory to completly overrites the stylesheets and assets in the ~/.themes/DermoDeX directory when a change is detected. Is it Sass? Nope it's more like sed on steroids. It uses a series of Python functions to analyse a section of the wallpaper. By default this is the right half of the image since a lot of desktop wallpapers have a focus area in that part of the screen. A pallete and color wheel will appear in the notifcations area and shortly after cinnamon will be refreshed.
 
 Directly after login DermoDeX will remain active for about 15 minutes. If it falls asleep you can right click on the desktop and refresh DermoDeX after changing the wallpaper.
 
