@@ -52,9 +52,10 @@ Press Alt+F2 to bring up the run box
 https://towardsdatascience.com/image-color-extraction-with-python-in-4-steps-8d9370d9216e
 https://www.alanzucconi.com/2015/09/30/colour-sorting/
 
-- medium@borih.k
-- medium@programming-fever
-- stackoverflow@Aidan
+- medium:borih.k
+- medium:programming-fever
+- stackoverflow:Aidan
+- Many others on Stackoverflow and various other help forums
 
 
 ## Caution
