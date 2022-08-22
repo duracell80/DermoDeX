@@ -22,17 +22,17 @@
      inkscape:pageopacity="0"
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
-     showgrid="false"
+     showgrid="true"
      units="px"
      width="120px"
-     inkscape:zoom="16"
-     inkscape:cx="-5.125"
-     inkscape:cy="16.53125"
-     inkscape:window-width="1476"
-     inkscape:window-height="881"
-     inkscape:window-x="444"
-     inkscape:window-y="165"
-     inkscape:window-maximized="0"
+     inkscape:zoom="32"
+     inkscape:cx="135.3125"
+     inkscape:cy="18"
+     inkscape:window-width="1920"
+     inkscape:window-height="1012"
+     inkscape:window-x="0"
+     inkscape:window-y="34"
+     inkscape:window-maximized="1"
      inkscape:current-layer="g2413"
      inkscape:snap-bbox="true"
      inkscape:bbox-nodes="true"
@@ -55,10 +55,10 @@
        transform="translate(-1.5874997,-3.4395832)">
       <path
          id="rect3629"
-         style="opacity:0.06;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.05598;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.988395;paint-order:stroke markers fill"
+         style="opacity:0.06;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05598;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.988395;paint-order:stroke markers fill"
          d="m 40.745833,3.4395831 v 11.9062499 1.852083 2.116667 H 38.629166 36.5125 3.7041667 c -1.172633,0 -2.116667,-0.944034 -2.116667,-2.116667 V 3.4395831 Z" />
       <rect
-         style="opacity:0.1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.576355;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.988395;paint-order:stroke markers fill"
+         style="opacity:0.15;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.576355;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.988395;paint-order:stroke markers fill"
          id="rect2759"
          width="39.158333"
          height="0.26458332"
@@ -67,7 +67,7 @@
          rx="0"
          ry="0" />
       <rect
-         style="opacity:0.17;fill:#ffffff;stroke:none;stroke-width:0.478947;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+         style="opacity:0.1;fill:#000000;stroke:none;stroke-width:0.478947;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
          id="rect1110"
          width="35.189583"
          height="10.583333"
@@ -76,7 +76,7 @@
          rx="1.3229164"
          ry="1.3229164" />
       <rect
-         style="fill:#3f3f3f;stroke:none;stroke-width:0.460238;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers;fill-opacity:1"
+         style="fill:#ffffff;stroke:none;stroke-width:0.460238;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
          id="rect2236"
          width="34.660416"
          height="10.054167"

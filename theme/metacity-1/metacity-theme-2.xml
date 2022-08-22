@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <metacity_theme>
 <info>
-  <name>Orchis</name>
+  <name>Fluent</name>
   <author>vinceliucie</author>
   <copyright>GPL</copyright>
   <date>2020</date>
-  <description>Orchis Metacity theme</description>
+  <description>Fluent Metacity theme</description>
 </info>
 
 <!-- meaningful constants -->
 
-<constant name="C_titlebar_focused" value="#2d2d2d"/>
-<constant name="C_titlebar_unfocused" value="#242424"/>
-<constant name="C_highlight_focused" value="blend/#2d2d2d/#ffffff/0.1"/>
-<constant name="C_highlight_unfocused" value="blend/#242424/#ffffff/0.1"/>
-<constant name="C_title_focused" value="blend/#2d2d2d/#ffffff/0.87"/>
-<constant name="C_title_unfocused" value="blend/#242424/#ffffff/0.6"/>
+<constant name="C_titlebar_focused" value="#e0e0e0"/>
+<constant name="C_titlebar_unfocused" value="#d6d6d6"/>
+<constant name="C_highlight_focused" value="blend/#e0e0e0/#ffffff/0.4"/>
+<constant name="C_highlight_unfocused" value="blend/#d6d6d6/#ffffff/0.4"/>
+<constant name="C_title_focused" value="blend/#e0e0e0/#000000/0.87"/>
+<constant name="C_title_unfocused" value="blend/#d6d6d6/#000000/0.6"/>
 
 <!-- geometries -->
 

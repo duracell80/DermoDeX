@@ -3,7 +3,7 @@
 
 CINN_VERSION=$(cinnamon --version)
 
-sudo apt install python3-pip
+sudo apt install python3-pip libsass1 sassc
 
 pip3 install easydev
 pip3 install colormap
