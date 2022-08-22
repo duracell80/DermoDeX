@@ -1,11 +1,12 @@
 [Desktop Entry]
 Type=X-GNOME-Metatheme
-Name=DermoDeX
-Comment=A fresh approach to Cinnamon
+Name=Fluent-round-Dark
+Comment=An Materia Gtk+ theme based on Elegant Design
 Encoding=UTF-8
 
 [X-GNOME-Metatheme]
-Name=DermoDeX
-GtkTheme=DermoDeX
-IconTheme=DermoDeX
-MetacityTheme=DermoDeX
+GtkTheme=Fluent-round-Dark
+MetacityTheme=Fluent-round-Dark
+IconTheme=Fluent-Dark
+CursorTheme=Fluent-Dark
+ButtonLayout=close,minimize,maximize:menu

@@ -14,7 +14,7 @@ pip3 install extcolors
 pip3 install matplotlib
 pip3 install configparser
 
-dconf dump /org/cinnamon/ > ~/cinnamon_desktop.backup
+dconf dump /org/cinnamon/ > $HOME/cinnamon_desktop.backup
 
 dd_sleep
 CWD=$(pwd)
@@ -88,42 +88,42 @@ chmod u+rw ~/.local/share/dermodex/gtk-3.0
 
 cp -r $CWD/theme/gtk-3.0/colors.css ~/.local/share/dermodex/gtk-3.0
 cp -r $CWD/theme/gtk-3.20/dist ~/.local/share/dermodex/gtk-3.20
-cp ./scripts/watch_sounds.sh ~/.local/share/dermodex
-cp ./scripts/watch_wallpaper.sh ~/.local/share/dermodex
-cp ./scripts/cinnamon_dd.txt ~/.local/share/dermodex
-cp ./scripts/config_update.py ~/.local/share/dermodex
-cp ./scripts/*.ini ~/.local/share/dermodex
-cp ./scripts/colors.py ~/.local/share/dermodex
+cp $CWD/scripts/watch_sounds.sh ~/.local/share/dermodex
+cp $CWD/scripts/watch_wallpaper.sh ~/.local/share/dermodex
+cp $CWD/scripts/cinnamon_dd.txt ~/.local/share/dermodex
+cp $CWD/scripts/config_update.py ~/.local/share/dermodex
+cp $CWD/scripts/*.ini ~/.local/share/dermodex
+cp $CWD/scripts/colors.py ~/.local/share/dermodex
 touch ~/.local/share/dermodex/text_hover.txt
-cp -r ./theme/cinnamon/common-assets ~/.local/share/dermodex
+cp -r $CWD/theme/cinnamon/common-assets ~/.local/share/dermodex
 
 mkdir -p ~/.local/share/dermodex/wallpapers
 cp -r ./theme/cinnamon/wallpapers ~/.local/share/dermodex
 
 
 
-cp -r ./theme/gtk-3.0/assets ~/.local/share/dermodex/gtk-3.0
-cp -r ./theme/gtk-3.0/assets ~/.cache/dermodex/gtk-3.0
-cp -r ./theme/gtk-3.20/gtk.gresource ~/.local/share/dermodex/gtk-3.20
-cp -r ./theme/icons ~/.local/share/dermodex/
-cp -r ./theme/cinnamon/common-assets/user-avatar.png ~/.local/share/dermodex/
+#cp -r $CWD/theme/gtk-3.0/assets ~/.local/share/dermodex/gtk-3.0
+#cp -r $CWD/theme/gtk-3.0/assets ~/.cache/dermodex/gtk-3.0
+#cp -r $CWD/theme/gtk-3.20/gtk.gresource ~/.local/share/dermodex/gtk-3.20
+cp -r $CWD/theme/icons ~/.local/share/dermodex/
+cp -r $CWD/theme/cinnamon/common-assets/user-avatar.png ~/.local/share/dermodex/
 
 
-if [ -d ~/Color-Icons ] ; then
+if [ -d $HOME/Color-Icons ] ; then
     echo ""
 
 else
     echo "[i] Installing Icons"
 
-	cd ~/
+	cd $HOME
 	git clone --quiet https://github.com/wmk69/Color-Icons
-	cd ~/Color-Icons
+	cd $HOME/Color-Icons
 	tar -xvzf Color-Icons.tar.gz
 	cp -r Color-Icons/White-Icons ~/.local/share/icons
 	cp -r Color-Icons/Black-Icons ~/.local/share/icons
 fi
 
-mkdir -p ~/.local/share/icons/White-Icons/scalable
+mkdir -p $HOME/.local/share/icons/White-Icons/scalable
 cp -rf $CWD/theme/icons/breeze-dark_white/places ~/.local/share/icons/White-Icons/scalable
 
 gsettings set org.cinnamon.desktop.interface icon-theme "White-Icons"
