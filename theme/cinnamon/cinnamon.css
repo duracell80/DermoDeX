@@ -2238,7 +2238,7 @@ StScrollBar StButton#hhandle:hover {
     background-repeat       : no-repeat;
     background-size         : cover;
     
-    padding         : 0px;
+    padding                 : 0px;
 }
 
 #panelLeft {
@@ -2247,24 +2247,19 @@ StScrollBar StButton#hhandle:hover {
 
 .panelLeft,
 .panelRight {
-    spacing         : 4px;
-    padding         : 0px;
-    margin-left     : 10px;
-    margin-right    : 10px;
+    spacing         : 0px;
+    margin-left     : 16px;
+    margin-right    : 16px;
     border-radius   : 32px;
     background-color: rgba(64, 64, 64, 0.9);
 }
 
-.panel-bottom .panelLeft,
-.panel-bottom .panelRight {
-    margin-top      : 5px;
-    margin-bottom   : 5px;
+.panelLeft {
+    padding-left   : 16px;
 }
 
-.panel-top .panelLeft,
-.panel-top .panelRight {
-    margin-top      : 5px;
-    margin-bottom   : 5px;
+.panelRight {
+    padding-right  : 16px;
 }
 
 
@@ -2291,39 +2286,99 @@ StScrollBar StButton#hhandle:hover {
 }
 
 
+/* START MENU BUTTON */
+.applet-box {
+    color: #eeeeee !important;
+    margin-left : 2px;
+}
+.applet-box:hover,
+.applet-box:hover .applet-label {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.applet-box:checked, 
+.applet-box:checked:hover,
+.applet-box:checked .applet-label,
+.applet-boxchecked:hover .applet-label {
+  color: #3281ea;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+
+/* START MENU */
+.menu-background {
+    background-color    : rgba(64, 64, 64, 0.95);
+    background-image    : url(/home/lee/.local/share/dermodex/menu_blur.jpg);
+    background-position : 0px 0px;
+    background-repeat   : no-repeat;
+    background-size     : 1000px 1000px;
+    border              : 1px solid #202020;
+    /*border-left-width   : 32px;*/
+}
+
+/* WINDOW LIST */
+.window-list-box {
+    margin-right    : 16px;
+    margin-left     : 16px;
+}
+.window-list-item-box {
+    padding         : 4px;
+}
+
 /* GROUPED WINDOW LIST */
 .grouped-window-list-box {
-    spacing: 2px;
+    spacing         : 0px;
 }
 .grouped-window-list-box.vertical {
-    spacing: 3px;
+    spacing         : 0px;
 }
 
 .grouped-window-list-item-box {
-    margin-left     : 8px;
-    margin-right    : 8px;
-    spacing         : 8px;
-    color           : rgba(255, 255, 255, 0.9);
-    border-radius   : 16px;
-    border-bottom   : 2px solid transparent;
+    color           : #eeeeee;
+    background-color: rgba(150, 150, 150, 0.05);
+    min-width       : 64px;
+    border-radius   : 64px; 
+    border          : 0px solid transparent;
+    padding-left    : 8px;
+    padding-right   : 8px;
+    
+    background-size : 8px 8px;
+    background-position: 28px 44px;
 }
 
-.grouped-window-list-item-box:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    border-radius   : 16px;
-    border-bottom   : 2px solid transparent;    
+
+.grouped-window-list-item-box:active {
+    color           : #ffffff;
+    background-color: transparent;
+    background-image: url("assets/grouped-window-dot.svg");
+}
+
+.grouped-window-list-item-box:focus {
+    background-color: transparent;
+    background-image: url("assets/grouped-window-dot-active.svg");
+    color           : #3281ea;
 }
 
 .grouped-window-list-item-box.top, 
 .grouped-window-list-item-box.bottom {
+    padding-left    : 4px;
+    padding-right   : 4px;
+}
+
+.grouped-window-list-button-label {
     padding-left    : 8px;
-    padding-right   : 8px;
+}
+
+.grouped-window-list-badge {
+  background-color  : #3281ea;
+  font-size         : 9pt;
 }
 
 .grouped-window-list-item-demands-attention {
-    background-gradient-start   : #000000;
-    background-gradient-end     : #000000;
-    border-radius               : 16px;
+    background-gradient-start   : #666666;
+    background-gradient-end     : #666666;
+    border-radius               : 64px;
 }
 
 .grouped-window-list-thumbnail-menu .item-box:outlined {
@@ -2355,31 +2410,10 @@ StScrollBar StButton#hhandle:hover {
     height          : 100px;
 }
 
-.grouped-window-list-badge {
-  background-color: #3281ea;
-  font-size : 9pt;
-}
 
 
-/* START MENU BUTTON */
-.applet-box:hover,
-.applet-box:checked, 
-.applet-box:checked:hover {
-  color: white;
-  background-color: rgba(255, 255, 255, 0);
-}
 
 
-/* START MENU */
-.menu-background {
-    background-color    : rgba(64, 64, 64, 0.95);
-    background-image    : url(/home/lee/.local/share/dermodex/menu_blur.jpg);
-    background-position : 0px 0px;
-    background-repeat   : no-repeat;
-    background-size     : 1000px 1000px;
-    border              : 1px solid #202020;
-    /*border-left-width   : 32px;*/
-}
 
 #menu-search-entry {
     width               : 250px;
@@ -2513,18 +2547,26 @@ StScrollBar StButton#hhandle:hover {
 
 /* WORKSPACES */
 .workspace-button {
-    border-color        : #3281ea;
+    border-color        : transparent;
+    background-image    : url("assets/grouped-window-dot.svg");
+    background-size     : 8px 8px;
+    background-position : 10px 40px;
 }
 
 .panel-bottom .workspace-button,
 .panel-top .workspace-button {
-    padding             : 0 0.5em;
-    margin              : 0 0.5em 0 0; 
+    padding             : 0 0.25em;
+    margin              : 0 0.25em 0 0; 
 }
 
 .panel-bottom .workspace-button {
     border-bottom       : 2px; 
 }
+.workspace-button:outlined {
+    /*border-color        : #3281ea;*/
+    background-image: url("assets/grouped-window-dot-active.svg");
+}
+
 
 /* SOUND */
 .sound-player {

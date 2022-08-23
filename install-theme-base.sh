@@ -25,6 +25,10 @@ cp -rf $CWD/deps/themes/Fluent-round-Dark/cinnamon/* $CWD/theme/cinnamon
 # ADD COMMON ASSETS
 cp -rf $CWD/deps/common-assets/user-avatar.png $CWD/theme/cinnamon/assets
 
+cp -rf $CWD/deps/common-assets/grouped-window-dot.svg $CWD/theme/cinnamon/assets
+
+cp -rf $CWD/deps/common-assets/grouped-window-dot-active.svg $CWD/theme/cinnamon/assets
+
 # APPEND CINNAMON-EXT TO CINNAMON
 cat $CWD/deps/common-assets/cinnamon-ext.css >> $CWD/theme/cinnamon/cinnamon.css
 
