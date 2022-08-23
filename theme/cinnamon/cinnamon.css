@@ -2181,7 +2181,15 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 
 stage {
-  font-size         : 0.85em;
+  font-size         : 0.8em;
+}
+
+.cinnamon-link {
+  color: #3281ea;
+}
+
+.cinnamon-link:hover {
+  color: #3281ea;
 }
 
 #Tooltip {
@@ -2229,6 +2237,12 @@ StScrollBar StButton#hhandle:hover {
     background-position     : 0px -700px;
     background-repeat       : no-repeat;
     background-size         : cover;
+    
+    padding         : 0px;
+}
+
+#panelLeft {
+    spacing         : 4px;
 }
 
 .panelLeft,
@@ -2276,7 +2290,87 @@ StScrollBar StButton#hhandle:hover {
     padding         : 4px 4px; 
 }
 
-/* MENU */
+
+/* GROUPED WINDOW LIST */
+.grouped-window-list-box {
+    spacing: 2px;
+}
+.grouped-window-list-box.vertical {
+    spacing: 3px;
+}
+
+.grouped-window-list-item-box {
+    margin-left     : 8px;
+    margin-right    : 8px;
+    spacing         : 8px;
+    color           : rgba(255, 255, 255, 0.9);
+    border-radius   : 16px;
+    border-bottom   : 2px solid transparent;
+}
+
+.grouped-window-list-item-box:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius   : 16px;
+    border-bottom   : 2px solid transparent;    
+}
+
+.grouped-window-list-item-box.top, 
+.grouped-window-list-item-box.bottom {
+    padding-left    : 8px;
+    padding-right   : 8px;
+}
+
+.grouped-window-list-item-demands-attention {
+    background-gradient-start   : #000000;
+    background-gradient-end     : #000000;
+    border-radius               : 16px;
+}
+
+.grouped-window-list-thumbnail-menu .item-box:outlined {
+    background-color  : rgba(255, 255, 255, 0.9);
+}
+
+.grouped-window-list-thumbnail-menu .item-box:hover {
+    background-color  : rgba(255, 255, 255, 0.95);
+}
+
+.grouped-window-list-thumbnail-menu .item-box {
+
+    background-color: rgba(255, 255, 255, 0.9);
+    
+    padding         : 12px;
+    border-radius   : 8px;
+    border          : 4px solid #ffffff;
+    spacing         : 8px;
+    margin          : 4px 4px 0px 4px;
+    color           : rgba(0, 0, 0, 0.7);
+    
+    box-shadow      : 0 5px 12px rgba(0, 0, 0, 0.95);
+}
+
+.grouped-window-list-thumbnail-menu .thumbnail {
+    border          : 2px solid #ffffff;
+    border-radius   : 4px;
+    width           : auto;
+    height          : 100px;
+}
+
+.grouped-window-list-badge {
+  background-color: #3281ea;
+  font-size : 9pt;
+}
+
+
+/* START MENU BUTTON */
+.applet-box:hover,
+.applet-box:checked, 
+.applet-box:checked:hover {
+  color: white;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+
+/* START MENU */
 .menu-background {
     background-color    : rgba(64, 64, 64, 0.95);
     background-image    : url(/home/lee/.local/share/dermodex/menu_blur.jpg);
@@ -2323,7 +2417,7 @@ StScrollBar StButton#hhandle:hover {
 
 .menu-categories-box {
     padding         : 20px 30px;
-    font-size       : 16pt;
+    font-size       : 15pt;
 }
 
 .menu-category-button,
@@ -2356,7 +2450,7 @@ StScrollBar StButton#hhandle:hover {
 
 .menu-applications-box {
     padding         : 10px 15px;
-    font-size       : 14pt;
+    font-size       : 13pt;
 }
 
 .menu-applications-inner-box .menu-applications-outer-box {
@@ -2415,42 +2509,22 @@ StScrollBar StButton#hhandle:hover {
     min-height      : 0px; 
 }
 
-/* GROUPED WINDOW LIST */
-.grouped-window-list-box {
-    spacing: 2px;
-}
-.grouped-window-list-box.vertical {
-    spacing: 3px;
-}
-
-.grouped-window-list-item-box {
-    margin-left     : 8px;
-    margin-right    : 8px;
-    spacing         : 8px;
-    color           : rgba(255, 255, 255, 0.6);
-    border-radius   : 16px;
-    border-bottom   : 2px solid transparent;
-}
-
-.grouped-window-list-item-box:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    border-radius   : 16px;
-    border-bottom   : 2px solid transparent;    
-}
-
-.grouped-window-list-item-box.top, 
-.grouped-window-list-item-box.bottom {
-    padding-left    : 8px;
-    padding-right   : 8px;
-}
-
-.grouped-window-list-item-demands-attention {
-    background-gradient-start   : #000000;
-    background-gradient-end     : #000000;
-    border-radius               : 16px;
-}
 
 
+/* WORKSPACES */
+.workspace-button {
+    border-color        : #3281ea;
+}
+
+.panel-bottom .workspace-button,
+.panel-top .workspace-button {
+    padding             : 0 0.5em;
+    margin              : 0 0.5em 0 0; 
+}
+
+.panel-bottom .workspace-button {
+    border-bottom       : 2px; 
+}
 
 /* SOUND */
 .sound-player {
@@ -2532,6 +2606,8 @@ height:150px;
   min-height: 32px;
   caret-size: 2px;
   caret-color: #3281ea;
+  
+    
   selection-background-color: #3281ea;
   selected-color: #000000;
   transition-duration: 300ms;
@@ -2540,10 +2616,12 @@ height:150px;
   border: 2px solid transparent;
   border-radius : 32px;
   background-color: rgba(255, 255, 255, 0.15);
+    
 }
 
 #menu-search-entry:focus, .notification StEntry:focus, .menu #notification StEntry:focus, .popup-menu #notification StEntry:focus, #notification StEntry:focus, #menu-search-entry:hover, .notification StEntry:hover, .menu #notification StEntry:hover, .popup-menu #notification StEntry:hover, #notification StEntry:hover {
   color: white;
+    cursor: text;
   background-color: rgba(255, 255, 255, 0.15);
 border : 2px solid transparent;
   border-bottom: 2px solid #ffffff;
