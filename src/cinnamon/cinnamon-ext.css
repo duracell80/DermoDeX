@@ -65,7 +65,7 @@ StScrollBar StButton#hhandle:hover {
 }
 
 #panelLeft {
-    spacing         : 4px;
+    spacing         : 0px;
 }
 
 .panelLeft,
@@ -73,16 +73,18 @@ StScrollBar StButton#hhandle:hover {
     spacing         : 0px;
     margin-left     : 16px;
     margin-right    : 16px;
+    
     border-radius   : 32px;
     background-color: rgba(64, 64, 64, 0.9);
 }
 
 .panelLeft {
-    padding-left   : 16px;
+    padding-left    : 16px;
 }
 
 .panelRight {
-    padding-right  : 16px;
+    padding-right   : 16px;
+    padding-left    : 16px;
 }
 
 
@@ -108,6 +110,10 @@ StScrollBar StButton#hhandle:hover {
     padding         : 4px 4px; 
 }
 
+.system-status-icon {
+  icon-size: 22px;
+}
+
 
 /* START MENU BUTTON */
 .applet-box {
@@ -130,6 +136,11 @@ StScrollBar StButton#hhandle:hover {
 
 
 /* START MENU */
+.menu {
+    margin-left         : 20px;
+    margin-right        : 20px;
+    margin-bottom       : 0px;
+}
 .menu-background {
     background-color    : rgba(64, 64, 64, 0.95);
     background-image    : url(/home/lee/.local/share/dermodex/menu_blur.jpg);
@@ -151,10 +162,10 @@ StScrollBar StButton#hhandle:hover {
 
 /* GROUPED WINDOW LIST */
 .grouped-window-list-box {
-    spacing         : 0px;
+    spacing         : 4px;
 }
 .grouped-window-list-box.vertical {
-    spacing         : 0px;
+    spacing         : 4px;
 }
 
 .grouped-window-list-item-box {
@@ -167,8 +178,8 @@ StScrollBar StButton#hhandle:hover {
     padding-left    : 8px;
     padding-right   : 8px;
     
-    background-size : 8px 8px;
-    background-position: 28px 44px;
+    background-size : 12px 12px;
+    background-position: 26px 42px;
 }
 
 
@@ -179,7 +190,8 @@ StScrollBar StButton#hhandle:hover {
 }
 
 .grouped-window-list-item-box:focus {
-    background-color: rgba(255, 255, 255, 0.15);
+    /*background-color: rgba(255, 255, 255, 0.15);*/
+    background-color: transparent;
     background-image: url("assets/grouped-window-dot-active.svg");
     color           : #3281ea;
 }
@@ -211,18 +223,20 @@ StScrollBar StButton#hhandle:hover {
 }
 
 .grouped-window-list-thumbnail-menu .item-box:outlined {
-    background-color  : rgba(255, 255, 255, 0.9);
+    background-color    : rgba(255, 255, 255, 0.9);
+    color               : rgba(0, 0, 0, 0.7);
 }
 
 .grouped-window-list-thumbnail-menu .item-box:hover {
-    background-color  : rgba(255, 255, 255, 0.95);
+    background-color    : rgba(255, 255, 255, 0.95);
+    color               : rgba(0, 0, 0, 0.7);
 }
 
 .grouped-window-list-thumbnail-menu .item-box {
 
     background-color: rgba(255, 255, 255, 0.9);
     
-    padding         : 12px;
+    padding         : 16px;
     border-radius   : 8px;
     border          : 4px solid #ffffff;
     spacing         : 8px;
@@ -375,11 +389,17 @@ StScrollBar StButton#hhandle:hover {
 
 
 /* WORKSPACES */
+.workspace-switcher {
+    padding-left    : 8px;
+    padding-right   : 8px;
+    margin-left     : 8px;
+}
+
 .workspace-button {
     border-color        : transparent;
     background-image    : url("assets/grouped-window-dot.svg");
-    background-size     : 8px 8px;
-    background-position : 10px 40px;
+    background-size     : 12px 12px;
+    background-position : 8px 42px;
 }
 
 .panel-bottom .workspace-button,
@@ -395,6 +415,24 @@ StScrollBar StButton#hhandle:hover {
     /*border-color        : #3281ea;*/
     background-image: url("assets/grouped-window-dot-active.svg");
 }
+
+
+/* WORKSPACES "Visual representation" option */
+.workspace-graph {
+    padding           : 4px 12px 12px 12px;
+    spacing           : 6px;
+    margin-left       : 8px;
+}
+
+.workspace-graph .workspace,
+.workspace-graph .workspace:active,
+.workspace-graph .workspace .windows,
+.workspace-graph .workspace:active .windows {
+  border-radius: 2px;
+}
+
+
+
 
 
 /* SOUND */
@@ -433,14 +471,14 @@ StScrollBar StButton#hhandle:hover {
 
 
 .sound-player .slider {
-  height: 1em;
-  -slider-height: 1em;
+  height: 0.25em;
+  -slider-height: 0.25em;
   -slider-background-color: #2f2f2f;
   -slider-border-color: #202020;
-  -slider-active-background-color: #ffffff;
+  -slider-active-background-color: #3281ea;
   -slider-active-border-color: #202020;
   -slider-border-width: 0px;
-  -slider-handle-radius: 0px;}
+  -slider-handle-radius: 8px;}
 
 .sound-player StBoxLayout {
   spacing: 0.5em; }
@@ -512,7 +550,8 @@ height:150px;
 }
 
 .menu-icon,
-.popup-menu-icon {
+.popup-menu-icon,
+.system-status-icon {
   icon-size: 22px;
 }
 
