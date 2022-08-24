@@ -4,6 +4,7 @@
 CINN_VERSION=$(cinnamon --version)
 
 #sudo apt install python3-pip libsass1 sassc
+#sudo apt-get install -y -q xdotool
 
 #pip3 install easydev
 #pip3 install colormap
@@ -14,14 +15,18 @@ CINN_VERSION=$(cinnamon --version)
 #pip3 install matplotlib
 #pip3 install configparser
 
-dconf dump /org/cinnamon/ > $HOME/cinnamon_desktop.backup
+#dconf dump /org/cinnamon/ > $HOME/cinnamon_desktop.backup
 
-dd_sleep
+#dd_sleep
 CWD=$(pwd)
 
-sed -i "s|file:///~/|file:///$HOME/|g" $CWD/scripts/cinnamon_dd.txt
-mkdir -p ~/.local/share/dermodex
-mkdir -p ~/.themes/DermoDeX
+#sed -i "s|file:///~/|file:///$HOME/|g" $CWD/scripts/cinnamon_dd.txt
+#mkdir -p ~/.local/share/dermodex
+#mkdir -p ~/.local/share/dermodex/wallpapers
+#mkdir -p ~/.themes/DermoDeX
+
+# IMPORT FLUENT FROM GIT
+$CWD/install-theme-base.sh
 
 # SYMLINK WALLPAPERS TO PICTURES WITHOUT COPYING WALLPAPERS ACROSS
 simlink? () {
@@ -44,25 +49,29 @@ cp -r extension/dermodex-config@duracell80/files/* ~/.local/share/cinnamon/exten
 
 
 # GRANULAR CONTROL OVER WHICH SUB THEMES TO COPY OVER
-cp -r $CWD/theme/cinnamon ~/.themes/DermoDeX
-cp -r $CWD/theme/gtk-2.0 ~/.themes/DermoDeX
-cp -r $CWD/theme/gtk-3.0 ~/.themes/DermoDeX
-cp -r $CWD/theme/gtk-3.20 ~/.themes/DermoDeX
-cp -r $CWD/theme/metacity-1 ~/.themes/DermoDeX
-cp -r $CWD/theme/openbox-3 ~/.themes/DermoDeX
-cp -r $CWD/theme/unity ~/.themes/DermoDeX
-cp -r $CWD/theme/xfwm4 ~/.themes/DermoDeX
+cp -r $CWD/src/cinnamon/cinnamon-ext.css ~/.local/share/dermodex/
 
-cp -r $CWD/theme/index.theme ~/.themes/DermoDeX
+#cp -r $CWD/theme/cinnamon ~/.themes/DermoDeX
+#cp -r $CWD/theme/gtk-2.0 ~/.themes/DermoDeX
+#cp -r $CWD/theme/gtk-3.0 ~/.themes/DermoDeX
+#cp -r $CWD/theme/gtk-3.20 ~/.themes/DermoDeX
+#cp -r $CWD/theme/metacity-1 ~/.themes/DermoDeX
+#cp -r $CWD/theme/openbox-3 ~/.themes/DermoDeX
+#cp -r $CWD/theme/unity ~/.themes/DermoDeX
+#cp -r $CWD/theme/xfwm4 ~/.themes/DermoDeX
+
+#cp -r $CWD/theme/index.theme ~/.themes/DermoDeX
 #cp -r $CWD/theme/metadata.json ~/.themes/DermoDeX
 #cp -r $CWD/theme/LICENSE ~/.themes/DermoDeX
 
-cp ~/.cinnamon/configs/menu@cinnamon.org/0.json ~/.cinnamon/configs/menu@cinnamon.org/0.json.bak
-cp -f ./scripts/config_menu.json ~/.cinnamon/configs/menu@cinnamon.org/0.json
-cp ~/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json ~/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json.bak
-cp -f ./scripts/config_workspace.json ~/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json
+#cp ~/.cinnamon/configs/menu@cinnamon.org/0.json ~/.cinnamon/configs/menu@cinnamon.org/0.json.bak
+#cp -f ./scripts/config_menu.json ~/.cinnamon/configs/menu@cinnamon.org/0.json
+#cp ~/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json ~/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json.bak
+#cp -f ./scripts/config_workspace.json ~/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json
 
-cp -f ./scripts/cinnamon_base.css ~/.local/share/dermodex
+#cp -f ./scripts/cinnamon_base.css ~/.local/share/dermodex
+cp -f ./scripts/remix_themes.sh ~/.local/share/dermodex
+chmod u+x ~/.local/share/dermodex/remix_themes.sh
 cp -f ./scripts/cinnamon_reload ~/.local/bin
 cp -f ./scripts/dd_sleep.sh ~/.local/bin/dd_sleep
 cp -f ./scripts/dd_wake.sh ~/.local/bin/dd_wake
@@ -79,34 +88,17 @@ cp -r ./nemo/scripts/* ~/.local/share/nemo/scripts
 cp -f ./*.desktop ~/.config/autostart
 
 
-mkdir -p ~/.cache/dermodex/gtk-3.0
-mkdir -p ~/.local/share/dermodex/gtk-3.0
-mkdir -p ~/.local/share/dermodex/gtk-3.20/dist
 
-chmod u+rw ~/.cache/dermodex/gtk-3.0
-chmod u+rw ~/.local/share/dermodex/gtk-3.0
-
-cp -r $CWD/theme/gtk-3.0/colors.css ~/.local/share/dermodex/gtk-3.0
-cp -r $CWD/theme/gtk-3.20/dist ~/.local/share/dermodex/gtk-3.20
 cp $CWD/scripts/watch_sounds.sh ~/.local/share/dermodex
 cp $CWD/scripts/watch_wallpaper.sh ~/.local/share/dermodex
 cp $CWD/scripts/cinnamon_dd.txt ~/.local/share/dermodex
 cp $CWD/scripts/config_update.py ~/.local/share/dermodex
 cp $CWD/scripts/*.ini ~/.local/share/dermodex
 cp $CWD/scripts/colors.py ~/.local/share/dermodex
-touch ~/.local/share/dermodex/text_hover.txt
-cp -r $CWD/theme/cinnamon/common-assets ~/.local/share/dermodex
-
-mkdir -p ~/.local/share/dermodex/wallpapers
-cp -r ./theme/cinnamon/wallpapers ~/.local/share/dermodex
 
 
-
-#cp -r $CWD/theme/gtk-3.0/assets ~/.local/share/dermodex/gtk-3.0
-#cp -r $CWD/theme/gtk-3.0/assets ~/.cache/dermodex/gtk-3.0
-#cp -r $CWD/theme/gtk-3.20/gtk.gresource ~/.local/share/dermodex/gtk-3.20
-cp -r $CWD/theme/icons ~/.local/share/dermodex/
-cp -r $CWD/theme/cinnamon/common-assets/user-avatar.png ~/.local/share/dermodex/
+cp -r $CWD/wallpapers ~/.local/share/dermodex
+cp -r $CWD/src/icons ~/.local/share/dermodex/
 
 
 if [ -d $HOME/Color-Icons ] ; then
@@ -124,25 +116,25 @@ else
 fi
 
 mkdir -p $HOME/.local/share/icons/White-Icons/scalable
-cp -rf $CWD/theme/icons/breeze-dark_white/places ~/.local/share/icons/White-Icons/scalable
+cp -rf $CWD/src/icons/breeze-dark_white/places ~/.local/share/icons/White-Icons/scalable
 
-gsettings set org.cinnamon.desktop.interface icon-theme "White-Icons"
-gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark-Aqua"
-gsettings set org.cinnamon.desktop.wm.preferences theme "Mint-Y"
-gsettings set org.cinnamon.theme name "Mint-Y-Dark-Aqua"
-gsettings set org.cinnamon.desktop.notifications bottom-notifications "true"
-gsettings set org.cinnamon.desktop.notifications display-notifications "true"
+#gsettings set org.cinnamon.desktop.interface icon-theme "White-Icons"
+#gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark-Aqua"
+#gsettings set org.cinnamon.desktop.wm.preferences theme "Mint-Y"
+#gsettings set org.cinnamon.theme name "Mint-Y-Dark-Aqua"
+#gsettings set org.cinnamon.desktop.notifications bottom-notifications "true"
+#gsettings set org.cinnamon.desktop.notifications display-notifications "true"
 
 # gsettings set org.cinnamon.desktop.interface text-scaling-factor "1"
 
 echo "[i] Adjusting The Height Of The Panels"
-dconf load /org/cinnamon/ < ./scripts/cinnamon_dd.txt
-dconf write /org/cinnamon/panels-height "['1:60']"
+#dconf load /org/cinnamon/ < ./scripts/cinnamon_dd.txt
+#dconf write /org/cinnamon/panels-height "['1:60']"
 
 # Enhance user privacy
-gsettings set org.cinnamon.desktop.privacy remember-recent-files "false"
-gsettings set org.cinnamon.desktop.screensaver lock-enabled "true"
-gsettings set org.cinnamon.desktop.screensaver lock-delay 0
+#gsettings set org.cinnamon.desktop.privacy remember-recent-files "false"
+#gsettings set org.cinnamon.desktop.screensaver lock-enabled "true"
+#gsettings set org.cinnamon.desktop.screensaver lock-delay 0
 
 #dd_release&
 #dd_wake&
@@ -429,4 +421,4 @@ cd $CWD
 #sudo dpkg -i oomox_1.13.3_18.10+.deb
 #sudo apt --fix-broken install
 
-dd_reload
+#dd_reload

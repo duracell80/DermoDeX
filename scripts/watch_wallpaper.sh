@@ -56,12 +56,12 @@ else
                 echo $CUR > $HOME/.cache/dermodex/wallpaper_current.txt
                 cp $HOME/.local/share/dermodex/cinnamon_base.css $CINN_FILE
                 
-                mkdir -p $HOME/.cache/dermodex/gtk-3.0
-                mkdir -p $HOME/.cache/dermodex/gtk-3.20/dist
+                #mkdir -p $HOME/.cache/dermodex/gtk-3.0
+                #mkdir -p $HOME/.cache/dermodex/gtk-3.20/dist
                 
-                cp $HOME/.local/share/dermodex/gtk-3.0/colors.css $HOME/.cache/dermodex/gtk-3.0
-                cp $HOME/.local/share/dermodex/gtk-3.20/gtk.gresource $HOME/.cache/dermodex/gtk-3.20
-                cp $HOME/.local/share/dermodex/gtk-3.20/dist/gtk.css $HOME/.cache/dermodex/gtk-3.20/dist/
+                #cp $HOME/.local/share/dermodex/gtk-3.0/colors.css $HOME/.cache/dermodex/gtk-3.0
+                #cp $HOME/.local/share/dermodex/gtk-3.20/gtk.gresource $HOME/.cache/dermodex/gtk-3.20
+                #cp $HOME/.local/share/dermodex/gtk-3.20/dist/gtk.css $HOME/.cache/dermodex/gtk-3.20/dist/
                 
                 # GENERATE THE COLORS AND UPDATE THE CONFIG
                 python3 $HOME/.local/share/dermodex/colors.py
@@ -115,7 +115,7 @@ else
                 cp -f $HOME/.local/share/dermodex/common-assets/switch/*.svg $HOME/.cache/dermodex/
                 cp -f $HOME/.local/share/dermodex/common-assets/misc/*.svg $HOME/.cache/dermodex/
                 
-                cp -f $HOME/.local/share/dermodex/gtk-3.0/assets/*.svg $HOME/.cache/dermodex/gtk-3.0
+                #cp -f $HOME/.local/share/dermodex/gtk-3.0/assets/*.svg $HOME/.cache/dermodex/gtk-3.0
                 cp -f $HOME/.local/share/dermodex/icons/breeze-dark_white/emblems/*.svg $HOME/.cache/dermodex/common-assets/icons/emblems
                 
                 cp -f $HOME/.local/share/dermodex/icons/breeze-dark_white/places/*.svg $HOME/.cache/dermodex/common-assets/icons/places
@@ -135,21 +135,21 @@ else
                     sed -i "s|#478db2|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/grouped-window-dot-active.svg
                     sed -i "s|#478db2|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/grouped-window-dot-hover.svg
                     
-                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked.svg
-                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked-dark.svg
-                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-mixed.svg
-                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-mixed-dark.svg
-                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/grid-selection-checked.svg
-                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/grid-selection-checked-dark.svg
-                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-checkbox-checked.svg
-                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-checkbox-mixed-selected.svg
-                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-radio-checked.svg
-                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-radio-mixed-selected.svg
-                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-checked.svg
-                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-checked-dark.svg
-                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed.svg
-                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed-dark.svg
-                    sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-selected.svg
+                    #sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked.svg
+                    #sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-checked-dark.svg
+                    #sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-mixed.svg
+                    #sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/checkbox-mixed-dark.svg
+                    #sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/grid-selection-checked.svg
+                    #sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/grid-selection-checked-dark.svg
+                    #sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-checkbox-checked.svg
+                    #sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-checkbox-mixed-selected.svg
+                    #sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-radio-checked.svg
+                    #sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/menuitem-radio-mixed-selected.svg
+                    #sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-checked.svg
+                    #sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-checked-dark.svg
+                    #sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed.svg
+                    #sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-mixed-dark.svg
+                    #sed -i "s|#647891|${MAINSHADE_HEX}|g" $HOME/.cache/dermodex/gtk-3.0/radio-selected.svg
                     
                     sed -i "s|fav-background-gradient-end: rgba(0,0,0|background-gradient-end: rgba${MAINSHADE_RGB}|g" $CINN_FILE
                     
@@ -184,10 +184,10 @@ else
                     
                     
                     # RECOLOR GTK ICONS
-                    for filename in $HOME/.cache/dermodex/gtk-3.0/*.svg; do
-                        [ -e "$filename" ] || continue
-                        sed -i "s|#647891|${HOS}|g" $filename
-                    done
+                    #for filename in $HOME/.cache/dermodex/gtk-3.0/*.svg; do
+                        #[ -e "$filename" ] || continue
+                        #sed -i "s|#647891|${HOS}|g" $filename
+                    #done
                     
                     
                     # RECOLOR NEMO EMBLEMS
@@ -302,50 +302,50 @@ else
                 cp -f $HOME/.cache/dermodex/grouped-window-dot-active.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
                 cp -f $HOME/.cache/dermodex/grouped-window-dot-hover.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
                 
-                cp -f $HOME/.cache/dermodex/gtk-3.0/*.svg $HOME/.themes/DermoDeX/gtk-3.0/assets
-                cp -f $HOME/.cache/dermodex/gtk-3.0/*.svg $HOME/.themes/DermoDeX/assets
+                #cp -f $HOME/.cache/dermodex/gtk-3.0/*.svg $HOME/.themes/DermoDeX/gtk-3.0/assets
+                #cp -f $HOME/.cache/dermodex/gtk-3.0/*.svg $HOME/.themes/DermoDeX/assets
                 cp -f $HOME/.cache/dermodex/common-assets/icons/emblems/*.svg $HOME/.local/share/icons/White-Icons/scalable/emblems
                 cp -f $HOME/.cache/dermodex/common-assets/icons/places/*.svg $HOME/.local/share/icons/White-Icons/scalable/places
                 
                 
                 # GTK CSS 
-                sed -i "s|#ff630d|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
-                sed -i "s|#ff5b00|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
-                sed -i "s|#ff6b1a|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
-                sed -i "s|#ffc101|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
-                sed -i "s|#ffc100|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
-                sed -i "s|#fff44f|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
-                sed -i "s|#ffc40d|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
-                sed -i "s|#ffc71a|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
+                #sed -i "s|#ff630d|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
+                #sed -i "s|#ff5b00|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
+                #sed -i "s|#ff6b1a|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
+                #sed -i "s|#ffc101|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
+                #sed -i "s|#ffc100|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
+                #sed -i "s|#fff44f|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
+                #sed -i "s|#ffc40d|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
+                #sed -i "s|#ffc71a|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
                 
                 
-                if [ "$flowcolors" = true ]; then
-                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/colors.css
-                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css
-                    sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
-                    sed -i "s|#637f9e|${HOS}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
+                #if [ "$flowcolors" = true ]; then
+                    #sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/colors.css
+                    #sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css
+                    #sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
+                    #sed -i "s|#637f9e|${HOS}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
                     
-                    if [ "$flowsidebar" = true ]; then
-                        sed -i "s|background-color: mix(#4d4d4d,#444444,0.5);|background-color: mix(${HOE},#000000,0.6);|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
-                    fi
+                    #if [ "$flowsidebar" = true ]; then
+                        #sed -i "s|background-color: mix(#4d4d4d,#444444,0.5);|background-color: mix(${HOE},#000000,0.6);|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
+                    #fi
                     
-                else
-                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/colors.css
-                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css
-                    sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
-                    sed -i "s|#637f9e|${HOE}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
+                #else
+                    #sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/colors.css
+                    #sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css
+                    #sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
+                    #sed -i "s|#637f9e|${HOE}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
                     
-                    if [ "$flowsidebar" = true ]; then
-                        sed -i "s|background-color: mix(#4d4d4d,#444444,0.5);|background-color: mix(${HOS},#000000,0.6);|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
-                    fi
+                    #if [ "$flowsidebar" = true ]; then
+                        #sed -i "s|background-color: mix(#4d4d4d,#444444,0.5);|background-color: mix(${HOS},#000000,0.6);|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
+                    #fi
                     
-                fi
+                #fi
                 
                 
                 
-                cp -f $HOME/.cache/dermodex/gtk-3.0/colors.css $HOME/.themes/DermoDeX/gtk-3.0/
-                cp -f $HOME/.cache/dermodex/gtk-3.20/gtk.gresource $HOME/.themes/DermoDeX/gtk-3.20/
-                cp -f $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css $HOME/.themes/DermoDeX/gtk-3.20/dist/
+                #cp -f $HOME/.cache/dermodex/gtk-3.0/colors.css $HOME/.themes/DermoDeX/gtk-3.0/
+                #cp -f $HOME/.cache/dermodex/gtk-3.20/gtk.gresource $HOME/.themes/DermoDeX/gtk-3.20/
+                #cp -f $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css $HOME/.themes/DermoDeX/gtk-3.20/dist/
                 
                 
                 # Give Possibility to change sounds based on wallpaper too
@@ -367,8 +367,8 @@ else
                 fi
 
                 # REFRESH GTK THEME
-                gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark-Aqua"
-                gsettings set org.cinnamon.desktop.interface gtk-theme "DermoDeX"
+                #gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark-Aqua"
+                #gsettings set org.cinnamon.desktop.interface gtk-theme "DermoDeX"
 
                 # SET SOUNDS
                 if [ "$soundtheme" == "zorin" ]; then
