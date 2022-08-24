@@ -108,7 +108,7 @@ else
     echo "[i] Installing Icons"
 
 	cd $HOME
-	git clone --quiet https://github.com/wmk69/Color-Icons
+	#git clone --quiet https://github.com/wmk69/Color-Icons
 	cd $HOME/Color-Icons
 	tar -xvzf Color-Icons.tar.gz
 	cp -r Color-Icons/White-Icons ~/.local/share/icons
@@ -116,7 +116,7 @@ else
 fi
 
 mkdir -p $HOME/.local/share/icons/White-Icons/scalable
-cp -rf $CWD/src/icons/breeze-dark_white/places ~/.local/share/icons/White-Icons/scalable
+cp -rf $CWD/src/icons/breeze-dark_black/places ~/.local/share/icons/White-Icons/scalable
 
 #gsettings set org.cinnamon.desktop.interface icon-theme "White-Icons"
 #gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark-Aqua"
