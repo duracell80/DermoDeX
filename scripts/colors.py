@@ -498,28 +498,28 @@ with open(CONF_FILE, 'w') as configfile:
 
 tri = str(shade_txt).replace('(', '').replace(')', '').replace(' ', '').split(',')
 
-if isLightOrDark(tri[0],tri[1],tri[2]) == "light":
-    os.system('echo "dark" > ' + HOME + '/.local/share/dermodex/text_hover.txt')
-    os.system('sed -i "s|--popmenu-color: #ffffff;|color: #000000;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    os.system('sed -i "s|--menu-text-selected-color: #202020;|color: #000000;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-else:
-    os.system('echo "light" > ' + HOME + '/.local/share/dermodex/text_hover.txt')
-    os.system('sed -i "s|--popmenu-color: #ffffff;|color: #ffffff;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    os.system('sed -i "s|--menu-text-selected-color: #202020;|color: #ffffff;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+#if isLightOrDark(tri[0],tri[1],tri[2]) == "light":
+    #os.system('echo "dark" > ' + HOME + '/.local/share/dermodex/text_hover.txt')
+    #os.system('sed -i "s|--popmenu-color: #ffffff;|color: #000000;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+    #os.system('sed -i "s|--menu-text-selected-color: #202020;|color: #000000;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+#else:
+    #os.system('echo "light" > ' + HOME + '/.local/share/dermodex/text_hover.txt')
+    #os.system('sed -i "s|--popmenu-color: #ffffff;|color: #ffffff;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+    #os.system('sed -i "s|--menu-text-selected-color: #202020;|color: #ffffff;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
 
 tri = str(get_rgb(shade_1)).replace('(', '').replace(')', '').replace(' ', '').split(',')
-if isLightOrDark(tri[0],tri[1],tri[2]) == "light":
-    os.system('sed -i "s|--slider-active-background-color: #ffffff;|-slider-active-background-color: '+ shade_hex_lighter +';|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-else:
-    os.system('sed -i "s|--slider-active-background-color: #ffffff;|-slider-active-background-color: '+ shade_1_lighter +';|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+#if isLightOrDark(tri[0],tri[1],tri[2]) == "light":
+    #os.system('sed -i "s|--slider-active-background-color: #ffffff;|-slider-active-background-color: '+ shade_hex_lighter +';|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
+#else:
+    #os.system('sed -i "s|--slider-active-background-color: #ffffff;|-slider-active-background-color: '+ shade_1_lighter +';|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
     
     
-tri = str(get_rgb(shade_2)).replace('(', '').replace(')', '').replace(' ', '').split(',')
-if isLightOrDark(tri[0],tri[1],tri[2]) == "light":
-    os.system('sed -i "s|#ffffff|#202020|g" ' + HOME + '/.cache/dermodex/gtk-3.20/gtk.gresource')
-    print("[i] GTK Selected Text Darken Needed")
-else:
-    os.system('sed -i "s|#ffffff|#eeeeee|g" ' + HOME + '/.cache/dermodex/gtk-3.20/gtk.gresource')
+#tri = str(get_rgb(shade_2)).replace('(', '').replace(')', '').replace(' ', '').split(',')
+#if isLightOrDark(tri[0],tri[1],tri[2]) == "light":
+    #os.system('sed -i "s|#ffffff|#202020|g" ' + HOME + '/.cache/dermodex/gtk-3.20/gtk.gresource')
+    #print("[i] GTK Selected Text Darken Needed")
+#else:
+    #os.system('sed -i "s|#ffffff|#eeeeee|g" ' + HOME + '/.cache/dermodex/gtk-3.20/gtk.gresource')
     
     
 

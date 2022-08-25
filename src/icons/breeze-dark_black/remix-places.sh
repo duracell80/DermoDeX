@@ -15,3 +15,4 @@ while read -r LINE; do
         sed -i "s|fill:#707073|fill:#ffffff;|g" ${LINE}
 	fi
 done < $FILE
+

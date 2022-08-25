@@ -71,7 +71,9 @@ cp -r $CWD/src/cinnamon/cinnamon-ext.css ~/.local/share/dermodex/
 
 #cp -f ./scripts/cinnamon_base.css ~/.local/share/dermodex
 cp -f ./scripts/remix_themes.sh ~/.local/share/dermodex
-chmod u+x ~/.local/share/dermodex/remix_themes.sh
+cp -f ./scripts/remix_icons.sh ~/.local/share/dermodex
+cp -f ./scripts/remix_color.py ~/.local/share/dermodex
+
 cp -f ./scripts/cinnamon_reload ~/.local/bin
 cp -f ./scripts/dd_sleep.sh ~/.local/bin/dd_sleep
 cp -f ./scripts/dd_wake.sh ~/.local/bin/dd_wake
@@ -87,6 +89,7 @@ cp -r ./nemo/actions/*.nemo_action ~/.local/share/nemo/actions
 cp -r ./nemo/scripts/* ~/.local/share/nemo/scripts
 cp -f ./*.desktop ~/.config/autostart
 
+chmod u+x ~/.local/share/dermodex/*.sh
 
 
 cp $CWD/scripts/watch_sounds.sh ~/.local/share/dermodex
