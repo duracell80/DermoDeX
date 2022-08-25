@@ -92,34 +92,66 @@ cp -f ./*.desktop ~/.config/autostart
 chmod u+x ~/.local/share/dermodex/*.sh
 
 
-cp $CWD/scripts/watch_sounds.sh ~/.local/share/dermodex
-cp $CWD/scripts/watch_wallpaper.sh ~/.local/share/dermodex
-cp $CWD/scripts/cinnamon_dd.txt ~/.local/share/dermodex
-cp $CWD/scripts/config_update.py ~/.local/share/dermodex
-cp $CWD/scripts/*.ini ~/.local/share/dermodex
-cp $CWD/scripts/colors.py ~/.local/share/dermodex
+cp -f $CWD/scripts/watch_sounds.sh ~/.local/share/dermodex
+cp -f $CWD/scripts/watch_wallpaper.sh ~/.local/share/dermodex
+cp -f $CWD/scripts/cinnamon_dd.txt ~/.local/share/dermodex
+cp -f $CWD/scripts/config_update.py ~/.local/share/dermodex
+cp -f $CWD/scripts/*.ini ~/.local/share/dermodex
+cp -f $CWD/scripts/colors.py ~/.local/share/dermodex
 
 
-cp -r $CWD/wallpapers ~/.local/share/dermodex
-cp -r $CWD/src/icons ~/.local/share/dermodex/
+cp -r $CWD/wallpapers $HOME/.local/share/dermodex
+cp -r $CWD/src/icons $HOME/.local/share/dermodex/
 
 
-if [ -d $HOME/Color-Icons ] ; then
-    echo ""
-
+if [ -d $CWD/deps/Color-Icons ] ; then
+    echo "[i] Main Color Icons Already Installed"
+    cd $CWD/deps/Color-Icons
+    
+    cp -f $CWD/deps/Color-Icons/Color-Icons/Black-Icons/scalable/mimetypes/* $CWD/deps/Color-Icons/Color-Icons/White-Icons/scalable/mimetypes
+    
+    mkdir -p $HOME/.local/share/dermodex/icons/breeze-dark_black/places/outline
+    
+    cp -f $HOME/.local/share/icons/Black-Icons/scalable/places/*.svg $HOME/.local/share/dermodex/icons/breeze-dark_black/places/outline
+    
+    cp -f $CWD/deps/Color-Icons/Color-Icons/Black-Icons/scalable/places/* $CWD/deps/Color-Icons/Color-Icons/White-Icons/scalable/places
+    
+    cp -r $CWD/deps/Color-Icons/Color-Icons/White-Icons $HOME/.local/share/icons
+	cp -r $CWD/deps/Color-Icons/Color-Icons/Black-Icons $HOME/.local/share/icons
+    
+    mkdir -p $HOME/.local/share/dermodex/icons/breeze-dark_black/mimetypes
+    
+    cp -f $HOME/.local/share/icons/White-Icons/scalable/mimetypes/*.svg $HOME/.local/share/dermodex/icons/breeze-dark_black/mimetypes
+    
 else
-    echo "[i] Installing Icons"
+    echo "[i] Installing Main Color Icons"
 
-	cd $HOME
-	#git clone --quiet https://github.com/wmk69/Color-Icons
-	cd $HOME/Color-Icons
+	cd $CWD/deps
+	git clone --quiet https://github.com/wmk69/Color-Icons
+	cd $CWD/deps/Color-Icons
 	tar -xvzf Color-Icons.tar.gz
-	cp -r Color-Icons/White-Icons ~/.local/share/icons
-	cp -r Color-Icons/Black-Icons ~/.local/share/icons
+	cp -f $CWD/deps/Color-Icons/Color-Icons/Black-Icons/scalable/mimetypes/* $CWD/deps/Color-Icons/Color-Icons/White-Icons/scalable/mimetypes
+    
+    mkdir -p $HOME/.local/share/dermodex/icons/breeze-dark_black/places/outline
+    
+    cp -f $HOME/.local/share/icons/Black-Icons/scalable/places/*.svg $HOME/.local/share/dermodex/icons/breeze-dark_black/places/outline
+    
+    cp -f $CWD/deps/Color-Icons/Color-Icons/Black-Icons/scalable/places/* $CWD/deps/Color-Icons/Color-Icons/White-Icons/scalable/places
+    
+    cp -r $CWD/deps/Color-Icons/Color-Icons/White-Icons $HOME/.local/share/icons
+	cp -r $CWD/deps/Color-Icons/Color-Icons/Black-Icons $HOME/.local/share/icons
+    
+    mkdir -p $HOME/.local/share/dermodex/icons/breeze-dark_black/mimetypes
+    
+    cp -f $HOME/.local/share/icons/White-Icons/scalable/mimetypes/*.svg $HOME/.local/share/dermodex/icons/breeze-dark_black/mimetypes
+    
+    
+    
+    
 fi
 
 mkdir -p $HOME/.local/share/icons/White-Icons/scalable
-cp -rf $CWD/src/icons/breeze-dark_black/places ~/.local/share/icons/White-Icons/scalable
+cp -rf $CWD/src/icons/breeze-dark_black/places $HOME/.local/share/icons/White-Icons/scalable
 
 #gsettings set org.cinnamon.desktop.interface icon-theme "White-Icons"
 #gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark-Aqua"
@@ -414,7 +446,7 @@ gsettings set org.cinnamon.sounds notification-enabled "true"
 sed -i "s|~/|$HOME/|g" $HOME/.local/share/cinnamon/extensions/dermodex-config@duracell80/extension.js
 
 
-
+#rm -rf $CWD/deps/Color-Icons
 #rm -rf ~/.cache/dermodex/common-assets/sounds/linux-a11y-sound-theme
 
 cd $CWD
