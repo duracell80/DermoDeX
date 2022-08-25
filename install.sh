@@ -218,6 +218,9 @@ echo ""
     sudo cp -fr $CWD/sounds/linux-ubuntu/ /usr/share/sounds/
     sudo chmod -R a+rx /usr/share/sounds/linux-ubuntu/
 
+sudo mkdir -p /usr/share/backgrounds/dermodex
+sudo chmod a+rw /usr/share/backgrounds/dermodex
+
 if simlink? "${FILE}"; then
     echo "[i] DermoDeX Background Location and Sound Location Already Set"
 else
