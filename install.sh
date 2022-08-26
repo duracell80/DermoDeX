@@ -298,6 +298,10 @@ echo ""
     # SOUND - LINUX-UBUNTU
     sudo cp -fr $CWD/sounds/linux-ubuntu/ /usr/share/sounds/
     sudo chmod -R a+rx /usr/share/sounds/linux-ubuntu/
+    
+    # SOUND - NIGHTLY NEWS
+    sudo cp -fr $CWD/sounds/nightlynews/ /usr/share/sounds/
+    sudo chmod -R a+rx /usr/share/sounds/nightlynews/
 
 sudo mkdir -p /usr/share/backgrounds/dermodex
 sudo chmod a+rw /usr/share/backgrounds/dermodex
@@ -487,6 +491,20 @@ else
     #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/harmony/notification-brighter.ogg'
     #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/harmony/window-new.oga'
     #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/harmony/desktop-login.oga'
+    
+    # SOUND - NIGHTLY NEWS - J.WILLIAMS
+    #gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/nightlynews/click.ogg'
+    #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/nightlynews/login.ogg'
+    #gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/nightlynews/logout.ogg'
+    #gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/nightlynews/click.ogg'
+    #gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/nightlynews/click.ogg'
+    #gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/nightlynews/click.ogg'
+    #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/nightlynews/chimes.ogg'
+    #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/nightlynews/click.ogg'
+    #gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/linux-a11y/stereo/window-new.oga'
+    #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/nightlynews/click.ogg'
+    #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/nightlynews/click.ogg'
+    #gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/nightlynews/click.ogg'
     
 fi
 

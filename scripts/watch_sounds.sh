@@ -200,6 +200,21 @@ elif [ "$soundtheme" == "ubuntu-original" ]; then
     gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/linux-ubuntu/menu-popup.ogg'
     gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/linux-a11y/stereo/desktop-login.oga'
 
+elif [ "$soundtheme" == "nightlynews" ]; then
+    # SOUND - NIGHTLYNEWS
+    gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/nightlynews/click.ogg'
+    gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/nightlynews/login.ogg'
+    gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/nightlynews/logout.ogg'
+    gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/nightlynews/click.ogg'
+    gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/nightlynews/click.ogg'
+    gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/nightlynews/click.ogg'
+    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/nightlynews/chimes.ogg'
+    gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/nightlynews/click.ogg'
+    gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/linux-a11y/stereo/window-new.oga'
+    gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/nightlynews/click.ogg'
+    gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/nightlynews/click.ogg'
+    gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/nightlynews/click.ogg'
+
 else
     # SOUND - Linux-A11y
     gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/linux-a11y/stereo/window-switch.oga'
