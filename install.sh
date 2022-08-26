@@ -5,6 +5,7 @@ CINN_VERSION=$(cinnamon --version)
 
 #sudo apt install python3-pip libsass1 sassc
 #sudo apt-get install -y -q xdotool
+#sudo apt install xz-utils
 
 #pip3 install easydev
 #pip3 install colormap
@@ -105,31 +106,43 @@ cp -r $CWD/src/icons $HOME/.local/share/dermodex/
 
 
 if [ -d $CWD/deps/Color-Icons ] ; then
-    echo "[i] Main Color Icons Already Installed"
-    cd $CWD/deps/Color-Icons
+    echo "[i] Main Icons Already Installed"
+    echo "[i] Fixing a few icon names"
     
-    cp -f $CWD/deps/Color-Icons/Color-Icons/Black-Icons/scalable/mimetypes/* $CWD/deps/Color-Icons/Color-Icons/White-Icons/scalable/mimetypes
+    APP_ICONS="${HOME}/.local/share/icons/White-Icons/scalable/apps"
+    APP_ICONS_AUX="${CWD}/deps/Royal-Z/Royal Z/apps/scalable"
     
-    mkdir -p $HOME/.local/share/dermodex/icons/breeze-dark_black/places/outline
+    cp -f $APP_ICONS/firefox-esr.svg $APP_ICONS/firefox.svg
+    cp -f $APP_ICONS/multimedia.svg $APP_ICONS/celluloid.svg
+    cp -f $APP_ICONS/acroread.svg $APP_ICONS/xviewer.svg
+    cp -f $APP_ICONS/digikam.svg $APP_ICONS/xreader.svg
+    cp -f $APP_ICONS/gnome-note.svg $APP_ICONS/sticky.svg
+    cp -f $APP_ICONS/org.gnome.LightsOff.svg $APP_ICONS/gnome-todo.svg
+    cp -f $APP_ICONS/gthumb.svg $APP_ICONS/redshift-gtk.svg
+    cp -f $APP_ICONS/gthumb.svg $APP_ICONS/redshift.svg
     
-    cp -f $HOME/.local/share/icons/Black-Icons/scalable/places/*.svg $HOME/.local/share/dermodex/icons/breeze-dark_black/places/outline
+    cp -f $APP_ICONS/synaptic.svg $APP_ICONS/mintstick.svg
+    cp -f "$APP_ICONS_AUX/warpinator.svg" $APP_ICONS
     
-    cp -f $CWD/deps/Color-Icons/Color-Icons/Black-Icons/scalable/places/* $CWD/deps/Color-Icons/Color-Icons/White-Icons/scalable/places
     
-    cp -r $CWD/deps/Color-Icons/Color-Icons/White-Icons $HOME/.local/share/icons
-	cp -r $CWD/deps/Color-Icons/Color-Icons/Black-Icons $HOME/.local/share/icons
     
-    mkdir -p $HOME/.local/share/dermodex/icons/breeze-dark_black/mimetypes
     
-    cp -f $HOME/.local/share/icons/White-Icons/scalable/mimetypes/*.svg $HOME/.local/share/dermodex/icons/breeze-dark_black/mimetypes
     
 else
-    echo "[i] Installing Main Color Icons"
+    echo "[i] Downloading Color Icons"
 
 	cd $CWD/deps
 	git clone --quiet https://github.com/wmk69/Color-Icons
 	cd $CWD/deps/Color-Icons
-	tar -xvzf Color-Icons.tar.gz
+	tar -xzf Color-Icons.tar.gz
+    
+    echo "[i] Downloading Royal Icons"
+    git clone --quiet https://github.com/SethStormR/Royal-Z.git
+    cd $CWD/deps/Royal-Z
+    tar -xf "Royal Z.tar.xz"
+    cd $CWD
+    
+    
 	cp -f $CWD/deps/Color-Icons/Color-Icons/Black-Icons/scalable/mimetypes/* $CWD/deps/Color-Icons/Color-Icons/White-Icons/scalable/mimetypes
     
     mkdir -p $HOME/.local/share/dermodex/icons/breeze-dark_black/places/outline
@@ -146,12 +159,11 @@ else
     cp -f $HOME/.local/share/icons/White-Icons/scalable/mimetypes/*.svg $HOME/.local/share/dermodex/icons/breeze-dark_black/mimetypes
     
     
-    
-    
 fi
 
 mkdir -p $HOME/.local/share/icons/White-Icons/scalable
 cp -rf $CWD/src/icons/breeze-dark_black/places $HOME/.local/share/icons/White-Icons/scalable
+#cp -rf $CWD/deps/Royal-Z/Royal-Z $HOME/.local/share/icons/
 
 #gsettings set org.cinnamon.desktop.interface icon-theme "White-Icons"
 #gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark-Aqua"
