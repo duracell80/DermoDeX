@@ -160,6 +160,20 @@ StScrollBar StButton#hhandle:hover {
     padding         : 4px;
 }
 
+.window-list-item-box .progress,
+.grouped-window-list-item-box .progress {
+    background-gradient-start : #cccccc;
+    background-gradient-end   : #cccccc;
+    border-radius             : 64px;
+}
+
+.window-list-item-demands-attention,
+.grouped-window-list-item-demands-attention {
+    background-gradient-start : #000000;
+    background-gradient-end   : #000000;
+    border-radius             : 64px;
+}
+
 /* GROUPED WINDOW LIST */
 .grouped-window-list-box {
     spacing         : 4px;

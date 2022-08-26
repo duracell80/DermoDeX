@@ -155,10 +155,25 @@ if [ -d $CWD/deps/Royal-Z ] ; then
     ACT_ICONS_AUX="${CWD}/deps/Royal-Z/Royal Z/actions/scalable"
     
     cp -n "$APP_ICONS_AUX/"org.gnome* $APP_ICONS
+    cp -f $APP_ICONS/google-chrome.svg $APP_ICONS/chromium.svg
+    cp -f $APP_ICONS/google-chrome.svg $APP_ICONS/chrome.svg
+    cp -f $APP_ICONS/google-chrome.svg $APP_ICONS/com.google.Chrome.svg
+    cp -n "$APP_ICONS_AUX/"chrom* $APP_ICONS
+    cp -f "$APP_ICONS_AUX/"brav* $APP_ICONS
+    cp -f "$APP_ICONS_AUX/microsoft-edge.svg" $APP_ICONS/com.microsoft.Edge.svg
     
+    cp -f "$APP_ICONS_AUX/krita.svg" $APP_ICONS/org.kde.krita.svg
     
+    cp -f "$APP_ICONS_AUX/"libreoffice* $APP_ICONS
+    
+    #cp -n "$APP_ICONS_AUX/"skypeforlinux.svg $APP_ICONS
+    cp -f $APP_ICONS/skype.svg $APP_ICONS/skypeforlinux.svg
+    cp -f "$APP_ICONS_AUX/teams.svg" $APP_ICONS
+    cp -f "$APP_ICONS_AUX/teams-for-linux.svg" $APP_ICONS
     cp -f $APP_ICONS/firefox-esr.svg $APP_ICONS/firefox.svg
+    cp -f $APP_ICONS/terminal.svg $APP_ICONS/putty.svg
     cp -f $APP_ICONS/multimedia.svg $APP_ICONS/io.github.celluloid_player.Celluloid.svg
+    cp -f $APP_ICONS/magnatune.svg $APP_ICONS/hdhr.svg
     cp -f $APP_ICONS/mpv.svg $APP_ICONS/hypnotix.svg
     cp -f $APP_ICONS/picasa.svg $APP_ICONS/xviewer.svg
     cp -f $APP_ICONS/acroread.svg $APP_ICONS/xreader.svg
@@ -187,8 +202,16 @@ if [ -d $CWD/deps/Royal-Z ] ; then
     cp -f "$APP_ICONS_AUX/shuffler-control.svg" $APP_ICONS/pix.svg
     cp -f "$APP_ICONS_AUX/budgiewprviews.svg" $APP_ICONS/webapp-manager.svg
     cp -f "$APP_ICONS_AUX/github-desktop.svg" $APP_ICONS/io.github.shiftey.Desktop.svg
-    cp -f "$APP_ICONS_AUX/code.svg" $APP_ICONS/io.brackets.Brackets.svg
+    cp -f "$APP_ICONS_AUX/io.atom.Atom.svg" $APP_ICONS/io.brackets.Brackets.svg
+    cp -f "$APP_ICONS_AUX/sublime-text.svg" $APP_ICONS
     cp -f $APP_ICONS/gnome-warning.svg $APP_ICONS/gufw.svg
+    
+    cp -f "$APP_ICONS_AUX/shotcut.svg" $APP_ICONS/org.shotcut.Shotcut.svg
+    cp -f "$APP_ICONS_AUX/hb-icon.svg" $APP_ICONS/fr.handbrake.ghb.svg
+    cp -f "$APP_ICONS_AUX/xfburn.svg" $APP_ICONS/com.makemkv.MakeMKV
+    cp -f "$APP_ICONS_AUX/kodi.svg" $APP_ICONS
+    
+    
     
     
     # MEDIA CONTROLS
