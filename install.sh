@@ -91,7 +91,7 @@ cp -r ./nemo/scripts/* ~/.local/share/nemo/scripts
 cp -f ./*.desktop ~/.config/autostart
 
 chmod u+x ~/.local/share/dermodex/*.sh
-
+mkdir -p $HOME/.local/share/icons/White-Icons/scalable/apps
 
 cp -f $CWD/scripts/watch_sounds.sh ~/.local/share/dermodex
 cp -f $CWD/scripts/watch_wallpaper.sh ~/.local/share/dermodex
@@ -105,28 +105,11 @@ cp -r $CWD/wallpapers $HOME/.local/share/dermodex
 cp -r $CWD/src/icons $HOME/.local/share/dermodex/
 
 
+
 if [ -d $CWD/deps/Color-Icons ] ; then
     echo "[i] Main Icons Already Installed"
-    echo "[i] Fixing a few icon names"
-    
-    APP_ICONS="${HOME}/.local/share/icons/White-Icons/scalable/apps"
-    APP_ICONS_AUX="${CWD}/deps/Royal-Z/Royal Z/apps/scalable"
-    
-    cp -f $APP_ICONS/firefox-esr.svg $APP_ICONS/firefox.svg
-    cp -f $APP_ICONS/multimedia.svg $APP_ICONS/celluloid.svg
-    cp -f $APP_ICONS/acroread.svg $APP_ICONS/xviewer.svg
-    cp -f $APP_ICONS/digikam.svg $APP_ICONS/xreader.svg
-    cp -f $APP_ICONS/gnome-note.svg $APP_ICONS/sticky.svg
-    cp -f $APP_ICONS/org.gnome.LightsOff.svg $APP_ICONS/gnome-todo.svg
-    cp -f $APP_ICONS/gthumb.svg $APP_ICONS/redshift-gtk.svg
-    cp -f $APP_ICONS/gthumb.svg $APP_ICONS/redshift.svg
-    
-    cp -f $APP_ICONS/synaptic.svg $APP_ICONS/mintstick.svg
-    cp -f "$APP_ICONS_AUX/warpinator.svg" $APP_ICONS
-    
-    
-    
-    
+    cp -r $CWD/deps/Color-Icons/Color-Icons/White-Icons $HOME/.local/share/icons
+	cp -r $CWD/deps/Color-Icons/Color-Icons/Black-Icons $HOME/.local/share/icons
     
 else
     echo "[i] Downloading Color Icons"
@@ -161,7 +144,49 @@ else
     
 fi
 
-mkdir -p $HOME/.local/share/icons/White-Icons/scalable
+
+
+if [ -d $CWD/deps/Royal-Z ] ; then
+    echo "[i] Improving a few icons ..."
+    
+    APP_ICONS="${HOME}/.local/share/icons/White-Icons/scalable/apps"
+    APP_ICONS_AUX="${CWD}/deps/Royal-Z/Royal Z/apps/scalable"
+    
+    cp -n "$APP_ICONS_AUX/"org.gnome* $APP_ICONS
+    
+    
+    cp -f $APP_ICONS/firefox-esr.svg $APP_ICONS/firefox.svg
+    cp -f $APP_ICONS/multimedia.svg $APP_ICONS/io.github.celluloid_player.Celluloid.svg
+    cp -f $APP_ICONS/mpv.svg $APP_ICONS/hypnotix.svg
+    cp -f $APP_ICONS/picasa.svg $APP_ICONS/xviewer.svg
+    cp -f $APP_ICONS/acroread.svg $APP_ICONS/xreader.svg
+    cp -f $APP_ICONS/gnome-note.svg $APP_ICONS/sticky.svg
+    cp -f $APP_ICONS/org.gnome.LightsOff.svg $APP_ICONS/gnome-todo.svg
+    cp -f $APP_ICONS/gthumb.svg $APP_ICONS/redshift-gtk.svg
+    cp -f $APP_ICONS/gthumb.svg $APP_ICONS/redshift.svg
+    cp -f "$APP_ICONS_AUX/kdenlive.svg" $APP_ICONS/bulky.svg
+    cp -f "$APP_ICONS_AUX/onboard.svg" $APP_ICONS
+    cp -f "$APP_ICONS_AUX/alacarte.svg" $APP_ICONS/thingy.svg
+    cp -f "$APP_ICONS_AUX/simplenote.svg" $APP_ICONS/mintinstall.svg
+    
+    cp -f $APP_ICONS/distributor-logo-linux-mint.svg $APP_ICONS/mintwelcome.svg
+    cp -f $APP_ICONS/synaptic.svg $APP_ICONS/mintstick.svg
+    cp -f $APP_ICONS/preferences-desktop-keyboard.svg $APP_ICONS/mintlocale-im.svg
+    cp -f "$APP_ICONS_AUX/warpinator.svg" $APP_ICONS/org.x.Warpinator.svg
+    cp -f "$APP_ICONS_AUX/com.github.maoschanz.drawing.svg" $APP_ICONS
+    cp -f "$APP_ICONS_AUX/shuffler-control.svg" $APP_ICONS/pix.svg
+    cp -f "$APP_ICONS_AUX/budgiewprviews.svg" $APP_ICONS/webapp-manager.svg
+    cp -f "$APP_ICONS_AUX/github-desktop.svg" $APP_ICONS/io.github.shiftey.Desktop.svg
+    cp -f "$APP_ICONS_AUX/code.svg" $APP_ICONS/io.brackets.Brackets.svg
+    cp -f "$APP_ICONS_AUX/gufw.svg" $APP_ICONS
+    
+    
+    
+    
+    
+fi
+
+
 cp -rf $CWD/src/icons/breeze-dark_black/places $HOME/.local/share/icons/White-Icons/scalable
 #cp -rf $CWD/deps/Royal-Z/Royal-Z $HOME/.local/share/icons/
 
