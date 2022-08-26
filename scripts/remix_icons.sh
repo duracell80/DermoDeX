@@ -11,6 +11,8 @@ FILE="$CWD/list.txt"
 mkdir -p $CWD/places/outline
 mkdir -p $CWD/emblems
 mkdir -p $CWD/mimetypes
+mkdir -p $CWD/controlpanel/cats
+mkdir -p $CWD/controlpanel/apps
 
 cp -f $LWD/mimetypes/*.svg $CWD/mimetypes
 
@@ -61,9 +63,33 @@ while read -r LINE; do
 done < $FILE
 rm -f $FILE
 
+# SYSTEM CONTROL PANEL
+cp -f $LWD/controlpanel/cats/*.svg $CWD/controlpanel/cats/
+ls $CWD/controlpanel/cats/*.svg > $FILE
+
+echo "[i] Remixing Icons: Control Panel - Categories"
+while read -r LINE; do
+    sed -i 's|#cccccc|'${ACCENT}'|g' ${LINE}
+done < $FILE
+rm -f $FILE
+
+cp -f $LWD/controlpanel/apps/*.svg $CWD/controlpanel/apps
+ls $CWD/controlpanel/apps/*.svg > $FILE
+
+echo "[i] Remixing Icons: Control Panel - Applications"
+while read -r LINE; do
+    sed -i 's|#cccccc|'${ACCENT}'|g' ${LINE}
+done < $FILE
+rm -f $FILE
+
+
 cp -n $CWD/places/outline/*.svg $CWD/places
 mv -f $CWD/places/*.svg $HOME/.local/share/icons/White-Icons/scalable/places
 mv -f $CWD/emblems/*.svg $HOME/.local/share/icons/White-Icons/scalable/emblems
 mv -f $CWD/mimetypes/*.svg $HOME/.local/share/icons/White-Icons/scalable/mimetypes
+
+cp -f $CWD/controlpanel/cats/cs* $HOME/.local/share/icons/White-Icons/scalable/categories
+
+cp -f $CWD/controlpanel/apps/csd* $HOME/.local/share/icons/White-Icons/scalable/apps
 
 #xdotool key ctrl+alt+"Escape"

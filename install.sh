@@ -20,6 +20,7 @@ CINN_VERSION=$(cinnamon --version)
 
 #dd_sleep
 CWD=$(pwd)
+LWD=$HOME/.local/share/dermodex/icons/breeze-dark_black
 
 #sed -i "s|file:///~/|file:///$HOME/|g" $CWD/scripts/cinnamon_dd.txt
 #mkdir -p ~/.local/share/dermodex
@@ -28,6 +29,8 @@ CWD=$(pwd)
 
 # IMPORT FLUENT FROM GIT
 $CWD/install-theme-base.sh
+
+
 
 # SYMLINK WALLPAPERS TO PICTURES WITHOUT COPYING WALLPAPERS ACROSS
 simlink? () {
@@ -92,6 +95,8 @@ cp -f ./*.desktop ~/.config/autostart
 
 chmod u+x ~/.local/share/dermodex/*.sh
 mkdir -p $HOME/.local/share/icons/White-Icons/scalable/apps
+mkdir -p $HOME/.local/share/dermodex/icons/breeze-dark_black/apps
+mkdir -p $HOME/.local/share/dermodex/icons/breeze-dark_black/cats
 
 cp -f $CWD/scripts/watch_sounds.sh ~/.local/share/dermodex
 cp -f $CWD/scripts/watch_wallpaper.sh ~/.local/share/dermodex
@@ -108,8 +113,12 @@ cp -r $CWD/src/icons $HOME/.local/share/dermodex/
 
 if [ -d $CWD/deps/Color-Icons ] ; then
     echo "[i] Main Icons Already Installed"
-    cp -r $CWD/deps/Color-Icons/Color-Icons/White-Icons $HOME/.local/share/icons
-	cp -r $CWD/deps/Color-Icons/Color-Icons/Black-Icons $HOME/.local/share/icons
+    #cp -r $CWD/deps/Color-Icons/Color-Icons/White-Icons $HOME/.local/share/icons
+	#cp -r $CWD/deps/Color-Icons/Color-Icons/Black-Icons $HOME/.local/share/icons
+    
+    #cp -f $HOME/.local/share/icons/White-Icons/scalable/apps/csd-* $HOME/.local/share/dermodex/icons/breeze-dark_black/apps
+    
+    #cp -f $HOME/.local/share/icons/White-Icons/scalable/categories/*.svg $HOME/.local/share/dermodex/icons/breeze-dark_black/cats
     
 else
     echo "[i] Downloading Color Icons"
@@ -119,18 +128,32 @@ else
 	cd $CWD/deps/Color-Icons
 	tar -xzf Color-Icons.tar.gz
     
+    sleep 5
+    
     echo "[i] Downloading Royal Icons"
+    cd $CWD/deps
     git clone --quiet https://github.com/SethStormR/Royal-Z.git
     cd $CWD/deps/Royal-Z
     tar -xf "Royal Z.tar.xz"
     cd $CWD
     
+    cp -r $CWD/deps/Color-Icons/Color-Icons/White-Icons $HOME/.local/share/icons
+	cp -r $CWD/deps/Color-Icons/Color-Icons/Black-Icons $HOME/.local/share/icons
+    
+    sleep 5
+    
+    mkdir -p $LWD/controlpanel/cats
+    mkdir -p $LWD/controlpanel/apps
     
 	cp -f $CWD/deps/Color-Icons/Color-Icons/Black-Icons/scalable/mimetypes/* $CWD/deps/Color-Icons/Color-Icons/White-Icons/scalable/mimetypes
     
     mkdir -p $HOME/.local/share/dermodex/icons/breeze-dark_black/places/outline
     
-    cp -f $HOME/.local/share/icons/Black-Icons/scalable/places/*.svg $HOME/.local/share/dermodex/icons/breeze-dark_black/places/outline
+    cp -f $CWD/deps/Color-Icons/Color-Icons/Black-Icons/scalable/places/*.svg $HOME/.local/share/dermodex/icons/breeze-dark_black/places/outline
+    
+    cp -f $CWD/deps/Color-Icons/Color-Icons/White-Icons/scalable/apps/*.svg $LWD/controlpanel/apps
+    
+    cp -f $CWD/deps/Color-Icons/Color-Icons/White-Icons/scalable/categories/*.svg $LWD/controlpanel/cats
     
     cp -f $CWD/deps/Color-Icons/Color-Icons/Black-Icons/scalable/places/* $CWD/deps/Color-Icons/Color-Icons/White-Icons/scalable/places
     
@@ -164,7 +187,8 @@ if [ -d $CWD/deps/Royal-Z ] ; then
     
     cp -f "$APP_ICONS_AUX/krita.svg" $APP_ICONS/org.kde.krita.svg
     
-    cp -f "$APP_ICONS_AUX/"libreoffice* $APP_ICONS
+    cp -f "$APP_ICONS_AUX/"libreoffice* $APP_ICON
+    cp -f $APP_ICONS/spotify.svg $APP_ICONS/spotify-client.svg
     
     #cp -n "$APP_ICONS_AUX/"skypeforlinux.svg $APP_ICONS
     cp -f $APP_ICONS/skype.svg $APP_ICONS/skypeforlinux.svg
@@ -208,7 +232,7 @@ if [ -d $CWD/deps/Royal-Z ] ; then
     
     cp -f "$APP_ICONS_AUX/shotcut.svg" $APP_ICONS/org.shotcut.Shotcut.svg
     cp -f "$APP_ICONS_AUX/hb-icon.svg" $APP_ICONS/fr.handbrake.ghb.svg
-    cp -f "$APP_ICONS_AUX/xfburn.svg" $APP_ICONS/com.makemkv.MakeMKV
+    cp -f "$APP_ICONS_AUX/xfburn.svg" $APP_ICONS/com.makemkv.MakeMKV.svg
     cp -f "$APP_ICONS_AUX/kodi.svg" $APP_ICONS
     
     
