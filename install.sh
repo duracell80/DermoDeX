@@ -150,7 +150,9 @@ if [ -d $CWD/deps/Royal-Z ] ; then
     echo "[i] Improving a few icons ..."
     
     APP_ICONS="${HOME}/.local/share/icons/White-Icons/scalable/apps"
+    ACT_ICONS="${HOME}/.local/share/icons/White-Icons/scalable/actions"
     APP_ICONS_AUX="${CWD}/deps/Royal-Z/Royal Z/apps/scalable"
+    ACT_ICONS_AUX="${CWD}/deps/Royal-Z/Royal Z/actions/scalable"
     
     cp -n "$APP_ICONS_AUX/"org.gnome* $APP_ICONS
     
@@ -167,20 +169,30 @@ if [ -d $CWD/deps/Royal-Z ] ; then
     cp -f "$APP_ICONS_AUX/kdenlive.svg" $APP_ICONS/bulky.svg
     cp -f "$APP_ICONS_AUX/onboard.svg" $APP_ICONS
     cp -f "$APP_ICONS_AUX/alacarte.svg" $APP_ICONS/thingy.svg
-    cp -f "$APP_ICONS_AUX/simplenote.svg" $APP_ICONS/mintinstall.svg
     
+    cp -f "$APP_ICONS_AUX/simplenote.svg" $APP_ICONS/mintinstall.svg
+    cp -f "$APP_ICONS_AUX/simplenote.svg" $APP_ICONS/mintsources.svg
+    cp -f "$APP_ICONS_AUX/bleachbit.svg" $APP_ICONS/mintreport.svg
+    cp -f "$APP_ICONS_AUX/xfburn.svg" $APP_ICONS/mintupdate.svg
+    cp -f "$APP_ICONS_AUX/kclock.svg" $APP_ICONS/timeshift.svg
     cp -f $APP_ICONS/distributor-logo-linux-mint.svg $APP_ICONS/mintwelcome.svg
     cp -f $APP_ICONS/synaptic.svg $APP_ICONS/mintstick.svg
+    cp -f "$APP_ICONS_AUX/livepatch.svg" $APP_ICONS/mintbackup.svg
+    cp -f "$APP_ICONS_AUX/acetoneiso.svg" $APP_ICONS/mintdrivers.svg
+    cp -f "$APP_ICONS_AUX/keepass.svg" $APP_ICONS/lightdm-settings.svg
     cp -f $APP_ICONS/preferences-desktop-keyboard.svg $APP_ICONS/mintlocale-im.svg
     cp -f "$APP_ICONS_AUX/warpinator.svg" $APP_ICONS/org.x.Warpinator.svg
+    
     cp -f "$APP_ICONS_AUX/com.github.maoschanz.drawing.svg" $APP_ICONS
     cp -f "$APP_ICONS_AUX/shuffler-control.svg" $APP_ICONS/pix.svg
     cp -f "$APP_ICONS_AUX/budgiewprviews.svg" $APP_ICONS/webapp-manager.svg
     cp -f "$APP_ICONS_AUX/github-desktop.svg" $APP_ICONS/io.github.shiftey.Desktop.svg
     cp -f "$APP_ICONS_AUX/code.svg" $APP_ICONS/io.brackets.Brackets.svg
-    cp -f "$APP_ICONS_AUX/gufw.svg" $APP_ICONS
+    cp -f $APP_ICONS/gnome-warning.svg $APP_ICONS/gufw.svg
     
     
+    # MEDIA CONTROLS
+    cp -f "$ACT_ICONS_AUX/media-playback-pause.svg" $ACT_ICONS/media-playback-pause-symbolic.svg
     
     
     
