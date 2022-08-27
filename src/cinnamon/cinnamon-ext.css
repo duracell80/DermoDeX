@@ -664,12 +664,35 @@ border : 2px solid transparent;
 
 
 /* RUN ALT+F2 */
-.run-dialog,
-.run-dialog-label {
-  font-size : 13pt;
+.run-dialog {
+    border-radius       : 8px;
+    background-image    : url(/home/lee/.local/share/dermodex/menu_blur.jpg);
+    background-position : 0px 0px;
+    background-repeat   : no-repeat;
+    background-size     : 1000px 1000px;
 }
-.run-dialog-entry {
-  font-size : 13pt;
+
+.run-dialog,
+.run-dialog-label,
+.run-dialog-description {
+    font-size       : 16pt;
+}
+.run-dialog-completion-box,
+.run-dialog .run-dialog-entry {
+    font-size       : 13pt;
+}
+
+.run-dialog .run-dialog-entry {
+    background-color: rgba(255, 255, 255, 0.15);h
+    margin-top      : 8px;
+    margin-bottom   : 8px;
+    padding         : 8px;
+    border-radius   : 32px; 
+}
+
+.run-dialog .run-dialog-entry:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    border          : 2px solid transparent;
 }
 
 /* MODALS */
