@@ -75,6 +75,14 @@ StScrollBar StButton#hhandle:hover {
   background-image: url("assets/calendar-arrow-right-hover.svg");
 }
 
+.calendar-today,
+.calendar-today:active,
+.calendar-today:focus,
+.calendar-today:hover {
+    color           : #ffffff;
+    background-color: #3281ea;
+}
+
 
 /* PANEL */
 #panel {
@@ -183,6 +191,10 @@ StScrollBar StButton#hhandle:hover {
 }
 .window-list-item-box {
     padding         : 4px;
+}
+
+.window-list-item-box:focus {
+    border-color    : #3281ea;
 }
 
 .window-list-item-box .progress,
@@ -425,9 +437,20 @@ StScrollBar StButton#hhandle:hover {
     min-height      : 0px; 
 }
 
+/* TILES */
+.tile-preview, .tile-preview.snap,
+.tile-hud, .tile-hud.snap {
+    background-color: rgba(44, 44, 44, 0.3);
+    border          : 1px solid #3281ea;
+}
 
 
 /* WORKSPACES */
+.window-caption#selected {
+  background-color  : #3281ea;
+  border            : 1px solid #3281ea;
+}
+
 .workspace-switcher {
     padding-left    : 8px;
     padding-right   : 8px;
@@ -447,16 +470,26 @@ StScrollBar StButton#hhandle:hover {
     margin              : 0 0.25em 0 0; 
 }
 
-.panel-bottom .workspace-button {
-    border-bottom       : 2px; 
-}
 .workspace-button:outlined {
-    /*border-color        : #3281ea;*/
-    background-image: url("assets/grouped-window-dot-active.svg");
+    background-image    : url("assets/grouped-window-dot-active.svg");
+    color               : #ffffff;
 }
 
+.workspace-button:hover,
+.workspace-button:outlined:hover {
+    background-image    : url("assets/grouped-window-dot-active.svg");
+    color               : #3281ea;
+}
 
-/* WORKSPACES "Visual representation" option */
+.panel-top .workspace-button {
+    border-top          : 2px;
+    color               : #ffffff;
+}
+.panel-bottom .workspace-button {
+    border-bottom       : 2px;
+    color               : #ffffff;
+}
+
 .workspace-graph {
     padding           : 4px 12px 12px 12px;
     spacing           : 6px;
@@ -470,8 +503,34 @@ StScrollBar StButton#hhandle:hover {
   border-radius: 2px;
 }
 
+.workspace-graph .workspace:active {
+    border        : 1px solid #3281ea;
+}
 
+.expo-workspaces-name-entry:focus,
+.expo-workspaces-name-entry#selected:focus {
+  border: 1px solid #3281ea;
+  background-color: #3281ea;
+    selected-color: #3281ea; 
+}
 
+.expo-workspace-thumbnail-frame#active {
+    border          : 4px solid #3281ea;
+    background-color: black;
+    border-radius   : 8px;
+}
+
+.expo-background {
+    background-color    : rgba(64, 64, 64, 0.9);
+    background-repeat   : no-repeat;
+    background-size     : cover;
+    background-image    : url(/home/lee/.local/share/dermodex/login_blur.jpg);
+}
+
+.workspace-osd {
+    text-shadow : none;
+    font-size   : 16pt;
+}
 
 
 /* SOUND */
@@ -593,6 +652,13 @@ height:150px;
 .system-status-icon {
   icon-size: 22px;
 }
+
+
+.popup-slider-menu-item,
+.slider {
+  -slider-active-background-color: #3281ea;
+}
+
 
 
 /* SEARCHBOXES */
@@ -725,6 +791,20 @@ border : 2px solid transparent;
     color           : #ffffff;
     box-shadow      : 0 5px 12px rgba(0, 0, 0, 0.35);
 }
+
+.osd-window .level {
+    color           : #3281ea;
+}
+.osd-window .level-bar {
+    background-color: #3281ea;
+}
+
+/* DESKLETS */
+.desklet-drag-placeholder {
+    background-color: rgba(44, 44, 44, 0.3);
+    border          : 2px solid #3281ea;
+}
+
 
 /* ALT TAB */
 #altTabPopup {

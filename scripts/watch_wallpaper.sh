@@ -356,7 +356,7 @@ else
                 #cp -f $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css $HOME/.themes/DermoDeX/gtk-3.20/dist/
                 
                 # REMIX THEMES
-                $BASE_FILE/remix_themes.sh
+                $BASE_FILE/remix_themes.sh "${HOE}"
                 
                 # RECOLOR NEMO FOLDERS AND EMBLEMS
                 $BASE_FILE/remix_icons.sh "${HOE}"

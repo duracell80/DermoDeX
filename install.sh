@@ -30,7 +30,7 @@ LWD=$HOME/.local/share/dermodex/icons/breeze-dark_black
 # IMPORT FLUENT FROM GIT
 $CWD/install-theme-base.sh
 
-
+gsettings set org.cinnamon.sounds notification-enabled "true"
 
 # SYMLINK WALLPAPERS TO PICTURES WITHOUT COPYING WALLPAPERS ACROSS
 simlink? () {
@@ -208,12 +208,12 @@ cp -rf $CWD/src/icons/breeze-dark_black/places $HOME/.local/share/icons/White-Ic
 
 echo "[i] Adjusting The Height Of The Panels"
 #dconf load /org/cinnamon/ < ./scripts/cinnamon_dd.txt
-#dconf write /org/cinnamon/panels-height "['1:60']"
+dconf write /org/cinnamon/panels-height "['1:60']"
 
 # Enhance user privacy
-#gsettings set org.cinnamon.desktop.privacy remember-recent-files "false"
-#gsettings set org.cinnamon.desktop.screensaver lock-enabled "true"
-#gsettings set org.cinnamon.desktop.screensaver lock-delay 0
+gsettings set org.cinnamon.desktop.privacy remember-recent-files "false"
+gsettings set org.cinnamon.desktop.screensaver lock-enabled "true"
+gsettings set org.cinnamon.desktop.screensaver lock-delay 0
 
 #dd_release&
 #dd_wake&
@@ -503,7 +503,7 @@ else
     
 fi
 
-gsettings set org.cinnamon.sounds notification-enabled "true"
+
 
 sed -i "s|~/|$HOME/|g" $HOME/.local/share/cinnamon/extensions/dermodex-config@duracell80/extension.js
 
