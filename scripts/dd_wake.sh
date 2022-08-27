@@ -7,4 +7,4 @@ kill $PID >/dev/null 2>&1
 
 ~/.local/share/dermodex/watch_wallpaper.sh
 
-xdotool key ctrl+alt+"Escape"
+#xdotool key ctrl+alt+"Escape"

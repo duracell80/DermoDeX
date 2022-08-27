@@ -85,7 +85,6 @@ cp -f ./*.desktop ~/.config/autostart
 chmod u+x ~/.local/share/dermodex/*.sh
 mkdir -p $HOME/.local/share/icons/White-Icons/scalable/apps
 mkdir -p $HOME/.local/share/dermodex/icons/breeze-dark_black/apps
-mkdir -p $HOME/.local/share/dermodex/icons/breeze-dark_black/cats
 
 cp -f $CWD/scripts/watch_sounds.sh ~/.local/share/dermodex
 cp -f $CWD/scripts/watch_wallpaper.sh ~/.local/share/dermodex
@@ -113,6 +112,12 @@ if [ -d $CWD/deps/Color-Icons ] ; then
     
     #cp -f $HOME/.local/share/icons/White-Icons/scalable/categories/*.svg $HOME/.local/share/dermodex/icons/breeze-dark_black/cats
     
+    cp -rf "$CWD/deps/Royal-Z/Royal Z/apps/scalable" $HOME/.local/share/dermodex/icons/breeze-dark_black/
+    
+    mv -f $HOME/.local/share/dermodex/icons/breeze-dark_black/apps/scalable/* $HOME/.local/share/dermodex/icons/breeze-dark_black/apps
+    
+    rm -rf $HOME/.local/share/dermodex/icons/breeze-dark_black/apps/scalable/
+    
 else
     echo "[i] Downloading Color Icons"
 
@@ -128,6 +133,9 @@ else
     git clone --quiet https://github.com/SethStormR/Royal-Z.git
     cd $CWD/deps/Royal-Z
     tar -xf "Royal Z.tar.xz"
+    
+    rm -f "$CWD/deps/Royal-Z/Royal Z/apps/scalable/utilities-terminal.svg"
+    rm -f "$CWD/deps/Royal-Z/Royal Z/apps/scalable/org.gnome.Terminal.svg"
     cd $CWD
     
     cp -r $CWD/deps/Color-Icons/Color-Icons/White-Icons $HOME/.local/share/icons
@@ -157,6 +165,13 @@ else
     
     cp -f $HOME/.local/share/icons/White-Icons/scalable/mimetypes/*.svg $HOME/.local/share/dermodex/icons/breeze-dark_black/mimetypes
     
+    cp -f $CWD/deps/Color-Icons/Color-Icons/White-Icons/scalable/apps/org.gnome.Terminal.svg "$CWD/deps/Royal-Z/Royal Z/apps/scalable"
+    
+    cp -rf "$CWD/deps/Royal-Z/Royal Z/apps/scalable" $HOME/.local/share/dermodex/icons/breeze-dark_black/
+    
+    mv -f $HOME/.local/share/dermodex/icons/breeze-dark_black/scalable/apps $HOME/.local/share/dermodex/icons/breeze-dark_black/apps
+    
+    
     
 fi
 
@@ -170,69 +185,9 @@ if [ -d $CWD/deps/Royal-Z ] ; then
     APP_ICONS_AUX="${CWD}/deps/Royal-Z/Royal Z/apps/scalable"
     ACT_ICONS_AUX="${CWD}/deps/Royal-Z/Royal Z/actions/scalable"
     
-    cp -n "$APP_ICONS_AUX/"org.gnome* $APP_ICONS
-    cp -f $APP_ICONS/google-chrome.svg $APP_ICONS/chromium.svg
-    cp -f $APP_ICONS/google-chrome.svg $APP_ICONS/chrome.svg
-    cp -f $APP_ICONS/google-chrome.svg $APP_ICONS/com.google.Chrome.svg
-    cp -n "$APP_ICONS_AUX/"chrom* $APP_ICONS
-    cp -f "$APP_ICONS_AUX/"brav* $APP_ICONS
-    cp -f "$APP_ICONS_AUX/microsoft-edge.svg" $APP_ICONS/com.microsoft.Edge.svg
-    
-    cp -f "$APP_ICONS_AUX/krita.svg" $APP_ICONS/org.kde.krita.svg
-    
-    cp -f "$APP_ICONS_AUX/"libreoffice* $APP_ICON
-    cp -f $APP_ICONS/spotify.svg $APP_ICONS/spotify-client.svg
-    
-    #cp -n "$APP_ICONS_AUX/"skypeforlinux.svg $APP_ICONS
-    cp -f $APP_ICONS/skype.svg $APP_ICONS/skypeforlinux.svg
-    cp -f "$APP_ICONS_AUX/teams.svg" $APP_ICONS
-    cp -f "$APP_ICONS_AUX/teams-for-linux.svg" $APP_ICONS
-    cp -f $APP_ICONS/firefox-esr.svg $APP_ICONS/firefox.svg
-    cp -f $APP_ICONS/terminal.svg $APP_ICONS/putty.svg
-    cp -f $APP_ICONS/multimedia.svg $APP_ICONS/io.github.celluloid_player.Celluloid.svg
-    cp -f $APP_ICONS/magnatune.svg $APP_ICONS/hdhr.svg
-    cp -f $APP_ICONS/mpv.svg $APP_ICONS/hypnotix.svg
-    cp -f $APP_ICONS/picasa.svg $APP_ICONS/xviewer.svg
-    cp -f $APP_ICONS/acroread.svg $APP_ICONS/xreader.svg
-    cp -f $APP_ICONS/gnome-note.svg $APP_ICONS/sticky.svg
-    cp -f $APP_ICONS/org.gnome.LightsOff.svg $APP_ICONS/gnome-todo.svg
-    cp -f $APP_ICONS/gthumb.svg $APP_ICONS/redshift-gtk.svg
-    cp -f $APP_ICONS/gthumb.svg $APP_ICONS/redshift.svg
-    cp -f "$APP_ICONS_AUX/kdenlive.svg" $APP_ICONS/bulky.svg
-    cp -f "$APP_ICONS_AUX/onboard.svg" $APP_ICONS
-    cp -f "$APP_ICONS_AUX/alacarte.svg" $APP_ICONS/thingy.svg
-    
-    cp -f "$APP_ICONS_AUX/simplenote.svg" $APP_ICONS/mintinstall.svg
-    cp -f "$APP_ICONS_AUX/simplenote.svg" $APP_ICONS/mintsources.svg
-    cp -f "$APP_ICONS_AUX/bleachbit.svg" $APP_ICONS/mintreport.svg
-    cp -f "$APP_ICONS_AUX/xfburn.svg" $APP_ICONS/mintupdate.svg
-    cp -f "$APP_ICONS_AUX/kclock.svg" $APP_ICONS/timeshift.svg
-    cp -f $APP_ICONS/distributor-logo-linux-mint.svg $APP_ICONS/mintwelcome.svg
-    cp -f $APP_ICONS/synaptic.svg $APP_ICONS/mintstick.svg
-    cp -f "$APP_ICONS_AUX/livepatch.svg" $APP_ICONS/mintbackup.svg
-    cp -f "$APP_ICONS_AUX/acetoneiso.svg" $APP_ICONS/mintdrivers.svg
-    cp -f "$APP_ICONS_AUX/keepass.svg" $APP_ICONS/lightdm-settings.svg
-    cp -f $APP_ICONS/preferences-desktop-keyboard.svg $APP_ICONS/mintlocale-im.svg
-    cp -f "$APP_ICONS_AUX/warpinator.svg" $APP_ICONS/org.x.Warpinator.svg
-    
-    cp -f "$APP_ICONS_AUX/com.github.maoschanz.drawing.svg" $APP_ICONS
-    cp -f "$APP_ICONS_AUX/shuffler-control.svg" $APP_ICONS/pix.svg
-    cp -f "$APP_ICONS_AUX/budgiewprviews.svg" $APP_ICONS/webapp-manager.svg
-    cp -f "$APP_ICONS_AUX/github-desktop.svg" $APP_ICONS/io.github.shiftey.Desktop.svg
-    cp -f "$APP_ICONS_AUX/io.atom.Atom.svg" $APP_ICONS/io.brackets.Brackets.svg
-    cp -f "$APP_ICONS_AUX/sublime-text.svg" $APP_ICONS
-    cp -f $APP_ICONS/gnome-warning.svg $APP_ICONS/gufw.svg
-    
-    cp -f "$APP_ICONS_AUX/shotcut.svg" $APP_ICONS/org.shotcut.Shotcut.svg
-    cp -f "$APP_ICONS_AUX/hb-icon.svg" $APP_ICONS/fr.handbrake.ghb.svg
-    cp -f "$APP_ICONS_AUX/xfburn.svg" $APP_ICONS/com.makemkv.MakeMKV.svg
-    cp -f "$APP_ICONS_AUX/kodi.svg" $APP_ICONS
-    
-    
-    
-    
     # MEDIA CONTROLS
     cp -f "$ACT_ICONS_AUX/media-playback-pause.svg" $ACT_ICONS/media-playback-pause-symbolic.svg
+    
     
     
     

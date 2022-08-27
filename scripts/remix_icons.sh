@@ -13,6 +13,7 @@ FILE="$CWD/list.txt"
 mkdir -p $CWD/places/outline
 mkdir -p $CWD/emblems
 mkdir -p $CWD/mimetypes
+mkdir -p $CWD/apps
 mkdir -p $CWD/controlpanel/cats
 mkdir -p $CWD/controlpanel/apps
 mkdir -p $HOME/.cache/dermodex/common-assets/cinnamon
@@ -94,6 +95,79 @@ mv -f $CWD/mimetypes/*.svg $HOME/.local/share/icons/White-Icons/scalable/mimetyp
 cp -f $CWD/controlpanel/cats/cs* $HOME/.local/share/icons/White-Icons/scalable/categories
 cp -f $CWD/controlpanel/apps/csd* $HOME/.local/share/icons/White-Icons/scalable/apps
 
+
+# RECOLOR APP ICON BACKGROUNDS
+cp -f $LWD/apps/*.svg $CWD/apps
+sed -i "s|#333333|${DARKER}|g" $CWD/apps/*.svg
+
+APP_ICONS="${HOME}/.local/share/icons/White-Icons/scalable/apps"
+APP_ICONS_AUX="$CWD/apps"
+
+
+cp -f "$APP_ICONS_AUX/"org.gnome* $APP_ICONS
+cp -f $APP_ICONS/google-chrome.svg $APP_ICONS/chromium.svg
+cp -f $APP_ICONS/google-chrome.svg $APP_ICONS/chrome.svg
+cp -f $APP_ICONS/google-chrome.svg $APP_ICONS/com.google.Chrome.svg
+cp -f "$APP_ICONS_AUX/"chrom* $APP_ICONS
+cp -f "$APP_ICONS_AUX/"brav* $APP_ICONS
+cp -f "$APP_ICONS_AUX/microsoft-edge.svg" $APP_ICONS/com.microsoft.Edge.svg
+
+cp -f "$APP_ICONS_AUX/krita.svg" $APP_ICONS/org.kde.krita.svg
+
+cp -f "$APP_ICONS_AUX/"libreoffice* $APP_ICON
+cp -f $APP_ICONS/spotify.svg $APP_ICONS/spotify-client.svg
+
+cp -f $APP_ICONS/skype.svg $APP_ICONS/skypeforlinux.svg
+cp -f "$APP_ICONS_AUX/teams.svg" $APP_ICONS
+cp -f "$APP_ICONS_AUX/teams-for-linux.svg" $APP_ICONS
+cp -f $APP_ICONS/firefox-esr.svg $APP_ICONS/firefox.svg
+cp -f $APP_ICONS/terminal.svg $APP_ICONS/putty.svg
+cp -f $APP_ICONS/multimedia.svg $APP_ICONS/io.github.celluloid_player.Celluloid.svg
+cp -f $APP_ICONS/magnatune.svg $APP_ICONS/hdhr.svg
+cp -f $APP_ICONS/mpv.svg $APP_ICONS/hypnotix.svg
+cp -f $APP_ICONS/picasa.svg $APP_ICONS/xviewer.svg
+cp -f $APP_ICONS/acroread.svg $APP_ICONS/xreader.svg
+cp -f $APP_ICONS/gnome-note.svg $APP_ICONS/sticky.svg
+cp -f $APP_ICONS/org.gnome.LightsOff.svg $APP_ICONS/gnome-todo.svg
+cp -f $APP_ICONS/gthumb.svg $APP_ICONS/redshift-gtk.svg
+cp -f $APP_ICONS/gthumb.svg $APP_ICONS/redshift.svg
+cp -f "$APP_ICONS_AUX/kdenlive.svg" $APP_ICONS/bulky.svg
+cp -f "$APP_ICONS_AUX/onboard.svg" $APP_ICONS
+cp -f "$APP_ICONS_AUX/alacarte.svg" $APP_ICONS/thingy.svg
+
+cp -f "$APP_ICONS_AUX/simplenote.svg" $APP_ICONS/mintinstall.svg
+cp -f "$APP_ICONS_AUX/simplenote.svg" $APP_ICONS/mintsources.svg
+cp -f "$APP_ICONS_AUX/bleachbit.svg" $APP_ICONS/mintreport.svg
+cp -f "$APP_ICONS_AUX/xfburn.svg" $APP_ICONS/mintupdate.svg
+cp -f "$APP_ICONS_AUX/kclock.svg" $APP_ICONS/timeshift.svg
+cp -f $APP_ICONS/distributor-logo-linux-mint.svg $APP_ICONS/mintwelcome.svg
+cp -f $APP_ICONS/synaptic.svg $APP_ICONS/mintstick.svg
+cp -f "$APP_ICONS_AUX/livepatch.svg" $APP_ICONS/mintbackup.svg
+cp -f "$APP_ICONS_AUX/acetoneiso.svg" $APP_ICONS/mintdrivers.svg
+cp -f "$APP_ICONS_AUX/keepass.svg" $APP_ICONS/lightdm-settings.svg
+cp -f $APP_ICONS/preferences-desktop-keyboard.svg $APP_ICONS/mintlocale-im.svg
+cp -f "$APP_ICONS_AUX/warpinator.svg" $APP_ICONS/org.x.Warpinator.svg
+
+cp -f "$APP_ICONS_AUX/com.github.maoschanz.drawing.svg" $APP_ICONS
+cp -f "$APP_ICONS_AUX/shuffler-control.svg" $APP_ICONS/pix.svg
+cp -f "$APP_ICONS_AUX/budgiewprviews.svg" $APP_ICONS/webapp-manager.svg
+cp -f "$APP_ICONS_AUX/github-desktop.svg" $APP_ICONS/io.github.shiftey.Desktop.svg
+cp -f "$APP_ICONS_AUX/io.atom.Atom.svg" $APP_ICONS/io.brackets.Brackets.svg
+cp -f "$APP_ICONS_AUX/sublime-text.svg" $APP_ICONS
+cp -f $APP_ICONS/gnome-warning.svg $APP_ICONS/gufw.svg
+
+cp -f "$APP_ICONS_AUX/shotcut.svg" $APP_ICONS/org.shotcut.Shotcut.svg
+cp -f "$APP_ICONS_AUX/hb-icon.svg" $APP_ICONS/fr.handbrake.ghb.svg
+cp -f "$APP_ICONS_AUX/xfburn.svg" $APP_ICONS/com.makemkv.MakeMKV.svg
+cp -f "$APP_ICONS_AUX/kodi.svg" $APP_ICONS
+
+
+
+
+
+
+
+
 # COPY CINNAMON ASSETS FOR MANIPULATION
 cp -rf $HOME/.local/share/dermodex/theme-ext/cinnamon/assets/dermodex $HOME/.themes/DermoDeX/cinnamon/assets
 
@@ -114,6 +188,6 @@ sed -i "s|#3281ea|${ACCENT}|g" $CCA/grouped-window-dot-active.svg
 sed -i "s|#e6e6e6|${BRIGHT}|g" $CCA/calendar-arrow-left-hover.svg
 sed -i "s|#e6e6e6|${BRIGHT}|g" $CCA/calendar-arrow-right-hover.svg
 #rm -rf $CCA/*.svg
-
+cp -f $CCA/*.svg $TCD/cinnamon/assets
 
 #xdotool key ctrl+alt+"Escape"
