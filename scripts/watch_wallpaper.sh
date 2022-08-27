@@ -106,8 +106,7 @@ else
                 #MAINSHADE_RGB=$(head -n 1 $HOME/.cache/dermodex/colors_rgb.txt | tail -1 | rev | cut -c2- | rev)
                 #MAINSHADE_HEX=$(head -n 1 $HOME/.cache/dermodex/colors_hex.txt | tail -1 | rev | cut -c1- | rev)
                 
-                # RECOLOR NEMO FOLDERS AND EMBLEMS
-                $BASE_FILE/remix_icons.sh "${HOE}"
+                
 
 
                 gsettings set org.cinnamon.desktop.background primary-color "${MAINSHADE_HEX}"
@@ -356,8 +355,11 @@ else
                 #cp -f $HOME/.cache/dermodex/gtk-3.20/gtk.gresource $HOME/.themes/DermoDeX/gtk-3.20/
                 #cp -f $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css $HOME/.themes/DermoDeX/gtk-3.20/dist/
                 
-                
+                # REMIX THEMES
                 $BASE_FILE/remix_themes.sh
+                
+                # RECOLOR NEMO FOLDERS AND EMBLEMS
+                $BASE_FILE/remix_icons.sh "${HOE}"
                 
                 # Give Possibility to change sounds based on wallpaper too
                 # gsettings set org.cinnamon.sounds login-file /usr/share/sounds/linux-a11y/stereo/desktop-login.oga
