@@ -22,4 +22,4 @@ cp -rf $LWD/theme/* $HOME/.themes/DermoDeX
 cp -f $LWD/theme/cinnamon/cinnamon.orig $LWD/theme/cinnamon/cinnamon.css
 
 
-#xdotool key ctrl+alt+"Escape"
+xdotool key ctrl+alt+"Escape"

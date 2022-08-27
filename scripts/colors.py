@@ -242,13 +242,14 @@ def extract_color(input_image, resize, tolerance, zoom, crop_variant = "h_1"):
     imgpanel_pre = img.filter(ImageFilter.GaussianBlur(int(panel_blur)))
     imgpanel = adjust_brightness(imgpanel_pre, float("0.8"))
     imggauss.save(HOME + '/.local/share/dermodex/login_blur.jpg')
-    imgpanel.save(HOME + '/.local/share/dermodex/panel_blur.jpg')
+    #imgpanel.save(HOME + '/.local/share/dermodex/panel_blur.jpg')
     
     # Convert Wallpaper to PNG and add transparency to panel blur
     
     imgpanel_rgba = imgpanel.copy()
     imgpanel_rgba.putalpha(int((((float(cin_paneltrans) * 100)/100)*255)))
-    imgpanel_rgba.save(HOME + '/.local/share/dermodex/panel_blur.png')
+    imgpanel_darken = adjust_brightness(imgpanel_rgba, float("0.8"))
+    imgpanel_darken.save(HOME + '/.local/share/dermodex/panel_blur.png')
     
     # Save Wallpaper Copies
     img.save(HOME + '/.local/share/dermodex/wallpaper.jpg')

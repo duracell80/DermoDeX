@@ -38,6 +38,7 @@ stage {
 .toggle-switch,
 .popup-menu-item:active .toggle-switch{
     background-image: url("assets/dermodex/switch-off-outline.svg");
+    background-position: 10px 0px;
     width           : 60px;
     height          : 30px;
 }
@@ -76,17 +77,16 @@ StScrollBar StButton#hhandle:hover {
 
 
 /* PANEL */
-#panel:highlight {
-    background-color: rgba(255, 255, 255, 0.5);
-    /*border-radius   : 64px;*/
-}
-
 #panel {
+    padding                 : 0px;
     background-position     : 0px -700px;
     background-repeat       : no-repeat;
     background-size         : cover;
-    
-    padding                 : 0px;
+    background-image        : url(/home/lee/.local/share/dermodex/panel_blur.png);
+}
+
+#panel:highlight {
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 #panelLeft {
@@ -630,8 +630,78 @@ border : 2px solid transparent;
 
 #menu-search-entry StIcon.capslock-warning, .notification StEntry StIcon.capslock-warning, .menu #notification StEntry StIcon.capslock-warning, .popup-menu #notification StEntry StIcon.capslock-warning, #notification StEntry StIcon.capslock-warning {
   icon-size: 16px;
-  warning-color: #FDD633;
+  warning-color: #3281ea;
   padding: 0 6px;
 }
+
+/* KEYBOARD */
+#keyboard {
+    background-color    : rgba(64, 64, 64, 0.9);
+    background-repeat   : no-repeat;
+    background-size     : cover;
+    background-image    : url(/home/lee/.local/share/dermodex/menu_blur.jpg);
+}
+.keyboard-key {
+  border-radius: 64px; 
+}
+
+.keyboard-key:checked, 
+.keyboard-key:hover,
+.keyboard-key:active {
+    background-color: #3281ea;
+}
+
+/* RESULTS AND ITEMS */
+.run-dialog-entry,
+.expo-workspaces-name-entry, 
+#menu-search-entry, 
+#notification StEntry,
+#menu-search-entry:focus, #menu-search-entry:hover, .run-dialog-entry:focus, .run-dialog-entry:hover, #notification StEntry:focus, #notification StEntry:hover {
+    font-size       : 13pt;
+}
+
+
+
+
+/* RUN ALT+F2 */
+.run-dialog,
+.run-dialog-label {
+  font-size : 13pt;
+}
+.run-dialog-entry {
+  font-size : 13pt;
+}
+
+/* MODALS */
+.modal-dialog {
+  font-size         : 13pt;
+  border-radius     : 8px;
+}
+
+.modal-dialog-button-box .modal-dialog-button {
+    font-size       : 13pt;
+    color           : #ffffff;
+    margin          : 16px;
+    padding         : 6px 30px 6px;
+    border-radius   : 32px;
+    background-color: transparent;
+    border          : 1px solid #000000;
+}
+
+.modal-dialog-button-box .modal-dialog-button:hover,
+.modal-dialog-button-box .modal-dialog-button:active,
+.modal-dialog-button-box .modal-dialog-button:checked {
+    background-color: #3281ea;
+    border          : 1px solid #3281ea;
+    color           : #ffffff;
+}
+
+/* OSD */
+.osd-window {
+    border-radius   : 8px;
+    color           : #ffffff;
+    box-shadow      : 0 5px 12px rgba(0, 0, 0, 0.35);
+}
+
 
 /* END DERMODEX CINNAMON OVERRIDES */
