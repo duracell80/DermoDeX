@@ -55,18 +55,7 @@ cp -r extension/dermodex-config@duracell80/files/* ~/.local/share/cinnamon/exten
 # GRANULAR CONTROL OVER WHICH SUB THEMES TO COPY OVER
 cp -r $CWD/src/cinnamon/cinnamon-ext.css ~/.local/share/dermodex/
 
-#cp -r $CWD/theme/cinnamon ~/.themes/DermoDeX
-#cp -r $CWD/theme/gtk-2.0 ~/.themes/DermoDeX
-#cp -r $CWD/theme/gtk-3.0 ~/.themes/DermoDeX
-#cp -r $CWD/theme/gtk-3.20 ~/.themes/DermoDeX
-#cp -r $CWD/theme/metacity-1 ~/.themes/DermoDeX
-#cp -r $CWD/theme/openbox-3 ~/.themes/DermoDeX
-#cp -r $CWD/theme/unity ~/.themes/DermoDeX
-#cp -r $CWD/theme/xfwm4 ~/.themes/DermoDeX
 
-#cp -r $CWD/theme/index.theme ~/.themes/DermoDeX
-#cp -r $CWD/theme/metadata.json ~/.themes/DermoDeX
-#cp -r $CWD/theme/LICENSE ~/.themes/DermoDeX
 
 #cp ~/.cinnamon/configs/menu@cinnamon.org/0.json ~/.cinnamon/configs/menu@cinnamon.org/0.json.bak
 #cp -f ./scripts/config_menu.json ~/.cinnamon/configs/menu@cinnamon.org/0.json
@@ -106,9 +95,13 @@ cp -f $CWD/scripts/*.ini ~/.local/share/dermodex
 cp -f $CWD/scripts/colors.py ~/.local/share/dermodex
 
 
+# COPY OVER WALLPAPERS and ICONS
 cp -r $CWD/wallpapers $HOME/.local/share/dermodex
 cp -r $CWD/src/icons $HOME/.local/share/dermodex/
 
+# COPY OVER THEME-EXT ASSETS
+mkdir -p $HOME/.local/share/dermodex/theme-ext/cinnamon/assets/
+cp -rf $CWD/src/cinnamon/assets/dermodex $HOME/.local/share/dermodex/theme-ext/cinnamon/assets
 
 
 if [ -d $CWD/deps/Color-Icons ] ; then

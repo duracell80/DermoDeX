@@ -6,6 +6,8 @@
 LWD=$HOME/.local/share/dermodex/icons/breeze-dark_black
 IWD=$HOME/.local/share/icons/White-Icons/scalable
 CWD=$HOME/.cache/dermodex/icons/breeze-dark_black
+CCA=$HOME/.cache/dermodex/common-assets/cinnamon/assets
+TCD=$HOME/.themes/DermoDeX
 FILE="$CWD/list.txt"
 
 mkdir -p $CWD/places/outline
@@ -13,6 +15,7 @@ mkdir -p $CWD/emblems
 mkdir -p $CWD/mimetypes
 mkdir -p $CWD/controlpanel/cats
 mkdir -p $CWD/controlpanel/apps
+mkdir -p $HOME/.cache/dermodex/common-assets/cinnamon
 
 cp -f $LWD/mimetypes/*.svg $CWD/mimetypes
 
@@ -89,7 +92,28 @@ mv -f $CWD/emblems/*.svg $HOME/.local/share/icons/White-Icons/scalable/emblems
 mv -f $CWD/mimetypes/*.svg $HOME/.local/share/icons/White-Icons/scalable/mimetypes
 
 cp -f $CWD/controlpanel/cats/cs* $HOME/.local/share/icons/White-Icons/scalable/categories
-
 cp -f $CWD/controlpanel/apps/csd* $HOME/.local/share/icons/White-Icons/scalable/apps
+
+# COPY CINNAMON ASSETS FOR MANIPULATION
+cp -rf $HOME/.local/share/dermodex/theme-ext/cinnamon/assets/dermodex $HOME/.themes/DermoDeX/cinnamon/assets
+
+cp -rf $HOME/.local/share/dermodex/theme/cinnamon/assets/*.svg $CCA
+cp -rf $HOME/.local/share/dermodex/theme/cinnamon/assets/calendar-arrow-left.svg $CCA/calendar-arrow-left-hover.svg
+cp -rf $HOME/.local/share/dermodex/theme/cinnamon/assets/calendar-arrow-right.svg $CCA/calendar-arrow-right-hover.svg
+
+# RECOLOR CINNAMON CLOSE ICONS
+sed -i "s|#f75a61|${ACCENT}|g" $CCA/close.svg
+sed -i "s|#d8354a|${DARKER}|g" $CCA/close-active.svg
+sed -i "s|#ff7a80|${BRIGHT}|g" $CCA/close-hover.svg
+sed -i "s|#1a73e8|${BRIGHT}|g" $CCA/corner-ripple.svg
+sed -i "s|#3476cf|${ACCENT}|g" $CCA/toggle-on.svg
+sed -i "s|#0860f2|${ACCENT}|g" $CCA/add-workspace-active.svg
+sed -i "s|#3476cf|${ACCENT}|g" $CCA/checkbox.svg
+sed -i "s|#1a73e8|${ACCENT}|g" $CCA/radiobutton.svg
+sed -i "s|#3281ea|${ACCENT}|g" $CCA/grouped-window-dot-active.svg
+sed -i "s|#e6e6e6|${BRIGHT}|g" $CCA/calendar-arrow-left-hover.svg
+sed -i "s|#e6e6e6|${BRIGHT}|g" $CCA/calendar-arrow-right-hover.svg
+#rm -rf $CCA/*.svg
+
 
 #xdotool key ctrl+alt+"Escape"

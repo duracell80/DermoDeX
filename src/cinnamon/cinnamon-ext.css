@@ -33,6 +33,21 @@ stage {
     box-shadow      : 0 5px 12px rgba(0, 0, 0, 0.35);
     
 }
+
+/* TOGGLES AND CHECKRADIOS */
+.toggle-switch,
+.popup-menu-item:active .toggle-switch{
+    background-image: url("assets/dermodex/switch-off-outline.svg");
+    width           : 60px;
+    height          : 30px;
+}
+
+.toggle-switch:checked,
+.popup-menu-item:active .toggle-switch:checked {
+  background-image: url("assets/dermodex/switch-on-outline.svg");
+}
+
+
 /* SCROLLBARS */
 StScrollBar {
     padding             : 0px 0px; 
@@ -49,6 +64,16 @@ StScrollBar StButton#vhandle:hover,
 StScrollBar StButton#hhandle:hover {
     background-color    : #3281ea; 
 }
+
+/* CALENDAR */
+.calendar-change-month-back:hover {
+  background-image: url("assets/calendar-arrow-left-hover.svg");
+}
+
+.calendar-change-month-forward:hover {
+  background-image: url("assets/calendar-arrow-right-hover.svg");
+}
+
 
 /* PANEL */
 #panel:highlight {

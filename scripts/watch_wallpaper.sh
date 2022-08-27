@@ -4,6 +4,9 @@ HOLD_FILE="$HOME/.local/share/dermodex/dermodex_hold"
 CONF_FILE="$HOME/.local/share/dermodex/config.ini"
 CINN_FILE="$HOME/.cache/dermodex/cinnamon.css"
 
+CCA="$HOME/.cache/dermodex/common-assets/cinnamon/assets"
+TCD="$HOME/.themes/DermoDeX"
+
 
 $BASE_FILE/watch_sounds.sh
 
@@ -354,6 +357,8 @@ else
                 #cp -f $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css $HOME/.themes/DermoDeX/gtk-3.20/dist/
                 
                 
+                $BASE_FILE/remix_themes.sh
+                
                 # Give Possibility to change sounds based on wallpaper too
                 # gsettings set org.cinnamon.sounds login-file /usr/share/sounds/linux-a11y/stereo/desktop-login.oga
                 
@@ -585,6 +590,9 @@ else
                     gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/linux-a11y/stereo/window-minimized.oga'
                     gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/linux-a11y/stereo/desktop-login.oga'
                 fi
+                
+                
+                cp -f $CCA/*.svg $TCD/cinnamon/assets
 
             else
                 ACT="0"
