@@ -1,6 +1,7 @@
 [/]
 alttab-switcher-delay=100
 alttab-switcher-style='icons'
+app-menu-label=''
 applet-cache-updated=1593057270
 command-history=['r', 'dd_release', 'dd_hold', 'dd_sleep', 'dd_wake', 'dd_refresh', 'dd_reload']
 desklet-cache-updated=1593325530
@@ -26,12 +27,12 @@ desktop-effects-unmaximize-effect='none'
 desktop-effects-unmaximize-time=100
 desktop-effects-unmaximize-transition='easeNone'
 device-aliases=['/org/freedesktop/UPower/devices/mouse_hidpp_battery_1:= M720 Mouse', '/org/freedesktop/UPower/devices/keyboard_hidpp_battery_0:= K780 Wireless Keyboard']
-enabled-applets=['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:3:grouped-window-list@cinnamon.org:2', 'panel1:right:3:systray@cinnamon.org:3', 'panel1:right:1:xapp-status@cinnamon.org:4', 'panel1:right:6:notifications@cinnamon.org:5', 'panel1:right:5:printers@cinnamon.org:6', 'panel1:right:7:network@cinnamon.org:10', 'panel1:right:4:sound@cinnamon.org:11', 'panel1:right:8:calendar@cinnamon.org:13', 'panel1:right:2:radio@driglu4it:16', 'panel1:right:0:workspace-switcher@cinnamon.org:27', 'panel1:right:9:power@cinnamon.org:30', 'panel1:right:10:user@cinnamon.org:33', 'panel1:center:0:expo@cinnamon.org:36', 'panel1:left:1:windows-quick-list@cinnamon.org:39']
+enabled-applets=['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:3:grouped-window-list@cinnamon.org:2', 'panel1:right:5:systray@cinnamon.org:3', 'panel1:right:3:xapp-status@cinnamon.org:4', 'panel1:right:8:notifications@cinnamon.org:5', 'panel1:right:7:printers@cinnamon.org:6', 'panel1:right:9:network@cinnamon.org:10', 'panel1:right:6:sound@cinnamon.org:11', 'panel1:right:11:calendar@cinnamon.org:13', 'panel1:right:4:radio@driglu4it:16', 'panel1:right:2:workspace-switcher@cinnamon.org:27', 'panel1:right:12:power@cinnamon.org:30', 'panel1:right:13:user@cinnamon.org:33', 'panel1:center:0:expo@cinnamon.org:36', 'panel1:right:10:weather@mockturtl:43']
 enabled-desklets=['clock@cinnamon.org:2:3925:75']
-enabled-extensions=['opacify@anish.org']
+enabled-extensions=['opacify@anish.org', 'dermodex-config@duracell80']
 favorite-apps=['cinnamon-settings.desktop', 'org.gnome.Terminal.desktop', 'nemo.desktop']
 hotcorner-layout=['expo:false:0', 'expo:false:500', 'scale:true:1000', 'desktop:true:1000']
-next-applet-id=42
+next-applet-id=45
 next-desklet-id=4
 no-adjacent-panel-barriers=false
 panel-edit-mode=false
@@ -69,8 +70,10 @@ togglekeys-sound-off='/usr/share/sounds/borealis/restore_down.ogg'
 togglekeys-sound-on='/usr/share/sounds/borealis/restore_up.ogg'
 
 [desktop/a11y/mouse]
+dwell-click-enabled=false
 dwell-threshold=10
 dwell-time=1.2
+secondary-click-enabled=false
 secondary-click-time=1.2
 
 [desktop/applications/calculator]
@@ -82,18 +85,20 @@ exec='gnome-terminal'
 [desktop/background]
 color-shading-type='vertical'
 picture-options='zoom'
-picture-uri='file:////home/lee/Pictures/DermoDeX/pexels-mengliu-di-3064258.jpg'
-primary-color='#4B5F78'
-secondary-color='#15161E'
+picture-uri='file:///home/lee/Pictures/Wallpapers/pexels-rodrigo-souza-2531709.jpg'
+primary-color='#003794'
+secondary-color='#003794'
 
 [desktop/background/slideshow]
 delay=15
-image-source='xml:///usr/share/cinnamon-background-properties/linuxmint-una.xml'
+image-source='directory:///home/lee/Pictures/Wallpapers'
 slideshow-enabled=false
 
 [desktop/interface]
 clock-show-date=false
 clock-show-seconds=false
+cursor-blink-time=1200
+cursor-size=24
 font-name='Ubuntu 14'
 gtk-overlay-scrollbars=true
 gtk-theme='DermoDeX'
@@ -103,6 +108,14 @@ icon-theme-backup='White-Icons'
 scaling-factor=uint32 1
 text-scaling-factor=1
 toolkit-accessibility=true
+
+[desktop/keybindings]
+looking-glass-keybinding=@as []
+show-desklets=@as []
+
+[desktop/keybindings/media-keys]
+screensaver=['<Super>l', 'XF86ScreenSaver']
+suspend=['<Super>s']
 
 [desktop/media-handling]
 autorun-never=false
@@ -114,6 +127,19 @@ autorun-x-content-start-app=['x-content/audio-cdda', 'x-content/unix-software', 
 bottom-notifications=true
 display-notifications=true
 remove-old=true
+
+[desktop/peripherals/keyboard]
+delay=uint32 500
+repeat-interval=uint32 30
+
+[desktop/peripherals/mouse]
+double-click=400
+drag-threshold=8
+speed=0.0
+
+[desktop/peripherals/touchpad]
+speed=0.0
+tap-to-click=true
 
 [desktop/privacy]
 remember-recent-files=false
@@ -135,7 +161,7 @@ volume-sound-file='/usr/share/sounds/borealis/bell.ogg'
 [desktop/wm/preferences]
 min-window-opacity=30
 num-workspaces=3
-theme='Mint-Y'
+theme='HighContrast'
 theme-backup='Mint-Y'
 titlebar-font='Ubuntu Medium 12'
 workspace-names=@as []
