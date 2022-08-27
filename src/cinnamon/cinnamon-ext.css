@@ -726,5 +726,70 @@ border : 2px solid transparent;
     box-shadow      : 0 5px 12px rgba(0, 0, 0, 0.35);
 }
 
+/* ALT TAB */
+#altTabPopup {
+  padding: 16px;
+  spacing: 32px;}
+
+#altTabPopup .alt-tab-app {
+  
+}
+
+.thumbnail-scroll-gradient-left {
+  border-radius-topright: 0px;
+  border-radius-bottomright: 0px;
+  border-radius: 24px;
+  width: 60px;
+  background-gradient-direction: horizontal;
+  background-gradient-start: #333333;
+  background-gradient-end: rgba(51, 51, 51, 0); }
+
+.thumbnail-scroll-gradient-right {
+  border-radius-topleft: 0px;
+  border-radius-bottomleft: 0px;
+  border-radius: 24px;
+  width: 60px;
+  background-gradient-direction: horizontal;
+  background-gradient-start: rgba(51, 51, 51, 0);
+  background-gradient-end: #333333; }
+
+.switcher-list {
+  border: 1px solid #202020;
+  border-radius: 16px;
+  background-color: rgba(32, 32, 32, 0.8);
+  color: #ffffff; }
+  .switcher-list .item-box {
+    padding: 16px;}
+    .switcher-list .item-box:outlined {
+      padding: 6px;
+      border: 1px solid #202020; }
+    .switcher-list .item-box:selected {
+      background-color: rgba(0, 0, 0, 0.33);
+        border-radius : 16px;}
+  .switcher-list .thumbnail {
+    width: 256px; 
+border-radius : 4px;}
+  .switcher-list .thumbnail-box {
+    padding: 2px;
+    spacing: 4px;
+}
+  .switcher-list .separator {
+    width: 1px;
+    background: rgba(255, 255, 255, 0.33); }
+
+.switcher-list-item-container {
+  spacing: 32px; }
+
+.switcher-arrow {
+  border-color: rgba(32, 32, 32, 0);
+  color: #ffffff; }
+  .switcher-arrow:highlighted {
+    border-color: rgba(32, 32, 32, 0);
+    color: #ffffff; }
+
+.switcher-preview-backdrop {
+  background-color: rgba(255, 255, 255, 0.33); }
+
+
 
 /* END DERMODEX CINNAMON OVERRIDES */
