@@ -139,11 +139,11 @@ StScrollBar StButton#hhandle:hover {
 /* PANEL */
 #panel {
     padding                 : 0px;
-    background-color        : rgba(1,16,36,0.9);
-    background-position     : 0px -700px;
     background-repeat       : no-repeat;
     background-size         : cover;
-    /*background-image        : url(/home/lee/.local/share/dermodex/panel_blur.png);*/
+    dd-panel-background-position : 0px -700px;
+    dd-panel-background-image : url(~/.local/share/dermodex/panel_blur.png);
+    dd-panel-background-color : rgba(1,16,36,0.9);
 }
 
 #panel:highlight {
@@ -161,8 +161,7 @@ StScrollBar StButton#hhandle:hover {
     margin-right    : 16px;
     
     border-radius   : 32px;
-    background-color: rgba(1,16,36,0.9);
-    /*background-color: #011024;*/
+    dd-panel-inner-background-color : rgba(1,16,36,0.9);
 }
 
 .panelLeft {
@@ -229,8 +228,8 @@ StScrollBar StButton#hhandle:hover {
     margin-bottom       : 0px;
 }
 .menu-background {
-    background-color    : rgba(1,16,36,0.9);
-    /*background-image    : url(/home/lee/.local/share/dermodex/menu_blur.jpg);*/
+    dd-menu-background-color : rgba(1,16,36,0.9);
+    dd-menu-background-image : url(~/.local/share/dermodex/menu_blur.jpg);
     background-position : 0px 0px;
     background-repeat   : no-repeat;
     background-size     : 1000px 1000px;
@@ -450,7 +449,7 @@ StScrollBar StButton#hhandle:hover {
     background-repeat   : no-repeat;
     background-size     : 75px 75px;
     background-position : 210px 350px;
-    background-image    : url(/home/lee/.face);
+    background-image    : url(~/.face);
 }
 
 .menu-application-button-selected,
@@ -710,8 +709,7 @@ StScrollBar StButton#hhandle:hover {
 .menu,
 .popup-menu,
 .popup-combo-menu {
-    background-color        : rgba(1,16,36,0.9);
-    /*background-color  : #011024;*/
+    dd-menu-background-color : rgba(1,16,36,0.9);
     border-radius     : 8px;
 }
 
