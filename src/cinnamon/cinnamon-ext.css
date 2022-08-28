@@ -139,10 +139,11 @@ StScrollBar StButton#hhandle:hover {
 /* PANEL */
 #panel {
     padding                 : 0px;
+    background-color        : rgba(1,16,36,0.9);
     background-position     : 0px -700px;
     background-repeat       : no-repeat;
     background-size         : cover;
-    background-image        : url(/home/lee/.local/share/dermodex/panel_blur.png);
+    /*background-image        : url(/home/lee/.local/share/dermodex/panel_blur.png);*/
 }
 
 #panel:highlight {
@@ -160,7 +161,8 @@ StScrollBar StButton#hhandle:hover {
     margin-right    : 16px;
     
     border-radius   : 32px;
-    background-color: #011024;
+    background-color: rgba(1,16,36,0.9);
+    /*background-color: #011024;*/
 }
 
 .panelLeft {
@@ -227,8 +229,8 @@ StScrollBar StButton#hhandle:hover {
     margin-bottom       : 0px;
 }
 .menu-background {
-    background-color    : rgba(64, 64, 64, 0.95);
-    background-image    : url(/home/lee/.local/share/dermodex/menu_blur.jpg);
+    background-color    : rgba(1,16,36,0.9);
+    /*background-image    : url(/home/lee/.local/share/dermodex/menu_blur.jpg);*/
     background-position : 0px 0px;
     background-repeat   : no-repeat;
     background-size     : 1000px 1000px;
@@ -381,8 +383,8 @@ StScrollBar StButton#hhandle:hover {
   padding           : 8px;
   background-color  : rgba(64, 64, 64, 0.85);
   background-gradient-direction: vertical;
-  fav-background-gradient-end: rgba(0,0,0,0.66);
-  fav-background-gradient-start: rgba(0,0,0,0);
+  background-gradient-end: rgba(50,129,234,0.45);
+  background-gradient-start: rgba(91,147,222,0.15);
   border            : 1px solid #202020;
   border-radius     : 64px; 
 }
@@ -688,14 +690,15 @@ height:150px;
 .menu,
 .popup-menu,
 .popup-combo-menu {
-  background-color  : #011024;
-  border-radius     : 8px;
+    background-color        : rgba(1,16,36,0.9);
+    /*background-color  : #011024;*/
+    border-radius     : 8px;
 }
 
 .menu .popup-menu-content,
 .popup-menu .popup-menu-content,
 .popup-combo-menu .popup-menu-content {
-  padding: 16px;
+    padding: 16px;
 }
 
 .menu .popup-menu-item,
@@ -709,13 +712,13 @@ height:150px;
 .menu-icon,
 .popup-menu-icon,
 .system-status-icon {
-  icon-size: 22px;
+    icon-size: 22px;
 }
 
 
 .popup-slider-menu-item,
 .slider {
-  -slider-active-background-color: #3281ea;
+    -slider-active-background-color: #3281ea;
 }
 
 

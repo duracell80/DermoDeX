@@ -1,26 +1,34 @@
 #!/usr/bin/env python3
 
 import sys, getopt
+from PIL import ImageColor
+
 
 def main(argv):
     arg_color   = "#3281ea"
     arg_factor  = float(0.5)
+    arg_mode    = "hex"
     
     try:
-        opts, args = getopt.getopt(argv,"hc:f:",["color=","factor="])
+        opts, args = getopt.getopt(argv,"h:c:f:m",["color=","factor=","mode="])
     except getopt.GetoptError:
-        print('remix_color.py -c <hexcolor> -f <factor>')
+        print('remix_color.py -c <hexcolor> -f <factor> -m <hex|rgb>')
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h':
-            print('remix_color.py -c <hexcolor> -f <factor>')
+            print('remix_color.py -c <hexcolor> -f <factor> -m <hex|rgb>')
             sys.exit()
         elif opt in ("-c", "--color"):
-            arg_color = arg
+            arg_color = str(arg)
         elif opt in ("-f", "--factor"):
             arg_factor = float(arg)
+        elif opt in ("-m", "--mode"):
+            arg_mode = str(arg)
             
-    print(colorscale(arg_color, arg_factor))
+    if arg_mode == "rgb":
+        print(get_rgb(colorscale(arg_color, arg_factor)))
+    else:
+        print(colorscale(arg_color, arg_factor))
 
 
 
@@ -32,6 +40,12 @@ def clamp(val, minimum=0, maximum=255):
     if val > maximum:
         return maximum
     return val
+
+def get_rgb(h):
+    rgb = str(ImageColor.getcolor(h, "RGB"))
+    rgb = rgb.replace("(", "").replace(")", "").replace(" ", "")
+    
+    return rgb
 
 def colorscale(hexstr, scalefactor):
     """

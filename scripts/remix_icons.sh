@@ -21,12 +21,19 @@ mkdir -p $HOME/.cache/dermodex/common-assets/cinnamon
 cp -f $LWD/mimetypes/*.svg $CWD/mimetypes
 
 ACCENT=$1
-BRIGHTEST=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 2.2)
-BRIGHTER=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 2)
-BRIGHT=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 1.3)
-DARK=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 0.7)
-DARKER=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 0.3)
-DARKEST=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 0.2)
+BRIGHTEST=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 2.2 --mode="hex")
+BRIGHTER=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 2 --mode="hex")
+BRIGHT=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 1.3 --mode="hex")
+DARK=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 0.7 --mode="hex")
+DARKER=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 0.3 --mode="hex")
+DARKEST=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 0.2 --mode="hex")
+
+RGB_BRIGHTEST=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 2.2 --mode="rgb")
+RGB_BRIGHTER=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 2 --mode="rgb")
+RGB_BRIGHT=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 1.3 --mode="rgb")
+RGB_DARK=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 0.7 --mode="rgb")
+RGB_DARKER=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 0.3 --mode="rgb")
+RGB_DARKEST=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 0.2 --mode="rgb")
 
 
 
@@ -165,11 +172,6 @@ cp -f "$APP_ICONS_AUX/shotcut.svg" $APP_ICONS/org.shotcut.Shotcut.svg
 cp -f "$APP_ICONS_AUX/hb-icon.svg" $APP_ICONS/fr.handbrake.ghb.svg
 cp -f "$APP_ICONS_AUX/xfburn.svg" $APP_ICONS/com.makemkv.MakeMKV.svg
 cp -f "$APP_ICONS_AUX/kodi.svg" $APP_ICONS
-
-
-
-
-
 
 
 
