@@ -177,5 +177,11 @@ elif [ "$soundnotification" == "nightlynews" ]; then
 elif [ "$soundnotification" == "zorin" ]; then
     gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/zorin/stereo/message-new-instant.ogg'
 else
+    soundnotification = "as-themed"
     $HOME/.local/share/dermodex/watch_sounds.sh
 fi
+
+# SCRIPTS HERE CAN LOCK UP SETTINGS MODAL
+#SOUNDFILE=$(gsettings get org.cinnamon.sounds notification-file | sed "s/'//" | sed "s/'//")
+#play $SOUNDFILE
+#notify-send --urgency=normal --category=im.recieved --icon=help-info-symbolic "Notification sound set: ${soundnotification}"
