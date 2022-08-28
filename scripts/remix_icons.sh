@@ -21,8 +21,13 @@ mkdir -p $HOME/.cache/dermodex/common-assets/cinnamon
 cp -f $LWD/mimetypes/*.svg $CWD/mimetypes
 
 ACCENT=$1
+BRIGHTEST=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 2.2)
+BRIGHTER=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 2)
 BRIGHT=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 1.3)
-DARKER=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 0.7)
+DARK=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 0.7)
+DARKER=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 0.3)
+DARKEST=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 0.2)
+
 
 
 # PLACES
@@ -33,7 +38,7 @@ echo "[i] Remixing Icons: Places"
 while read -r LINE; do
     sed -i "s|stop-color:#000|stop-color:${ACCENT}|g" ${LINE}
     sed -i "s|stop-color:#666|stop-color:${BRIGHT}|g" ${LINE}
-    sed -i "s|fill:#999|fill:${DARKER}|g" ${LINE}
+    sed -i "s|fill:#999|fill:${DARK}|g" ${LINE}
 done < $FILE
 rm -f $FILE
 
@@ -53,7 +58,7 @@ ls $CWD/emblems/*.svg > $FILE
 
 echo "[i] Remixing Icons: Emblems"
 while read -r LINE; do
-    sed -i "s|#333333|${DARKER}|g" ${LINE}
+    sed -i "s|#333333|${DARK}|g" ${LINE}
 done < $FILE
 rm -f $FILE
 
@@ -63,7 +68,7 @@ ls $CWD/mimetypes/*.svg > $FILE
 
 echo "[i] Remixing Icons: Mimetypes"
 while read -r LINE; do
-    sed -i 's|#000000|'${DARKER}'|g' ${LINE}
+    sed -i 's|#000000|'${DARK}'|g' ${LINE}
 done < $FILE
 rm -f $FILE
 
@@ -98,7 +103,7 @@ cp -f $CWD/controlpanel/apps/csd* $HOME/.local/share/icons/White-Icons/scalable/
 
 # RECOLOR APP ICON BACKGROUNDS
 cp -f $LWD/apps/*.svg $CWD/apps
-sed -i "s|#333333|${DARKER}|g" $CWD/apps/*.svg
+sed -i "s|#333333|${DARK}|g" $CWD/apps/*.svg
 
 APP_ICONS="${HOME}/.local/share/icons/White-Icons/scalable/apps"
 APP_ICONS_AUX="$CWD/apps"
@@ -177,7 +182,7 @@ cp -rf $HOME/.local/share/dermodex/theme/cinnamon/assets/calendar-arrow-right.sv
 
 # RECOLOR CINNAMON CLOSE ICONS
 sed -i "s|#f75a61|${ACCENT}|g" $CCA/close.svg
-sed -i "s|#d8354a|${DARKER}|g" $CCA/close-active.svg
+sed -i "s|#d8354a|${DARK}|g" $CCA/close-active.svg
 sed -i "s|#ff7a80|${BRIGHT}|g" $CCA/close-hover.svg
 sed -i "s|#1a73e8|${BRIGHT}|g" $CCA/corner-ripple.svg
 sed -i "s|#3476cf|${ACCENT}|g" $CCA/toggle-on.svg

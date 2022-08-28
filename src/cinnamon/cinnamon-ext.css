@@ -73,11 +73,37 @@ StScrollBar StButton#hhandle:hover {
     color               : #ffffff;
 }
 
+.calendar-events-main-box {
+    background          : #011a3b;
+    padding             : 2em;
+    border-radius       : 8px;
+    min-width           : 20em;
+}
+
+.calendar-events-event-container {
+    background          : transparent;
+}
+
+.calendar-event-color-strip {
+    background          : transparent;
+}
+.calendar-event-button {
+    padding             : 8px;
+    border              : 1px solid #333333;
+    border-radius       : 32px;
+}
+.calendar-event-button:hover {
+    background          : transparent;
+    border              : 1px solid #3281ea;
+    
+}
+
 .calendar-event-row-content {
-    border-left         : 3px solid #3281ea;
     border-radius       : 0px;
     padding-left        : 8px;
 }
+
+
 .calendar-event-row-content:hover {
     background          : transparent;
 }
@@ -134,7 +160,7 @@ StScrollBar StButton#hhandle:hover {
     margin-right    : 16px;
     
     border-radius   : 32px;
-    background-color: rgba(64, 64, 64, 0.9);
+    background-color: #011024;
 }
 
 .panelLeft {
@@ -659,6 +685,13 @@ height:150px;
 
 
 /* POPUP MENUS */
+.menu,
+.popup-menu,
+.popup-combo-menu {
+  background-color  : #011024;
+  border-radius     : 8px;
+}
+
 .menu .popup-menu-content,
 .popup-menu .popup-menu-content,
 .popup-combo-menu .popup-menu-content {
@@ -668,9 +701,9 @@ height:150px;
 .menu .popup-menu-item,
 .popup-menu .popup-menu-item,
 .popup-combo-menu .popup-menu-item {
-  padding: 12px 16px;
-  spacing: 12px;
-  border-radius: 6px;
+    padding         : 12px 16px;
+    spacing         : 12px;
+    border-radius   : 6px;
 }
 
 .menu-icon,
