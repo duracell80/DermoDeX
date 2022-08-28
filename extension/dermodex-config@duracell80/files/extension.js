@@ -51,6 +51,7 @@ DermoDeXSettings.prototype = {
         this.settings.bindProperty(Settings.BindingDirection.IN, 'contrast', 'contrast', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'mainshade', 'mainshade', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'soundtheme', 'soundtheme', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'soundnotification', 'soundnotification', null);
         
         this.settings.bindProperty(Settings.BindingDirection.IN, 'panelstyle', 'panelstyle', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'paneltrans', 'paneltrans', null);
@@ -83,6 +84,7 @@ DermoDeXSettings.prototype = {
         this.settings.bind('brightness', 'brightness', this.on_brightness_changed);
         this.settings.bind('contrast', 'contrast', this.on_contrast_changed);
         this.settings.bind('soundtheme', 'soundtheme', this.on_soundtheme_changed);
+        this.settings.bind('soundnotification', 'soundnotification', this.on_soundnotification_changed);
         this.settings.bind('mainshade', 'mainshade', this.on_mainshade_changed);
         this.settings.bind('colorcollect', 'colorcollect', this.on_colorcollect_changed);
         
@@ -302,6 +304,11 @@ DermoDeXSettings.prototype = {
     on_soundtheme_changed: function () {
         var cfg_soundtheme = this.settings.getValue('soundtheme')
         let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'soundtheme', '-v' + cfg_soundtheme]);
+        let error = process.spawn_sync_and_get_error();
+	},
+    on_soundnotification_changed: function () {
+        var cfg_soundnotification = this.settings.getValue('soundnotification')
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'soundnotification', '-v' + cfg_soundnotification]);
         let error = process.spawn_sync_and_get_error();
 	}
     

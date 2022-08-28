@@ -36,6 +36,8 @@ def main(argv):
         
     if "soundtheme" in cfg_key:
         os.system(HOME + '/.local/share/dermodex/watch_sounds.sh');
+    if "soundnotification" in cfg_key:
+        os.system(HOME + '/.local/share/dermodex/remix_sounds.sh ' + cfg_value);
     
     
     

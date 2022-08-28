@@ -47,9 +47,7 @@ else
   echo "$HOME/Pictures/DermoDeX" >> "$HOME/.cinnamon/backgrounds/user-folders.lst"
 fi
 
-# COPY OVER THE EXTENSION
-mkdir -p ~/.local/share/cinnamon/extensions/dermodex-config@duracell80
-cp -r extension/dermodex-config@duracell80/files/* ~/.local/share/cinnamon/extensions/dermodex-config@duracell80
+
 
 
 # GRANULAR CONTROL OVER WHICH SUB THEMES TO COPY OVER
@@ -63,6 +61,7 @@ cp -r $CWD/src/cinnamon/cinnamon-ext.css ~/.local/share/dermodex/
 #cp -f ./scripts/config_workspace.json ~/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json
 
 #cp -f ./scripts/cinnamon_base.css ~/.local/share/dermodex
+cp -f ./scripts/remix_sounds.sh ~/.local/share/dermodex
 cp -f ./scripts/remix_themes.sh ~/.local/share/dermodex
 cp -f ./scripts/remix_icons.sh ~/.local/share/dermodex
 cp -f ./scripts/remix_color.py ~/.local/share/dermodex
@@ -297,6 +296,10 @@ echo ""
     # SOUND - NIGHTLY NEWS
     sudo cp -fr $CWD/sounds/nightlynews/ /usr/share/sounds/
     sudo chmod -R a+rx /usr/share/sounds/nightlynews/
+    
+    # SOUND - Team Pixel
+    sudo cp -fr $CWD/sounds/teampixel/ /usr/share/sounds/
+    sudo chmod -R a+rx /usr/share/sounds/teampixel/
 
 sudo mkdir -p /usr/share/backgrounds/dermodex
 sudo chmod a+rw /usr/share/backgrounds/dermodex
@@ -501,12 +504,27 @@ else
     #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/nightlynews/click.ogg'
     #gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/nightlynews/click.ogg'
     
+    # SOUND - TEAM PIXEL - GOOGLE
+    #gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/teampixel/navigation_backward-selection.ogg'
+    #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/teampixel/notifications/Classical Harmonies/Spring Strings.ogg'
+    #gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/teampixel/Asteroid.ogg'
+    #gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/teampixel/ui_loading.ogg'
+    #gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/teampixel/navigation-cancel.ogg'
+    #gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/teampixel/navigation-cancel.ogg'
+    #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notification_simple-01.ogg'
+    #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/teampixel/state-change_confirm-up.ogg'
+    #gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/teampixel/navigation_transition-right.ogg'
+    #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/teampixel/navigation_unavailable-selection.ogg'
+    #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/teampixel/navigation_transition-left.ogg'
+    #gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/teampixel/state-change_confirm-down.ogg'
+    
 fi
 
-
+# COPY OVER THE EXTENSION
+mkdir -p ~/.local/share/cinnamon/extensions/dermodex-config@duracell80
+cp -rf extension/dermodex-config@duracell80/files/* ~/.local/share/cinnamon/extensions/dermodex-config@duracell80
 
 sed -i "s|~/|$HOME/|g" $HOME/.local/share/cinnamon/extensions/dermodex-config@duracell80/extension.js
-
 
 #rm -rf $CWD/deps/Color-Icons
 #rm -rf ~/.cache/dermodex/common-assets/sounds/linux-a11y-sound-theme
