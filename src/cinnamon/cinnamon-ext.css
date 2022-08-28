@@ -67,6 +67,32 @@ StScrollBar StButton#hhandle:hover {
 }
 
 /* CALENDAR */
+.calendar,
+.calendar .calendar-main-box,
+.calendar .calendar-event-time-present {
+    color               : #ffffff;
+}
+
+.calendar-event-row-content {
+    border-left         : 3px solid #3281ea;
+    border-radius       : 0px;
+    padding-left        : 8px;
+}
+.calendar-event-row-content:hover {
+    background          : transparent;
+}
+.calendar-event-time-past{
+    color               : #eeeeee;
+}
+
+.calendar-event-time-future{
+    color               : #ffffff;
+}
+
+.calendar-event-time-present:all-day {
+    color               : #a0bfe8;
+}
+
 .calendar-change-month-back:hover {
   background-image: url("assets/calendar-arrow-left-hover.svg");
 }

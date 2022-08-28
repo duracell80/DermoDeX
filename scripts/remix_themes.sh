@@ -8,6 +8,7 @@ CCD=$HOME/.cache/dermodex
 CINN_FILE=$CCD/cinnamon-ext.css
 
 ACCENT=$1
+BRIGHTEST=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 2)
 BRIGHT=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 1.3)
 DARKER=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 0.7)
 
@@ -20,8 +21,12 @@ cp $LWD/cinnamon-ext.css $CINN_FILE
 chmod u+rw $CCD/cinnamon-base.css
 chmod u+rw $CCD/cinnamon-ext.css
 
-# RIGHT SED FRED
+# SED - BRIGHT - #5b93de
+sed -i "s|#a0bfe8|${BRIGHTEST}|g" $CINN_FILE
+
+# SED - ACCENT - #3281ea
 sed -i "s|#3281ea|${BRIGHT}|g" $CINN_FILE
+
 
 
 # COMBINE THE MODS
