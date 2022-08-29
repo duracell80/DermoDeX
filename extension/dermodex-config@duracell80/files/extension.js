@@ -60,6 +60,7 @@ DermoDeXSettings.prototype = {
         this.settings.bindProperty(Settings.BindingDirection.IN, 'menubckgrd', 'menubckgrd', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'menuavatar', 'menuavatar', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'flowcolors', 'flowcolors', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'flowcolorsmenu', 'flowcolorsmenu', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'flowsidebar', 'flowsidebar', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'colorcollect', 'colorcollect', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'splitimage', 'splitimage', null);
@@ -96,6 +97,7 @@ DermoDeXSettings.prototype = {
         this.settings.bind('menubckgrd', 'menubckgrd', this.on_menubckgrd_changed);
         this.settings.bind('menuavatar', 'menuavatar', this.on_menuavatar_changed);
         this.settings.bind('flowcolors', 'flowcolors', this.on_flowcolors_changed);
+        this.settings.bind('flowcolorsmenu', 'flowcolorsmenu', this.on_flowcolorsmenu_changed);
         this.settings.bind('flowsidebar', 'flowsidebar', this.on_flowsidebar_changed);
         this.settings.bind('splitimage', 'splitimage', this.on_splitimage_changed);
         this.settings.bind('splitfocus', 'splitfocus', this.on_splitfocus_changed);
@@ -161,6 +163,12 @@ DermoDeXSettings.prototype = {
     on_flowcolors_changed: function () {
         var cfg_flowcolors = this.settings.getValue('flowcolors')
         let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'flowcolors', '-v' + cfg_flowcolors]);
+        let error = process.spawn_sync_and_get_error();
+	},
+    
+    on_flowcolorsmenu_changed: function () {
+        var cfg_flowcolorsmenu = this.settings.getValue('flowcolorsmenu')
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'flowcolorsmenu', '-v' + cfg_flowcolorsmenu]);
         let error = process.spawn_sync_and_get_error();
 	},
     

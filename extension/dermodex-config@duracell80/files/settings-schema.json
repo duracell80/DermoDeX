@@ -146,10 +146,17 @@
     },
     "flowcolors" : {
         "type" : "checkbox",
-        "description" : "Color Flow",
+        "description" : "Color Flow - GTK",
         "default" : true,
         "tooltip" : "When active, DermoDeX will make an attempt to transfer the hover color from the Applictaions Menu into GTK. Set this on or off depending on your results. If DermoDeX detects a shade that is too dark for GTK it will attempt avoiding flowing it through."
     },
+    "flowcolorsmenu" : {
+        "type" : "checkbox",
+        "description" : "Color Flow - Menu Launcher",
+        "default" : true,
+        "tooltip" : "When active, DermoDeX transfer the accent color to the Applictaions Menu button on click."
+    },
+    
     "flowsidebar" : {
         "type" : "checkbox",
         "description" : "Color Flow - Sidebar",

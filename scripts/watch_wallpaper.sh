@@ -66,8 +66,19 @@ else
                 #cp $HOME/.local/share/dermodex/gtk-3.20/gtk.gresource $HOME/.cache/dermodex/gtk-3.20
                 #cp $HOME/.local/share/dermodex/gtk-3.20/dist/gtk.css $HOME/.cache/dermodex/gtk-3.20/dist/
                 
+                gsettings set org.cinnamon.desktop.background primary-color "${MAINSHADE_HEX}"
+                gsettings set org.cinnamon.desktop.background secondary-color "${HOE}"
+                gsettings set org.cinnamon.desktop.background color-shading-type "vertical"
+
+                CONF_SLIDESHOW=$(gsettings get org.cinnamon.desktop.background.slideshow slideshow-enabled)
+                CONF_SLIDETIME=$(gsettings get org.cinnamon.desktop.background.slideshow delay)
+                CONF_ASPECT=$(gsettings get org.cinnamon.desktop.background picture-options)
+                
+                
                 # GENERATE THE COLORS AND UPDATE THE CONFIG
-                python3 $HOME/.local/share/dermodex/colors.py
+                if [ "$CONF_SLIDESHOW" = "false" ]; then
+                    python3 $HOME/.local/share/dermodex/colors.py
+                fi
                 
                 # READ THE UPDATED CONFIG
                 shopt -s extglob
@@ -95,26 +106,8 @@ else
                 MAINSHADE_RGB="(${savergb0}"
 
 
-                gsettings set org.cinnamon.desktop.background primary-color "${MAINSHADE_HEX}"
-                gsettings set org.cinnamon.desktop.background secondary-color "${HOE}"
-                gsettings set org.cinnamon.desktop.background color-shading-type "vertical"
+                
 
-                CONF_SLIDESHOW=$(gsettings get org.cinnamon.desktop.background.slideshow slideshow-enabled)
-                CONF_SLIDETIME=$(gsettings get org.cinnamon.desktop.background.slideshow delay)
-                CONF_ASPECT=$(gsettings get org.cinnamon.desktop.background picture-options)
-
-                
-                
-                
-                
-                # PANEL BLUR - IMPORTANT KEEP THIS BELOW PANEL TRANS
-                #sed -i "s|--panel-blur-background-position: 0px -0px;|background-position: 0px -${RES_PRIMARY}px;|g" $CINN_FILE
-                #sed -i "s|background-image: url(~/.themes/|background-image: url(${HOME}/.themes/|g" $CINN_FILE
-                
-                # DESKLET CONFIGURATION BACKGROUND
-                #sed -i "s|--desklet-highlight-background-color: #999999;|background-color: ${HOE};|g" $CINN_FILE
-                # DESKLET DRAG BACKGROUND
-                #sed -i "s|--desklet-drag-background-color: rgba(44, 44, 44, 0.3);|background-color: rgba${COE}, 0.3);|g" $CINN_FILE
                 
                 
                 
@@ -183,26 +176,32 @@ else
                 #cp -f $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css $HOME/.themes/DermoDeX/gtk-3.20/dist/
                 
                 # REMIX THEMES
-                $BASE_FILE/remix_themes.sh "${HOE}"
-                
-                # RECOLOR NEMO FOLDERS AND EMBLEMS
-                $BASE_FILE/remix_icons.sh "${HOE}"
+                if [ "$CONF_SLIDESHOW" = "false" ]; then
+                    $BASE_FILE/remix_themes.sh "${HOE}"
+
+                    # RECOLOR NEMO FOLDERS AND EMBLEMS
+                    $BASE_FILE/remix_icons.sh "${HOE}"
+                fi
                 
                 # Give Possibility to change sounds based on wallpaper too
                 # gsettings set org.cinnamon.sounds login-file /usr/share/sounds/linux-a11y/stereo/desktop-login.oga
                 
-                notify-send --urgency=normal --category=transfer.complete --icon=cs-backgrounds-symbolic --hint=string:image-path:$HOME/.cache/dermodex/wallpaper_swatch.png "DermoDeX Recalculating Accent Colors!" "\nWait for Cinnamon to reload or manually reload with CTRL+Alt+Esc.\n\nfile://${HOME}/.cache/dermodex/wallpaper_swatch.png"
-
-                echo "[i] Updating Accent Colors ..."
-                if ! type "xdotool" > /dev/null 2>&1; then
-                    echo "[i] Hot Keys not installed run sudo apt get install xdotool"
-                    dex-notify.sh --action="Open Terminal":gnome-terminal --urgency=normal --category=im.receieved --icon=help-info-symbolic "Hot Keys Tool not installed ..." "Run 'sudo apt install xdotool' to automate reloading Cinnamon"
-                else
-                    if [ "$(find $HOME/.cache/dermodex/wallpaper_current.txt -mmin +15)" != "" ]
-                        UPT=$(uptime)
-                    then
-                        sleep 3
-                        xdotool key ctrl+alt+"Escape"
+                if [ "$CONF_SLIDESHOW" = "false" ]; then
+                    notify-send --urgency=normal --category=transfer.complete --icon=cs-backgrounds-symbolic --hint=string:image-path:$HOME/.cache/dermodex/wallpaper_swatch.png "DermoDeX Recalculating Accent Colors!" "\nWait for Cinnamon to reload or manually reload with CTRL+Alt+Esc.\n\nfile://${HOME}/.cache/dermodex/wallpaper_swatch.png"
+                fi
+                
+                if [ "$CONF_SLIDESHOW" = "false" ]; then
+                    echo "[i] Updating Accent Colors ..."
+                    if ! type "xdotool" > /dev/null 2>&1; then
+                        echo "[i] Hot Keys not installed run sudo apt get install xdotool"
+                        dex-notify.sh --action="Open Terminal":gnome-terminal --urgency=normal --category=im.receieved --icon=help-info-symbolic "Hot Keys Tool not installed ..." "Run 'sudo apt install xdotool' to automate reloading Cinnamon"
+                    else
+                        if [ "$(find $HOME/.cache/dermodex/wallpaper_current.txt -mmin +15)" != "" ]
+                            UPT=$(uptime)
+                        then
+                            sleep 3
+                            xdotool key ctrl+alt+"Escape"
+                        fi
                     fi
                 fi
 

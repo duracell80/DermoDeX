@@ -99,6 +99,23 @@ else
     sed -i "s|dd-menu-background-color : rgba(1,16,36,0.9);|background-color : rgba(1,16,36,${menutrans});|g" $CINN_FILE
 fi
 
+# USE ACCENT COLORS ON FAV SIDEBAR AND NEMO SIDEBAR
+if [ "$flowsidebar" = "true" ]; then
+    echo "[i] Accent - Sidebars: Enabled"
+    sed -i "s|dd-fav-background-gradient-end|background-gradient-end|g" $CINN_FILE
+    sed -i "s|dd-fav-background-gradient-start|background-gradient-start|g" $CINN_FILE
+else 
+    echo "[i] Accent - Sidebars: Not Enabled"
+fi
+
+# USE ACCENT COLOR ON START MENU BUTTON
+
+if [ "$flowcolorsmenu" = "true" ]; then
+    echo "[i] Accent - Start Menu Button: Enabled"
+    sed -i "s|dd-menu-button-hover : #ffffff;|color : #3281ea;|g" $CINN_FILE
+else 
+    sed -i "s|dd-menu-button-hover : #ffffff;|color : #ffffff;|g" $CINN_FILE
+fi
 
 # PANEL MAIN STYLE
 if [ "$panelstyle" = "flat" ]; then
@@ -136,32 +153,6 @@ fi
 
 
 
-
-
-#if [ "$panelblur" = "true" ]; then
-    #echo "[i] Panel Background Image Active"
-    #sed -i "s|dd-panel-background-image : url(~/|background-image : url(${HOME}/|g" $CINN_FILE
-    
-    #if [ "$panelstyle" = "flat" ]; then
-     #   sed -i "s|dd-panel-inner-background-color : rgba(1,16,36,0.9);|background-color : rgba(1,16,36,0);|g" $CINN_FILE
-        #sed -i "s|dd-panel-background-color : rgba(1,16,36,0.9);|background-color : rgba(1,16,36,${paneltrans});|g" $CINN_FILE
-    #else
-        #sed -i "s|dd-panel-inner-background-color : rgba(1,16,36,0.9);|background-color : rgba(1,16,36,${paneltrans});|g" $CINN_FILE
-    #fi
-    
-#else
-    #echo "[i] Panel Background Image Inactive"
-    #sed -i "s|dd-panel-background-image : url(~/|background-image : url(${HOME}/|g" $CINN_FILE
-    
-    #sed -i "s|dd-panel-background-color : rgba(1,16,36,0.9);|background-color : rgba(1,16,36,${paneltrans});|g" $CINN_FILE
-    
-    #if [ "$panelstyle" = "flat" ]; then
-        #sed -i "s|dd-panel-inner-background-color : rgba(1,16,36,0.9);|background-color : rgba(1,16,36,0);|g" $CINN_FILE
-    #else
-        #sed -i "s|dd-panel-inner-background-color : rgba(1,16,36,0.9);|background-color : rgba(1,16,36,${paneltrans});|g" $CINN_FILE
-    #fi
-    
-#fi
 
 
 
