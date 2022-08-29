@@ -41,9 +41,9 @@ def main(argv):
         
         os.system('cd ' + HOME + '/.local/share/dermodex && tar xvf ' + HOME + '/.local/share/dermodex/mint-backgrounds-' + cfg_value.lower() + '_1.1.tar.gz mint-backgrounds-' + cfg_value.lower() + '/backgrounds/linuxmint-' + cfg_value.lower() + ' ');
         
-        os.system('ln -s ' + HOME + '/.local/share/dermodex/mint-backgrounds-'+ cfg_value.lower() + '/backgrounds/linuxmint-'+ cfg_value.lower() +'/ ' + HOME + '/Pictures/'+ cfg_value.lower());
+        #os.system('ln -s ' + HOME + '/.local/share/dermodex/mint-backgrounds-'+ cfg_value.lower() + '/backgrounds/linuxmint-'+ cfg_value.lower() +'/ ' + HOME + '/Pictures/'+ cfg_value.lower());
         
-        os.system('echo "' + HOME + '/Pictures/'+ cfg_value.lower() +'" >> "' + HOME + '/.cinnamon/backgrounds/user-folders.lst"')
+        os.system('echo "' + HOME + '/.local/share/dermodex/mint-backgrounds-'+ cfg_value.lower() + '/backgrounds/linuxmint-'+ cfg_value.lower() +'" >> "' + HOME + '/.cinnamon/backgrounds/user-folders.lst"')
         
     if "soundtheme" in cfg_key:
         os.system(HOME + '/.local/share/dermodex/watch_sounds.sh');
