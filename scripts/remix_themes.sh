@@ -50,6 +50,18 @@ fi
 
 
 
+if [ "$ACCENT" == "#aN" ]; then
+    echo "[i] Invalid Accent Color"
+    exit
+fi
+
+if [ "$ACCENT" == "#none" ]; then
+    echo "[i] Invalid Accent Color"
+    exit
+fi
+
+
+
 
 
 

@@ -10,9 +10,6 @@ TCD="$HOME/.themes/DermoDeX"
 
 $BASE_FILE/watch_sounds.sh
 
-#mkdir -p $HOME/.cache/dermodex/common-assets/icons/emblems
-#mkdir -p $HOME/.cache/dermodex/common-assets/icons/places
-
 if [ -f "$HOLD_FILE" ]; then
     ACT="0"
 else
@@ -22,8 +19,6 @@ else
     touch $HOME/.cache/dermodex/resize_wallpaper.jpg
     touch $HOME/.cache/dermodex/wallpaper_current.txt
     touch $HOME/.cache/dermodex/bg.png
-    #touch $HOME/.cache/dermodex/colors_hex.txt
-    #touch $HOME/.cache/dermodex/colors_rgb.txt
     
 
     if ! type "xdotool" > /dev/null 2>&1; then
@@ -57,14 +52,6 @@ else
                 RES_PRIMARY="$((RES_PRIMARY - 120))"
                 
                 echo $CUR > $HOME/.cache/dermodex/wallpaper_current.txt
-                #cp $HOME/.local/share/dermodex/cinnamon_base.css $CINN_FILE
-                
-                #mkdir -p $HOME/.cache/dermodex/gtk-3.0
-                #mkdir -p $HOME/.cache/dermodex/gtk-3.20/dist
-                
-                #cp $HOME/.local/share/dermodex/gtk-3.0/colors.css $HOME/.cache/dermodex/gtk-3.0
-                #cp $HOME/.local/share/dermodex/gtk-3.20/gtk.gresource $HOME/.cache/dermodex/gtk-3.20
-                #cp $HOME/.local/share/dermodex/gtk-3.20/dist/gtk.css $HOME/.cache/dermodex/gtk-3.20/dist/
                 
                 gsettings set org.cinnamon.desktop.background primary-color "${MAINSHADE_HEX}"
                 gsettings set org.cinnamon.desktop.background secondary-color "${HOE}"
@@ -104,83 +91,16 @@ else
                 COS="(${savergb2}"
                 COE="(${savergb1}"
                 MAINSHADE_RGB="(${savergb0}"
-
-
                 
-
-                
-                
-                
-                # Shake the Cinnamon - Cinnamon SEDs go above this line, at this point customizations are sent to .themes
-                #cp $CINN_FILE $HOME/.themes/DermoDeX/cinnamon
-                
-                
-                # ICONS and GTK COPY OVER
-                #mkdir -p $HOME/.local/share/icons/White-Icons/scalable/emblems
-                #mkdir -p $HOME/.local/share/icons/White-Icons/scalable/places
-                
-                #cp -f $HOME/.cache/dermodex/switch-on.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/switch
-                #cp -f $HOME/.cache/dermodex/close.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
-                #cp -f $HOME/.cache/dermodex/close-hover.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
-                #cp -f $HOME/.cache/dermodex/close-active.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
-                #cp -f $HOME/.cache/dermodex/calendar-arrow-left-hover.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
-                #cp -f $HOME/.cache/dermodex/calendar-arrow-right-hover.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
-                #cp -f $HOME/.cache/dermodex/corner-ripple.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
-                #cp -f $HOME/.cache/dermodex/grouped-window-dot-active.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
-                #cp -f $HOME/.cache/dermodex/grouped-window-dot-hover.svg $HOME/.themes/DermoDeX/cinnamon/common-assets/misc
-                
-                #cp -f $HOME/.cache/dermodex/gtk-3.0/*.svg $HOME/.themes/DermoDeX/gtk-3.0/assets
-                #cp -f $HOME/.cache/dermodex/gtk-3.0/*.svg $HOME/.themes/DermoDeX/assets
-                
-                #cp -f $HOME/.cache/dermodex/common-assets/icons/emblems/*.svg $HOME/.local/share/icons/White-Icons/scalable/emblems
-                #cp -f $HOME/.cache/dermodex/common-assets/icons/places/*.svg $HOME/.local/share/icons/White-Icons/scalable/places
-                
-                
-                # GTK CSS 
-                #sed -i "s|#ff630d|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
-                #sed -i "s|#ff5b00|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
-                #sed -i "s|#ff6b1a|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
-                #sed -i "s|#ffc101|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
-                #sed -i "s|#ffc100|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
-                #sed -i "s|#fff44f|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
-                #sed -i "s|#ffc40d|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
-                #sed -i "s|#ffc71a|#5e7997|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
-                
-                
-                #if [ "$flowcolors" = true ]; then
-                    #sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.0/colors.css
-                    #sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css
-                    #sed -i "s|#5e7997|${HOE}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
-                    #sed -i "s|#637f9e|${HOS}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
-                    
-                    #if [ "$flowsidebar" = true ]; then
-                        #sed -i "s|background-color: mix(#4d4d4d,#444444,0.5);|background-color: mix(${HOE},#000000,0.6);|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
-                    #fi
-                    
-                #else
-                    #sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.0/colors.css
-                    #sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css
-                    #sed -i "s|#5e7997|${HOS}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
-                    #sed -i "s|#637f9e|${HOE}|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
-                    
-                    #if [ "$flowsidebar" = true ]; then
-                        #sed -i "s|background-color: mix(#4d4d4d,#444444,0.5);|background-color: mix(${HOS},#000000,0.6);|g" $HOME/.cache/dermodex/gtk-3.20/gtk.gresource
-                    #fi
-                    
-                #fi
-                
-                
-                
-                #cp -f $HOME/.cache/dermodex/gtk-3.0/colors.css $HOME/.themes/DermoDeX/gtk-3.0/
-                #cp -f $HOME/.cache/dermodex/gtk-3.20/gtk.gresource $HOME/.themes/DermoDeX/gtk-3.20/
-                #cp -f $HOME/.cache/dermodex/gtk-3.20/dist/gtk.css $HOME/.themes/DermoDeX/gtk-3.20/dist/
                 
                 # REMIX THEMES
                 if [ "$CONF_SLIDESHOW" = "false" ]; then
                     $BASE_FILE/remix_themes.sh "${HOE}"
 
-                    # RECOLOR NEMO FOLDERS AND EMBLEMS
-                    $BASE_FILE/remix_icons.sh "${HOE}"
+                    if [ "$flowicons" == "true" ]; then
+                        # RECOLOR NEMO FOLDERS AND EMBLEMS
+                        $BASE_FILE/remix_icons.sh "${HOE}"
+                    fi
                 fi
                 
                 # Give Possibility to change sounds based on wallpaper too

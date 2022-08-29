@@ -10,6 +10,54 @@ CCA=$HOME/.cache/dermodex/common-assets/cinnamon/assets
 TCD=$HOME/.themes/DermoDeX
 FILE="$CWD/list.txt"
 
+
+CONF_FILE="$HOME/.local/share/dermodex/config.ini"
+
+# READ THE UPDATED CONFIG
+shopt -s extglob
+
+tr -d '\r' < $CONF_FILE | sed 's/[][]//g' > $CONF_FILE.unix
+while IFS='= ' read -r lhs rhs
+do
+    if [[ ! $lhs =~ ^\ *# && -n $lhs ]]; then
+        rhs="${rhs%%\#*}"    # Del in line right comments
+        rhs="${rhs%%*( )}"   # Del trailing spaces
+        rhs="${rhs%\"*}"     # Del opening string quotes 
+        rhs="${rhs#\"*}"     # Del closing string quotes 
+        declare $lhs="$rhs"
+    fi
+done < $CONF_FILE.unix
+shopt -u extglob # Switching it back off after use
+
+if [ ! -z $1 ] 
+then 
+    echo "[i] Main Shade Provided via Parameter: ${1}"
+    ACCENT=$1 # $1 was given
+else
+    if [ "$override3" != "aN" ]; then
+        echo "[i] Main Shade Provided via Configuration: ${override3}"
+        ACCENT="#${override3}"
+    else
+        if [ "$mainshade" = true ]; then
+            echo "[i] Main Shade Active: When deactivated a lesser color may be chosen"
+            ACCENT="#${savehex0}"
+        else
+            echo "[i] Main Shade Not Chosen"
+            ACCENT="#${savehex1}"
+        fi
+    fi
+fi
+
+if [ "$ACCENT" == "#aN" ]; then
+    echo "[i] Invalid Accent Color"
+    exit
+fi
+
+if [ "$ACCENT" == "#none" ]; then
+    echo "[i] Invalid Accent Color"
+    exit
+fi
+
 mkdir -p $CWD/places/outline
 mkdir -p $CWD/emblems
 mkdir -p $CWD/mimetypes
@@ -20,7 +68,13 @@ mkdir -p $HOME/.cache/dermodex/common-assets/cinnamon
 
 cp -f $LWD/mimetypes/*.svg $CWD/mimetypes
 
-ACCENT=$1
+
+
+
+
+
+
+
 BRIGHTEST=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 2.2 --mode="hex")
 BRIGHTER=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 2 --mode="hex")
 BRIGHT=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 1.3 --mode="hex")

@@ -161,24 +161,29 @@
         "description" : "Choose Main Shade In Wallpaper",
         "default" : false
     },
+    "flowicons" : {
+        "type" : "checkbox",
+        "description" : "Color Flow - Icons",
+        "default" : true,
+        "tooltip" : "When active, DermoDeX will make an attempt to shade the folders, emblems, mimetypes and some applications with the accent color and shades of."
+    },
     "flowcolors" : {
         "type" : "checkbox",
         "description" : "Color Flow - GTK",
         "default" : true,
         "tooltip" : "When active, DermoDeX will make an attempt to transfer the hover color from the Applictaions Menu into GTK. Set this on or off depending on your results. If DermoDeX detects a shade that is too dark for GTK it will attempt avoiding flowing it through."
     },
-    "flowcolorsmenu" : {
-        "type" : "checkbox",
-        "description" : "Color Flow - Start Menu Button",
-        "default" : true,
-        "tooltip" : "When active, DermoDeX transfer the accent color to the Applictaions Menu button on click."
-    },
-    
     "flowsidebar" : {
         "type" : "checkbox",
         "description" : "Color Flow - Sidebars",
         "default" : true,
         "tooltip" : "When active, DermoDeX will make an attempt to shade the sidebar for example in the nemo file manager."
+    },
+    "flowcolorsmenu" : {
+        "type" : "checkbox",
+        "description" : "Color Flow - Start Menu Button",
+        "default" : true,
+        "tooltip" : "When active, DermoDeX transfer the accent color to the Applictaions Menu button on click."
     },
     "div1" : {
         "type" : "separator"
@@ -193,23 +198,29 @@
         "default" : false,
         "tooltip" : "Override DermoDex's chosen colors with your own selections"
     },
+    "override3": {
+        "type": "colorchooser",
+        "default": "aN",
+        "dependency" : "coloroverrides",
+        "description": "Icon Accent"
+    },
     "override0": {
         "type": "colorchooser",
         "default": "aN",
         "dependency" : "coloroverrides",
-        "description": "Override Shade 0"
+        "description": "Primary in Wallpaper"
     },
     "override1": {
         "type": "colorchooser",
         "default": "aN",
         "dependency" : "coloroverrides",
-        "description": "Override Shade 1"
+        "description": "Secondary in Wallpaper"
     },
     "override2": {
         "type": "colorchooser",
         "default": "aN",
         "dependency" : "coloroverrides",
-        "description": "Override Shade 2"
+        "description": "Tertiary in Wallpaper"
     },
     "div2" : {
         "type" : "separator"

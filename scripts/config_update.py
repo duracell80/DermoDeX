@@ -34,7 +34,8 @@ def main(argv):
     with open(CONF_FILE, 'w') as configfile:
         config.write(configfile)
         
-    
+    if "override3" in cfg_key:
+        os.system(HOME + '/.local/share/dermodex/remix_icons.sh');
     
     if "mintpaper" in cfg_key:
         os.system('wget -nc -P "' + HOME + '/.local/share/dermodex" http://packages.linuxmint.com/pool/main/m/mint-backgrounds-' + cfg_value.lower() + '/mint-backgrounds-'+ cfg_value.lower() +'_1.1.tar.gz');

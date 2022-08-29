@@ -63,6 +63,7 @@ DermoDeXSettings.prototype = {
         this.settings.bindProperty(Settings.BindingDirection.IN, 'flowcolors', 'flowcolors', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'flowcolorsmenu', 'flowcolorsmenu', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'flowsidebar', 'flowsidebar', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'flowicons', 'flowicons', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'colorcollect', 'colorcollect', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'splitimage', 'splitimage', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'splitfocus', 'splitfocus', null);
@@ -76,6 +77,7 @@ DermoDeXSettings.prototype = {
         this.settings.bindProperty(Settings.BindingDirection.IN, 'override0', 'override0', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'override1', 'override1', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'override2', 'override2', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'override3', 'override3', null);
         
         this.settings.bindProperty(Settings.BindingDirection.IN, 'mintpaper', 'mintpaper', null);
         
@@ -102,6 +104,7 @@ DermoDeXSettings.prototype = {
         this.settings.bind('flowcolors', 'flowcolors', this.on_flowcolors_changed);
         this.settings.bind('flowcolorsmenu', 'flowcolorsmenu', this.on_flowcolorsmenu_changed);
         this.settings.bind('flowsidebar', 'flowsidebar', this.on_flowsidebar_changed);
+        this.settings.bind('flowicons', 'flowicons', this.on_flowicons_changed);
         this.settings.bind('splitimage', 'splitimage', this.on_splitimage_changed);
         this.settings.bind('splitfocus', 'splitfocus', this.on_splitfocus_changed);
         this.settings.bind('splitdirection', 'splitdirection', this.on_splitfocus_changed);
@@ -113,6 +116,7 @@ DermoDeXSettings.prototype = {
         this.settings.bind('override0', 'override0', this.on_override0_changed);
         this.settings.bind('override1', 'override1', this.on_override1_changed);
         this.settings.bind('override2', 'override2', this.on_override2_changed);
+        this.settings.bind('override3', 'override3', this.on_override3_changed);
         
         this.settings.bind('mintpaper', 'mintpaper', this.on_mintpaper_changed);
     },
@@ -183,6 +187,12 @@ DermoDeXSettings.prototype = {
         let error = process.spawn_sync_and_get_error();
 	},
     
+    on_flowicons_changed: function () {
+        var cfg_flowicons = this.settings.getValue('flowicons')
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'flowicons', '-v' + cfg_flowicons]);
+        let error = process.spawn_sync_and_get_error();
+	},
+    
     on_menuavatar_changed: function () {
         var cfg_menuavatar = this.settings.getValue('menuavatar')
         let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'menuavatar', '-v' + cfg_menuavatar]);
@@ -242,6 +252,7 @@ DermoDeXSettings.prototype = {
         var cfg_override0 = this.settings.getValue('override0')
         var cfg_override1 = this.settings.getValue('override1')
         var cfg_override2 = this.settings.getValue('override2')
+        var cfg_override3 = this.settings.getValue('override3')
         
         
         
@@ -257,14 +268,19 @@ DermoDeXSettings.prototype = {
             process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override2', '-v' + 'none']);
             error = process.spawn_sync_and_get_error();
             
+            process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override3', '-v' + 'none']);
+            error = process.spawn_sync_and_get_error();
+            
             this.settings.setValue('override0', 'aN');
             this.settings.setValue('override1', 'aN');
             this.settings.setValue('override2', 'aN');
+            this.settings.setValue('override3', 'aN');
             
         } else if(cfg_coloroverrides == true) {
             this.settings.setValue('override0', cfg_override0);
             this.settings.setValue('override1', cfg_override1);
             this.settings.setValue('override2', cfg_override2);
+            this.settings.setValue('override3', cfg_override3);
             
         } else {
             cfg_coloroverrides = 'false';
@@ -304,6 +320,16 @@ DermoDeXSettings.prototype = {
         const hex = `${((1 << 24) + (parseInt(rgba[0]) << 16) + (parseInt(rgba[1]) << 8) + parseInt(rgba[2])).toString(16).slice(1)}`;
         
         let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override2', '-v' + hex]);
+        let error = process.spawn_sync_and_get_error();
+	},
+    
+    on_override3_changed: function () {
+        var cfg_override3 = this.settings.getValue('override3')
+        
+        const rgba = cfg_override3.replace(/^rgba?\(|\s+|\)$/g, '').split(',');
+        const hex = `${((1 << 24) + (parseInt(rgba[0]) << 16) + (parseInt(rgba[1]) << 8) + parseInt(rgba[2])).toString(16).slice(1)}`;
+        
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override3', '-v' + hex]);
         let error = process.spawn_sync_and_get_error();
 	},
     
