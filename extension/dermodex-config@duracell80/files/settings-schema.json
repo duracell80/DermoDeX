@@ -219,6 +219,18 @@
         },
         "tooltip" : "There are two panel classes in Cinnamon, an outer layer known as the Panel and then a Panel Left, Center and Right. Modern rounded styles apply to the inner panel segments."
     },
+    "panelshade" : {
+        "type": "combobox",
+        "default" : "dark",
+        "description" : "Panel Shade ",
+        "options" : {
+            "Light" : "light",
+            "Medium" : "medium",
+            "Dark" : "dark",
+            "Darkest" : "darkest"
+        },
+        "tooltip" : "When setting the overall panel shade when no background image blur is being used, a dark, medium or light shade can be given to the panel."
+    },
     "panellocat" : {
         "type": "combobox",
         "default" : "top",
@@ -234,12 +246,12 @@
     "panelblur" : {
         "type" : "checkbox",
         "description" : "Panel Blur",
-        "default" : true
+        "default" : false
     },
     "menubckgrd" : {
         "type" : "checkbox",
         "description" : "Menu Blur",
-        "default" : true
+        "default" : false
     },
     "menutrans" : {
         "type": "scale",

@@ -54,6 +54,7 @@ DermoDeXSettings.prototype = {
         this.settings.bindProperty(Settings.BindingDirection.IN, 'soundnotification', 'soundnotification', null);
         
         this.settings.bindProperty(Settings.BindingDirection.IN, 'panelstyle', 'panelstyle', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'panelshade', 'panelshade', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'paneltrans', 'paneltrans', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'panellocat', 'panellocat', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'menutrans', 'menutrans', null);
@@ -90,6 +91,7 @@ DermoDeXSettings.prototype = {
         this.settings.bind('colorcollect', 'colorcollect', this.on_colorcollect_changed);
         
         this.settings.bind('panelstyle', 'panelstyle', this.on_panelstyle_changed);
+        this.settings.bind('panelshade', 'panelshade', this.on_panelshade_changed);
         this.settings.bind('paneltrans', 'paneltrans', this.on_paneltrans_changed);
         this.settings.bind('panellocat', 'panellocat', this.on_panellocat_changed);
         this.settings.bind('panelblur', 'panelblur', this.on_panelblur_changed);
@@ -205,6 +207,12 @@ DermoDeXSettings.prototype = {
     on_panelstyle_changed: function () {
         var cfg_panelstyle = this.settings.getValue('panelstyle')
         let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'panelstyle', '-v' + cfg_panelstyle]);
+        let error = process.spawn_sync_and_get_error();
+	},
+    
+    on_panelshade_changed: function () {
+        var cfg_panelshade = this.settings.getValue('panelshade')
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'panelshade', '-v' + cfg_panelshade]);
         let error = process.spawn_sync_and_get_error();
 	},
     

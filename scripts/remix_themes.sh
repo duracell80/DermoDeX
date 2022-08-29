@@ -140,9 +140,19 @@ if [ "$panelstyle" = "flat" ]; then
         
     else
         echo "[i] Panel Image: off"
-        sed -i "s|dd-panel-background-color : rgba(1,16,36,0.9);|background-color : rgba(1,16,36,${paneltrans});|g" $CINN_FILE
+        # PANEL SHADE
+        if [ "$panelshade" = "light" ]; then
+            sed -i "s|dd-panel-background-color : rgba(1,16,36,0.9);|background-color : rgba(91,147,222,${paneltrans});|g" $CINN_FILE
+        elif [ "$panelshade" = "medium" ]; then
+            sed -i "s|dd-panel-background-color : rgba(1,16,36,0.9);|background-color : rgba(50,129,234,${paneltrans});|g" $CINN_FILE
+        elif [ "$panelshade" = "dark" ]; then
+            sed -i "s|dd-panel-background-color : rgba(1,16,36,0.9);|background-color : rgba(17,56,107,${paneltrans});|g" $CINN_FILE
+        elif [ "$panelshade" = "darkest" ]; then
+            sed -i "s|dd-panel-background-color : rgba(1,16,36,0.9);|background-color : rgba(1,16,36,${paneltrans});|g" $CINN_FILE
+        else
+            sed -i "s|dd-panel-background-color : rgba(1,16,36,0.9);|background-color : rgba(1,16,36,${paneltrans});|g" $CINN_FILE
+        fi
     fi
-    
 else
     # MODERN STYLE
     echo "[i] Panel Style: Modern"
