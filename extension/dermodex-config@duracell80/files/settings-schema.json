@@ -1,6 +1,23 @@
 {   
     
     
+    "headwalls" : {
+        "type" : "header",
+        "description" : "Previous Wallpapers: "
+    },
+    "mintpaper" : {
+        "type": "combobox",
+        "default" : "vanessa",
+        "description" : "Select Mint Version",
+        "options" : {
+            "21.0 - Vanessa" : "vanessa",
+            "20.3 - Una" : "una",
+            "20.2 - Uma" : "uma",
+            "20.1 - Ulyssa" : "ulyssa",
+            "20.0 - Ulyana" : "ulyana"
+        },
+        "tooltip" : "Choose a previous selection of wallpapers to install on this machine!"
+    },
     "headsound" : {
         "type" : "header",
         "description" : "Sound Theme Seletcion: "

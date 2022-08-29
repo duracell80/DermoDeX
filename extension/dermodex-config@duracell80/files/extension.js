@@ -76,7 +76,8 @@ DermoDeXSettings.prototype = {
         this.settings.bindProperty(Settings.BindingDirection.IN, 'override0', 'override0', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'override1', 'override1', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'override2', 'override2', null);
-     
+        
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'mintpaper', 'mintpaper', null);
         
         
         
@@ -112,6 +113,8 @@ DermoDeXSettings.prototype = {
         this.settings.bind('override0', 'override0', this.on_override0_changed);
         this.settings.bind('override1', 'override1', this.on_override1_changed);
         this.settings.bind('override2', 'override2', this.on_override2_changed);
+        
+        this.settings.bind('mintpaper', 'mintpaper', this.on_mintpaper_changed);
     },
     
     on_vibrancy_changed: function () {
@@ -325,6 +328,12 @@ DermoDeXSettings.prototype = {
     on_soundnotification_changed: function () {
         var cfg_soundnotification = this.settings.getValue('soundnotification')
         let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'soundnotification', '-v' + cfg_soundnotification]);
+        let error = process.spawn_sync_and_get_error();
+	},
+    
+    on_mintpaper_changed: function () {
+        var cfg_mintpaper = this.settings.getValue('mintpaper')
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'mintpaper', '-v' + cfg_mintpaper]);
         let error = process.spawn_sync_and_get_error();
 	}
     
