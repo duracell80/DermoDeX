@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 # github@duracell80
 
-import os, sys, configparser, getopt
+import os, sys, subprocess, configparser, getopt
+
+
 
 HOME = str(os.popen('echo $HOME').read()).replace('\n', '')
 CONF_FILE = HOME + '/.local/share/dermodex/config.ini'
@@ -38,8 +40,31 @@ def main(argv):
         os.system(HOME + '/.local/share/dermodex/watch_sounds.sh');
     if "soundnotification" in cfg_key:
         os.system(HOME + '/.local/share/dermodex/remix_sounds.sh ' + cfg_value);
-    
-    
+        
+        p = str(subprocess.Popen("gsettings get org.cinnamon.sounds notification-file", shell=True, stdout = subprocess.PIPE, stderr=subprocess.PIPE).communicate()[0]).strip()
+        
+        SOUNDFILE = p.replace('"', '').replace("'", "").replace("b/", "/").replace("\\n", "")
+        os.system('play "' + SOUNDFILE + '"')
+        
+    if "panelblur" in cfg_key:
+        os.system(HOME + '/.local/share/dermodex/remix_themes.sh');
+    if "panelstyle" in cfg_key:
+        os.system(HOME + '/.local/share/dermodex/remix_themes.sh');
+    if "panelshade" in cfg_key:
+        os.system(HOME + '/.local/share/dermodex/remix_themes.sh');
+    if "paneltrans" in cfg_key:
+        os.system(HOME + '/.local/share/dermodex/remix_themes.sh');
+    if "menubckgrd" in cfg_key:
+        os.system(HOME + '/.local/share/dermodex/remix_themes.sh');
+    if "menutrans" in cfg_key:
+        os.system(HOME + '/.local/share/dermodex/remix_themes.sh');
+    if "menuavatar" in cfg_key:
+        os.system(HOME + '/.local/share/dermodex/remix_themes.sh');
+    if "flowsidebar" in cfg_key:
+        os.system(HOME + '/.local/share/dermodex/remix_themes.sh');
+    if "flowcolorsmenu" in cfg_key:
+        os.system(HOME + '/.local/share/dermodex/remix_themes.sh');
+
     
     
 if __name__ == "__main__":

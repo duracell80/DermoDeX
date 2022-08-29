@@ -152,14 +152,14 @@
     },
     "flowcolorsmenu" : {
         "type" : "checkbox",
-        "description" : "Color Flow - Menu Launcher",
+        "description" : "Color Flow - Start Menu Button",
         "default" : true,
         "tooltip" : "When active, DermoDeX transfer the accent color to the Applictaions Menu button on click."
     },
     
     "flowsidebar" : {
         "type" : "checkbox",
-        "description" : "Color Flow - Sidebar",
+        "description" : "Color Flow - Sidebars",
         "default" : true,
         "tooltip" : "When active, DermoDeX will make an attempt to shade the sidebar for example in the nemo file manager."
     },
