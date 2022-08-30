@@ -165,7 +165,7 @@
         "type" : "checkbox",
         "description" : "Color Flow - Icons",
         "default" : true,
-        "tooltip" : "When active, DermoDeX will make an attempt to shade the folders, emblems, mimetypes and some applications with the accent color and shades of."
+        "tooltip" : "When active, DermoDeX will make an attempt to shade the folders, emblems, mimetypes and some applications with the accent color from the wallpaper."
     },
     "flowcolors" : {
         "type" : "checkbox",

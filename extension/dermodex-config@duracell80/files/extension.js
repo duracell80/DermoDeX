@@ -255,7 +255,8 @@ DermoDeXSettings.prototype = {
         var cfg_override3 = this.settings.getValue('override3')
         
         
-        
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'coloroverrides', '-v' + cfg_coloroverrides]);
+        let error = process.spawn_sync_and_get_error();
         
         
         if(cfg_coloroverrides == false) {
@@ -271,12 +272,24 @@ DermoDeXSettings.prototype = {
             process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override3', '-v' + 'none']);
             error = process.spawn_sync_and_get_error();
             
-            this.settings.setValue('override0', 'aN');
-            this.settings.setValue('override1', 'aN');
-            this.settings.setValue('override2', 'aN');
-            this.settings.setValue('override3', 'aN');
+            this.settings.setValue('override0', 'none');
+            this.settings.setValue('override1', 'none');
+            this.settings.setValue('override2', 'none');
+            this.settings.setValue('override3', 'none');
             
         } else if(cfg_coloroverrides == true) {
+            if(cfg_override0 == "aN"){
+                cfg_override0 = "none";
+            }
+            if(cfg_override1 == "aN"){
+                cfg_override1 = "none";
+            }
+            if(cfg_override2 == "aN"){
+                cfg_override2 = "none";
+            }
+            if(cfg_override3 == "aN"){
+                cfg_override3 = "none";
+            }
             this.settings.setValue('override0', cfg_override0);
             this.settings.setValue('override1', cfg_override1);
             this.settings.setValue('override2', cfg_override2);
@@ -297,7 +310,10 @@ DermoDeXSettings.prototype = {
         
         const rgba = cfg_override0.replace(/^rgba?\(|\s+|\)$/g, '').split(',');
         const hex = `${((1 << 24) + (parseInt(rgba[0]) << 16) + (parseInt(rgba[1]) << 8) + parseInt(rgba[2])).toString(16).slice(1)}`;
-
+        
+        if(hex == "aN"){
+            hex = "none";
+        }
         let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override0', '-v' + hex]);
         let error = process.spawn_sync_and_get_error();
 	},
@@ -308,7 +324,9 @@ DermoDeXSettings.prototype = {
         const rgba = cfg_override1.replace(/^rgba?\(|\s+|\)$/g, '').split(',');
         const hex = `${((1 << 24) + (parseInt(rgba[0]) << 16) + (parseInt(rgba[1]) << 8) + parseInt(rgba[2])).toString(16).slice(1)}`;
 
-        
+        if(hex == "aN"){
+            hex = "none";
+        }
         let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override1', '-v' + hex]);
         let error = process.spawn_sync_and_get_error();
 	},
@@ -319,6 +337,9 @@ DermoDeXSettings.prototype = {
         const rgba = cfg_override2.replace(/^rgba?\(|\s+|\)$/g, '').split(',');
         const hex = `${((1 << 24) + (parseInt(rgba[0]) << 16) + (parseInt(rgba[1]) << 8) + parseInt(rgba[2])).toString(16).slice(1)}`;
         
+        if(hex == "aN"){
+            hex = "none";
+        }
         let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override2', '-v' + hex]);
         let error = process.spawn_sync_and_get_error();
 	},
@@ -329,6 +350,9 @@ DermoDeXSettings.prototype = {
         const rgba = cfg_override3.replace(/^rgba?\(|\s+|\)$/g, '').split(',');
         const hex = `${((1 << 24) + (parseInt(rgba[0]) << 16) + (parseInt(rgba[1]) << 8) + parseInt(rgba[2])).toString(16).slice(1)}`;
         
+        if(hex == "aN"){
+            hex = "none";
+        }
         let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override3', '-v' + hex]);
         let error = process.spawn_sync_and_get_error();
 	},

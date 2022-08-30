@@ -538,7 +538,7 @@ StScrollBar StButton#hhandle:hover {
 .workspace-button:hover,
 .workspace-button:outlined:hover {
     background-image    : url("assets/grouped-window-dot-active.svg");
-    color               : #3281ea;
+    workspace-dot-color : #3281ea;
 }
 
 .panel-top .workspace-button {

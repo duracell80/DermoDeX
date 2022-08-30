@@ -40,23 +40,41 @@ shopt -u extglob # Switching it back off after use
 
 
 
-if [ "$mainshade" = true ]; then
-    echo "[i] Main Shade Active: When deactivated a lesser color may be chosen"
-    ACCENT="#${savehex0}"
+
+
+if [ "$coloroverrides" == "true" ]; then
+    if [ "$mainshade" = true ]; then
+        echo "[i] Main Shade Active: From Overrides"
+        ACCENT="#${override0}"
+        
+        if [ "$ACCENT" == "#aN" ] || [ "$ACCENT" == "#none" ]; then
+            echo "[i] Fallback Active: #${savehex0}"
+            ACCENT="#${savehex0}"
+        fi
+    else
+        ACCENT="#${override1}"
+        if [ "$ACCENT" == "#aN" ] || [ "$ACCENT" == "#none" ]; then
+            echo "[i] Fallback Active: #${savehex1}"
+            ACCENT="#${savehex1}"
+        fi
+    fi
 else
-    echo "[i] Mainshade Not Chosen"
-    ACCENT="#${savehex1}"
+    if [ "$mainshade" = true ]; then
+        echo "[i] Main Shade Active: When deactivated a lesser color may be chosen"
+        ACCENT="#${savehex0}"
+    else
+        echo "[i] Mainshade Not Chosen"
+        ACCENT="#${savehex1}"
+    fi
 fi
 
-
-
 if [ "$ACCENT" == "#aN" ]; then
-    echo "[i] Invalid Accent Color"
+    echo "[i] Invalid Accent Color: ${ACCENT}"
     exit
 fi
 
 if [ "$ACCENT" == "#none" ]; then
-    echo "[i] Invalid Accent Color"
+    echo "[i] Invalid Accent Color: ${ACCENT}"
     exit
 fi
 
@@ -181,6 +199,14 @@ fi
 
 echo "[i] Colors to Apply - Accent: $ACCENT | Bright: $BRIGHT | Brightest: $BRIGHTEST | Dark: $DARKER | Darkest: $DARKEST"
 
+
+# IF ICON COLOR WAS OVERRIDEN AND DOESN'T MATCH ACCENT FROM WALLPAPER
+if [ "$override3" == "aN" ] || [ "$override3" == "none" ]; then
+    sed -i "s|workspace-dot-color : #3281ea;|color : #3281ea;|g" $CINN_FILE
+else
+    sed -i "s|workspace-dot-color : #3281ea;|color : #${override3};|g" $CINN_FILE
+fi
+
 # SED - BRIGHTEST - #a0bfe8 rgb(160,191,232)
 sed -i "s|#a0bfe8|${BRIGHTEST}|g" $CINN_FILE
 sed -i "s|rgba(160,191,232|rgba(${RGB_BRIGHTEST}|g" $CINN_FILE
@@ -225,4 +251,4 @@ cp -rf $LWD/theme/* $HOME/.themes/DermoDeX
 cp -f $LWD/theme/cinnamon/cinnamon.orig $LWD/theme/cinnamon/cinnamon.css
 
 
-xdotool key ctrl+alt+"Escape"
+#xdotool key ctrl+alt+"Escape"

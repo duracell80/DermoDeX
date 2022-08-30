@@ -29,25 +29,44 @@ do
 done < $CONF_FILE.unix
 shopt -u extglob # Switching it back off after use
 
+# MAIN OBJECTIVE OTHER THAN BEING COOL ... DONT CRASH CINNAMON!
 if [ ! -z $1 ] 
 then 
-    echo "[i] Main Shade Provided via Parameter: ${1}"
-    ACCENT=$1 # $1 was given
+    # USE HEX PROVIDED IN PARAMETER
+    echo "[i] Icon Accent provided via Parameter: ${1}"
+    ACCENT=$1
 else
-    if [ "$override3" != "aN" ]; then
-        echo "[i] Main Shade Provided via Configuration: ${override3}"
-        ACCENT="#${override3}"
-    else
-        if [ "$mainshade" = true ]; then
-            echo "[i] Main Shade Active: When deactivated a lesser color may be chosen"
-            ACCENT="#${savehex0}"
+    
+    # USE HEX PROVIDED IN CONFIGURATION FILE IN THE OVERRIDES
+    if [ "$coloroverrides" == "true" ]; then
+        if [ "$override3" == "aN" ] || [ "$override3" == "none" ]; then
+            echo "[i] Icon override color not set yet, exiting."
+            exit
         else
-            echo "[i] Main Shade Not Chosen"
-            ACCENT="#${savehex1}"
+            echo "[i] Icon Accent provided via Configuration: ${override3}"
+            ACCENT="#${override3}"
+        fi
+    else
+        # USE HEX PROVIDED BY DERMODEX WALLPAPER EXTRACTOR
+        if [ "$flowicons" == "true" ]; then
+            # BUT FIRST FIGURE OUT IF PRIMARY COLOR FROM WALLPAPER WAS CHOSEN
+            if [ "$mainshade" = true ]; then
+                echo "[i] Icon Accent provided via Primary Wallpaper (Mainshade)"
+                ACCENT="#${savehex0}"
+            else
+                echo "[i] Icon Accent provided via Secondary Wallpaper"
+                ACCENT="#${savehex1}"
+            fi
+        else
+            # QUIT IF FLOW IS TURNED OFF
+            echo "[i] Color Flow - icons inactive, exiting."
+            exit
         fi
     fi
 fi
 
+
+# QUIT IF HEX IS INVALID
 if [ "$ACCENT" == "#aN" ]; then
     echo "[i] Invalid Accent Color"
     exit

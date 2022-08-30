@@ -19,17 +19,6 @@ else
     touch $HOME/.cache/dermodex/resize_wallpaper.jpg
     touch $HOME/.cache/dermodex/wallpaper_current.txt
     touch $HOME/.cache/dermodex/bg.png
-    
-
-    if ! type "xdotool" > /dev/null 2>&1; then
-        notify-send --urgency=normal --category=im.recieved --icon=help-info-symbolic "DermoDeX Color Extractor Active" "DermoDeX reloads Cinnamon with accent colors from the wallpaper image! DermoDeX is active for 15 minutes after launching, press CTRL+Alt+Esc to reload Cinnamon"
-
-    else
-        echo ""
-        #notify-send --urgency=normal --category=im.recieved --icon=help-info-symbolic "DermoDeX Color Extractor Active" "DermoDeX reloads Cinnamon with accent colors from the wallpaper image! DermoDeX is active for 15 minutes after launching."
-    fi
-    
-    
 
     while true
     do
@@ -47,26 +36,6 @@ else
             if [ "$PAS" != "$CUR" ]; then
                 ACT="1"
                 
-                RES_PRIMARY=$(xrandr | grep -i "primary" | cut --delimiter=" " -f 4 | cut --delimiter="+" -f 1 | cut --delimiter="x" -f 2)
-                
-                RES_PRIMARY="$((RES_PRIMARY - 120))"
-                
-                echo $CUR > $HOME/.cache/dermodex/wallpaper_current.txt
-                
-                gsettings set org.cinnamon.desktop.background primary-color "${MAINSHADE_HEX}"
-                gsettings set org.cinnamon.desktop.background secondary-color "${HOE}"
-                gsettings set org.cinnamon.desktop.background color-shading-type "vertical"
-
-                CONF_SLIDESHOW=$(gsettings get org.cinnamon.desktop.background.slideshow slideshow-enabled)
-                CONF_SLIDETIME=$(gsettings get org.cinnamon.desktop.background.slideshow delay)
-                CONF_ASPECT=$(gsettings get org.cinnamon.desktop.background picture-options)
-                
-                
-                # GENERATE THE COLORS AND UPDATE THE CONFIG
-                if [ "$CONF_SLIDESHOW" = "false" ]; then
-                    python3 $HOME/.local/share/dermodex/colors.py
-                fi
-                
                 # READ THE UPDATED CONFIG
                 shopt -s extglob
 
@@ -83,44 +52,98 @@ else
                 done < $CONF_FILE.unix
                 shopt -u extglob # Switching it back off after use
                 
+                
+                RES_PRIMARY=$(xrandr | grep -i "primary" | cut --delimiter=" " -f 4 | cut --delimiter="+" -f 1 | cut --delimiter="x" -f 2)
+                
+                RES_PRIMARY="$((RES_PRIMARY - 120))"
+                
+                echo $CUR > $HOME/.cache/dermodex/wallpaper_current.txt
+                
+                gsettings set org.cinnamon.desktop.background primary-color "${MAINSHADE_HEX}"
+                gsettings set org.cinnamon.desktop.background secondary-color "${HEX1}"
+                gsettings set org.cinnamon.desktop.background color-shading-type "vertical"
+
+                CONF_SLIDESHOW=$(gsettings get org.cinnamon.desktop.background.slideshow slideshow-enabled)
+                CONF_SLIDETIME=$(gsettings get org.cinnamon.desktop.background.slideshow delay)
+                CONF_ASPECT=$(gsettings get org.cinnamon.desktop.background picture-options)
+                
+                
+                # GENERATE THE COLORS AND UPDATE THE CONFIG
+                if [ "$CONF_SLIDESHOW" = "false" ]; then
+                    # DONT EXTRACT WALLPAPER COLORS IF COLORS ARE BEING OVERRIDEN
+                    if [ "$coloroverrides" == "false" ]; then
+                        
+                        notify-send --urgency=normal --category=transfer.complete --icon=cs-backgrounds-symbolic --hint=string:image-path:$HOME/.cache/dermodex/wallpaper_swatch.png "DermoDeX Recalculating Accent Colors!" "\nWait for Cinnamon to reload or manually reload with CTRL+Alt+Esc.\n\nfile://${HOME}/.cache/dermodex/wallpaper_swatch.png"
+                        
+                        python3 $HOME/.local/share/dermodex/colors.py
+                        
+                        sleep 1
+                        
+                        # READ THE UPDATED CONFIG
+                        shopt -s extglob
+
+                        tr -d '\r' < $CONF_FILE | sed 's/[][]//g' > $CONF_FILE.unix
+                        while IFS='= ' read -r lhs rhs
+                        do
+                            if [[ ! $lhs =~ ^\ *# && -n $lhs ]]; then
+                                rhs="${rhs%%\#*}"    # Del in line right comments
+                                rhs="${rhs%%*( )}"   # Del trailing spaces
+                                rhs="${rhs%\"*}"     # Del opening string quotes 
+                                rhs="${rhs#\"*}"     # Del closing string quotes 
+                                declare $lhs="$rhs"
+                            fi
+                        done < $CONF_FILE.unix
+                        shopt -u extglob # Switching it back off after use
+                    fi
+                fi
+                
+                
                 # RECOMBINE STORED DATA FROM CONFIG FILE
-                HOS="#${savehex2}"
-                HOE="#${savehex1}"
+                HEX1="#${savehex1}"
+                HEX2="#${savehex2}"
+                HEX3="#${savehex3}"
                 MAINSHADE_HEX="#${savehex0}"
                 
-                COS="(${savergb2}"
-                COE="(${savergb1}"
+                RGB1="(${savergb1}"
+                RGB2="(${savergb2}"
                 MAINSHADE_RGB="(${savergb0}"
                 
+                OVR0="#${override0}"
+                OVR1="#${override1}"
+                OVR2="#${override2}"
+                OVR3="#${override3}"
                 
-                # REMIX THEMES
+                # REMIX THEMES AND ICONS ONLY IF SLIDESHOW NOT ACTIVE
                 if [ "$CONF_SLIDESHOW" = "false" ]; then
-                    $BASE_FILE/remix_themes.sh "${HOE}"
+                    $BASE_FILE/remix_themes.sh "${HEX1}"
 
+                    # RECOLOR NEMO FOLDERS AND EMBLEMS
                     if [ "$flowicons" == "true" ]; then
-                        # RECOLOR NEMO FOLDERS AND EMBLEMS
-                        $BASE_FILE/remix_icons.sh "${HOE}"
+                        if [ "$coloroverrides" == "true" ]; then
+                            $BASE_FILE/remix_icons.sh "${OVR3}"
+                        else
+                            $BASE_FILE/remix_icons.sh "${HEX1}"
+                        fi
                     fi
                 fi
                 
                 # Give Possibility to change sounds based on wallpaper too
                 # gsettings set org.cinnamon.sounds login-file /usr/share/sounds/linux-a11y/stereo/desktop-login.oga
                 
-                if [ "$CONF_SLIDESHOW" = "false" ]; then
-                    notify-send --urgency=normal --category=transfer.complete --icon=cs-backgrounds-symbolic --hint=string:image-path:$HOME/.cache/dermodex/wallpaper_swatch.png "DermoDeX Recalculating Accent Colors!" "\nWait for Cinnamon to reload or manually reload with CTRL+Alt+Esc.\n\nfile://${HOME}/.cache/dermodex/wallpaper_swatch.png"
-                fi
+                
                 
                 if [ "$CONF_SLIDESHOW" = "false" ]; then
                     echo "[i] Updating Accent Colors ..."
                     if ! type "xdotool" > /dev/null 2>&1; then
                         echo "[i] Hot Keys not installed run sudo apt get install xdotool"
-                        dex-notify.sh --action="Open Terminal":gnome-terminal --urgency=normal --category=im.receieved --icon=help-info-symbolic "Hot Keys Tool not installed ..." "Run 'sudo apt install xdotool' to automate reloading Cinnamon"
                     else
                         if [ "$(find $HOME/.cache/dermodex/wallpaper_current.txt -mmin +15)" != "" ]
-                            UPT=$(uptime)
+                            echo "[i] DermoDeX Active"
                         then
-                            sleep 3
+                            #sleep 2
+                            #if [ "$coloroverrides" == "false" ]; then
                             xdotool key ctrl+alt+"Escape"
+                            #fi
                         fi
                     fi
                 fi
@@ -371,7 +394,7 @@ else
                 
                 #dex-notify.sh --action="Wake DermoDeX":$HOME/.local/bin/dd_wake --urgency=normal --category=im.receieved --icon=help-info-symbolic "DermoDex is currently resting." "Changing your wallpaper at the moment will take a while or reboot to reflect in your accent colors. Wake up DermoDeX with the dd_wake command. Your current wallpaper is located at: ${CUR_WALL}"
 
-                # No Rush
+                # No Rush All Bush
                 sleep 7200
             else
                 # Mixtape and Space Invaders

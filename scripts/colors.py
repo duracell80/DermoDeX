@@ -463,29 +463,33 @@ print("- Shade2: " + shade_2 + " - rgb" + str(get_rgb(shade_2)) + "\n\n")
 
 
 # LOOK FOR OVERRIDES, IF SO THEN SET THOSE
-if cfg_override0 != "aN":
-    print("[i] Color Override Active for Shade 0: " + cfg_override0)
-    config.set('colors', 'savehex0', cfg_override0.replace("#", ""))
-else:
-    config.set('colors', 'savehex0', shade_hex.replace("#", ""))
+#if cfg_override0 != "aN":
+    #print("[i] Color Override Active for Shade 0: " + cfg_override0)
+    #config.set('colors', 'savehex0', cfg_override0.replace("#", ""))
+#else:
+    #config.set('colors', 'savehex0', shade_hex.replace("#", ""))
     
-if cfg_override1 != "aN":
-    print("[i] Color Override Active for Shade 1: " + cfg_override1)
-    config.set('colors', 'savehex1', cfg_override1.replace("#", ""))
-else:
-    config.set('colors', 'savehex1', shade_1.replace("#", ""))
+#if cfg_override1 != "aN":
+    #print("[i] Color Override Active for Shade 1: " + cfg_override1)
+    #config.set('colors', 'savehex1', cfg_override1.replace("#", ""))
+#else:
+    #config.set('colors', 'savehex1', shade_1.replace("#", ""))
 
-if cfg_override2 != "aN":
-    print("[i] Color Override Active for Shade 2: " + cfg_override2)
-    config.set('colors', 'savehex2', cfg_override1.replace("#", ""))
-else:
-    config.set('colors', 'savehex2', shade_2.replace("#", ""))
+#if cfg_override2 != "aN":
+    #print("[i] Color Override Active for Shade 2: " + cfg_override2)
+    #config.set('colors', 'savehex2', cfg_override1.replace("#", ""))
+#else:
+    
 
 
 
 config.set('colors', 'savergb0', str(get_rgb_strip(shade_hex)))
 config.set('colors', 'savergb1', str(get_rgb_strip(shade_1)))
 config.set('colors', 'savergb2', str(get_rgb_strip(shade_2)))
+
+config.set('colors', 'savehex0', shade_hex.replace("#", ""))
+config.set('colors', 'savehex1', shade_1.replace("#", ""))
+config.set('colors', 'savehex2', shade_2.replace("#", ""))
 
 print("\n")
 
@@ -497,30 +501,9 @@ with open(CONF_FILE, 'w') as configfile:
     config.write(configfile)    
     
 
-tri = str(shade_txt).replace('(', '').replace(')', '').replace(' ', '').split(',')
+#tri = str(shade_txt).replace('(', '').replace(')', '').replace(' ', '').split(',')
+#tri = str(get_rgb(shade_1)).replace('(', '').replace(')', '').replace(' ', '').split(',')
 
-#if isLightOrDark(tri[0],tri[1],tri[2]) == "light":
-    #os.system('echo "dark" > ' + HOME + '/.local/share/dermodex/text_hover.txt')
-    #os.system('sed -i "s|--popmenu-color: #ffffff;|color: #000000;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    #os.system('sed -i "s|--menu-text-selected-color: #202020;|color: #000000;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-#else:
-    #os.system('echo "light" > ' + HOME + '/.local/share/dermodex/text_hover.txt')
-    #os.system('sed -i "s|--popmenu-color: #ffffff;|color: #ffffff;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    #os.system('sed -i "s|--menu-text-selected-color: #202020;|color: #ffffff;|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-
-tri = str(get_rgb(shade_1)).replace('(', '').replace(')', '').replace(' ', '').split(',')
-#if isLightOrDark(tri[0],tri[1],tri[2]) == "light":
-    #os.system('sed -i "s|--slider-active-background-color: #ffffff;|-slider-active-background-color: '+ shade_hex_lighter +';|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-#else:
-    #os.system('sed -i "s|--slider-active-background-color: #ffffff;|-slider-active-background-color: '+ shade_1_lighter +';|g" ' + HOME + '/.cache/dermodex/cinnamon.css')
-    
-    
-#tri = str(get_rgb(shade_2)).replace('(', '').replace(')', '').replace(' ', '').split(',')
-#if isLightOrDark(tri[0],tri[1],tri[2]) == "light":
-    #os.system('sed -i "s|#ffffff|#202020|g" ' + HOME + '/.cache/dermodex/gtk-3.20/gtk.gresource')
-    #print("[i] GTK Selected Text Darken Needed")
-#else:
-    #os.system('sed -i "s|#ffffff|#eeeeee|g" ' + HOME + '/.cache/dermodex/gtk-3.20/gtk.gresource')
     
     
 
