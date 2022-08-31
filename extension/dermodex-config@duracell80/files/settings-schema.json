@@ -159,7 +159,8 @@
     "mainshade" : {
         "type" : "checkbox",
         "description" : "Choose Main Shade In Wallpaper",
-        "default" : false
+        "default" : false,
+        "tooltip" : "The main shade in the wallpaper isn't always the best fit, for example it may be way too dark or too light to be useful. DermoDeX aims to pick out the best color to build an accent in harmony with the wallpaper. You can override the colors also!"
     },
     "flowicons" : {
         "type" : "checkbox",
