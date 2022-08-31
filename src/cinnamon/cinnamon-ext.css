@@ -584,7 +584,7 @@ StScrollBar StButton#hhandle:hover {
     background-color    : rgba(64, 64, 64, 0.9);
     background-repeat   : no-repeat;
     background-size     : cover;
-    background-image    : url(/home/lee/.local/share/dermodex/login_blur.jpg);
+    background-image    : url(~/.local/share/dermodex/login_blur.jpg);
 }
 
 .workspace-osd {
@@ -597,6 +597,9 @@ StScrollBar StButton#hhandle:hover {
 .sound-player {
     width : 520px;
     font-size : 13pt;
+    dd-soundwaves-background-image: url(~/.local/share/dermodex/soundwaves.png);
+    background-repeat: no-repeat;
+    background-size:contain;
 }
 
 .sound-player StButton {

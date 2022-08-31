@@ -185,6 +185,12 @@
         "default" : true,
         "tooltip" : "When active, DermoDeX transfer the accent color to the Applictaions Menu button on click."
     },
+    "flowsoundwaves" : {
+        "type" : "checkbox",
+        "description" : "Color Flow - Sound Player Waves",
+        "default" : false,
+        "tooltip" : "When active, DermoDeX will make an attempt to read the currently selected startup sound and create a waveform image to place in the generic coverart section of the player."
+    },
     "div1" : {
         "type" : "separator"
     },
@@ -314,6 +320,14 @@
         "type" : "checkbox",
         "description" : "Menu User Picture",
         "default" : true
+    },
+    "div10" : {
+        "type" : "separator"
+    },
+    "actionapplytheme" : {
+        "type": "button",
+        "description": "Enact Theme Changes",
+        "callback": "actiontheme"
     },
     
     "div3" : {

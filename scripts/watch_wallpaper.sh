@@ -143,6 +143,9 @@ else
                             #sleep 2
                             #if [ "$coloroverrides" == "false" ]; then
                             xdotool key ctrl+alt+"Escape"
+                            #xdotool key alt+"F2"
+                            #xdotool key r
+                            #xdotool key enter
                             #fi
                         fi
                     fi

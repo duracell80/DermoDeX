@@ -139,12 +139,17 @@ else
 fi
 
 # USE ACCENT COLOR ON START MENU BUTTON
-
 if [ "$flowcolorsmenu" = "true" ]; then
     echo "[i] Accent - Start Menu Button: Enabled"
     sed -i "s|dd-menu-button-hover : #ffffff;|color : #3281ea;|g" $CINN_FILE
 else 
     sed -i "s|dd-menu-button-hover : #ffffff;|color : #ffffff;|g" $CINN_FILE
+fi
+
+# SOUND PLAYER ENHANCEMENT - REGENERATE THE SOUNDWAVE
+if [ "$flowsoundwaves" == "true" ]; then
+    $LWD/sounds_waveform.sh
+    sed -i "s|dd-soundwaves-background-image|background-image|g" $CINN_FILE
 fi
 
 # PANEL MAIN STYLE
@@ -231,10 +236,8 @@ sed -i "s|rgba(1,26,59|rgba(${RGB_DARKER}|g" $CINN_FILE
 sed -i "s|#011024|${DARKEST}|g" $CINN_FILE
 sed -i "s|rgba(1,16,36|rgba(${RGB_DARKEST}|g" $CINN_FILE
 
-
-
-
-
+# SED - FIND THE REMAINING ~/
+sed -i "s|~/|$HOME/|g" $CINN_FILE
 
 
 

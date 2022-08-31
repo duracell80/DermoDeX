@@ -4,7 +4,7 @@
 CINN_VERSION=$(cinnamon --version)
 
 #sudo apt install python3-pip libsass1 sassc
-#sudo apt-get install -y -q xdotool
+#sudo apt install -y -q xdotool ffmpeg
 #sudo apt install xz-utils
 
 #pip3 install easydev
@@ -65,6 +65,8 @@ cp -f ./scripts/remix_sounds.sh ~/.local/share/dermodex
 cp -f ./scripts/remix_themes.sh ~/.local/share/dermodex
 cp -f ./scripts/remix_icons.sh ~/.local/share/dermodex
 cp -f ./scripts/remix_color.py ~/.local/share/dermodex
+
+cp -f ./scripts/sounds_waveform.sh ~/.local/share/dermodex
 
 cp -f ./scripts/cinnamon_reload ~/.local/bin
 cp -f ./scripts/dd_sleep.sh ~/.local/bin/dd_sleep

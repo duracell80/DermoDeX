@@ -61,6 +61,7 @@ DermoDeXSettings.prototype = {
         this.settings.bindProperty(Settings.BindingDirection.IN, 'menubckgrd', 'menubckgrd', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'menuavatar', 'menuavatar', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'flowcolors', 'flowcolors', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'flowsoundwaves', 'flowsoundwaves', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'flowcolorsmenu', 'flowcolorsmenu', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'flowsidebar', 'flowsidebar', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'flowicons', 'flowicons', null);
@@ -84,6 +85,7 @@ DermoDeXSettings.prototype = {
         
         
         
+        
         this.settings.bind('vibrancy', 'vibrancy', this.on_vibrancy_changed);
         this.settings.bind('saturation', 'saturation', this.on_saturation_changed);
         this.settings.bind('brightness', 'brightness', this.on_brightness_changed);
@@ -101,6 +103,7 @@ DermoDeXSettings.prototype = {
         this.settings.bind('menutrans', 'menutrans', this.on_menutrans_changed);
         this.settings.bind('menubckgrd', 'menubckgrd', this.on_menubckgrd_changed);
         this.settings.bind('menuavatar', 'menuavatar', this.on_menuavatar_changed);
+        this.settings.bind('flowsoundwaves', 'flowsoundwaves', this.on_flowsoundwaves_changed);
         this.settings.bind('flowcolors', 'flowcolors', this.on_flowcolors_changed);
         this.settings.bind('flowcolorsmenu', 'flowcolorsmenu', this.on_flowcolorsmenu_changed);
         this.settings.bind('flowsidebar', 'flowsidebar', this.on_flowsidebar_changed);
@@ -119,6 +122,7 @@ DermoDeXSettings.prototype = {
         this.settings.bind('override3', 'override3', this.on_override3_changed);
         
         this.settings.bind('mintpaper', 'mintpaper', this.on_mintpaper_changed);
+        
     },
     
     on_vibrancy_changed: function () {
@@ -166,6 +170,12 @@ DermoDeXSettings.prototype = {
     on_menubckgrd_changed: function () {
         var cfg_menubckgrd = this.settings.getValue('menubckgrd')
         let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'menubckgrd', '-v' + cfg_menubckgrd]);
+        let error = process.spawn_sync_and_get_error();
+	},
+    
+    on_flowsoundwaves_changed: function () {
+        var cfg_flowsoundwaves = this.settings.getValue('flowsoundwaves')
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'flowsoundwaves', '-v' + cfg_flowsoundwaves]);
         let error = process.spawn_sync_and_get_error();
 	},
     
@@ -385,13 +395,17 @@ DermoDeXSettings.prototype = {
         var cfg_mintpaper = this.settings.getValue('mintpaper')
         let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'mintpaper', '-v' + cfg_mintpaper]);
         let error = process.spawn_sync_and_get_error();
-	}
+	},
+    
+    actiontheme: function () {
+        let process = new ShellUtils.ShellOutputProcess('xdotool key ctrl+alt+"Escape"');
+        let error = process.spawn_sync_and_get_error();
+    }
     
 };
 
 function init(extensionMeta) {
     settings = new DermoDeXSettings(extensionMeta.uuid);
-
 }
 
 function enable() {
