@@ -104,6 +104,9 @@ mkdir -p $HOME/.local/share/dermodex/theme-ext/cinnamon/assets/
 cp -rf $CWD/src/cinnamon/assets/dermodex $HOME/.local/share/dermodex/theme-ext/cinnamon/assets
 
 
+
+
+
 if [ -d $CWD/deps/Color-Icons ] ; then
     echo "[i] Main Icons Already Installed"
     #cp -r $CWD/deps/Color-Icons/Color-Icons/White-Icons $HOME/.local/share/icons
