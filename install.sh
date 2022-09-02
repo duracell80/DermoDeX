@@ -3,9 +3,9 @@
 
 CINN_VERSION=$(cinnamon --version)
 
-#sudo apt install python3-pip libsass1 sassc
-#sudo apt install -y -q xdotool ffmpeg
-#sudo apt install xz-utils
+#sudo apt install -y -q python3-pip libsass1 sassc rofi scrot imagemagick
+#sudo apt install -y -q xz-utils xdotool ffmpeg
+
 
 #pip3 install easydev
 #pip3 install colormap
@@ -15,6 +15,7 @@ CINN_VERSION=$(cinnamon --version)
 #pip3 install extcolors
 #pip3 install matplotlib
 #pip3 install configparser
+#pip3 install xdisplayinfo
 
 #dconf dump /org/cinnamon/ > $HOME/cinnamon_desktop.backup
 
@@ -79,6 +80,12 @@ cp -f ./scripts/dd_refresh.sh ~/.local/bin/dd_refresh
 cp -f ./scripts/dd_swatch.sh ~/.local/bin/dd_swatch
 cp -f ./scripts/dex-notify.sh ~/.local/bin
 cp -f ./scripts/dex-action.sh ~/.local/bin
+
+cp -f ./scripts/rofi/dd_power.sh ~/.local/bin/dd_power
+cp -f ./scripts/rofi/dd_power.rasi ~/.local/share/dermodex
+
+
+
 cp -r ./nemo/actions/*.nemo_action ~/.local/share/nemo/actions
 cp -r ./nemo/scripts/* ~/.local/share/nemo/scripts
 cp -f ./*.desktop ~/.config/autostart
@@ -118,7 +125,7 @@ if [ -d $CWD/deps/Color-Icons ] ; then
     
     cp -rf "$CWD/deps/Royal-Z/Royal Z/apps/scalable" $HOME/.local/share/dermodex/icons/breeze-dark_black/
     
-    mv -f $HOME/.local/share/dermodex/icons/breeze-dark_black/apps/scalable/* $HOME/.local/share/dermodex/icons/breeze-dark_black/apps
+    #mv -f $HOME/.local/share/dermodex/icons/breeze-dark_black/apps/scalable/* $HOME/.local/share/dermodex/icons/breeze-dark_black/apps
     
     rm -rf $HOME/.local/share/dermodex/icons/breeze-dark_black/apps/scalable/
     
@@ -250,61 +257,63 @@ echo ""
 
 #mkdir -p ~/.cache/dermodex/common-assets/sounds/
 
-    # SOUND - ZORIN
-    sudo cp -fr $CWD/sounds/zorin/ /usr/share/sounds/
-    sudo chmod -R a+rx /usr/share/sounds/zorin/
-    
-    # SOUND - X11
-    sudo cp -fr $CWD/sounds/x11/ /usr/share/sounds/
-    sudo chmod -R a+rx /usr/share/sounds/x11/
-    
-    # SOUND - X10
-    sudo cp -fr $CWD/sounds/x10/ /usr/share/sounds/
-    sudo chmod -R a+rx /usr/share/sounds/x10/
-    
-    # SOUND - XXP
-    sudo cp -fr $CWD/sounds/xxp/ /usr/share/sounds/
-    sudo chmod -R a+rx /usr/share/sounds/xxp/
-    
-    # SOUND - MACOS
-    sudo cp -fr $CWD/sounds/macos/ /usr/share/sounds/
-    sudo chmod -R a+rx /usr/share/sounds/macos/
-    
-    # SOUND - MIUI
-    sudo cp -fr $CWD/sounds/miui/ /usr/share/sounds/
-    sudo chmod -R a+rx /usr/share/sounds/miui/
-    
-    # SOUND - DEEPIN
-    sudo cp -fr $CWD/sounds/deepin/ /usr/share/sounds/
-    sudo chmod -R a+rx /usr/share/sounds/deepin/
-    
-    # SOUND - Enchanted
-    sudo cp -fr $CWD/sounds/enchanted/ /usr/share/sounds/
-    sudo chmod -R a+rx /usr/share/sounds/enchanted/
-    
-    # SOUND - Borealis
-    sudo cp -fr $CWD/sounds/borealis/ /usr/share/sounds/
-    sudo chmod -R a+rx /usr/share/sounds/borealis/
-    
-    # SOUND - HARMONY
-    sudo cp -fr $CWD/sounds/harmony/ /usr/share/sounds/
-    sudo chmod -R a+rx /usr/share/sounds/harmony/
-    
-    # SOUND - LINUX-A11Y
-    sudo cp -fr $CWD/sounds/linux-a11y/ /usr/share/sounds/
-    sudo chmod -R a+rx /usr/share/sounds/linux-a11y/
-    
-    # SOUND - LINUX-UBUNTU
-    sudo cp -fr $CWD/sounds/linux-ubuntu/ /usr/share/sounds/
-    sudo chmod -R a+rx /usr/share/sounds/linux-ubuntu/
-    
-    # SOUND - NIGHTLY NEWS
-    sudo cp -fr $CWD/sounds/nightlynews/ /usr/share/sounds/
-    sudo chmod -R a+rx /usr/share/sounds/nightlynews/
-    
-    # SOUND - Team Pixel
-    sudo cp -fr $CWD/sounds/teampixel/ /usr/share/sounds/
-    sudo chmod -R a+rx /usr/share/sounds/teampixel/
+# SOUND - ZORIN
+sudo cp -fr $CWD/sounds/zorin/ /usr/share/sounds/
+sudo chmod -R a+rx /usr/share/sounds/zorin/
+
+# SOUND - X11
+sudo cp -fr $CWD/sounds/x11/ /usr/share/sounds/
+sudo chmod -R a+rx /usr/share/sounds/x11/
+
+# SOUND - X10
+sudo cp -fr $CWD/sounds/x10/ /usr/share/sounds/
+sudo chmod -R a+rx /usr/share/sounds/x10/
+
+# SOUND - XXP
+sudo cp -fr $CWD/sounds/xxp/ /usr/share/sounds/
+sudo chmod -R a+rx /usr/share/sounds/xxp/
+
+# SOUND - MACOS
+sudo cp -fr $CWD/sounds/macos/ /usr/share/sounds/
+sudo chmod -R a+rx /usr/share/sounds/macos/
+
+# SOUND - MIUI
+sudo cp -fr $CWD/sounds/miui/ /usr/share/sounds/
+sudo chmod -R a+rx /usr/share/sounds/miui/
+
+# SOUND - DEEPIN
+sudo cp -fr $CWD/sounds/deepin/ /usr/share/sounds/
+sudo chmod -R a+rx /usr/share/sounds/deepin/
+
+# SOUND - Enchanted
+sudo cp -fr $CWD/sounds/enchanted/ /usr/share/sounds/
+sudo chmod -R a+rx /usr/share/sounds/enchanted/
+
+# SOUND - Borealis
+sudo cp -fr $CWD/sounds/borealis/ /usr/share/sounds/
+sudo chmod -R a+rx /usr/share/sounds/borealis/
+
+# SOUND - HARMONY
+sudo cp -fr $CWD/sounds/harmony/ /usr/share/sounds/
+sudo chmod -R a+rx /usr/share/sounds/harmony/
+
+# SOUND - LINUX-A11Y
+sudo cp -fr $CWD/sounds/linux-a11y/ /usr/share/sounds/
+sudo chmod -R a+rx /usr/share/sounds/linux-a11y/
+
+# SOUND - LINUX-UBUNTU
+sudo cp -fr $CWD/sounds/linux-ubuntu/ /usr/share/sounds/
+sudo chmod -R a+rx /usr/share/sounds/linux-ubuntu/
+
+# SOUND - NIGHTLY NEWS
+sudo cp -fr $CWD/sounds/nightlynews/ /usr/share/sounds/
+sudo chmod -R a+rx /usr/share/sounds/nightlynews/
+
+# SOUND - Team Pixel
+sudo cp -fr $CWD/sounds/teampixel/ /usr/share/sounds/
+sudo chmod -R a+rx /usr/share/sounds/teampixel/
+
+sudo cp $CWD/fonts/* /usr/share/fonts/ && fc-cache -f
 
 sudo mkdir -p /usr/share/backgrounds/dermodex
 sudo chmod a+rw /usr/share/backgrounds/dermodex

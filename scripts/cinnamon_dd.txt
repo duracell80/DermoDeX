@@ -1,9 +1,9 @@
 [/]
 alttab-switcher-delay=100
-alttab-switcher-style='icons'
+alttab-switcher-style='coverflow'
 app-menu-label=''
 applet-cache-updated=1593057270
-command-history=['r', 'dd_release', 'dd_hold', 'dd_sleep', 'dd_wake', 'dd_refresh', 'dd_reload']
+command-history=['dd_release', 'dd_hold', 'dd_sleep', 'dd_wake', 'dd_refresh', 'dd_reload', 'r', 'dd_powermenu', 'dd_power']
 desklet-cache-updated=1593325530
 desklet-decorations=0
 desklet-snap=true
@@ -27,13 +27,13 @@ desktop-effects-unmaximize-effect='none'
 desktop-effects-unmaximize-time=100
 desktop-effects-unmaximize-transition='easeNone'
 device-aliases=['/org/freedesktop/UPower/devices/mouse_hidpp_battery_1:= M720 Mouse', '/org/freedesktop/UPower/devices/keyboard_hidpp_battery_0:= K780 Wireless Keyboard']
-enabled-applets=['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:3:grouped-window-list@cinnamon.org:2', 'panel1:right:5:systray@cinnamon.org:3', 'panel1:right:3:xapp-status@cinnamon.org:4', 'panel1:right:8:notifications@cinnamon.org:5', 'panel1:right:7:printers@cinnamon.org:6', 'panel1:right:9:network@cinnamon.org:10', 'panel1:right:6:sound@cinnamon.org:11', 'panel1:right:11:calendar@cinnamon.org:13', 'panel1:right:4:radio@driglu4it:16', 'panel1:right:2:workspace-switcher@cinnamon.org:27', 'panel1:right:12:power@cinnamon.org:30', 'panel1:right:13:user@cinnamon.org:33', 'panel1:center:0:expo@cinnamon.org:36', 'panel1:right:10:weather@mockturtl:43']
+enabled-applets=['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:grouped-window-list@cinnamon.org:2', 'panel1:right:4:systray@cinnamon.org:3', 'panel1:right:2:xapp-status@cinnamon.org:4', 'panel1:right:11:notifications@cinnamon.org:5', 'panel1:right:6:printers@cinnamon.org:6', 'panel1:right:8:network@cinnamon.org:10', 'panel1:right:5:sound@cinnamon.org:11', 'panel1:right:10:calendar@cinnamon.org:13', 'panel1:right:3:radio@driglu4it:16', 'panel1:right:1:workspace-switcher@cinnamon.org:27', 'panel1:right:12:power@cinnamon.org:30', 'panel1:right:13:user@cinnamon.org:33', 'panel1:center:0:expo@cinnamon.org:36', 'panel1:right:9:weather@mockturtl:43', 'panel1:right:0:color-picker@fmete:49']
 enabled-desklets=['clock@cinnamon.org:2:3925:75']
 enabled-extensions=['opacify@anish.org', 'dermodex-config@duracell80']
 favorite-apps=['cinnamon-settings.desktop', 'org.gnome.Terminal.desktop', 'nemo.desktop']
 hotcorner-layout=['expo:false:0', 'expo:false:500', 'scale:true:1000', 'desktop:true:1000']
-next-applet-id=45
-next-desklet-id=4
+next-applet-id=50
+next-desklet-id=5
 no-adjacent-panel-barriers=false
 panel-edit-mode=false
 panel-launchers=['DEPRECATED']
@@ -45,6 +45,7 @@ panels-enabled=['1:0:bottom']
 panels-height=['1:60']
 panels-hide-delay=['1:0', '2:0']
 panels-show-delay=['1:0', '2:0']
+show-media-keys-osd='medium'
 workspace-expo-view-as-grid=false
 
 [cinnamon-session]
@@ -85,13 +86,13 @@ exec='gnome-terminal'
 [desktop/background]
 color-shading-type='vertical'
 picture-options='zoom'
-picture-uri='file:///home/lee/Pictures/Wallpapers/pexels-rodrigo-souza-2531709.jpg'
-primary-color='#003794'
-secondary-color='#003794'
+picture-uri='file:///usr/share/backgrounds/linuxmint-vanessa/aaronphs_indonesia.jpg'
+primary-color=''
+secondary-color=''
 
 [desktop/background/slideshow]
 delay=15
-image-source='directory:///home/lee/Pictures/Wallpapers'
+image-source='xml:///usr/share/cinnamon-background-properties/linuxmint-vanessa.xml'
 slideshow-enabled=false
 
 [desktop/interface]
@@ -110,12 +111,22 @@ text-scaling-factor=1
 toolkit-accessibility=true
 
 [desktop/keybindings]
+custom-list=['custom0', '__dummy__']
 looking-glass-keybinding=@as []
 show-desklets=@as []
 
+[desktop/keybindings/custom-keybindings/custom0]
+binding=['<Super>s']
+command='dd_power'
+name='Rofi Powermenu'
+
 [desktop/keybindings/media-keys]
+on-screen-keyboard=['<Super>k']
 screensaver=['<Super>l', 'XF86ScreenSaver']
-suspend=['<Super>s']
+suspend=@as []
+
+[desktop/keybindings/wm]
+show-desktop=['<Super>d', '<Super>m']
 
 [desktop/media-handling]
 autorun-never=false
@@ -156,7 +167,7 @@ idle-delay=uint32 300
 [desktop/sound]
 event-sounds=false
 volume-sound-enabled=true
-volume-sound-file='/usr/share/sounds/borealis/bell.ogg'
+volume-sound-file='/usr/share/sounds/linux-a11y/stereo/menu-popup.oga'
 
 [desktop/wm/preferences]
 min-window-opacity=30
@@ -174,6 +185,7 @@ check-frequency=300
 memory-limit=2048
 
 [muffin]
+draggable-border-width=10
 invert-workspace-flip-direction=false
 resize-threshold=24
 tile-hud-threshold=25
@@ -205,22 +217,22 @@ menus-have-icons=false
 rgba-order='vbgr'
 
 [sounds]
-close-file='/usr/share/sounds/enchanted/button-released.ogg'
-login-file='/usr/share/sounds/borealis/startup1_2.ogg'
-logout-file='/usr/share/sounds/borealis/exit1_2.ogg'
+close-file='/usr/share/sounds/linux-a11y/stereo/tooltip-popup.oga'
+login-file='/usr/share/sounds/linux-a11y/stereo/desktop-login.oga'
+logout-file='/usr/share/sounds/linux-a11y/stereo/desktop-logout.oga'
 map-enabled=false
-map-file='/usr/share/sounds/enchanted/dialog-question.ogg'
-maximize-file='/usr/share/sounds/enchanted/window-minimized.ogg'
-minimize-file='/usr/share/sounds/enchanted/window-minimized.ogg'
+map-file='/usr/share/sounds/linux-a11y/stereo/tooltip-popup.oga'
+maximize-file='/usr/share/sounds/linux-a11y/stereo/window-minimized.oga'
+minimize-file='/usr/share/sounds/linux-a11y/stereo/window-minimized.oga'
 notification-enabled=true
-notification-file='/usr/share/sounds/borealis/notification.ogg'
-plug-file='/usr/share/sounds/enchanted/dialog-question.ogg'
+notification-file='/usr/share/sounds/linux-a11y/stereo/window-attention.oga'
+plug-file='/usr/share/sounds/linux-a11y/stereo/message-sent.oga'
 switch-enabled=false
-switch-file='/usr/share/sounds/enchanted/notebook-tab-changed.ogg'
+switch-file='/usr/share/sounds/linux-a11y/stereo/menu-popup.oga'
 tile-enabled=false
-tile-file='/usr/share/sounds/enchanted/window-unmaximized.ogg'
-unmaximize-file='/usr/share/sounds/enchanted/window-unmaximized.ogg'
-unplug-file='/usr/share/sounds/enchanted/dialog-error.ogg'
+tile-file='/usr/share/sounds/linux-a11y/stereo/window-switch.oga'
+unmaximize-file='/usr/share/sounds/linux-a11y/stereo/window-minimized.oga'
+unplug-file='/usr/share/sounds/linux-a11y/stereo/message.oga'
 
 [theme]
 name='DermoDeX'

@@ -158,7 +158,7 @@ else
                 # SET SOUNDS
                 $BASE_FILE/watch_sounds.sh
                 
-                
+                rm -f $BASE_FILE/config.ini.unix
                 
 
             else
