@@ -1,187 +1,268 @@
 #!/usr/bin/env bash
-soundnotification=$1
+# remix_sounds.sh <name=notification|osd> <name=mint20>
+
+type=$1
+name=$2
+
+DIR_SOUND="/usr/share/sounds"
+APP_SOUND="notification.ogg"
+
+CONF_FILE="$HOME/.local/share/dermodex/config.ini"
+
+# READ THE UPDATED CONFIG
+shopt -s extglob
+
+tr -d '\r' < $CONF_FILE | sed 's/[][]//g' > $CONF_FILE.unix
+while IFS='= ' read -r lhs rhs
+do
+    if [[ ! $lhs =~ ^\ *# && -n $lhs ]]; then
+        rhs="${rhs%%\#*}"    # Del in line right comments
+        rhs="${rhs%%*( )}"   # Del trailing spaces
+        rhs="${rhs%\"*}"     # Del opening string quotes 
+        rhs="${rhs#\"*}"     # Del closing string quotes 
+        declare $lhs="$rhs"
+    fi
+done < $CONF_FILE.unix
+shopt -u extglob # Switching it back off after use
+
+echo $name
 
 # SET SOUNDS
-if [ "$soundnotification" == "teampixel" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notification_simple-01.ogg'
-elif [ "$soundnotification" == "pixel-keys" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Classical Harmonies/Changing Keys.ogg'
-elif [ "$soundnotification" == "pixel-flourish" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Classical Harmonies/Piano Flourish.ogg'
-elif [ "$soundnotification" == "pixel-flutter" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Classical Harmonies/Piano Flutter.ogg'
-elif [ "$soundnotification" == "pixel-carbonate" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Material Adventures/Carbonate.ogg'
-elif [ "$soundnotification" == "pixel-discovery" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Material Adventures/Discovery.ogg'
-elif [ "$soundnotification" == "pixel-epiphany" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Material Adventures/Epiphany.ogg'
-elif [ "$soundnotification" == "pixel-everblue" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Material Adventures/Everblue.ogg'
-elif [ "$soundnotification" == "pixel-gradient" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Material Adventures/Gradient.ogg'
-elif [ "$soundnotification" == "pixel-lota" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Material Adventures/Lota.ogg'
-elif [ "$soundnotification" == "pixel-moondrop" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Material Adventures/Moondrop.ogg'
-elif [ "$soundnotification" == "pixel-plonk" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Material Adventures/Plonk.ogg'
-elif [ "$soundnotification" == "pixel-scamper" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Material Adventures/Scamper.ogg'
-elif [ "$soundnotification" == "pixel-shuffle" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Material Adventures/Shuffle.ogg'
-elif [ "$soundnotification" == "pixel-sunflower" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Material Adventures/Sunflower.ogg'
-elif [ "$soundnotification" == "pixel-teapot" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Material Adventures/Teapot.ogg'
-elif [ "$soundnotification" == "pixel-birdsong" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Pixel Sounds/Birdsong.ogg'
-elif [ "$soundnotification" == "pixel-absurdbird" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Play It Loud/Absurd Bird.ogg'
-elif [ "$soundnotification" == "pixel-chefsspecial" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Play It Loud/Chef_s Special.ogg'
-elif [ "$soundnotification" == "pixel-crosswalk" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Play It Loud/Crosswalk.ogg'
-elif [ "$soundnotification" == "pixel-cyclist" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Play It Loud/Cyclist.ogg'
-elif [ "$soundnotification" == "pixel-dj" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Play It Loud/DJ.ogg'
-elif [ "$soundnotification" == "pixel-doorbell" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Play It Loud/Doorbell.ogg'
-elif [ "$soundnotification" == "pixel-grandopening" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Play It Loud/Grand Opening.ogg'
-elif [ "$soundnotification" == "pixel-honkhonk" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Play It Loud/Honk Honk.ogg'
-elif [ "$soundnotification" == "pixel-nightlife" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Play It Loud/Nightlife.ogg'
-elif [ "$soundnotification" == "pixel-nightsky" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Play It Loud/Night Sky.ogg'
-elif [ "$soundnotification" == "pixel-rockconcert" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Play It Loud/Rock Concert.ogg'
-elif [ "$soundnotification" == "pixel-welcome" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Play It Loud/Welcome.ogg'
-elif [ "$soundnotification" == "pixel-bellhop" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Reality Bytes/Bellhop.ogg'
-elif [ "$soundnotification" == "pixel-bikeride" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Reality Bytes/Bike Ride.ogg'
-elif [ "$soundnotification" == "pixel-blacksmith" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Reality Bytes/Blacksmith.ogg'
-elif [ "$soundnotification" == "pixel-cowbell" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Reality Bytes/Cowbell.ogg'
-elif [ "$soundnotification" == "pixel-cointoss" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Reality Bytes/Coin Toss.ogg'
-elif [ "$soundnotification" == "pixel-fraidycat" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Reality Bytes/Fraidy Cat.ogg'
-elif [ "$soundnotification" == "pixel-gibboncall" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Reality Bytes/Gibbon Call.ogg'
-elif [ "$soundnotification" == "pixel-guardianangel" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Reality Bytes/Guardian Angel.ogg'
-elif [ "$soundnotification" == "pixel-magictrick" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Reality Bytes/Magic Trick.ogg'
-elif [ "$soundnotification" == "pixel-paperclip" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Reality Bytes/Paper Clip.ogg'
-elif [ "$soundnotification" == "pixel-pingpong" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Reality Bytes/Ping-Pong.ogg'
-elif [ "$soundnotification" == "pixel-sadtrombone" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Reality Bytes/Sad Trombone.ogg'
-elif [ "$soundnotification" == "pixel-swansong" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Reality Bytes/Swan Song.ogg'
-elif [ "$soundnotification" == "pixel-tropicalfrog" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Reality Bytes/Tropical Frog.ogg'
-elif [ "$soundnotification" == "pixel-welcome" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Reality Bytes/Welcome.ogg'
-elif [ "$soundnotification" == "pixel-bolt" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Retro Riffs/Bolt.ogg'
-elif [ "$soundnotification" == "pixel-boomerang" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Retro Riffs/Boomerang.ogg'
-elif [ "$soundnotification" == "pixel-bubble" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Retro Riffs/Bubble.ogg'
-elif [ "$soundnotification" == "pixel-coins" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Retro Riffs/Coins.ogg'
-elif [ "$soundnotification" == "pixel-gems" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Retro Riffs/Gems.ogg'
-elif [ "$soundnotification" == "pixel-jackpot" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Retro Riffs/Jackpot.ogg'
-elif [ "$soundnotification" == "pixel-magic" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Retro Riffs/Magic.ogg'
-elif [ "$soundnotification" == "pixel-portal" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Retro Riffs/Portal.ogg'
-elif [ "$soundnotification" == "pixel-reward" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Retro Riffs/Reward.ogg'
-elif [ "$soundnotification" == "pixel-spell" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Retro Riffs/Spell.ogg'
-elif [ "$soundnotification" == "pixel-unlock" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Retro Riffs/Unlock.ogg'
-elif [ "$soundnotification" == "pixel-bemine" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Seasonal Celebrations/Be Mine.ogg'
-elif [ "$soundnotification" == "pixel-champagnepop" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Seasonal Celebrations/Champagne Pop.ogg'
-elif [ "$soundnotification" == "pixel-cheers" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Seasonal Celebrations/Cheers.ogg'
-elif [ "$soundnotification" == "pixel-eerie" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Seasonal Celebrations/Eerie.ogg'
-elif [ "$soundnotification" == "pixel-gobblegobble" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Seasonal Celebrations/Gobble Gobble.ogg'
-elif [ "$soundnotification" == "pixel-holidaymagic" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Seasonal Celebrations/Holiday Magic.ogg'
-elif [ "$soundnotification" == "pixel-partyfavor" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Seasonal Celebrations/Party Favor.ogg'
-elif [ "$soundnotification" == "pixel-sleighbells" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Seasonal Celebrations/Sleigh Bells.ogg'
-elif [ "$soundnotification" == "pixel-snowflake" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Seasonal Celebrations/Snowflake.ogg'
-elif [ "$soundnotification" == "pixel-summersurf" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Seasonal Celebrations/Summer Surf.ogg'
-elif [ "$soundnotification" == "pixel-sweatheart" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Seasonal Celebrations/Sweetheart.ogg'
-elif [ "$soundnotification" == "pixel-winterwind" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Seasonal Celebrations/Winter Wind.ogg'
-elif [ "$soundnotification" == "pixel-chime" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Pixel Sounds/Chime.ogg'
-elif [ "$soundnotification" == "pixel-clink" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Pixel Sounds/Clink.ogg'
-elif [ "$soundnotification" == "pixel-flick" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Pixel Sounds/Flick.ogg'
-elif [ "$soundnotification" == "pixel-hey" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Pixel Sounds/Hey.ogg'
-elif [ "$soundnotification" == "pixel-note" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Pixel Sounds/Note.ogg'
-elif [ "$soundnotification" == "pixel-strum" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Pixel Sounds/Strum.ogg'
-elif [ "$soundnotification" == "pixel-trill" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notifications/Pixel Sounds/Trill.ogg'
-elif [ "$soundnotification" == "x11" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/x11/stereo/message-new-instant.ogg'
-elif [ "$soundnotification" == "x10" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/x10/notify-system-generic.ogg'
-elif [ "$soundnotification" == "xxp" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/xxp/notify.ogg'   
-elif [ "$soundnotification" == "macos" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/macos/contact-online.ogg'
-elif [ "$soundnotification" == "mint20" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/LinuxMint/stereo/system-ready.ogg'
-elif [ "$soundnotification" == "miui" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/miui/stereo/message-sent-instant.ogg'
-elif [ "$soundnotification" == "deepin" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/deepin/suspend-resume.ogg'
-elif [ "$soundnotification" == "enchanted" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/enchanted/message-sent-instant.ogg'
-elif [ "$soundnotification" == "borealis" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/borealis/notification.ogg'
-elif [ "$soundnotification" == "harmony" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/harmony/notification-brighter.ogg'
-elif [ "$soundnotification" == "ubuntu-original" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/linux-ubuntu/new-mail.ogg'
-elif [ "$soundnotification" == "nightlynews" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/nightlynews/chimes.ogg'
-elif [ "$soundnotification" == "zorin" ]; then
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/zorin/stereo/message-new-instant.ogg'
-else
-    soundnotification = "as-themed"
-    $HOME/.local/share/dermodex/watch_sounds.sh
-fi
 
-# SCRIPTS HERE CAN LOCK UP SETTINGS MODAL
-#SOUNDFILE=$(gsettings get org.cinnamon.sounds notification-file | sed "s/'//" | sed "s/'//")
-#play $SOUNDFILE
-#notify-send --urgency=normal --category=im.recieved --icon=help-info-symbolic "Notification sound set: ${soundnotification}"
+if [ "$type" == "notification" ]; then
+
+    if [ "$name" == "linux-a11y" ]; then
+        APP_SOUND="$DIR_SOUND/linux-a11y/stereo/window-attention.oga"
+    elif [ "$name" == "teampixel" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notification_simple-01.ogg"
+    elif [ "$name" == "pixel-keys" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Classical Harmonies/Changing Keys.ogg"
+    elif [ "$name" == "pixel-flourish" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Classical Harmonies/Piano Flourish.ogg"
+    elif [ "$name" == "pixel-flutter" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Classical Harmonies/Piano Flutter.ogg"
+    elif [ "$name" == "pixel-carbonate" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Material Adventures/Carbonate.ogg"
+    elif [ "$name" == "pixel-discovery" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Material Adventures/Discovery.ogg"
+    elif [ "$name" == "pixel-epiphany" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Material Adventures/Epiphany.ogg"
+    elif [ "$name" == "pixel-everblue" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Material Adventures/Everblue.ogg"
+    elif [ "$name" == "pixel-gradient" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Material Adventures/Gradient.ogg"
+    elif [ "$name" == "pixel-lota" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Material Adventures/Lota.ogg"
+    elif [ "$name" == "pixel-moondrop" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Material Adventures/Moondrop.ogg"
+    elif [ "$name" == "pixel-plonk" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Material Adventures/Plonk.ogg"
+    elif [ "$name" == "pixel-scamper" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Material Adventures/Scamper.ogg"
+    elif [ "$name" == "pixel-shuffle" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Material Adventures/Shuffle.ogg"
+    elif [ "$name" == "pixel-sunflower" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Material Adventures/Sunflower.ogg"
+    elif [ "$name" == "pixel-teapot" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Material Adventures/Teapot.ogg"
+    elif [ "$name" == "pixel-birdsong" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Pixel Sounds/Birdsong.ogg"
+    elif [ "$name" == "pixel-absurdbird" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Play It Loud/Absurd Bird.ogg"
+    elif [ "$name" == "pixel-chefsspecial" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Play It Loud/Chef_s Special.ogg"
+    elif [ "$name" == "pixel-crosswalk" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Play It Loud/Crosswalk.ogg"
+    elif [ "$name" == "pixel-cyclist" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Play It Loud/Cyclist.ogg"
+    elif [ "$name" == "pixel-dj" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Play It Loud/DJ.ogg"
+    elif [ "$name" == "pixel-doorbell" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Play It Loud/Doorbell.ogg"
+    elif [ "$name" == "pixel-grandopening" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Play It Loud/Grand Opening.ogg"
+    elif [ "$name" == "pixel-honkhonk" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Play It Loud/Honk Honk.ogg"
+    elif [ "$name" == "pixel-nightlife" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Play It Loud/Nightlife.ogg"
+    elif [ "$name" == "pixel-nightsky" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Play It Loud/Night Sky.ogg"
+    elif [ "$name" == "pixel-rockconcert" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Play It Loud/Rock Concert.ogg"
+    elif [ "$name" == "pixel-welcome" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Play It Loud/Welcome.ogg"
+    elif [ "$name" == "pixel-bellhop" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Reality Bytes/Bellhop.ogg"
+    elif [ "$name" == "pixel-bikeride" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Reality Bytes/Bike Ride.ogg"
+    elif [ "$name" == "pixel-blacksmith" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Reality Bytes/Blacksmith.ogg"
+    elif [ "$name" == "pixel-cowbell" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Reality Bytes/Cowbell.ogg"
+    elif [ "$name" == "pixel-cointoss" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Reality Bytes/Coin Toss.ogg"
+    elif [ "$name" == "pixel-fraidycat" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Reality Bytes/Fraidy Cat.ogg"
+    elif [ "$name" == "pixel-gibboncall" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Reality Bytes/Gibbon Call.ogg"
+    elif [ "$name" == "pixel-guardianangel" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Reality Bytes/Guardian Angel.ogg"
+    elif [ "$name" == "pixel-magictrick" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Reality Bytes/Magic Trick.ogg"
+    elif [ "$name" == "pixel-paperclip" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Reality Bytes/Paper Clip.ogg"
+    elif [ "$name" == "pixel-pingpong" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Reality Bytes/Ping-Pong.ogg"
+    elif [ "$name" == "pixel-sadtrombone" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Reality Bytes/Sad Trombone.ogg"
+    elif [ "$name" == "pixel-swansong" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Reality Bytes/Swan Song.ogg"
+    elif [ "$name" == "pixel-tropicalfrog" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Reality Bytes/Tropical Frog.ogg"
+    elif [ "$name" == "pixel-welcome" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Reality Bytes/Welcome.ogg"
+    elif [ "$name" == "pixel-bolt" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Retro Riffs/Bolt.ogg"
+    elif [ "$name" == "pixel-boomerang" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Retro Riffs/Boomerang.ogg"
+    elif [ "$name" == "pixel-bubble" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Retro Riffs/Bubble.ogg"
+    elif [ "$name" == "pixel-coins" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Retro Riffs/Coins.ogg"
+    elif [ "$name" == "pixel-gems" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Retro Riffs/Gems.ogg"
+    elif [ "$name" == "pixel-jackpot" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Retro Riffs/Jackpot.ogg"
+    elif [ "$name" == "pixel-magic" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Retro Riffs/Magic.ogg"
+    elif [ "$name" == "pixel-portal" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Retro Riffs/Portal.ogg"
+    elif [ "$name" == "pixel-reward" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Retro Riffs/Reward.ogg"
+    elif [ "$name" == "pixel-spell" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Retro Riffs/Spell.ogg"
+    elif [ "$name" == "pixel-unlock" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Retro Riffs/Unlock.ogg"
+    elif [ "$name" == "pixel-bemine" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Seasonal Celebrations/Be Mine.ogg"
+    elif [ "$name" == "pixel-champagnepop" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Seasonal Celebrations/Champagne Pop.ogg"
+    elif [ "$name" == "pixel-cheers" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Seasonal Celebrations/Cheers.ogg"
+    elif [ "$name" == "pixel-eerie" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Seasonal Celebrations/Eerie.ogg"
+    elif [ "$name" == "pixel-gobblegobble" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Seasonal Celebrations/Gobble Gobble.ogg"
+    elif [ "$name" == "pixel-holidaymagic" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Seasonal Celebrations/Holiday Magic.ogg"
+    elif [ "$name" == "pixel-partyfavor" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Seasonal Celebrations/Party Favor.ogg"
+    elif [ "$name" == "pixel-sleighbells" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Seasonal Celebrations/Sleigh Bells.ogg"
+    elif [ "$name" == "pixel-snowflake" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Seasonal Celebrations/Snowflake.ogg"
+    elif [ "$name" == "pixel-summersurf" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Seasonal Celebrations/Summer Surf.ogg"
+    elif [ "$name" == "pixel-sweatheart" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Seasonal Celebrations/Sweetheart.ogg"
+    elif [ "$name" == "pixel-winterwind" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Seasonal Celebrations/Winter Wind.ogg"
+    elif [ "$name" == "pixel-chime" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Pixel Sounds/Chime.ogg"
+    elif [ "$name" == "pixel-clink" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Pixel Sounds/Clink.ogg"
+    elif [ "$name" == "pixel-flick" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Pixel Sounds/Flick.ogg"
+    elif [ "$name" == "pixel-hey" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Pixel Sounds/Hey.ogg"
+    elif [ "$name" == "pixel-note" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Pixel Sounds/Note.ogg"
+    elif [ "$name" == "pixel-strum" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Pixel Sounds/Strum.ogg"
+    elif [ "$name" == "pixel-trill" ]; then
+        APP_SOUND="$DIR_SOUND/teampixel/notifications/Pixel Sounds/Trill.ogg"
+    elif [ "$name" == "x11" ]; then
+        APP_SOUND="$DIR_SOUND/x11/stereo/message-new-instant.ogg"
+    elif [ "$name" == "x10" ]; then
+        APP_SOUND="$DIR_SOUND/x10/notify-system-generic.ogg"
+    elif [ "$name" == "xxp" ]; then
+        APP_SOUND="$DIR_SOUND/xxp/notify.ogg"   
+    elif [ "$name" == "macos" ]; then
+        APP_SOUND="$DIR_SOUND/macos/contact-online.ogg"
+    elif [ "$name" == "mint20" ]; then
+        APP_SOUND="$DIR_SOUND/LinuxMint/stereo/system-ready.ogg"
+    elif [ "$name" == "miui" ]; then
+        APP_SOUND="$DIR_SOUND/miui/stereo/message-sent-instant.ogg"
+    elif [ "$name" == "deepin" ]; then
+        APP_SOUND="$DIR_SOUND/deepin/suspend-resume.ogg"
+    elif [ "$name" == "enchanted" ]; then
+        APP_SOUND="$DIR_SOUND/enchanted/message-sent-instant.ogg"
+    elif [ "$name" == "borealis" ]; then
+        APP_SOUND="$DIR_SOUND/borealis/notification.ogg"
+    elif [ "$name" == "harmony" ]; then
+        APP_SOUND="$DIR_SOUND/harmony/notification-brighter.ogg"
+    elif [ "$name" == "ubuntu-original" ]; then
+        APP_SOUND="$DIR_SOUND/linux-ubuntu/new-mail.ogg"
+    elif [ "$name" == "nightlynews" ]; then
+        APP_SOUND="$DIR_SOUND/nightlynews/chimes.ogg"
+    elif [ "$name" == "zorin" ]; then
+        APP_SOUND="$DIR_SOUND/zorin/stereo/message-new-instant.ogg"
+    
+    
+    
+    elif [ "$name" == "theme" ]; then
+
+        echo "[i] SOUND AS THEMED"
+        # SET SOUNDS
+        if [ "$soundtheme" == "zorin" ]; then
+            APP_SOUND="$DIR_SOUND/zorin/stereo/message-new-instant.ogg"
+
+        elif [ "$soundtheme" == "x11" ]; then
+            APP_SOUND="$DIR_SOUND/x11/stereo/message-new-instant.ogg"
+
+        elif [ "$soundtheme" == "x10" ]; then
+            APP_SOUND="$DIR_SOUND/x10/notify-system-generic.ogg"
+            
+        elif [ "$soundtheme" == "xxp" ]; then
+            APP_SOUND="$DIR_SOUND/xxp/notify.ogg"    
+
+        elif [ "$soundtheme" == "macos" ]; then
+            APP_SOUND="$DIR_SOUND/macos/contact-online.ogg"
+
+        elif [ "$soundtheme" == "mint20" ]; then
+            APP_SOUND="$DIR_SOUND/LinuxMint/stereo/system-ready.ogg"
+
+        elif [ "$soundtheme" == "miui" ]; then
+            APP_SOUND="$DIR_SOUND/miui/stereo/message-sent-instant.ogg"
+
+        elif [ "$soundtheme" == "deepin" ]; then
+            APP_SOUND="$DIR_SOUND/deepin/suspend-resume.ogg"
+
+        elif [ "$soundtheme" == "enchanted" ]; then
+            APP_SOUND="$DIR_SOUND/enchanted/message-sent-instant.ogg"
+
+        elif [ "$soundtheme" == "borealis" ]; then
+            APP_SOUND="$DIR_SOUND/borealis/notification.ogg"
+
+        elif [ "$soundtheme" == "harmony" ]; then
+            APP_SOUND="$DIR_SOUND/harmony/notification-brighter.ogg"
+
+        elif [ "$soundtheme" == "ubuntu-original" ]; then
+            APP_SOUND="$DIR_SOUND/linux-ubuntu/new-mail.ogg"
+
+        elif [ "$soundtheme" == "nightlynews" ]; then
+            APP_SOUND="$DIR_SOUND/nightlynews/chimes.ogg"
+
+        elif [ "$soundtheme" == "teampixel" ]; then
+            APP_SOUND="$DIR_SOUND/teampixel/notification_simple-01.ogg"
+
+        else
+            APP_SOUND="$DIR_SOUND/linux-a11y/stereo/window-attention.oga"
+        fi
+        
+    fi
+    
+    # APPLY THE SOUND
+    gsettings set org.cinnamon.sounds notification-file "$APP_SOUND"
+
+fi

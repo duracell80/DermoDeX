@@ -49,7 +49,7 @@ def main(argv):
     if "soundtheme" in cfg_key:
         os.system(HOME + '/.local/share/dermodex/watch_sounds.sh');
     if "soundnotification" in cfg_key:
-        os.system(HOME + '/.local/share/dermodex/remix_sounds.sh ' + cfg_value);
+        os.system(HOME + '/.local/share/dermodex/remix_sounds.sh notification ' + cfg_value);
         
         p = str(subprocess.Popen("gsettings get org.cinnamon.sounds notification-file", shell=True, stdout = subprocess.PIPE, stderr=subprocess.PIPE).communicate()[0]).strip()
         
