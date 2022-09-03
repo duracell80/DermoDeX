@@ -165,6 +165,7 @@ if [ "$panelstyle" = "flat" ]; then
     if [ "$panelblur" = "true" ]; then
         echo "[i] Panel Image: On"
         sed -i "s|dd-panel-background-image : url(~/|background-image : url(${HOME}/|g" $CINN_FILE
+        sed -i "s|dd-panel-background-color : rgba(1,16,36,0.9);|background-color : transparent;|g" $CINN_FILE
         
         # PANEL LOCATION CALCULATION
         if [ "$panellocat" = "bottom" ]; then

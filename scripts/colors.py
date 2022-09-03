@@ -11,7 +11,7 @@
 # stackoverflow@Aidan
 # github@duracell80
 
-import os, math, configparser
+import os, subprocess, math, configparser
 
 global HOME
 HOME = str(os.popen('echo $HOME').read()).replace('\n', '')
@@ -36,7 +36,7 @@ from colormap import rgb2hex, rgb2hls, hls2rgb
 
 
 
-global cfg, cfg_colorcollect, cfg_pastel, cfg_vibrancy, cfg_tollerance, cfg_splitimage, cfg_splitfocus, cfg_override0, cfg_override1, cfg_override2
+global cfg, cfg_colorcollect, cin_panelblur, cfg_vibrancy, cfg_tollerance, cfg_splitimage, cfg_splitfocus, cfg_override0, cfg_override1, cfg_override2
 
 CONF_FILE = HOME + '/.local/share/dermodex/config.ini'
 
@@ -58,7 +58,6 @@ cfg_vibrancy = str(cfg.get('dd_conf', 'vibrancy', fallback=0.1))
 
 cfg_splitimage = str(cfg.get('dd_conf', 'splitimage', fallback=2))
 cfg_splitfocus = str(cfg.get('dd_conf', 'splitfocus', fallback="v2"))
-
 
 cin_panelstyle = str(cfg.get('cinnamon', 'panelstyle', fallback="flat"))
 cin_paneltrans = str(cfg.get('cinnamon', 'paneltrans', fallback=1.0))
@@ -226,6 +225,11 @@ def color_to_df(input):
 
 
 def extract_color(input_image, resize, tolerance, zoom, crop_variant = "h_1"):
+    # Find display resolution    
+    p = str(subprocess.Popen('xrandr | grep "primary" | cut --delimiter=" " -f 4 | cut --delimiter="+" -f 1 | cut --delimiter="x" -f 1', shell=True, stdout = subprocess.PIPE, stderr=subprocess.PIPE).communicate()[0]).strip()
+        
+    display_width   = int(p.replace("'", "").replace("b", "").replace("\\n", ""))
+    
     # Background
     bg = HOME + '/.cache/dermodex/bg.png'
     fig, ax = plt.subplots(figsize=(192,108),dpi=10)
@@ -236,38 +240,40 @@ def extract_color(input_image, resize, tolerance, zoom, crop_variant = "h_1"):
     # Open Image
     output_width = resize
     img = Image.open(input_image)
+    
+    # Figure out an optimal image size for the screen
+    img_height      = int((float(img.size[1])*float((int(display_width)/float(img.size[0])))))
+    
+    # Login Blur
+    img_gauss   = img.filter(ImageFilter.GaussianBlur(int(login_blur)))
+    img_login   = img_gauss.resize((display_width,img_height))
+    
+    img_login.save(HOME + '/.local/share/dermodex/login_blur.jpg')
+    img_login.save(HOME + '/.local/share/dermodex/login_blur.png')
+    
+    if cin_panelblur == "true": 
+        # Convert Wallpaper to PNG and add transparency to panel blur
+        img = Image.open(input_image)
+        img_panel_pre   = img.resize((display_width,img_height))
+        img_panel       = img_panel_pre.filter(ImageFilter.GaussianBlur(int(panel_blur)))
+        
+        img_panel.putalpha(int((((float(cin_paneltrans) * 100)/100)*255)))
+        img_panel_darken = adjust_brightness(img_panel, float("0.8"))
+        img_panel_darken.save(HOME + '/.local/share/dermodex/panel_blur.png')
 
-    # Blur Copy
-    imggauss = img.filter(ImageFilter.GaussianBlur(int(login_blur)))
-    imgpanel_pre = img.filter(ImageFilter.GaussianBlur(int(panel_blur)))
-    imgpanel = adjust_brightness(imgpanel_pre, float("0.8"))
-    imggauss.save(HOME + '/.local/share/dermodex/login_blur.jpg')
-    #imgpanel.save(HOME + '/.local/share/dermodex/panel_blur.jpg')
-    
-    # Convert Wallpaper to PNG and add transparency to panel blur
-    
-    imgpanel_rgba = imgpanel.copy()
-    imgpanel_rgba.putalpha(int((((float(cin_paneltrans) * 100)/100)*255)))
-    imgpanel_darken = adjust_brightness(imgpanel_rgba, float("0.8"))
-    imgpanel_darken.save(HOME + '/.local/share/dermodex/panel_blur.png')
-    
-    # Save Wallpaper Copies
-    img.save(HOME + '/.local/share/dermodex/wallpaper.jpg')
-    img.save(HOME + '/Pictures/wallpaper.jpg')
     
     # Darken For Menu Blur
     if cin_menubckgrd == "true":
         wpercent = (int(output_width)/float(img.size[0]))
         hsize = int((float(img.size[1])*float(wpercent)))
         
-        imgmenublur = adjust_brightness(imggauss, float("0.4"))
+        imgmenublur = adjust_brightness(img_gauss, float("0.4"))
         imgmenu = imgmenublur.resize((int(output_width),hsize))
         imgmenu.save(HOME + '/.local/share/dermodex/menu_blur.jpg')
     
     
     # Crop Into Sections
-    save_crops(HOME + '/.local/share/dermodex/wallpaper.jpg', int(cfg_splitimage))
-    
+    save_crops(input_image, int(cfg_splitimage))
     img = Image.open(HOME + '/.cache/dermodex/wallpaper_'+ str(crop_variant) +'.jpg')
     
     # Apply Filters
@@ -333,13 +339,7 @@ def extract_color(input_image, resize, tolerance, zoom, crop_variant = "h_1"):
     shade_rgb = str(get_rgb(shade_hex))
     
     
-    os.system('rm -rf '+ HOME +'/.cache/dermodex/colors_hex.txt')
-    os.system('touch '+ HOME +'/.cache/dermodex/colors_hex.txt')
-    os.system('rm -rf '+ HOME +'/.cache/dermodex/colors_rgb.txt')
-    os.system('touch '+ HOME +'/.cache/dermodex/colors_rgb.txt')
     
-    os.system('echo "' + shade_hex + '" > '+ HOME +'/.cache/dermodex/colors_hex.txt')
-    os.system('echo "' + shade_rgb + '" > '+ HOME +'/.cache/dermodex/colors_rgb.txt')
     for i in range(length):
         
         os.system('echo "' + list_hex[i] + '" >> '+ HOME +'/.cache/dermodex/colors_hex.txt')
@@ -377,9 +377,6 @@ def extract_color(input_image, resize, tolerance, zoom, crop_variant = "h_1"):
             rect = patches.Rectangle((x_posi + 1000, y_posi2), 360, 160, facecolor = c)
             ax2.add_artist(rect)
             ax2.text(x = x_posi+1400, y = y_posi2+100, s = c, fontdict={'fontsize': 190})
-    
-    #ax2.text(x = 150, y = -350, s = "Main Shade: " + shade_hex, fontdict={'fontsize': 275})
-    #ax2.text(x = 150, y = -200, s = "Shade1: " + list_hex[1] + " Shade2: " + list_hex[-1], fontdict={'fontsize': 190})
 
     
     fig.set_facecolor('white')
@@ -462,26 +459,6 @@ print("- Shade1: " + shade_1 + " - rgb" + str(get_rgb(shade_1)))
 print("- Shade2: " + shade_2 + " - rgb" + str(get_rgb(shade_2)) + "\n\n")
 
 
-# LOOK FOR OVERRIDES, IF SO THEN SET THOSE
-#if cfg_override0 != "aN":
-    #print("[i] Color Override Active for Shade 0: " + cfg_override0)
-    #config.set('colors', 'savehex0', cfg_override0.replace("#", ""))
-#else:
-    #config.set('colors', 'savehex0', shade_hex.replace("#", ""))
-    
-#if cfg_override1 != "aN":
-    #print("[i] Color Override Active for Shade 1: " + cfg_override1)
-    #config.set('colors', 'savehex1', cfg_override1.replace("#", ""))
-#else:
-    #config.set('colors', 'savehex1', shade_1.replace("#", ""))
-
-#if cfg_override2 != "aN":
-    #print("[i] Color Override Active for Shade 2: " + cfg_override2)
-    #config.set('colors', 'savehex2', cfg_override1.replace("#", ""))
-#else:
-    
-
-
 
 config.set('colors', 'savergb0', str(get_rgb_strip(shade_hex)))
 config.set('colors', 'savergb1', str(get_rgb_strip(shade_1)))
@@ -499,14 +476,3 @@ config.set('cinnamon', 'background', wallpaper_file)
     
 with open(CONF_FILE, 'w') as configfile:
     config.write(configfile)    
-    
-
-#tri = str(shade_txt).replace('(', '').replace(')', '').replace(' ', '').split(',')
-#tri = str(get_rgb(shade_1)).replace('(', '').replace(')', '').replace(' ', '').split(',')
-
-    
-    
-
-    
-    
-    

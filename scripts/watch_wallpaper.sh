@@ -96,7 +96,7 @@ else
                         shopt -u extglob # Switching it back off after use
                     
                     else
-                        notify-send --urgency=normal --category=transfer.complete --icon=cs-backgrounds-symbolic "DermoDeX Recalculating Accent Colors!" "Using the solor overrides from the configuration settings ... Wait for Cinnamon to reload or manually reload with CTRL+Alt+Esc."
+                        notify-send --urgency=normal --category=transfer.complete --icon=cs-backgrounds-symbolic "DermoDeX Recalculating Accent Colors!" "Using color overrides from configuration settings ... Wait for Cinnamon to reload or manually reload with CTRL+Alt+Esc."
                     
                     fi
                 fi

@@ -36,7 +36,7 @@ configuration {
 
 
 window {
-    transparency:                "background";
+    transparency:                "~/.local/share/dermodex/login_blur.png";
     location:                    center;
     anchor:                      center;
     fullscreen:                  true;

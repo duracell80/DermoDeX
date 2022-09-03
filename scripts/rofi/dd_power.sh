@@ -62,7 +62,6 @@ fontsize=$(echo "$width*$default_font_size/$default_width" | bc)
 
 selected="$(echo -e "$options" |
             rofi -theme ${script_abs_dir_path}/dd_power.rasi \
-                 -fake-background '/usr/share/backgrounds/dermodex/login_blur.png' \
                  -font "WeblySleek UI Light, $fontsize" \
                  -p "See you later, ${USER^}!" -dmenu -selected-row ${preselection})"
 
