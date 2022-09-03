@@ -249,30 +249,38 @@ cat $CINN_FILE >> $CCD/cinnamon-base.css
 cp -f $CCD/cinnamon-base.css $LWD/theme/cinnamon/cinnamon.css
 
 
-# COPY OVER GTK3 CSS TO THE CACHE
-cp -f $LWD/theme/gtk-3.0/gtk.css $LWD/theme/gtk-3.0/gtk.orig
-cp -f $LWD/theme/gtk-3.0/gtk.css $CCD/gtk-3.0
+if [ "$flowcolors" = true ]; then
+    # COPY OVER GTK3 CSS TO THE CACHE
+    cp -f $LWD/theme/gtk-3.0/gtk.css $LWD/theme/gtk-3.0/gtk.orig
+    cp -f $LWD/theme/gtk-3.0/gtk.css $CCD/gtk-3.0
 
-# WORK THROUGH SOME GTK3 STUFF WITH SED
-# MAIN SED
-sed -i "s|#1A73E8|${BRIGHT}|g" $GTK3_FILE
-sed -i "s|#135cbc|${ACCENT}|g" $GTK3_FILE
+    # WORK THROUGH SOME GTK3 STUFF WITH SED
+    # MAIN SED
+    sed -i "s|#1A73E8|${BRIGHT}|g" $GTK3_FILE
+    sed -i "s|#3181ea|${BRIGHT}|g" $GTK3_FILE
+    sed -i "s|#135cbc|${ACCENT}|g" $GTK3_FILE
+    sed -i "s|#1567d3|${ACCENT}|g" $GTK3_FILE
 
-# WM AND CLOSE BUTTONS
-sed -i "s|#E53935|${ACCENT}|g" $GTK3_FILE
-sed -i "s|#E57373|${BRIGHT}|g" $GTK3_FILE
-
-# WARNING ERROR SUCCESS
-# WARNING
-sed -i "s|#F4B400|${DARKEST}|g" $GTK3_FILE
-# ERROR
-sed -i "s|#D93025|${DARKER}|g" $GTK3_FILE
-# SUCCESS
-sed -i "s|#0F9D58|${ACCENT}|g" $GTK3_FILE
+    sed -i "s|rgba(15, 65, 131|rgba(${RGB_ACCENT}|g" $GTK3_FILE
 
 
-# COMBINE GTK3 MODS
-cp -f $GTK3_FILE $LWD/theme/gtk-3.0/
+    # WM AND CLOSE BUTTONS
+    sed -i "s|#E53935|${ACCENT}|g" $GTK3_FILE
+    sed -i "s|#E57373|${BRIGHT}|g" $GTK3_FILE
+
+    # WARNING ERROR SUCCESS
+    # WARNING
+    sed -i "s|#F4B400|${DARKEST}|g" $GTK3_FILE
+    # ERROR
+    sed -i "s|#D93025|${DARKER}|g" $GTK3_FILE
+    # SUCCESS
+    sed -i "s|#0F9D58|${ACCENT}|g" $GTK3_FILE
+
+
+    # COMBINE GTK3 MODS
+    cp -f $GTK3_FILE $LWD/theme/gtk-3.0/
+fi
+
 
 # COPY HYBRID AS DERMODEX
 cp -rf $LWD/theme/* $HOME/.themes/DermoDeX

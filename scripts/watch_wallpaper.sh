@@ -69,8 +69,6 @@ else
                     # DONT EXTRACT WALLPAPER COLORS IF COLORS ARE BEING OVERRIDEN
                     if [ "$coloroverrides" == "false" ]; then
                         
-                        #notify-send --urgency=normal --category=transfer.complete --icon=cs-backgrounds-symbolic --hint=string:image-path:$HOME/.cache/dermodex/wallpaper_swatch.png "DermoDeX Recalculating Accent Colors!" "\nWait for Cinnamon to reload or manually reload with CTRL+Alt+Esc.\n\nfile://${HOME}/.cache/dermodex/wallpaper_swatch.png"
-                        
                         notify-send --urgency=normal --category=transfer.complete --icon=cs-backgrounds-symbolic "DermoDeX Recalculating Accent Colors!" "Please standby for your new desktop experience!"
                         
                         python3 $HOME/.local/share/dermodex/colors.py
