@@ -20,6 +20,8 @@ desktop-effects-maximize-transition='easeInExpo'
 desktop-effects-minimize-effect='traditional'
 desktop-effects-minimize-time=160
 desktop-effects-minimize-transition='easeInQuad'
+desktop-effects-on-dialogs=false
+desktop-effects-on-menus=true
 desktop-effects-tile-effect='none'
 desktop-effects-tile-time=100
 desktop-effects-tile-transition='easeInQuad'
@@ -46,6 +48,7 @@ panels-height=['1:60']
 panels-hide-delay=['1:0', '2:0']
 panels-show-delay=['1:0', '2:0']
 show-media-keys-osd='medium'
+window-effect-speed=1
 workspace-expo-view-as-grid=false
 
 [cinnamon-session]
@@ -86,13 +89,13 @@ exec='gnome-terminal'
 [desktop/background]
 color-shading-type='vertical'
 picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/linuxmint-vanessa/aaronphs_indonesia.jpg'
-primary-color=''
-secondary-color=''
+picture-uri='file:///home/lee/.local/share/dermodex/mint-backgrounds-ulyana/backgrounds/linuxmint-ulyana/aandrews_tree.jpg'
+primary-color='#000000'
+secondary-color='#703500'
 
 [desktop/background/slideshow]
 delay=15
-image-source='xml:///usr/share/cinnamon-background-properties/linuxmint-vanessa.xml'
+image-source='directory:///home/lee/.local/share/dermodex/mint-backgrounds-ulyana/backgrounds/linuxmint-ulyana'
 slideshow-enabled=false
 
 [desktop/interface]
@@ -111,7 +114,7 @@ text-scaling-factor=1
 toolkit-accessibility=true
 
 [desktop/keybindings]
-custom-list=['custom0', '__dummy__']
+custom-list=['custom1', '__dummy__', 'custom0']
 looking-glass-keybinding=@as []
 show-desklets=@as []
 
@@ -119,6 +122,11 @@ show-desklets=@as []
 binding=['<Super>s']
 command='dd_power'
 name='Rofi Powermenu'
+
+[desktop/keybindings/custom-keybindings/custom1]
+binding=['<Super>r']
+command='dd_radio'
+name='Rofi Radiomenu'
 
 [desktop/keybindings/media-keys]
 on-screen-keyboard=['<Super>k']
@@ -167,7 +175,7 @@ idle-delay=uint32 300
 [desktop/sound]
 event-sounds=false
 volume-sound-enabled=true
-volume-sound-file='/usr/share/sounds/linux-a11y/stereo/menu-popup.oga'
+volume-sound-file='/usr/share/sounds/borealis/bell.ogg'
 
 [desktop/wm/preferences]
 min-window-opacity=30
@@ -217,22 +225,22 @@ menus-have-icons=false
 rgba-order='vbgr'
 
 [sounds]
-close-file='/usr/share/sounds/linux-a11y/stereo/tooltip-popup.oga'
-login-file='/usr/share/sounds/linux-a11y/stereo/desktop-login.oga'
-logout-file='/usr/share/sounds/linux-a11y/stereo/desktop-logout.oga'
+close-file='/usr/share/sounds/enchanted/button-released.ogg'
+login-file='/usr/share/sounds/borealis/startup1_2.ogg'
+logout-file='/usr/share/sounds/borealis/exit1_2.ogg'
 map-enabled=false
-map-file='/usr/share/sounds/linux-a11y/stereo/tooltip-popup.oga'
-maximize-file='/usr/share/sounds/linux-a11y/stereo/window-minimized.oga'
-minimize-file='/usr/share/sounds/linux-a11y/stereo/window-minimized.oga'
+map-file='/usr/share/sounds/enchanted/dialog-question.ogg'
+maximize-file='/usr/share/sounds/enchanted/window-minimized.ogg'
+minimize-file='/usr/share/sounds/enchanted/window-minimized.ogg'
 notification-enabled=true
-notification-file='/usr/share/sounds/linux-a11y/stereo/window-attention.oga'
-plug-file='/usr/share/sounds/linux-a11y/stereo/message-sent.oga'
+notification-file='/usr/share/sounds/borealis/notification.ogg'
+plug-file='/usr/share/sounds/enchanted/dialog-question.ogg'
 switch-enabled=false
-switch-file='/usr/share/sounds/linux-a11y/stereo/menu-popup.oga'
+switch-file='/usr/share/sounds/enchanted/notebook-tab-changed.ogg'
 tile-enabled=false
-tile-file='/usr/share/sounds/linux-a11y/stereo/window-switch.oga'
-unmaximize-file='/usr/share/sounds/linux-a11y/stereo/window-minimized.oga'
-unplug-file='/usr/share/sounds/linux-a11y/stereo/message.oga'
+tile-file='/usr/share/sounds/enchanted/window-unmaximized.ogg'
+unmaximize-file='/usr/share/sounds/enchanted/window-unmaximized.ogg'
+unplug-file='/usr/share/sounds/enchanted/dialog-error.ogg'
 
 [theme]
 name='DermoDeX'

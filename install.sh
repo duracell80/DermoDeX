@@ -71,19 +71,23 @@ cp -f ./scripts/sounds_waveform.sh ~/.local/share/dermodex
 cp -f ./scripts/display_resolution.sh ~/.local/share/dermodex
 
 cp -f ./scripts/cinnamon_reload ~/.local/bin
-cp -f ./scripts/dd_sleep.sh ~/.local/bin/dd_sleep
-cp -f ./scripts/dd_wake.sh ~/.local/bin/dd_wake
-cp -f ./scripts/dd_hold.sh ~/.local/bin/dd_hold
-cp -f ./scripts/dd_release.sh ~/.local/bin/dd_release
-cp -f ./scripts/dd_rescue.sh ~/.local/bin/dd_rescue
-cp -f ./scripts/dd_reload.sh ~/.local/bin/dd_reload
-cp -f ./scripts/dd_refresh.sh ~/.local/bin/dd_refresh
-cp -f ./scripts/dd_swatch.sh ~/.local/bin/dd_swatch
-cp -f ./scripts/dex-notify.sh ~/.local/bin
-cp -f ./scripts/dex-action.sh ~/.local/bin
+cp -f ./scripts/bin/dd_sleep.sh ~/.local/bin/dd_sleep
+cp -f ./scripts/bin/dd_wake.sh ~/.local/bin/dd_wake
+cp -f ./scripts/bin/dd_hold.sh ~/.local/bin/dd_hold
+cp -f ./scripts/bin/dd_release.sh ~/.local/bin/dd_release
+cp -f ./scripts/bin/dd_rescue.sh ~/.local/bin/dd_rescue
+cp -f ./scripts/bin/dd_reload.sh ~/.local/bin/dd_reload
+cp -f ./scripts/bin/dd_refresh.sh ~/.local/bin/dd_refresh
+cp -f ./scripts/bin/dd_swatch.sh ~/.local/bin/dd_swatch
+cp -f ./scripts/bin/dex-notify.sh ~/.local/bin
+cp -f ./scripts/bin/dex-action.sh ~/.local/bin
+cp -f ./scripts/bin/.mpris.so ~/.local/share/dermodex
 
+
+mkdir -p $HOME/.local/share/dermodex/rofi/themes
 cp -f ./scripts/rofi/dd_power.sh ~/.local/bin/dd_power
-cp -f ./scripts/rofi/dd_power.rasi ~/.local/share/dermodex
+cp -f ./scripts/rofi/dd_radio.sh ~/.local/bin/dd_radio
+cp -f ./scripts/rofi/themes/*.rasi ~/.local/share/dermodex/rofi/themes
 
 
 
@@ -94,6 +98,7 @@ cp -f ./*.desktop ~/.config/autostart
 chmod u+x ~/.local/share/dermodex/*.sh
 mkdir -p $HOME/.local/share/icons/White-Icons/scalable/apps
 mkdir -p $HOME/.local/share/dermodex/icons/breeze-dark_black/apps
+
 
 cp -f $CWD/scripts/watch_sounds.sh ~/.local/share/dermodex
 cp -f $CWD/scripts/watch_wallpaper.sh ~/.local/share/dermodex
