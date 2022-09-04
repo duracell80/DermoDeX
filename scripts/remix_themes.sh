@@ -20,11 +20,13 @@ CCD=$HOME/.cache/dermodex
 CINN_FILE=$CCD/cinnamon-ext.css
 GTK2_FILE=$CCD/gtk-2.0/gtkrc
 GTK3_FILE=$CCD/gtk-3.0/gtk.css
+GTK4_FILE=$CCD/gtk-3.0/gtk.css
 
 CONF_FILE="$HOME/.local/share/dermodex/config.ini"
 
 mkdir -p $CCD/gtk-2.0
 mkdir -p $CCD/gtk-3.0
+mkdir -p $CCD/gtk-4.0
 
 # READ THE UPDATED CONFIG
 shopt -s extglob
@@ -261,6 +263,10 @@ if [ "$flowcolors" = true ]; then
     # COPY OVER GTK3 CSS TO THE CACHE
     cp -f $LWD/theme/gtk-3.0/gtk.css $LWD/theme/gtk-3.0/gtk.orig
     cp -f $LWD/theme/gtk-3.0/gtk.css $CCD/gtk-3.0
+    
+    # COPY OVER GTK4 CSS TO THE CACHE
+    cp -f $LWD/theme/gtk-4.0/gtk.css $LWD/theme/gtk-4.0/gtk.orig
+    cp -f $LWD/theme/gtk-4.0/gtk.css $CCD/gtk-4.0
 
     # WORK THROUGH SOME GTK2 STUFF WITH SED
     # MAIN SED
@@ -291,6 +297,30 @@ if [ "$flowcolors" = true ]; then
     sed -i "s|#D93025|${DARKER}|g" $GTK3_FILE
     # SUCCESS
     sed -i "s|#0F9D58|${ACCENT}|g" $GTK3_FILE
+    
+    
+    # WORK THROUGH SOME GTK4 STUFF WITH SED
+    # MAIN SED
+    sed -i "s|#8ebaf4|${BRIGHTEST}|g" $GTK4_FILE
+    sed -i "s|#1A73E8|${BRIGHT}|g" $GTK4_FILE
+    sed -i "s|#3181ea|${BRIGHT}|g" $GTK4_FILE
+    sed -i "s|#135cbc|${ACCENT}|g" $GTK4_FILE
+    sed -i "s|#1567d3|${ACCENT}|g" $GTK4_FILE
+
+    sed -i "s|rgba(15, 65, 131|rgba(${RGB_ACCENT}|g" $GTK4_FILE
+
+
+    # WM AND CLOSE BUTTONS
+    sed -i "s|#E53935|${ACCENT}|g" $GTK4_FILE
+    sed -i "s|#E57373|${BRIGHT}|g" $GTK4_FILE
+
+    # WARNING ERROR SUCCESS
+    # WARNING
+    sed -i "s|#F4B400|${DARKEST}|g" $GTK4_FILE
+    # ERROR
+    sed -i "s|#D93025|${DARKER}|g" $GTK4_FILE
+    # SUCCESS
+    sed -i "s|#0F9D58|${ACCENT}|g" $GTK4_FILE
 
 
     # COMBINE GTK2 MODS
@@ -298,6 +328,9 @@ if [ "$flowcolors" = true ]; then
     
     # COMBINE GTK3 MODS
     cp -f $GTK3_FILE $LWD/theme/gtk-3.0/
+    
+    # COMBINE GTK4 MODS
+    cp -f $GTK3_FILE $LWD/theme/gtk-4.0/
 fi
 
 
