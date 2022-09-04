@@ -285,6 +285,8 @@ if [ "$flowcolors" = true ]; then
 
     sed -i "s|rgba(15, 65, 131|rgba(${RGB_ACCENT}|g" $GTK3_FILE
 
+    # FILE SELECTION BACKGROUND
+    sed -i "s|rgba(26, 115, 232|rgba(${RGB_DARK}|g" $GTK3_FILE
 
     # WM AND CLOSE BUTTONS
     sed -i "s|#E53935|${ACCENT}|g" $GTK3_FILE
