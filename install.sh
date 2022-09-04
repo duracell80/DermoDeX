@@ -87,6 +87,7 @@ cp -f ./scripts/bin/.mpris.so ~/.local/share/dermodex
 mkdir -p $HOME/.local/share/dermodex/rofi/themes
 cp -f ./scripts/rofi/dd_power.sh ~/.local/bin/dd_power
 cp -f ./scripts/rofi/dd_radio.sh ~/.local/bin/dd_radio
+cp -f ./scripts/rofi/dd_radio.json ~/.local/share/dermodex/rofi
 cp -f ./scripts/rofi/themes/*.rasi ~/.local/share/dermodex/rofi/themes
 
 

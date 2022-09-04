@@ -7,6 +7,7 @@
 LWD="$HOME/.local/share/dermodex/rofi"
 MPRIS_PLUGIN_PATH="$HOME/.local/share/dermodex/.mpris.so"
 CINN_RADIO_CONFIG="$HOME/.cinnamon/configs/radio@driglu4it/radio@driglu4it.json"
+CINN_RADIO_BACKUP="$HOME/.local/share/dermodex/rofi/dd_radio.json"
 
 notification(){
 # change the icon to whatever you want. Make sure your notification server 
@@ -18,6 +19,13 @@ notification(){
 	notify-send "Playing now: " "$@" --icon=mpv
 }
 
+RADIO_FOUND=$(ls $CINN_RADIO_CONFIG)
+
+if [[ $RADIO_FOUND == *"json"* ]]; then
+    CINN_RADIO_CONFIG=$CINN_RADIO_CONFIG
+else
+    CINN_RADIO_CONFIG=$CINN_RADIO_BACKUP
+fi
 
 STATION_N=$(grep -i 'name":' $CINN_RADIO_CONFIG | cut -d '"' -f 4)
 STATION_U=$(grep -i 'url":' $CINN_RADIO_CONFIG | head -n -1 | cut -d '"' -f 4)
