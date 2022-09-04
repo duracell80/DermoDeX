@@ -20,7 +20,7 @@ CCD=$HOME/.cache/dermodex
 CINN_FILE=$CCD/cinnamon-ext.css
 GTK2_FILE=$CCD/gtk-2.0/gtkrc
 GTK3_FILE=$CCD/gtk-3.0/gtk.css
-GTK4_FILE=$CCD/gtk-3.0/gtk.css
+GTK4_FILE=$CCD/gtk-4.0/gtk.css
 
 CONF_FILE="$HOME/.local/share/dermodex/config.ini"
 
@@ -330,7 +330,7 @@ if [ "$flowcolors" = true ]; then
     cp -f $GTK3_FILE $LWD/theme/gtk-3.0/
     
     # COMBINE GTK4 MODS
-    cp -f $GTK3_FILE $LWD/theme/gtk-4.0/
+    cp -f $GTK4_FILE $LWD/theme/gtk-4.0/
 fi
 
 
