@@ -6,6 +6,7 @@
 
 LWD="$HOME/.local/share/dermodex/rofi"
 MPRIS_PLUGIN_PATH="$HOME/.local/share/dermodex/.mpris.so"
+CINN_RADIO_CONFIG="$HOME/.cinnamon/configs/radio@driglu4it/radio@driglu4it.json"
 
 notification(){
 # change the icon to whatever you want. Make sure your notification server 
@@ -18,17 +19,25 @@ notification(){
 }
 
 
-STATION_N=$(grep -i 'name":' ~/.cinnamon/configs/radio@driglu4it/radio@driglu4it.json | cut -d '"' -f 4)
-STATION_U=$(grep -i 'url":' ~/.cinnamon/configs/radio@driglu4it/radio@driglu4it.json | head -n -1 | cut -d '"' -f 4)
+STATION_N=$(grep -i 'name":' $CINN_RADIO_CONFIG | cut -d '"' -f 4)
+STATION_U=$(grep -i 'url":' $CINN_RADIO_CONFIG | head -n -1 | cut -d '"' -f 4)
+STATION_I=$(grep -i 'inc":' $CINN_RADIO_CONFIG | cut -d ':' -f 2 | cut -c2- | xargs)
+
+
 set -o noglob; IFS=$'\n' station=($STATION_N); set +o noglob
 set -o noglob; IFS=$'\n' url=($STATION_U); set +o noglob
+set -o noglob; IFS=$' ' inc=($STATION_I); set +o noglob
 
 
 menu(){
-	for i in "${station[@]}"
+	i=0
+    for s in "${station[@]}"
     do
        : 
-       printf "$i\n"
+       if [[ "${inc[$i]}" = "true," ]]; then
+        printf "${station[$i]}\n"
+       fi
+       i=$(( i + 1 ))
     done
 }
 
