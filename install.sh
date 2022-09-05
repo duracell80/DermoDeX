@@ -22,6 +22,7 @@ CINN_VERSION=$(cinnamon --version)
 #dd_sleep
 CWD=$(pwd)
 LWD=$HOME/.local/share/dermodex/icons/breeze-dark_black
+TWD=$HOME/.themes/DermoDeX
 
 #sed -i "s|file:///~/|file:///$HOME/|g" $CWD/scripts/cinnamon_dd.txt
 #mkdir -p ~/.local/share/dermodex
@@ -115,8 +116,12 @@ cp -r $CWD/src/icons $HOME/.local/share/dermodex/
 
 # COPY OVER THEME-EXT ASSETS
 mkdir -p $HOME/.local/share/dermodex/theme-ext/cinnamon/assets/
+mkdir -p $HOME/.local/share/dermodex/theme-ext/gtk/assets/
 cp -rf $CWD/src/cinnamon/assets/dermodex $HOME/.local/share/dermodex/theme-ext/cinnamon/assets
-
+cp -f $CWD/scripts/remix_assets.sh $HOME/.local/share/dermodex/theme-ext/gtk
+cp -f $CWD/deps/Fluent-gtk-theme/src/gtk/assets.txt $HOME/.local/share/dermodex/theme-ext/gtk
+cp -f $CWD/deps/Fluent-gtk-theme/src/gtk/assets.svg $HOME/.local/share/dermodex/theme-ext/gtk
+cp -f $CWD/deps/Fluent-gtk-theme/src/gtk/assets.svg $HOME/.local/share/dermodex/theme-ext/gtk/assets.orig
 
 
 
@@ -551,6 +556,14 @@ sed -i "s|~/|$HOME/|g" $HOME/.local/share/cinnamon/extensions/dermodex-config@du
 #rm -rf ~/.cache/dermodex/common-assets/sounds/linux-a11y-sound-theme
 
 cd $CWD
+
+# RELINK GTK4.0
+mkdir -p "${HOME}/.config/gtk-4.0"
+rm -rf "${HOME}/.config/gtk-4.0/"{assets,gtk.css,gtk-dark.css}
+ln -sf "${TWD}/gtk-4.0/assets" "${HOME}/.config/gtk-4.0/assets"
+ln -sf "${TWD}/gtk-4.0/gtk.css" "${HOME}/.config/gtk-4.0/gtk.css"
+ln -sf "${TWD}/gtk-4.0/gtk-dark.css" "${HOME}/.config/gtk-4.0/gtk-dark.css"
+
 #cd $CWD/deps
 
 #echo ""

@@ -158,6 +158,19 @@ else
                 
                 rm -f $BASE_FILE/config.ini.unix
                 
+                # SET GTK ASSETS
+                if [ "$flowcolors" = true ]; then
+                    if [ "$overridegtk" != "none" ] || [ "$overridegtk" != "ffffff" ]; then
+                        GTK0=$($HOME/.local/share/dermodex/remix_color.py -c "${overridegtk}" -f 1 --mode="hex")
+                        GTK0_BRIGHT=$($HOME/.local/share/dermodex/remix_color.py -c "${overridegtk}" -f 1.3 --mode="hex")
+                        GTK0_DARK=$($HOME/.local/share/dermodex/remix_color.py -c "${overridegtk}" -f 0.7 --mode="hex")
+                    else
+                        GTK0=$($HOME/.local/share/dermodex/remix_color.py -c "${savegtk0}" -f 1 --mode="hex")
+                        GTK0_BRIGHT=$($HOME/.local/share/dermodex/remix_color.py -c "${savegtk0}" -f 1.3 --mode="hex")
+                        GTK0_DARK=$($HOME/.local/share/dermodex/remix_color.py -c "${savegtk0}" -f 0.7 --mode="hex")
+                    fi
+                fi
+                $BASE_FILE/theme-ext/gtk/remix_assets.sh "#$GTK0_BRIGHT"
 
             else
                 ACT="0"
