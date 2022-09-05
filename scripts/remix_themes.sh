@@ -105,9 +105,11 @@ RGB_DARK=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 0.7 --mo
 RGB_DARKER=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 0.3 --mode="rgb")
 RGB_DARKEST=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 0.2 --mode="rgb")
 
-
-
-
+if [ "$flowcolors" = true ]; then
+    GTK0=$($HOME/.local/share/dermodex/remix_color.py -c "${savegtk0}" -f 1 --mode="hex")
+    GTK0_BRIGHT=$($HOME/.local/share/dermodex/remix_color.py -c "${savegtk0}" -f 1.3 --mode="hex")
+    GTK0_DARK=$($HOME/.local/share/dermodex/remix_color.py -c "${savegtk0}" -f 0.7 --mode="hex")
+fi
 
 
 
@@ -270,18 +272,18 @@ if [ "$flowcolors" = true ]; then
 
     # WORK THROUGH SOME GTK2 STUFF WITH SED
     # MAIN SED
-    sed -i "s|#0078D4|${ACCENT}|g" $GTK2_FILE
-    sed -i "s|#1A73E8|${ACCENT}|g" $GTK2_FILE
+    sed -i "s|#0078D4|${GTK0}|g" $GTK2_FILE
+    sed -i "s|#1A73E8|${GTK0}|g" $GTK2_FILE
     sed -i "s|#9C27B0|${DARK}|g" $GTK2_FILE
     
     
     # WORK THROUGH SOME GTK3 STUFF WITH SED
     # MAIN SED
     sed -i "s|#8ebaf4|${BRIGHTEST}|g" $GTK3_FILE
-    sed -i "s|#1A73E8|${BRIGHT}|g" $GTK3_FILE
-    sed -i "s|#3181ea|${BRIGHT}|g" $GTK3_FILE
-    sed -i "s|#135cbc|${ACCENT}|g" $GTK3_FILE
-    sed -i "s|#1567d3|${ACCENT}|g" $GTK3_FILE
+    sed -i "s|#1A73E8|${GTK0_BRIGHT}|g" $GTK3_FILE
+    sed -i "s|#3181ea|${GTK0_BRIGHT}|g" $GTK3_FILE
+    sed -i "s|#135cbc|${GTK0}|g" $GTK3_FILE
+    sed -i "s|#1567d3|${GTK0}|g" $GTK3_FILE
 
     sed -i "s|rgba(15, 65, 131|rgba(${RGB_ACCENT}|g" $GTK3_FILE
 
@@ -289,8 +291,8 @@ if [ "$flowcolors" = true ]; then
     sed -i "s|rgba(26, 115, 232|rgba(${RGB_DARK}|g" $GTK3_FILE
 
     # WM AND CLOSE BUTTONS
-    sed -i "s|#E53935|${ACCENT}|g" $GTK3_FILE
-    sed -i "s|#E57373|${BRIGHT}|g" $GTK3_FILE
+    sed -i "s|#E53935|${GTK0}|g" $GTK3_FILE
+    sed -i "s|#E57373|${GTK0_BRIGHT}|g" $GTK3_FILE
 
     # WARNING ERROR SUCCESS
     # WARNING
@@ -304,17 +306,17 @@ if [ "$flowcolors" = true ]; then
     # WORK THROUGH SOME GTK4 STUFF WITH SED
     # MAIN SED
     sed -i "s|#8ebaf4|${BRIGHTEST}|g" $GTK4_FILE
-    sed -i "s|#1A73E8|${BRIGHT}|g" $GTK4_FILE
-    sed -i "s|#3181ea|${BRIGHT}|g" $GTK4_FILE
-    sed -i "s|#135cbc|${ACCENT}|g" $GTK4_FILE
-    sed -i "s|#1567d3|${ACCENT}|g" $GTK4_FILE
+    sed -i "s|#1A73E8|${GTK0_BRIGHT}|g" $GTK4_FILE
+    sed -i "s|#3181ea|${GTK0_BRIGHT}|g" $GTK4_FILE
+    sed -i "s|#GTK0|${GTK0}|g" $GTK4_FILE
+    sed -i "s|#GTK0|${GTK0}|g" $GTK4_FILE
 
     sed -i "s|rgba(15, 65, 131|rgba(${RGB_ACCENT}|g" $GTK4_FILE
 
 
     # WM AND CLOSE BUTTONS
-    sed -i "s|#E53935|${ACCENT}|g" $GTK4_FILE
-    sed -i "s|#E57373|${BRIGHT}|g" $GTK4_FILE
+    sed -i "s|#E53935|${GTK0}|g" $GTK4_FILE
+    sed -i "s|#E57373|${GTK0_BRIGHT}|g" $GTK4_FILE
 
     # WARNING ERROR SUCCESS
     # WARNING

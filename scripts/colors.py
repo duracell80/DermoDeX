@@ -308,13 +308,17 @@ def extract_color(input_image, resize, tolerance, zoom, crop_variant = "h_1"):
     list_color = list(df_color['c_code'])
     length = len(list_color)
     
+    
     print("\n\nDermoDeX found these colors in the image: ")
     print(list_color)
     
     global list_rgb
     global list_hex
     global shade_rgb
-    global shade_hex
+    global main_shade
+    
+    main_shade = str(list_color[0])
+    shade_rgb = str(get_rgb(main_shade))
     
     list_rgb=[]
     list_hex=[]
@@ -330,13 +334,14 @@ def extract_color(input_image, resize, tolerance, zoom, crop_variant = "h_1"):
         new_hex = "#" + str(get_hex(int(list_bits[0]), int(list_bits[1]), int(list_bits[2])))
         
         if new_hex.lower() == "#ffffff":
-            list_hex.append(list_color[0])
+            list_hex.append(list_color[1])
+        elif new_hex.lower() == "#000000":
+            list_hex.append(list_color[1])
         else:
             list_hex.append(new_hex)
     
     
-    shade_hex = str(list_color[0])
-    shade_rgb = str(get_rgb(shade_hex))
+    
     
     
     
@@ -386,7 +391,7 @@ def extract_color(input_image, resize, tolerance, zoom, crop_variant = "h_1"):
     plt.tight_layout()
     plt.savefig(HOME + '/.cache/dermodex/wallpaper_swatch.png', transparent=False)
     os.system('cp '+ HOME +'/.cache/dermodex/wallpaper_swatch.png ~/Pictures')
-    os.system('cp '+ HOME +'/.local/share/dermodex/login_blur.jpg ~/Pictures/wallpaper_blur.jpg')
+    #os.system('cp '+ HOME +'/.local/share/dermodex/login_blur.jpg ~/Pictures/wallpaper_blur.jpg')
     os.system('cp '+ HOME +'/.local/share/dermodex/login_blur.jpg /usr/share/backgrounds/dermodex')
     #return plt.show()
     return
@@ -394,8 +399,12 @@ def extract_color(input_image, resize, tolerance, zoom, crop_variant = "h_1"):
 
 wallpaper_file = str(os.popen('gsettings get org.cinnamon.desktop.background picture-uri').read()).replace("\n", "")
 wallpaper_file = wallpaper_file.replace("file://", "").replace("'", "")
-
 os.system('cp "'+ wallpaper_file +'" '+ HOME +'/.cache/dermodex/wallpaper.jpg')
+
+
+
+
+
 
 
 extract_color(HOME +'/.cache/dermodex/wallpaper.jpg', 900, int(cfg_tollerance), 2.5, cfg_splitfocus)
@@ -408,63 +417,42 @@ config.read(CONF_FILE)
 
 
 if list_hex[2].lower() == "#ffffff":
-    shade1 = list_hex[0]
-else:
-    shade1 = list_hex[2]
-
-if cfg_override1 == "aN" or cfg_override1 == "none":
-    shade_txt = get_rgb(shade1)
-else:
-    config.set('colors', 'savehex1', cfg_override1.replace("#", ""))
-    shade1 = "#" + cfg_override1
-    shade_txt = get_rgb(shade1)
-    #print(shade1)
-    
-    
-shade_1_bits = str(get_rgb(shade1)).replace("(", "").replace(")", "").split(",")
-shade_1_lighter = lighten_color(int(shade_1_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2]), 0.2)
-shade_1_darker  = darken_color(int(shade_1_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2]), 0.2)
-
-
-if isLightOrDark(int(shade_1_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2])) == "light":
-    #shade_1 = shade_1_darker
     shade_1 = list_hex[1]
-elif isLightOrDark(int(shade_1_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2])) == "dark":
-    #shade_1 = shade_1_lighter
-    shade_1 = list_hex[2]
+elif list_hex[2].lower() == "#000000":
+    shade_1 = list_hex[1]
 else:
-    shade_1 = shade1
-
-
+    shade_1 = list_hex[2]    
     
+shade_1_bits = str(get_rgb(shade_1)).replace("(", "").replace(")", "").split(",")
+
+# ENACT GTK PROTECTION
+if cin_flowcolors == "true":
+    if isLightOrDark(int(shade_1_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2])) == "light":
+        shade_gtk = list_hex[0]
+    else:
+        shade_gtk = list_hex[1]
+else:
+    shade_gtk = "#333333"
+
+config.set('colors', 'savegtk0', shade_gtk.replace("#", ""))    
     
 shade_2 = list_hex[-1]
-shade_2_bits = str(get_rgb(shade_2)).replace("(", "").replace(")", "").split(",")
-shade_2_lighter = lighten_color(int(shade_2_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2]), 0.2)
-shade_2_darker  = darken_color(int(shade_2_bits[0]), int(shade_2_bits[1]), int(shade_2_bits[2]), 0.2)
 
-if cin_flowcolors == "true":
-    shade_2 = shade_1
-else:
-    shade_2 = shade_2
-
-shade_hex_bits = str(get_rgb(shade_hex)).replace("(", "").replace(")", "").split(",")
-shade_hex_lighter = lighten_color(int(shade_hex_bits[0]), int(shade_hex_bits[1]), int(shade_hex_bits[2]), 0.3)
-shade_hex_darker  = darken_color(int(shade_hex_bits[0]), int(shade_hex_bits[1]), int(shade_hex_bits[2]), 0.5)
 
 print("\n\nDermoDeX thinks these are some really great base colors: ")
 
-print("- Shade0: " + shade_hex + " - rgb" + str(shade_rgb))
+print("- Shade0: " + main_shade + " - rgb" + str(shade_rgb))
 print("- Shade1: " + shade_1 + " - rgb" + str(get_rgb(shade_1)))
 print("- Shade2: " + shade_2 + " - rgb" + str(get_rgb(shade_2)) + "\n\n")
+print("- Shade GTK: " + shade_gtk + " - rgb" + str(get_rgb(shade_gtk)))
 
 
 
-config.set('colors', 'savergb0', str(get_rgb_strip(shade_hex)))
+config.set('colors', 'savergb0', str(get_rgb_strip(main_shade)))
 config.set('colors', 'savergb1', str(get_rgb_strip(shade_1)))
 config.set('colors', 'savergb2', str(get_rgb_strip(shade_2)))
 
-config.set('colors', 'savehex0', shade_hex.replace("#", ""))
+config.set('colors', 'savehex0', main_shade.replace("#", ""))
 config.set('colors', 'savehex1', shade_1.replace("#", ""))
 config.set('colors', 'savehex2', shade_2.replace("#", ""))
 
