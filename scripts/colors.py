@@ -50,7 +50,6 @@ cfg_tollerance = int(cfg.get('dd_conf', 'tollerance', fallback=24))
 cfg_override0 = str(cfg.get('colors', 'override0', fallback="none"))
 cfg_override1 = str(cfg.get('colors', 'override1', fallback="none"))
 cfg_override2 = str(cfg.get('colors', 'override2', fallback="none"))
-
 cfg_overridegtk = str(cfg.get('colors', 'overridegtk', fallback="none"))
 
 cfg_saturation = str(cfg.get('dd_conf', 'saturation', fallback=1.2))
@@ -73,8 +72,6 @@ cin_menubckgrd = str(cfg.get('cinnamon', 'menubckgrd', fallback="true"))
 cin_menuavatar = str(cfg.get('cinnamon', 'menuavatar', fallback="true"))
 cin_flowcolors = str(cfg.get('cinnamon', 'flowcolors', fallback="false"))
   
-
-
 
 def get_rgb(h):
     return ImageColor.getcolor(h, "RGB")
@@ -458,11 +455,9 @@ config.set('colors', 'savehex0', main_shade.replace("#", ""))
 config.set('colors', 'savehex1', shade_1.replace("#", ""))
 config.set('colors', 'savehex2', shade_2.replace("#", ""))
 
-print("\n")
-
-
 
 config.set('cinnamon', 'background', wallpaper_file)
-    
+
+# WRITE THE CONFIG
 with open(CONF_FILE, 'w') as configfile:
     config.write(configfile)    

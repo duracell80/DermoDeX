@@ -4,6 +4,7 @@
     "name": "DermoDeX Configuration",
     "description": "Configuration for DermoDeX - A Desktop Experience for Cinnamon DE",
     "cinnamon-version": [
+        "5.4",
         "5.4.11",
         "5.4.12"
     ]
