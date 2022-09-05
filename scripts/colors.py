@@ -51,6 +51,8 @@ cfg_override0 = str(cfg.get('colors', 'override0', fallback="none"))
 cfg_override1 = str(cfg.get('colors', 'override1', fallback="none"))
 cfg_override2 = str(cfg.get('colors', 'override2', fallback="none"))
 
+cfg_overridegtk = str(cfg.get('colors', 'overridegtk', fallback="none"))
+
 cfg_saturation = str(cfg.get('dd_conf', 'saturation', fallback=1.2))
 cfg_brightness = str(cfg.get('dd_conf', 'brightness', fallback=1.2))
 cfg_contrast = str(cfg.get('dd_conf', 'contrast', fallback=1.1))

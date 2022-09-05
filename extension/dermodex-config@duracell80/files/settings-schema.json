@@ -209,7 +209,15 @@
         "type": "colorchooser",
         "default": "aN",
         "dependency" : "coloroverrides",
-        "description": "Icon Accent"
+        "description": "Icon Accent",
+        "tooltip" : "Choose a static color for the icons, even when changing wallpaper, this color will be chosen"
+    },
+    "overridegtk": {
+        "type": "colorchooser",
+        "default": "aN",
+        "dependency" : "coloroverrides",
+        "description": "GTK Accent",
+        "tooltip" : "Choose a static color to pass through to GTK CSS files"
     },
     "override0": {
         "type": "colorchooser",

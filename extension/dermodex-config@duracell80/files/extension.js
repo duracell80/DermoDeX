@@ -80,6 +80,8 @@ DermoDeXSettings.prototype = {
         this.settings.bindProperty(Settings.BindingDirection.IN, 'override2', 'override2', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'override3', 'override3', null);
         
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'overridegtk', 'overridegtk', null);
+        
         this.settings.bindProperty(Settings.BindingDirection.IN, 'mintpaper', 'mintpaper', null);
         
         
@@ -120,6 +122,8 @@ DermoDeXSettings.prototype = {
         this.settings.bind('override1', 'override1', this.on_override1_changed);
         this.settings.bind('override2', 'override2', this.on_override2_changed);
         this.settings.bind('override3', 'override3', this.on_override3_changed);
+        
+        this.settings.bind('overridegtk', 'overridegtk', this.on_overridegtk_changed);
         
         this.settings.bind('mintpaper', 'mintpaper', this.on_mintpaper_changed);
         
@@ -282,10 +286,15 @@ DermoDeXSettings.prototype = {
             process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override3', '-v' + 'none']);
             error = process.spawn_sync_and_get_error();
             
+            process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'overridegtk', '-v' + 'none']);
+            error = process.spawn_sync_and_get_error();
+            
             this.settings.setValue('override0', 'none');
             this.settings.setValue('override1', 'none');
             this.settings.setValue('override2', 'none');
             this.settings.setValue('override3', 'none');
+            
+            this.settings.setValue('overridegtk', 'none');
             
         } else if(cfg_coloroverrides == true) {
             if(cfg_override0 == "aN"){
@@ -300,10 +309,15 @@ DermoDeXSettings.prototype = {
             if(cfg_override3 == "aN"){
                 cfg_override3 = "none";
             }
+            if(cfg_overridegtk == "aN"){
+                cfg_overridegtk = "none";
+            }
             this.settings.setValue('override0', cfg_override0);
             this.settings.setValue('override1', cfg_override1);
             this.settings.setValue('override2', cfg_override2);
             this.settings.setValue('override3', cfg_override3);
+            
+            this.settings.setValue('override3', cfg_overridegtk);
             
         } else {
             cfg_coloroverrides = 'false';
@@ -364,6 +378,19 @@ DermoDeXSettings.prototype = {
             hex = "none";
         }
         let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'override3', '-v' + hex]);
+        let error = process.spawn_sync_and_get_error();
+	},
+    
+    on_overridegtk_changed: function () {
+        var cfg_overridegtk = this.settings.getValue('overridegtk')
+        
+        const rgba = cfg_overridegtk.replace(/^rgba?\(|\s+|\)$/g, '').split(',');
+        const hex = `${((1 << 24) + (parseInt(rgba[0]) << 16) + (parseInt(rgba[1]) << 8) + parseInt(rgba[2])).toString(16).slice(1)}`;
+        
+        if(hex == "aN"){
+            hex = "none";
+        }
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'colors', '-k', 'overridegtk', '-v' + hex]);
         let error = process.spawn_sync_and_get_error();
 	},
     
