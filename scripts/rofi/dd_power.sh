@@ -58,6 +58,9 @@ default_width=1920
 default_font_size=40
 fontsize=$(echo "$width*$default_font_size/$default_width" | bc)
 
+SOUND_SHUTDOWN=$(gsettings get org.cinnamon.sounds logout-file | tr -d \'\")
+SOUND_LOGOUT=$(gsettings get org.cinnamon.sounds logout-file | tr -d \'\")
+SOUND_LOCK="/usr/share/sounds/teampixel/state-change_confirm-up.ogg"
 
 
 selected="$(echo -e "$options" |
@@ -67,18 +70,23 @@ selected="$(echo -e "$options" |
 
 case $selected in
     "${poweroff}")
+        play "$SOUND_LOGOUT"&
         systemctl poweroff
         ;;
     "${reboot}")
+        play "$SOUND_SHUTDOWN"&
         systemctl reboot
         ;;
     "${sleep}")
+        play "$SOUND_LOCK"&
         systemctl suspend
         ;;
     "${logout}")
+        play "$SOUND_LOGOUT"&
         cinnamon-session-quit --logout --no-prompt || ( xfce4-session-logout --logout || mate-session-save --logout )
         ;;
     "${lock}")
+        play "$SOUND_LOCK"&
         cinnamon-screensaver-command --lock || ( xflock4 || mate-screensaver-command -l )
         ;;
 esac
