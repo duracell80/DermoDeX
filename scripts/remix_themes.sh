@@ -20,7 +20,9 @@ CCD=$HOME/.cache/dermodex
 CINN_FILE=$CCD/cinnamon-ext.css
 GTK2_FILE=$CCD/gtk-2.0/gtkrc
 GTK3_FILE=$CCD/gtk-3.0/gtk.css
+GTK3_DARK=$CCD/gtk-3.0/gtk-dark.css
 GTK4_FILE=$CCD/gtk-4.0/gtk.css
+GTK4_DARK=$CCD/gtk-4.0/gtk-dark.css
 
 CONF_FILE="$HOME/.local/share/dermodex/config.ini"
 
@@ -272,65 +274,105 @@ if [ "$flowcolors" = true ]; then
     cp -f $LWD/theme/gtk-3.0/gtk.css $LWD/theme/gtk-3.0/gtk.orig
     cp -f $LWD/theme/gtk-3.0/gtk.css $CCD/gtk-3.0
     
+    cp -f $LWD/theme/gtk-3.0/gtk-dark.css $LWD/theme/gtk-3.0/gtk-dark.orig
+    cp -f $LWD/theme/gtk-3.0/gtk-dark.css $CCD/gtk-3.0
+    
     # COPY OVER GTK4 CSS TO THE CACHE
     cp -f $LWD/theme/gtk-4.0/gtk.css $LWD/theme/gtk-4.0/gtk.orig
     cp -f $LWD/theme/gtk-4.0/gtk.css $CCD/gtk-4.0
+    
+    cp -f $LWD/theme/gtk-4.0/gtk-dark.css $LWD/theme/gtk-4.0/gtk-dark.orig
+    cp -f $LWD/theme/gtk-4.0/gtk-dark.css $CCD/gtk-4.0
 
     # WORK THROUGH SOME GTK2 STUFF WITH SED
     # MAIN SED
     sed -i "s|#0078D4|${GTK0}|g" $GTK2_FILE
     sed -i "s|#1A73E8|${GTK0}|g" $GTK2_FILE
     sed -i "s|#9C27B0|${DARK}|g" $GTK2_FILE
+    sed -i "s|#3281ea|${GTK0_BRIGHT}|g" $GTK2_FILE
+    sed -i "s|#8ebaf4|${GTK0_BRIGHT}|g" $GTK2_FILE
     
+    # WM AND CLOSE BUTTONS
+    sed -i "s|#E53935|${GTK0}|g" $GTK2_FILE
+    sed -i "s|#E57373|${GTK0_BRIGHT}|g" $GTK2_FILE
     
     # WORK THROUGH SOME GTK3 STUFF WITH SED
     # MAIN SED
     sed -i "s|#8ebaf4|${BRIGHTEST}|g" $GTK3_FILE
+    sed -i "s|#8ebaf4|${BRIGHTEST}|g" $GTK3_DARK
     sed -i "s|#1A73E8|${GTK0_BRIGHT}|g" $GTK3_FILE
+    sed -i "s|#1A73E8|${GTK0_BRIGHT}|g" $GTK3_DARK
     sed -i "s|#3181ea|${GTK0_BRIGHT}|g" $GTK3_FILE
+    sed -i "s|#3281ea|${GTK0_BRIGHT}|g" $GTK3_DARK
     sed -i "s|#135cbc|${GTK0}|g" $GTK3_FILE
+    sed -i "s|#135cbc|${GTK0}|g" $GTK3_DARK
     sed -i "s|#1567d3|${GTK0}|g" $GTK3_FILE
+    sed -i "s|#1567d3|${GTK0}|g" $GTK3_DARK
 
     sed -i "s|rgba(15, 65, 131|rgba(${RGB_ACCENT}|g" $GTK3_FILE
+    sed -i "s|rgba(15, 65, 131|rgba(${RGB_ACCENT}|g" $GTK3_DARK
 
     # FILE SELECTION BACKGROUND
     sed -i "s|rgba(26, 115, 232|rgba(${RGB_DARK}|g" $GTK3_FILE
+    sed -i "s|rgba(26, 115, 232|rgba(${RGB_DARK}|g" $GTK3_DARK
 
     # WM AND CLOSE BUTTONS
     sed -i "s|#E53935|${GTK0}|g" $GTK3_FILE
+    sed -i "s|#1d9bff|${GTK0}|g" $GTK3_DARK
     sed -i "s|#E57373|${GTK0_BRIGHT}|g" $GTK3_FILE
+    sed -i "s|#25c9ff|${GTK0_BRIGHT}|g" $GTK3_DARK
+    
 
     # WARNING ERROR SUCCESS
     # WARNING
     sed -i "s|#F4B400|${DARKEST}|g" $GTK3_FILE
+    sed -i "s|#F4B400|${DARKEST}|g" $GTK3_DARK
     # ERROR
     sed -i "s|#D93025|${DARKER}|g" $GTK3_FILE
+    sed -i "s|#D93025|${DARKER}|g" $GTK3_DARK
     # SUCCESS
     sed -i "s|#0F9D58|${ACCENT}|g" $GTK3_FILE
+    sed -i "s|#0F9D58|${ACCENT}|g" $GTK3_DARK
+    
+    
+    
+    
+    
     
     
     # WORK THROUGH SOME GTK4 STUFF WITH SED
     # MAIN SED
     sed -i "s|#8ebaf4|${BRIGHTEST}|g" $GTK4_FILE
+    sed -i "s|#8ebaf4|${BRIGHTEST}|g" $GTK4_DARK
     sed -i "s|#1A73E8|${GTK0_BRIGHT}|g" $GTK4_FILE
+    sed -i "s|#1A73E8|${GTK0_BRIGHT}|g" $GTK4_DARK
     sed -i "s|#3181ea|${GTK0_BRIGHT}|g" $GTK4_FILE
-    sed -i "s|#GTK0|${GTK0}|g" $GTK4_FILE
-    sed -i "s|#GTK0|${GTK0}|g" $GTK4_FILE
+    sed -i "s|#3281ea|${GTK0_BRIGHT}|g" $GTK4_DARK
+    sed -i "s|#135cbc|${GTK0}|g" $GTK4_FILE
+    sed -i "s|#135cbc|${GTK0}|g" $GTK4_DARK
+    sed -i "s|#1567d3|${GTK0}|g" $GTK4_FILE
+    sed -i "s|#1567d3|${GTK0}|g" $GTK4_DARK
 
     sed -i "s|rgba(15, 65, 131|rgba(${RGB_ACCENT}|g" $GTK4_FILE
+    sed -i "s|rgba(15, 65, 131|rgba(${RGB_ACCENT}|g" $GTK4_DARK
 
 
     # WM AND CLOSE BUTTONS
     sed -i "s|#E53935|${GTK0}|g" $GTK4_FILE
-    sed -i "s|#E57373|${GTK0_BRIGHT}|g" $GTK4_FILE
+    sed -i "s|#E53935|${GTK0}|g" $GTK4_DARK
+    sed -i "s|#E57373|${GTK0_BRIGHT}|g" $GTK3_FILE
+    sed -i "s|#25c9ff|${GTK0_BRIGHT}|g" $GTK3_DARK
 
     # WARNING ERROR SUCCESS
     # WARNING
     sed -i "s|#F4B400|${DARKEST}|g" $GTK4_FILE
+    sed -i "s|#FDD633|${DARKEST}|g" $GTK4_DARK
     # ERROR
     sed -i "s|#D93025|${DARKER}|g" $GTK4_FILE
+    sed -i "s|#F28B82|${DARKER}|g" $GTK4_DARK
     # SUCCESS
     sed -i "s|#0F9D58|${ACCENT}|g" $GTK4_FILE
+    sed -i "s|#81C995|${ACCENT}|g" $GTK4_DARK
 
 
     # COMBINE GTK2 MODS
@@ -338,9 +380,11 @@ if [ "$flowcolors" = true ]; then
     
     # COMBINE GTK3 MODS
     cp -f $GTK3_FILE $LWD/theme/gtk-3.0/
+    cp -f $GTK3_DARK $LWD/theme/gtk-3.0/
     
     # COMBINE GTK4 MODS
     cp -f $GTK4_FILE $LWD/theme/gtk-4.0/
+    cp -f $GTK4_DARK $LWD/theme/gtk-4.0/
 fi
 
 
