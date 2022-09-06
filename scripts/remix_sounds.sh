@@ -187,8 +187,6 @@ if [ "$type" == "notification" ]; then
         APP_SOUND="$DIR_SOUND/x10/notify-system-generic.ogg"
     elif [ "$name" == "xxp" ]; then
         APP_SOUND="$DIR_SOUND/xxp/notify.ogg"   
-    elif [ "$name" == "macos" ]; then
-        APP_SOUND="$DIR_SOUND/macos/contact-online.ogg"
     elif [ "$name" == "mint20" ]; then
         APP_SOUND="$DIR_SOUND/LinuxMint/stereo/system-ready.ogg"
     elif [ "$name" == "miui" ]; then
@@ -201,6 +199,8 @@ if [ "$type" == "notification" ]; then
         APP_SOUND="$DIR_SOUND/borealis/notification.ogg"
     elif [ "$name" == "harmony" ]; then
         APP_SOUND="$DIR_SOUND/harmony/notification-brighter.ogg"
+    elif [ "$name" == "fresh-dream" ]; then
+        APP_SOUND="$DIR_SOUND/dream/stereo/dialog-question.ogg"
     elif [ "$name" == "ubuntu-original" ]; then
         APP_SOUND="$DIR_SOUND/linux-ubuntu/new-mail.ogg"
     elif [ "$name" == "nightlynews" ]; then
@@ -226,9 +226,6 @@ if [ "$type" == "notification" ]; then
         elif [ "$soundtheme" == "xxp" ]; then
             APP_SOUND="$DIR_SOUND/xxp/notify.ogg"    
 
-        elif [ "$soundtheme" == "macos" ]; then
-            APP_SOUND="$DIR_SOUND/macos/contact-online.ogg"
-
         elif [ "$soundtheme" == "mint20" ]; then
             APP_SOUND="$DIR_SOUND/LinuxMint/stereo/system-ready.ogg"
 
@@ -246,6 +243,9 @@ if [ "$type" == "notification" ]; then
 
         elif [ "$soundtheme" == "harmony" ]; then
             APP_SOUND="$DIR_SOUND/harmony/notification-brighter.ogg"
+            
+        elif [ "$soundtheme" == "fresh-dream" ]; then
+            APP_SOUND="$DIR_SOUND/dream/stereo/dialog-question.ogg"
 
         elif [ "$soundtheme" == "ubuntu-original" ]; then
             APP_SOUND="$DIR_SOUND/linux-ubuntu/new-mail.ogg"

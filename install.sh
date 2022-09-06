@@ -285,10 +285,6 @@ sudo chmod -R a+rx /usr/share/sounds/x10/
 sudo cp -fr $CWD/sounds/xxp/ /usr/share/sounds/
 sudo chmod -R a+rx /usr/share/sounds/xxp/
 
-# SOUND - MACOS
-sudo cp -fr $CWD/sounds/macos/ /usr/share/sounds/
-sudo chmod -R a+rx /usr/share/sounds/macos/
-
 # SOUND - MIUI
 sudo cp -fr $CWD/sounds/miui/ /usr/share/sounds/
 sudo chmod -R a+rx /usr/share/sounds/miui/
@@ -308,6 +304,10 @@ sudo chmod -R a+rx /usr/share/sounds/borealis/
 # SOUND - HARMONY
 sudo cp -fr $CWD/sounds/harmony/ /usr/share/sounds/
 sudo chmod -R a+rx /usr/share/sounds/harmony/
+
+# SOUND - Fresh Dream
+sudo cp -fr $CWD/sounds/dream/ /usr/share/sounds/
+sudo chmod -R a+rx /usr/share/sounds/dream/
 
 # SOUND - LINUX-A11Y
 sudo cp -fr $CWD/sounds/linux-a11y/ /usr/share/sounds/
@@ -360,35 +360,6 @@ else
     #gsettings set org.cinnamon.sounds unmaximize-file /usr/share/sounds/linux-a11y/stereo/window-minimized.oga
     #gsettings set org.cinnamon.sounds login-file /usr/share/sounds/linux-a11y/stereo/desktop-login.oga
     
-    
-    # SOUND - LINUX-UBUNTU
-    #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/linux-ubuntu/question.ogg'
-    #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/linux-ubuntu/disconnect.ogg'
-    #gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/linux-ubuntu/connect.ogg'
-    #gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/linux-ubuntu/default.ogg'
-    #gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/linux-ubuntu/default.ogg'
-    #gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/linux-ubuntu/menu-popup.ogg'
-    #gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/linux-a11y/stereo/desktop-logout.oga'
-    #gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/linux-ubuntu/menu-popup.ogg'
-    #gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/linux-ubuntu/default.ogg'
-    #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/linux-ubuntu/new-mail.ogg'
-    #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/linux-ubuntu/menu-popup.ogg'
-    #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/linux-a11y/stereo/desktop-login.oga'
-    
-    # SOUND - MACOS
-    #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/macos/restore-up.ogg'
-    #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/macos/device-connect.ogg'
-    #gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/macos/device-disconnect.ogg'
-    #gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/macos/open.ogg'
-    #gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/macos/close.ogg'
-    #gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/macos/minimize.ogg'
-    #gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/macos/logoff.ogg'
-    #gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/macos/maximize.ogg'
-    #gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/macos/close.ogg'
-    #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/macos/contact-online.ogg'
-    #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/macos/restore-down.ogg'
-    #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/macos/logon.ogg'
-    
     # SOUND - ZORIN
     #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/zorin/stereo/button-pressed.ogg'
     #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/zorin/stereo/device-added.oga'
@@ -402,50 +373,7 @@ else
     #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/zorin/stereo/message-new-instant.ogg'
     #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/zorin/stereo/button-toggle-off.ogg'
     #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/zorin/stereo/desktop-logout.ogg'
-    
-    # SOUND - x11
-    #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/x11/stereo/system-ready.ogg'
-    #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/x11/stereo/device-added.ogg'
-    #gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/x11/stereo/device-removed.ogg'
-    #gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/x11/stereo/camera-shutter.ogg'
-    #gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/x11/stereo/camera-shutter.ogg'
-    #gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/x11/stereo/camera-shutter.ogg'
-    #gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/x11/stereo/desktop-login.ogg'
-    #gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/x11/stereo/camera-shutter.ogg'
-    #gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/x11/stereo/camera-shutter.ogg'
-    #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/x11/stereo/message-new-instant.ogg'
-    #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/x11/stereo/camera-shutter.ogg'
-    #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/x11/stereo/complete.ogg'
-    
-    # SOUND - x10
-    #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/x10/feed-discovered.ogg'
-    #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/x10/hardware-insert.ogg'
-    #gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/x10/hardware-remove.ogg'
-    #gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/x10/battery-low.ogg'
-    #gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/x10/print-complete.ogg'
-    #gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/x10/minimize.ogg'
-    #gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/x10/linux-shutdown.ogg'
-    #gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/x10/minimize.ogg'
-    #gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/x10/navigation -start.ogg'
-    #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/x10/notify-system-generic.ogg'
-    #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/x10/minimize.ogg'
-    #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/x10/logon.ogg'
-    
-    # SOUND - xxp
-    #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/xxp/ding.ogg'
-    #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/xxp/logon.ogg'
-    #gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/xxp/logoff.ogg'
-    #gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/xxp/menu-command.ogg'
-    #gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/xxp/open-program.ogg'
-    #gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/xxp/maximize.ogg'
-    #gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/xxp/shutdown.ogg'
-    #gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/xxp/maximize.ogg'
-    #gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/xxp/menu-popup.ogg'
-    #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/xxp/notify.ogg'
-    #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/xxp/restore.ogg'
-    #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/xxp/start-linux.ogg'
 
-    
     # SOUND - miui
     #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/miui/stereo/dialog-information.ogg'
     #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/miui/stereo/power-plug.ogg'
@@ -474,61 +402,19 @@ else
     #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/deepin/dialog-error-serious.ogg'
     #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/deepin/desktop-login.ogg'
     
-    # SOUND - enchanted
-    #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/enchanted/bell.ogg'
-    #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/enchanted/dialog-question.ogg'
-    #gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/enchanted/dialog-error.ogg'
-    #gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/enchanted/button-released.ogg'
-    #gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/enchanted/menu-replace.ogg'
-    #gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/enchanted/window-minimized.ogg'
-    #gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/enchanted/button-toggle-on.ogg'
-    #gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/enchanted/window-maximized.ogg'
-    #gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/enchanted/window-switch.ogg'
-    #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/enchanted/message-sent-instant.ogg'
-    #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/enchanted/window-unmaximized.ogg'
-    #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/enchanted/system-ready.ogg'
-    
-    # SOUND - borealis
-    gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/enchanted/window-unmaximized.ogg'
-    gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/enchanted/dialog-question.ogg'
-    gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/enchanted/dialog-error.ogg'
-    gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/enchanted/button-released.ogg'
-    gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/enchanted/dialog-question.ogg'
-    gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/enchanted/window-minimized.ogg'
-    gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/borealis/exit1_2.ogg'
-    gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/enchanted/window-minimized.ogg'
-    gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/enchanted/notebook-tab-changed.ogg'
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/borealis/notification.ogg'
-    gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/enchanted/window-unmaximized.ogg'
-    gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/borealis/startup1_2.ogg'
-    
     # SOUND - harmony
-    #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/harmony/restore.ogg'
-    #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/harmony/network-added.ogg'
-    #gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/harmony/network-removed.ogg'
-    #gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/harmony/dialog-information.oga'
-    #gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/harmony/dialog-question.oga'
-    #gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/harmony/window-new.oga'
-    #gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/harmony/desktop-logout.oga'
-    #gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/harmony/window-new.oga'
-    #gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/harmony/window-new.oga'
-    #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/harmony/notification-brighter.ogg'
-    #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/harmony/window-new.oga'
-    #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/harmony/desktop-login.oga'
-    
-    # SOUND - NIGHTLY NEWS - J.WILLIAMS
-    #gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/nightlynews/click.ogg'
-    #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/nightlynews/login.ogg'
-    #gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/nightlynews/logout.ogg'
-    #gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/nightlynews/click.ogg'
-    #gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/nightlynews/click.ogg'
-    #gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/nightlynews/click.ogg'
-    #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/nightlynews/chimes.ogg'
-    #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/nightlynews/click.ogg'
-    #gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/linux-a11y/stereo/window-new.oga'
-    #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/nightlynews/click.ogg'
-    #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/nightlynews/click.ogg'
-    #gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/nightlynews/click.ogg'
+    gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/harmony/restore.ogg'
+    gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/harmony/network-added.ogg'
+    gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/harmony/network-removed.ogg'
+    gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/harmony/dialog-information.oga'
+    gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/harmony/dialog-question.oga'
+    gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/harmony/window-new.oga'
+    gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/harmony/desktop-logout.oga'
+    gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/harmony/window-new.oga'
+    gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/harmony/window-new.oga'
+    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/harmony/notification-brighter.ogg'
+    gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/harmony/window-new.oga'
+    gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/harmony/desktop-login.oga'
     
     # SOUND - TEAM PIXEL - GOOGLE
     #gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/teampixel/navigation_backward-selection.ogg'

@@ -96,25 +96,6 @@ elif [ "$soundtheme" == "xxp" ]; then
     gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/xxp/start-linux.ogg'
     
     gsettings set org.cinnamon.desktop.sound volume-sound-file '/usr/share/sounds/xxp/navigating.ogg'
-
-elif [ "$soundtheme" == "macos" ]; then
-    # SOUND - MACOS
-    gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/macos/restore-up.ogg'
-    gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/macos/device-connect.ogg'
-    gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/macos/device-disconnect.ogg'
-    gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/macos/open.ogg'
-    gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/macos/close.ogg'
-    gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/macos/minimize.ogg'
-    gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/macos/logoff.ogg'
-    gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/macos/maximize.ogg'
-    gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/macos/close.ogg'
-    if [ "$soundnotification" == "theme" ]; then
-        gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/macos/contact-online.ogg'
-    fi
-    gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/macos/restore-down.ogg'
-    gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/macos/logon.ogg'
-    
-    gsettings set org.cinnamon.desktop.sound volume-sound-file '/usr/share/sounds/macos/open.ogg'
     
 elif [ "$soundtheme" == "mint20" ]; then
     # SOUND - MINT20
@@ -228,6 +209,24 @@ elif [ "$soundtheme" == "harmony" ]; then
     gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/harmony/desktop-login.oga'
     
     gsettings set org.cinnamon.desktop.sound volume-sound-file '/usr/share/sounds/harmony/dialog-information.oga'
+    
+elif [ "$soundtheme" == "fresh-dream" ]; then
+    gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/dream/stereo/success.ogg'
+    gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/dream/stereo/button-toggle-on.ogg'
+    gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/dream/stereo/button-toggle-off.ogg'
+    gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/dream/stereo/dialog-error-2.ogg'
+    gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/dream/stereo/dialog-warning.ogg'
+    gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/dream/stereo/service-logout.ogg'
+    gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/dream/stereo/desktop-logout.ogg'
+    gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/dream/stereo/service-login.ogg'
+    gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/dream/stereo/window-slide.ogg'
+    if [ "$soundnotification" == "theme" ]; then
+        gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/dream/stereo/dialog-question.ogg'
+    fi
+    gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/dream/stereo/service-login.ogg'
+    gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/dream/stereo/desktop-login.ogg'
+    
+    gsettings set org.cinnamon.desktop.sound volume-sound-file '/usr/share/sounds/dream/stereo/button-pressed.ogg'
 
 elif [ "$soundtheme" == "ubuntu-original" ]; then
     # SOUND - LINUX-UBUNTU
