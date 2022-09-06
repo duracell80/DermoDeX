@@ -321,6 +321,8 @@ if [ "$flowcolors" = true ]; then
     sed -i "s|#1d9bff|${GTK0}|g" $GTK3_DARK
     sed -i "s|#E57373|${GTK0_BRIGHT}|g" $GTK3_FILE
     sed -i "s|#25c9ff|${GTK0_BRIGHT}|g" $GTK3_DARK
+    sed -i "s|#E53935|${GTK0}|g" $GTK3_DARK
+    sed -i "s|#E57373|${GTK0_BRIGHT}|g" $GTK3_DARK
     
 
     # WARNING ERROR SUCCESS
@@ -362,6 +364,8 @@ if [ "$flowcolors" = true ]; then
     sed -i "s|#E53935|${GTK0}|g" $GTK4_DARK
     sed -i "s|#E57373|${GTK0_BRIGHT}|g" $GTK3_FILE
     sed -i "s|#25c9ff|${GTK0_BRIGHT}|g" $GTK3_DARK
+    sed -i "s|#E53935|${GTK0}|g" $GTK4_DARK
+    sed -i "s|#E57373|${GTK0_BRIGHT}|g" $GTK4_DARK
 
     # WARNING ERROR SUCCESS
     # WARNING
