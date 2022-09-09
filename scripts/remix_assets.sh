@@ -4,9 +4,8 @@ set -ueo pipefail
 RENDER_SVG="$(command -v rendersvg)" || true
 INKSCAPE="$(command -v inkscape)" || true
 OPTIPNG="$(command -v optipng)" || true
-INKSCAPE_VERSION=$(inkscape --version | cut -d ' ' -f 2 | tr -d '.')
-
-
+INKSCAPE_VERSION=$(inkscape --version | cut -d ' ' -f 2)
+INKSCAPE_VERSION_TARGET="1.0"
 
 
 # SET THE STAGE
@@ -43,7 +42,7 @@ if [[ -n "${RENDER_SVG}" ]]; then
   "$RENDER_SVG" --export-id "$i" \
                 "$SRC_FILE" "$ASSETS_DIR/$i.png"
 else
-    if [ "$INKSCAPE_VERSION" -gt "111" ]; then
+    if awk "BEGIN {exit !($INKSCAPE_VERSION >= $INKSCAPE_VERSION_TARGET)}"; then
         "$INKSCAPE" --export-id="$i" \
               --export-id-only \
               -o "$ASSETS_DIR/$i.png" "$SRC_FILE" >/dev/null
@@ -71,7 +70,7 @@ if [[ -n "${RENDER_SVG}" ]]; then
                 --zoom 2 \
                 "$SRC_FILE" "$ASSETS_DIR/$i@2.png"
 else
-    if [ "$INKSCAPE_VERSION" -gt "111" ]; then
+    if awk "BEGIN {exit !($INKSCAPE_VERSION >= $INKSCAPE_VERSION_TARGET)}"; then
         "$INKSCAPE" --export-id="$i" \
               --export-id-only \
               --export-dpi=192 \
