@@ -11,6 +11,7 @@ TCD=$HOME/.themes/DermoDeX
 FILE="$CWD/list.txt"
 
 
+
 CONF_FILE="$HOME/.local/share/dermodex/config.ini"
 
 # READ THE UPDATED CONFIG
@@ -22,21 +23,21 @@ do
     if [[ ! $lhs =~ ^\ *# && -n $lhs ]]; then
         rhs="${rhs%%\#*}"    # Del in line right comments
         rhs="${rhs%%*( )}"   # Del trailing spaces
-        rhs="${rhs%\"*}"     # Del opening string quotes 
-        rhs="${rhs#\"*}"     # Del closing string quotes 
+        rhs="${rhs%\"*}"     # Del opening string quotes
+        rhs="${rhs#\"*}"     # Del closing string quotes
         declare $lhs="$rhs"
     fi
 done < $CONF_FILE.unix
 shopt -u extglob # Switching it back off after use
 
 # MAIN OBJECTIVE OTHER THAN BEING COOL ... DONT CRASH CINNAMON!
-if [ ! -z $1 ] 
-then 
+if [ ! -z $1 ]
+then
     # USE HEX PROVIDED IN PARAMETER
     echo "[i] Icon Accent provided via Parameter: ${1}"
     ACCENT=$1
 else
-    
+
     # USE HEX PROVIDED IN CONFIGURATION FILE IN THE OVERRIDES
     if [ "$coloroverrides" == "true" ]; then
         if [ "$override3" == "aN" ] || [ "$override3" == "none" ]; then
@@ -77,6 +78,7 @@ if [ "$ACCENT" == "#none" ]; then
     exit
 fi
 
+mkdir -p $CCA
 mkdir -p $CWD/places/outline
 mkdir -p $CWD/emblems
 mkdir -p $CWD/mimetypes
@@ -185,7 +187,7 @@ cp -f $CWD/controlpanel/apps/csd* $HOME/.local/share/icons/White-Icons/scalable/
 
 
 # RECOLOR APP ICON BACKGROUNDS
-cp -f $LWD/apps/*.svg $CWD/apps
+cp -f $LWD/apps/scalable/*.svg $CWD/apps
 sed -i "s|#333333|${DARK}|g" $CWD/apps/*.svg
 
 APP_ICONS="${HOME}/.local/share/icons/White-Icons/scalable/apps"

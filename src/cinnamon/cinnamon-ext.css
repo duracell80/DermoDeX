@@ -438,7 +438,7 @@ StScrollBar StButton#hhandle:hover {
 
 .menu-applications-box {
     padding         : 10px 15px;
-    font-size       : 13pt;
+    font-size       : 12pt;
 }
 
 .menu-applications-inner-box .menu-applications-outer-box {
@@ -596,7 +596,7 @@ StScrollBar StButton#hhandle:hover {
 /* SOUND */
 .sound-player {
     width : 520px;
-    font-size : 13pt;
+    font-size : 12pt;
     dd-soundwaves-background-image: url(~/.local/share/dermodex/soundwaves.png);
     background-repeat: no-repeat;
     background-size:contain;
@@ -806,7 +806,7 @@ border : 2px solid transparent;
 #menu-search-entry, 
 #notification StEntry,
 #menu-search-entry:focus, #menu-search-entry:hover, .run-dialog-entry:focus, .run-dialog-entry:hover, #notification StEntry:focus, #notification StEntry:hover {
-    font-size       : 13pt;
+    font-size       : 12pt;
 }
 
 
@@ -828,7 +828,7 @@ border : 2px solid transparent;
 }
 .run-dialog-completion-box,
 .run-dialog .run-dialog-entry {
-    font-size       : 13pt;
+    font-size       : 12pt;
 }
 
 .run-dialog .run-dialog-entry {
@@ -846,12 +846,12 @@ border : 2px solid transparent;
 
 /* MODALS */
 .modal-dialog {
-  font-size         : 13pt;
+  font-size         : 12pt;
   border-radius     : 8px;
 }
 
 .modal-dialog-button-box .modal-dialog-button {
-    font-size       : 13pt;
+    font-size       : 12pt;
     color           : #ffffff;
     margin          : 16px;
     padding         : 6px 30px 6px;

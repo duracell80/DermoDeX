@@ -4,7 +4,7 @@ set -ueo pipefail
 RENDER_SVG="$(command -v rendersvg)" || true
 INKSCAPE="$(command -v inkscape)" || true
 OPTIPNG="$(command -v optipng)" || true
-
+INKSCAPE_VERSION=$(inkscape --version | cut -d ' ' -f 2 | tr -d '.')
 
 
 
@@ -43,9 +43,17 @@ if [[ -n "${RENDER_SVG}" ]]; then
   "$RENDER_SVG" --export-id "$i" \
                 "$SRC_FILE" "$ASSETS_DIR/$i.png"
 else
-  "$INKSCAPE" --export-id="$i" \
+    if [ "$INKSCAPE_VERSION" -gt "111" ]; then
+        "$INKSCAPE" --export-id="$i" \
               --export-id-only \
-              --export-filename="$ASSETS_DIR/$i.png" "$SRC_FILE" >/dev/null
+              -o "$ASSETS_DIR/$i.png" "$SRC_FILE" >/dev/null
+    else
+        "$INKSCAPE" --export-id="$i" \
+              --export-id-only \
+              -z -e "$ASSETS_DIR/$i.png" "$SRC_FILE" >/dev/null
+    fi
+
+  
 fi
 if [[ -n "${OPTIPNG}" ]]; then
   "$OPTIPNG" -o7 --quiet "$ASSETS_DIR/$i.png"
@@ -63,10 +71,17 @@ if [[ -n "${RENDER_SVG}" ]]; then
                 --zoom 2 \
                 "$SRC_FILE" "$ASSETS_DIR/$i@2.png"
 else
-  "$INKSCAPE" --export-id="$i" \
+    if [ "$INKSCAPE_VERSION" -gt "111" ]; then
+        "$INKSCAPE" --export-id="$i" \
               --export-id-only \
               --export-dpi=192 \
-              --export-filename="$ASSETS_DIR/$i@2.png" "$SRC_FILE" >/dev/null
+              -o "$ASSETS_DIR/$i@2.png" "$SRC_FILE" >/dev/null
+    else
+        "$INKSCAPE" --export-id="$i" \
+              --export-id-only \
+              --export-dpi=192 \
+              -z -e "$ASSETS_DIR/$i@2.png" "$SRC_FILE" >/dev/null
+    fi
 fi
 if [[ -n "${OPTIPNG}" ]]; then
   "$OPTIPNG" -o7 --quiet "$ASSETS_DIR/$i@2.png"

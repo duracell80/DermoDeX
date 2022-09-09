@@ -89,13 +89,13 @@ exec='gnome-terminal'
 [desktop/background]
 color-shading-type='vertical'
 picture-options='zoom'
-picture-uri='file:///home/lee/.local/share/dermodex/mint-backgrounds-ulyana/backgrounds/linuxmint-ulyana/aandrews_tree.jpg'
+picture-uri='file:///home/lee/Pictures/DermoDeX/pexels-mengliu-di-3064258.jpg'
 primary-color='#000000'
 secondary-color='#703500'
 
 [desktop/background/slideshow]
 delay=15
-image-source='directory:///home/lee/.local/share/dermodex/mint-backgrounds-ulyana/backgrounds/linuxmint-ulyana'
+image-source='file:///home/lee/Pictures/DermoDeX/pexels-mengliu-di-3064258.jpg'
 slideshow-enabled=false
 
 [desktop/interface]

@@ -2,11 +2,11 @@
 WALL_FILE=$(cat ~/.cache/dermodex/wallpaper_current.txt | tr -d \' | sed 's-file:///-/-')
 CONF_FILE="$HOME/.local/share/dermodex/config.ini"
 
-cp -f $WALL_FILE ~/.local/share/dermodex/dermodex_hold
+cp -f $WALL_FILE ~/.cache/dermodex/dermodex_hold
 cp -f ~/Pictures/wallpaper_swatch.png ~/.local/share/dermodex/dermodex_swatch
 cp -f ~/.cache/dermodex/colors_hex.txt ~/.local/share/dermodex/
 cp -f ~/.cache/dermodex/colors_rgb.txt ~/.local/share/dermodex/
-chmod a+r ~/.local/share/dermodex/dermodex_hold
+chmod a+r ~/.cache/dermodex/dermodex_hold
 
 dconf dump /org/cinnamon/ > ~/cinnamon_dd.backup
 

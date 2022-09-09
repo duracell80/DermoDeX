@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 BASE_FILE="$HOME/.local/share/dermodex"
-HOLD_FILE="$HOME/.local/share/dermodex/dermodex_hold"
+HOLD_FILE="$HOME/.cache/dermodex/dermodex_hold"
 CONF_FILE="$HOME/.local/share/dermodex/config.ini"
 CINN_FILE="$HOME/.cache/dermodex/cinnamon.css"
 

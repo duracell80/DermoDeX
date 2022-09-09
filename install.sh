@@ -3,33 +3,35 @@
 
 CINN_VERSION=$(cinnamon --version)
 
-#sudo apt install -y -q python3-pip libsass1 sassc rofi scrot imagemagick
-#sudo apt install -y -q xz-utils xdotool ffmpeg
+echo "[i] - Installing Deps from APT and PIP"
+sudo apt install -y python3-pip libsass1 sassc rofi scrot imagemagick xz-utils xdotool ffmpeg inkscape
 
 
-#pip3 install easydev
-#pip3 install colormap
-#pip3 install pandas
-#pip3 install numpy
-#pip3 install colorgram.py
-#pip3 install extcolors
-#pip3 install matplotlib
-#pip3 install configparser
-#pip3 install xdisplayinfo
+pip3 install easydev
+pip3 install colormap
+pip3 install pandas
+pip3 install numpy
+pip3 install colorgram.py
+pip3 install extcolors
+pip3 install matplotlib
+pip3 install configparser
+pip3 install xdisplayinfo
 
-#dconf dump /org/cinnamon/ > $HOME/cinnamon_desktop.backup
+echo "[i] - Backing Up Current Cinnamon Configuration"
+dconf dump /org/cinnamon/ > $HOME/cinnamon_desktop.backup
 
-#dd_sleep
 CWD=$(pwd)
 LWD=$HOME/.local/share/dermodex/icons/breeze-dark_black
 TWD=$HOME/.themes/DermoDeX
 
-#sed -i "s|file:///~/|file:///$HOME/|g" $CWD/scripts/cinnamon_dd.txt
-#mkdir -p ~/.local/share/dermodex
-#mkdir -p ~/.local/share/dermodex/wallpapers
-#mkdir -p ~/.themes/DermoDeX
+sed -i "s|file:///~/|file:///$HOME/|g" $CWD/scripts/cinnamon_dd.txt
+mkdir -p ~/.local/share/dermodex
+mkdir -p ~/.local/share/dermodex/wallpapers
+mkdir -p ~/.themes/DermoDeX
+mkdir -p ~/.local/bin
 
 # IMPORT FLUENT FROM GIT
+echo "[i] Installing Base Theme - Fluent"
 $CWD/install-theme-base.sh
 
 gsettings set org.cinnamon.sounds notification-enabled "true"
@@ -55,12 +57,10 @@ fi
 # GRANULAR CONTROL OVER WHICH SUB THEMES TO COPY OVER
 cp -r $CWD/src/cinnamon/cinnamon-ext.css ~/.local/share/dermodex/
 
-
-
-#cp ~/.cinnamon/configs/menu@cinnamon.org/0.json ~/.cinnamon/configs/menu@cinnamon.org/0.json.bak
-#cp -f ./scripts/config_menu.json ~/.cinnamon/configs/menu@cinnamon.org/0.json
-#cp ~/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json ~/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json.bak
-#cp -f ./scripts/config_workspace.json ~/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json
+cp ~/.cinnamon/configs/menu@cinnamon.org/0.json ~/.cinnamon/configs/menu@cinnamon.org/0.json.bak
+cp -f ./scripts/config_menu.json ~/.cinnamon/configs/menu@cinnamon.org/0.json
+cp ~/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json ~/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json.bak
+cp -f ./scripts/config_workspace.json ~/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json
 
 #cp -f ./scripts/cinnamon_base.css ~/.local/share/dermodex
 cp -f ./scripts/remix_sounds.sh ~/.local/share/dermodex
@@ -128,109 +128,86 @@ cp -f $CWD/deps/Fluent-gtk-theme/src/gtk/assets.svg $HOME/.local/share/dermodex/
 
 if [ -d $CWD/deps/Color-Icons ] ; then
     echo "[i] Main Icons Already Installed"
-    #cp -r $CWD/deps/Color-Icons/Color-Icons/White-Icons $HOME/.local/share/icons
-	#cp -r $CWD/deps/Color-Icons/Color-Icons/Black-Icons $HOME/.local/share/icons
-    
-    #cp -f $HOME/.local/share/icons/White-Icons/scalable/apps/csd-* $HOME/.local/share/dermodex/icons/breeze-dark_black/apps
-    
-    #cp -f $HOME/.local/share/icons/White-Icons/scalable/categories/*.svg $HOME/.local/share/dermodex/icons/breeze-dark_black/cats
-    
-    cp -rf "$CWD/deps/Royal-Z/Royal Z/apps/scalable" $HOME/.local/share/dermodex/icons/breeze-dark_black/
-    
-    #mv -f $HOME/.local/share/dermodex/icons/breeze-dark_black/apps/scalable/* $HOME/.local/share/dermodex/icons/breeze-dark_black/apps
-    
-    rm -rf $HOME/.local/share/dermodex/icons/breeze-dark_black/apps/scalable/
-    
 else
     echo "[i] Downloading Color Icons"
 
-	cd $CWD/deps
-	git clone --quiet https://github.com/wmk69/Color-Icons
-	cd $CWD/deps/Color-Icons
-	tar -xzf Color-Icons.tar.gz
-    
+    cd $CWD/deps
+    git clone --quiet https://github.com/wmk69/Color-Icons
+    cd $CWD/deps/Color-Icons
+    tar -xzf Color-Icons.tar.gz
     sleep 5
-    
+
     echo "[i] Downloading Royal Icons"
     cd $CWD/deps
     git clone --quiet https://github.com/SethStormR/Royal-Z.git
     cd $CWD/deps/Royal-Z
     tar -xf "Royal Z.tar.xz"
-    
-    rm -f "$CWD/deps/Royal-Z/Royal Z/apps/scalable/utilities-terminal.svg"
-    rm -f "$CWD/deps/Royal-Z/Royal Z/apps/scalable/org.gnome.Terminal.svg"
-    cd $CWD
-    
-    cp -r $CWD/deps/Color-Icons/Color-Icons/White-Icons $HOME/.local/share/icons
-	cp -r $CWD/deps/Color-Icons/Color-Icons/Black-Icons $HOME/.local/share/icons
-    
-    sleep 5
-    
-    mkdir -p $LWD/controlpanel/cats
-    mkdir -p $LWD/controlpanel/apps
-    
-	cp -f $CWD/deps/Color-Icons/Color-Icons/Black-Icons/scalable/mimetypes/* $CWD/deps/Color-Icons/Color-Icons/White-Icons/scalable/mimetypes
-    
-    mkdir -p $HOME/.local/share/dermodex/icons/breeze-dark_black/places/outline
-    
-    cp -f $CWD/deps/Color-Icons/Color-Icons/Black-Icons/scalable/places/*.svg $HOME/.local/share/dermodex/icons/breeze-dark_black/places/outline
-    
-    cp -f $CWD/deps/Color-Icons/Color-Icons/White-Icons/scalable/apps/*.svg $LWD/controlpanel/apps
-    
-    cp -f $CWD/deps/Color-Icons/Color-Icons/White-Icons/scalable/categories/*.svg $LWD/controlpanel/cats
-    
-    cp -f $CWD/deps/Color-Icons/Color-Icons/Black-Icons/scalable/places/* $CWD/deps/Color-Icons/Color-Icons/White-Icons/scalable/places
-    
-    cp -r $CWD/deps/Color-Icons/Color-Icons/White-Icons $HOME/.local/share/icons
-	cp -r $CWD/deps/Color-Icons/Color-Icons/Black-Icons $HOME/.local/share/icons
-    
-    mkdir -p $HOME/.local/share/dermodex/icons/breeze-dark_black/mimetypes
-    
-    cp -f $HOME/.local/share/icons/White-Icons/scalable/mimetypes/*.svg $HOME/.local/share/dermodex/icons/breeze-dark_black/mimetypes
-    
-    cp -f $CWD/deps/Color-Icons/Color-Icons/White-Icons/scalable/apps/org.gnome.Terminal.svg "$CWD/deps/Royal-Z/Royal Z/apps/scalable"
-    
-    cp -rf "$CWD/deps/Royal-Z/Royal Z/apps/scalable" $HOME/.local/share/dermodex/icons/breeze-dark_black/
-    
-    mv -f $HOME/.local/share/dermodex/icons/breeze-dark_black/scalable/apps $HOME/.local/share/dermodex/icons/breeze-dark_black/apps
-    
-    
-    
 fi
+
+rm -f "$CWD/deps/Royal-Z/Royal Z/apps/scalable/utilities-terminal.svg"
+rm -f "$CWD/deps/Royal-Z/Royal Z/apps/scalable/org.gnome.Terminal.svg"
+
+cp -rf "$CWD/deps/Royal-Z/Royal Z/apps/scalable" $HOME/.local/share/dermodex/icons/breeze-dark_black/
+cd $CWD
+
+cp -r $CWD/deps/Color-Icons/Color-Icons/White-Icons $HOME/.local/share/icons
+cp -r $CWD/deps/Color-Icons/Color-Icons/Black-Icons $HOME/.local/share/icons
+
+sleep 5
+
+mkdir -p $LWD/controlpanel/cats
+mkdir -p $LWD/controlpanel/apps
+cp -f $CWD/deps/Color-Icons/Color-Icons/Black-Icons/scalable/mimetypes/* $CWD/deps/Color-Icons/Color-Icons/White-Icons/scalable/mimetypes
+
+mkdir -p $HOME/.local/share/dermodex/icons/breeze-dark_black/places/outline
+
+cp -f $CWD/deps/Color-Icons/Color-Icons/Black-Icons/scalable/places/*.svg $HOME/.local/share/dermodex/icons/breeze-dark_black/places/outline
+cp -f $CWD/deps/Color-Icons/Color-Icons/White-Icons/scalable/apps/*.svg $LWD/controlpanel/apps
+cp -f $CWD/deps/Color-Icons/Color-Icons/White-Icons/scalable/categories/*.svg $LWD/controlpanel/cats
+cp -f $CWD/deps/Color-Icons/Color-Icons/Black-Icons/scalable/places/* $CWD/deps/Color-Icons/Color-Icons/White-Icons/scalable/places
+
+cp -r $CWD/deps/Color-Icons/Color-Icons/White-Icons $HOME/.local/share/icons
+cp -r $CWD/deps/Color-Icons/Color-Icons/Black-Icons $HOME/.local/share/icons
+
+mkdir -p $HOME/.local/share/dermodex/icons/breeze-dark_black/mimetypes
+
+cp -f $HOME/.local/share/icons/White-Icons/scalable/mimetypes/*.svg $HOME/.local/share/dermodex/icons/breeze-dark_black/mimetypes
+
+cp -f $CWD/deps/Color-Icons/Color-Icons/White-Icons/scalable/apps/org.gnome.Terminal.svg "$CWD/deps/Royal-Z/Royal Z/apps/scalable"
+
+cp -rf "$CWD/deps/Royal-Z/Royal Z/apps/scalable" $HOME/.local/share/dermodex/icons/breeze-dark_black/
+
+mv -f $HOME/.local/share/dermodex/icons/breeze-dark_black/scalable $HOME/.local/share/dermodex/icons/breeze-dark_black/apps
 
 
 
 if [ -d $CWD/deps/Royal-Z ] ; then
     echo "[i] Improving a few icons ..."
-    
+
     APP_ICONS="${HOME}/.local/share/icons/White-Icons/scalable/apps"
     ACT_ICONS="${HOME}/.local/share/icons/White-Icons/scalable/actions"
     APP_ICONS_AUX="${CWD}/deps/Royal-Z/Royal Z/apps/scalable"
     ACT_ICONS_AUX="${CWD}/deps/Royal-Z/Royal Z/actions/scalable"
-    
+
     # MEDIA CONTROLS
     cp -f "$ACT_ICONS_AUX/media-playback-pause.svg" $ACT_ICONS/media-playback-pause-symbolic.svg
-    
-    
-    
-    
 fi
 
 
 cp -rf $CWD/src/icons/breeze-dark_black/places $HOME/.local/share/icons/White-Icons/scalable
 #cp -rf $CWD/deps/Royal-Z/Royal-Z $HOME/.local/share/icons/
 
-#gsettings set org.cinnamon.desktop.interface icon-theme "White-Icons"
+gsettings set org.cinnamon.desktop.interface icon-theme "White-Icons"
 #gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark-Aqua"
 #gsettings set org.cinnamon.desktop.wm.preferences theme "Mint-Y"
 #gsettings set org.cinnamon.theme name "Mint-Y-Dark-Aqua"
-#gsettings set org.cinnamon.desktop.notifications bottom-notifications "true"
-#gsettings set org.cinnamon.desktop.notifications display-notifications "true"
+gsettings set org.cinnamon.desktop.notifications bottom-notifications "true"
+gsettings set org.cinnamon.desktop.notifications display-notifications "true"
 
-# gsettings set org.cinnamon.desktop.interface text-scaling-factor "1"
+gsettings set org.cinnamon.desktop.interface text-scaling-factor "1"
 
 echo "[i] Adjusting The Height Of The Panels"
-#dconf load /org/cinnamon/ < ./scripts/cinnamon_dd.txt
+dconf load /org/cinnamon/ < ./scripts/cinnamon_dd.txt
 dconf write /org/cinnamon/panels-height "['1:60']"
 
 # Enhance user privacy
@@ -267,7 +244,6 @@ echo ""
 echo "Login screen can be 'blured' using the login_blur.png file in ~/.local/share/dermodex. To do this search for Login Window in the Control Panel."
 echo ""
 
-#mkdir -p ~/.cache/dermodex/common-assets/sounds/
 
 # SOUND - ZORIN
 sudo cp -fr $CWD/sounds/zorin/ /usr/share/sounds/
@@ -439,7 +415,6 @@ cp -rf extension/dermodex-config@duracell80/files/* ~/.local/share/cinnamon/exte
 sed -i "s|~/|$HOME/|g" $HOME/.local/share/cinnamon/extensions/dermodex-config@duracell80/extension.js
 
 #rm -rf $CWD/deps/Color-Icons
-#rm -rf ~/.cache/dermodex/common-assets/sounds/linux-a11y-sound-theme
 
 cd $CWD
 
@@ -449,14 +424,5 @@ rm -rf "${HOME}/.config/gtk-4.0/"{assets,gtk.css,gtk-dark.css}
 ln -sf "${TWD}/gtk-4.0/assets" "${HOME}/.config/gtk-4.0/assets"
 ln -sf "${TWD}/gtk-4.0/gtk.css" "${HOME}/.config/gtk-4.0/gtk.css"
 ln -sf "${TWD}/gtk-4.0/gtk-dark.css" "${HOME}/.config/gtk-4.0/gtk-dark.css"
-
-#cd $CWD/deps
-
-#echo ""
-#echo "[i] Finally we need to install a theme customizer called themix (oomox), you may need to configure this with dpkg to get all the dependencies met. DermoDeX believes in you!"
-#echo ""
-#echo ""
-#sudo dpkg -i oomox_1.13.3_18.10+.deb
-#sudo apt --fix-broken install
 
 #dd_reload
