@@ -64,7 +64,7 @@ SOUND_LOCK="/usr/share/sounds/teampixel/state-change_confirm-up.ogg"
 
 
 selected="$(echo -e "$options" |
-            rofi -theme ${script_abs_dir_path}/dd_power.rasi \
+            rofi -theme ${script_abs_dir_path}/rofi/themes/dd_power.rasi \
                  -font "WeblySleek UI Light, $fontsize" \
                  -p "See you later, ${USER^}!" -dmenu -selected-row ${preselection})"
 
