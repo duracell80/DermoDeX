@@ -97,6 +97,7 @@ cp -r ./nemo/actions/*.nemo_action ~/.local/share/nemo/actions
 cp -r ./nemo/scripts/* ~/.local/share/nemo/scripts
 cp -f ./*.desktop ~/.config/autostart
 
+chmod u+x ~/.local/bin/dd_*
 chmod u+x ~/.local/share/dermodex/*.sh
 mkdir -p $HOME/.local/share/icons/White-Icons/scalable/apps
 mkdir -p $HOME/.local/share/dermodex/icons/breeze-dark_black/apps
