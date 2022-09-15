@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
 BASE_FILE="$HOME/.local/share/dermodex"
-HOLD_FILE="$HOME/.cache/dermodex/dermodex_hold"
+HOLD_FILE="$HOME/.cache/dermodex_hold"
 CONF_FILE="$HOME/.local/share/dermodex/config.ini"
 CINN_FILE="$HOME/.cache/dermodex/cinnamon.css"
 
 CCA="$HOME/.cache/dermodex/common-assets/cinnamon/assets"
 TCD="$HOME/.themes/DermoDeX"
+
+PID=$(ps aux | grep -i "watch_wallpaper.sh" | head -1 | awk '{print $2}')
+kill $PID >/dev/null 2>&1
+
 
 if [ -f "$HOLD_FILE" ]; then
     ACT="0"
@@ -14,7 +18,7 @@ else
     touch $HOME/.cache/dermodex/wallpaper.jpg
     touch $HOME/.cache/dermodex/wallpaper_swatch.png
     touch $HOME/.cache/dermodex/resize_wallpaper.jpg
-    touch $HOME/.cache/dermodex/wallpaper_current.txt
+    touch $HOME/.cache/wallpaper_current.txt
     touch $HOME/.cache/dermodex/bg.png
 
     while true
@@ -25,7 +29,7 @@ else
         else
             # LET DermoDeX DO
             CUR=$(gsettings get org.cinnamon.desktop.background picture-uri)
-            PAS=$(cat $HOME/.cache/dermodex/wallpaper_current.txt)
+            PAS=$(cat $HOME/.cache/wallpaper_current.txt)
             
             
             
@@ -53,7 +57,7 @@ else
                 
                 RES_PRIMARY="$((RES_PRIMARY - 120))"
                 
-                echo $CUR > $HOME/.cache/dermodex/wallpaper_current.txt
+                echo $CUR > $HOME/.cache/wallpaper_current.txt
                 
                 gsettings set org.cinnamon.desktop.background primary-color "${MAINSHADE_HEX}"
                 gsettings set org.cinnamon.desktop.background secondary-color "${HEX1}"
@@ -141,7 +145,7 @@ else
                     if ! type "xdotool" > /dev/null 2>&1; then
                         echo "[i] Hot Keys not installed run sudo apt get install xdotool"
                     else
-                        if [ "$(find $HOME/.cache/dermodex/wallpaper_current.txt -mmin +15)" != "" ]
+                        if [ "$(find $HOME/.cache/wallpaper_current.txt -mmin +15)" != "" ]
                             echo "[i] DermoDeX Active"
                         then
                             cinnamon_reload
@@ -181,7 +185,7 @@ else
             fi
 
             # Letting The Cables Sleep
-            if [ "$(find $HOME/.cache/dermodex/wallpaper_current.txt -mmin +15)" != "" ]
+            if [ "$(find $HOME/.cache/wallpaper_current.txt -mmin +15)" != "" ]
             then
                 echo "[i] DermoDex Color Extractor Less Active"
                 CUR_WALL=$(gsettings get org.cinnamon.desktop.background picture-uri)
