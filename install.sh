@@ -25,10 +25,11 @@ LWD=$HOME/.local/share/dermodex/icons/breeze-dark_black
 TWD=$HOME/.themes/DermoDeX
 
 sed -i "s|file:///~/|file:///$HOME/|g" $CWD/scripts/cinnamon_dd.txt
-mkdir -p ~/.local/share/dermodex
-mkdir -p ~/.local/share/dermodex/wallpapers
-mkdir -p ~/.themes/DermoDeX
-mkdir -p ~/.local/bin
+mkdir -p $HOME/.cache/dermodex
+mkdir -p $HOME/.local/share/dermodex
+mkdir -p $HOME/.local/share/dermodex/wallpapers
+mkdir -p $HOME/.themes/DermoDeX
+mkdir -p $HOME/.local/bin
 
 # IMPORT FLUENT FROM GIT
 echo "[i] Installing Base Theme - Fluent"
@@ -41,13 +42,13 @@ simlink? () {
   test "$(readlink "${1}")";
 }
 
-FILE=~/Pictures/DermoDeX
+FILE=$HOME/Pictures/DermoDeX
 
 if simlink? "${FILE}"; then
   echo " "
 else
   echo "[i] Creating DermoDex Symlink in Pictures"
-  ln -s ~/.local/share/dermodex/wallpapers ~/Pictures/DermoDeX
+  ln -s $HOME/.local/share/dermodex/wallpapers $HOME/Pictures/DermoDeX
   echo "$HOME/Pictures/DermoDeX" >> "$HOME/.cinnamon/backgrounds/user-folders.lst"
 fi
 
@@ -55,60 +56,60 @@ fi
 
 
 # GRANULAR CONTROL OVER WHICH SUB THEMES TO COPY OVER
-cp -r $CWD/src/cinnamon/cinnamon-ext.css ~/.local/share/dermodex/
+cp -r $CWD/src/cinnamon/cinnamon-ext.css $HOME/.local/share/dermodex/
 
-cp ~/.cinnamon/configs/menu@cinnamon.org/0.json ~/.cinnamon/configs/menu@cinnamon.org/0.json.bak
-cp -f ./scripts/config_menu.json ~/.cinnamon/configs/menu@cinnamon.org/0.json
-cp ~/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json ~/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json.bak
-cp -f ./scripts/config_workspace.json ~/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json
+cp $HOME/.cinnamon/configs/menu@cinnamon.org/0.json $HOME/.cinnamon/configs/menu@cinnamon.org/0.json.bak
+cp -f ./scripts/config_menu.json $HOME/.cinnamon/configs/menu@cinnamon.org/0.json
+cp $HOME/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json $HOME/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json.bak
+cp -f ./scripts/config_workspace.json $HOME/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json
 
-#cp -f ./scripts/cinnamon_base.css ~/.local/share/dermodex
-cp -f ./scripts/remix_sounds.sh ~/.local/share/dermodex
-cp -f ./scripts/remix_themes.sh ~/.local/share/dermodex
-cp -f ./scripts/remix_icons.sh ~/.local/share/dermodex
-cp -f ./scripts/remix_color.py ~/.local/share/dermodex
+#cp -f ./scripts/cinnamon_base.css $HOME/.local/share/dermodex
+cp -f ./scripts/remix_sounds.sh $HOME/.local/share/dermodex
+cp -f ./scripts/remix_themes.sh $HOME/.local/share/dermodex
+cp -f ./scripts/remix_icons.sh $HOME/.local/share/dermodex
+cp -f ./scripts/remix_color.py $HOME/.local/share/dermodex
 
-cp -f ./scripts/sounds_waveform.sh ~/.local/share/dermodex
-cp -f ./scripts/display_resolution.sh ~/.local/share/dermodex
+cp -f ./scripts/sounds_waveform.sh $HOME/.local/share/dermodex
+cp -f ./scripts/display_resolution.sh $HOME/.local/share/dermodex
 
-cp -f ./scripts/cinnamon_reload ~/.local/bin
-cp -f ./scripts/bin/dd_sleep.sh ~/.local/bin/dd_sleep
-cp -f ./scripts/bin/dd_wake.sh ~/.local/bin/dd_wake
-cp -f ./scripts/bin/dd_hold.sh ~/.local/bin/dd_hold
-cp -f ./scripts/bin/dd_release.sh ~/.local/bin/dd_release
-cp -f ./scripts/bin/dd_rescue.sh ~/.local/bin/dd_rescue
-cp -f ./scripts/bin/dd_reload.sh ~/.local/bin/dd_reload
-cp -f ./scripts/bin/dd_refresh.sh ~/.local/bin/dd_refresh
-cp -f ./scripts/bin/dd_swatch.sh ~/.local/bin/dd_swatch
-cp -f ./scripts/bin/dex-notify.sh ~/.local/bin
-cp -f ./scripts/bin/dex-action.sh ~/.local/bin
-cp -f ./scripts/bin/.mpris.so ~/.local/share/dermodex
+cp -f ./scripts/cinnamon_reload $HOME/.local/bin
+cp -f ./scripts/bin/dd_sleep.sh $HOME/.local/bin/dd_sleep
+cp -f ./scripts/bin/dd_wake.sh $HOME/.local/bin/dd_wake
+cp -f ./scripts/bin/dd_hold.sh $HOME/.local/bin/dd_hold
+cp -f ./scripts/bin/dd_release.sh $HOME/.local/bin/dd_release
+cp -f ./scripts/bin/dd_rescue.sh $HOME/.local/bin/dd_rescue
+cp -f ./scripts/bin/dd_reload.sh $HOME/.local/bin/dd_reload
+cp -f ./scripts/bin/dd_refresh.sh $HOME/.local/bin/dd_refresh
+cp -f ./scripts/bin/dd_swatch.sh $HOME/.local/bin/dd_swatch
+cp -f ./scripts/bin/dex-notify.sh $HOME/.local/bin
+cp -f ./scripts/bin/dex-action.sh $HOME/.local/bin
+cp -f ./scripts/bin/.mpris.so $HOME/.local/share/dermodex
 
 
 mkdir -p $HOME/.local/share/dermodex/rofi/themes
-cp -f ./scripts/rofi/dd_power.sh ~/.local/bin/dd_power
-cp -f ./scripts/rofi/dd_radio.sh ~/.local/bin/dd_radio
-cp -f ./scripts/rofi/dd_radio.json ~/.local/share/dermodex/rofi
-cp -f ./scripts/rofi/themes/*.rasi ~/.local/share/dermodex/rofi/themes
+cp -f ./scripts/rofi/dd_power.sh $HOME/.local/bin/dd_power
+cp -f ./scripts/rofi/dd_radio.sh $HOME/.local/bin/dd_radio
+cp -f ./scripts/rofi/dd_radio.json $HOME/.local/share/dermodex/rofi
+cp -f ./scripts/rofi/themes/*.rasi $HOME/.local/share/dermodex/rofi/themes
 
 
 
-cp -r ./nemo/actions/*.nemo_action ~/.local/share/nemo/actions
-cp -r ./nemo/scripts/* ~/.local/share/nemo/scripts
-cp -f ./*.desktop ~/.config/autostart
+cp -r ./nemo/actions/*.nemo_action $HOME/.local/share/nemo/actions
+cp -r ./nemo/scripts/* $HOME/.local/share/nemo/scripts
+cp -f ./*.desktop $HOME/.config/autostart
 
-chmod u+x ~/.local/bin/dd_*
-chmod u+x ~/.local/share/dermodex/*.sh
+chmod u+x $HOME/.local/bin/dd_*
+chmod u+x $HOME/.local/share/dermodex/*.sh
 mkdir -p $HOME/.local/share/icons/White-Icons/scalable/apps
 mkdir -p $HOME/.local/share/dermodex/icons/breeze-dark_black/apps
 
 
-cp -f $CWD/scripts/watch_sounds.sh ~/.local/share/dermodex
-cp -f $CWD/scripts/watch_wallpaper.sh ~/.local/share/dermodex
-cp -f $CWD/scripts/cinnamon_dd.txt ~/.local/share/dermodex
-cp -f $CWD/scripts/config_update.py ~/.local/share/dermodex
-cp -f $CWD/scripts/*.ini ~/.local/share/dermodex
-cp -f $CWD/scripts/colors.py ~/.local/share/dermodex
+cp -f $CWD/scripts/watch_sounds.sh $HOME/.local/share/dermodex
+cp -f $CWD/scripts/watch_wallpaper.sh $HOME/.local/share/dermodex
+cp -f $CWD/scripts/cinnamon_dd.txt $HOME/.local/share/dermodex
+cp -f $CWD/scripts/config_update.py $HOME/.local/share/dermodex
+cp -f $CWD/scripts/*.ini $HOME/.local/share/dermodex
+cp -f $CWD/scripts/colors.py $HOME/.local/share/dermodex
 
 
 # COPY OVER WALLPAPERS and ICONS
@@ -124,6 +125,7 @@ cp -f $CWD/deps/Fluent-gtk-theme/src/gtk/assets.txt $HOME/.local/share/dermodex/
 cp -f $CWD/deps/Fluent-gtk-theme/src/gtk/assets.svg $HOME/.local/share/dermodex/theme-ext/gtk
 cp -f $CWD/deps/Fluent-gtk-theme/src/gtk/assets.svg $HOME/.local/share/dermodex/theme-ext/gtk/assets.orig
 
+chmod u+x $HOME/.local/share/dermodex/theme-ext/gtk/remix_assets.sh
 
 
 
@@ -197,13 +199,6 @@ fi
 
 cp -rf $CWD/src/icons/breeze-dark_black/places $HOME/.local/share/icons/White-Icons/scalable
 #cp -rf $CWD/deps/Royal-Z/Royal-Z $HOME/.local/share/icons/
-
-gsettings set org.cinnamon.desktop.interface icon-theme "White-Icons"
-#gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark-Aqua"
-#gsettings set org.cinnamon.desktop.wm.preferences theme "Mint-Y"
-#gsettings set org.cinnamon.theme name "Mint-Y-Dark-Aqua"
-gsettings set org.cinnamon.desktop.notifications bottom-notifications "true"
-gsettings set org.cinnamon.desktop.notifications display-notifications "true"
 
 gsettings set org.cinnamon.desktop.interface text-scaling-factor "1"
 
@@ -315,12 +310,12 @@ else
     echo ""
     echo ""
     
-    #cd ~/.cache/dermodex/common-assets/sounds/
+    #cd $HOME/.cache/dermodex/common-assets/sounds/
     #git clone --quiet https://github.com/coffeeking/linux-a11y-sound-theme.git
     
     sudo mkdir -p /usr/share/backgrounds/dermodex
     sudo chmod a+rw /usr/share/backgrounds/dermodex
-    #sudo cp -fr ~/.cache/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/ /usr/share/sounds/
+    #sudo cp -fr $HOME/.cache/dermodex/common-assets/sounds/linux-a11y-sound-theme/linux-a11y/ /usr/share/sounds/
 
     
     # SOUND - LINUX-A11Y
@@ -338,80 +333,26 @@ else
     #gsettings set org.cinnamon.sounds login-file /usr/share/sounds/linux-a11y/stereo/desktop-login.oga
     
     # SOUND - ZORIN
-    #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/zorin/stereo/button-pressed.ogg'
-    #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/zorin/stereo/device-added.oga'
-    #gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/zorin/stereo/device-removed.oga'
-    #gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/zorin/stereo/message.ogg'
-    #gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/zorin/stereo/message.ogg'
-    #gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/zorin/stereo/button-toggle-off.ogg'
-    #gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/zorin/stereo/desktop-login.ogg'
-    #gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/zorin/stereo/button-toggle-on.ogg'
-    #gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/zorin/stereo/window-slide.ogg'
-    #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/zorin/stereo/message-new-instant.ogg'
-    #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/zorin/stereo/button-toggle-off.ogg'
-    #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/zorin/stereo/desktop-logout.ogg'
+    gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/zorin/stereo/button-pressed.ogg'
+    gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/zorin/stereo/device-added.oga'
+    gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/zorin/stereo/device-removed.oga'
+    gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/zorin/stereo/message.ogg'
+    gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/zorin/stereo/message.ogg'
+    gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/zorin/stereo/button-toggle-off.ogg'
+    gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/zorin/stereo/desktop-login.ogg'
+    gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/zorin/stereo/button-toggle-on.ogg'
+    gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/zorin/stereo/window-slide.ogg'
+    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/zorin/stereo/message-new-instant.ogg'
+    gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/zorin/stereo/button-toggle-off.ogg'
+    gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/zorin/stereo/desktop-logout.ogg'
 
-    # SOUND - miui
-    #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/miui/stereo/dialog-information.ogg'
-    #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/miui/stereo/power-plug.ogg'
-    #gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/miui/stereo/power-unplug.ogg'
-    #gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/miui/stereo/window-close.ogg'
-    #gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/miui/stereo/window-close.ogg'
-    #gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/miui/stereo/window-close.ogg'
-    #gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/miui/stereo/device-removed.ogg'
-    #gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/miui/stereo/window-close.ogg'
-    #gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/miui/stereo/count-down.ogg'
-    #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/miui/stereo/message-sent-instant.ogg'
-    #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/miui/stereo/window-close.ogg'
-    #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/miui/stereo/device-added.ogg'
     
-    # SOUND - deepin
-    #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/deepin/dialog-error-critical.ogg'
-    #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/deepin/device-added.ogg'
-    #gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/deepin/device-removed.ogg'
-    #gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/deepin/power-unplug.ogg'
-    #gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/deepin/audio-volume-change.ogg'
-    #gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/deepin/dialog-error-serious.ogg'
-    #gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/deepin/system-shutdown.ogg'
-    #gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/deepin/dialog-error-serious.ogg'
-    #gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/deepin/audio-volume-change.ogg'
-    #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/deepin/suspend-resume.ogg'
-    #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/deepin/dialog-error-serious.ogg'
-    #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/deepin/desktop-login.ogg'
-    
-    # SOUND - harmony
-    gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/harmony/restore.ogg'
-    gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/harmony/network-added.ogg'
-    gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/harmony/network-removed.ogg'
-    gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/harmony/dialog-information.oga'
-    gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/harmony/dialog-question.oga'
-    gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/harmony/window-new.oga'
-    gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/harmony/desktop-logout.oga'
-    gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/harmony/window-new.oga'
-    gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/harmony/window-new.oga'
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/harmony/notification-brighter.ogg'
-    gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/harmony/window-new.oga'
-    gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/harmony/desktop-login.oga'
-    
-    # SOUND - TEAM PIXEL - GOOGLE
-    #gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/teampixel/navigation_backward-selection.ogg'
-    #gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/teampixel/notifications/Classical Harmonies/Spring Strings.ogg'
-    #gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/teampixel/Asteroid.ogg'
-    #gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/teampixel/ui_loading.ogg'
-    #gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/teampixel/navigation-cancel.ogg'
-    #gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/teampixel/navigation-cancel.ogg'
-    #gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/teampixel/notification_simple-01.ogg'
-    #gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/teampixel/state-change_confirm-up.ogg'
-    #gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/teampixel/navigation_transition-right.ogg'
-    #gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/teampixel/navigation_unavailable-selection.ogg'
-    #gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/teampixel/navigation_transition-left.ogg'
-    #gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/teampixel/state-change_confirm-down.ogg'
     
 fi
 
 # COPY OVER THE EXTENSION
-mkdir -p ~/.local/share/cinnamon/extensions/dermodex-config@duracell80
-cp -rf extension/dermodex-config@duracell80/files/* ~/.local/share/cinnamon/extensions/dermodex-config@duracell80
+mkdir -p $HOME/.local/share/cinnamon/extensions/dermodex-config@duracell80
+cp -rf extension/dermodex-config@duracell80/files/* $HOME/.local/share/cinnamon/extensions/dermodex-config@duracell80
 
 sed -i "s|~/|$HOME/|g" $HOME/.local/share/cinnamon/extensions/dermodex-config@duracell80/extension.js
 
@@ -425,5 +366,13 @@ rm -rf "${HOME}/.config/gtk-4.0/"{assets,gtk.css,gtk-dark.css}
 ln -sf "${TWD}/gtk-4.0/assets" "${HOME}/.config/gtk-4.0/assets"
 ln -sf "${TWD}/gtk-4.0/gtk.css" "${HOME}/.config/gtk-4.0/gtk.css"
 ln -sf "${TWD}/gtk-4.0/gtk-dark.css" "${HOME}/.config/gtk-4.0/gtk-dark.css"
+
+
+gsettings set org.cinnamon.desktop.interface icon-theme "White-Icons"
+gsettings set org.cinnamon.desktop.interface gtk-theme "DermoDeX"
+gsettings set org.cinnamon.desktop.wm.preferences theme "DermoDeX"
+gsettings set org.cinnamon.theme name "DermoDeX"
+gsettings set org.cinnamon.desktop.notifications bottom-notifications "true"
+gsettings set org.cinnamon.desktop.notifications display-notifications "true"
 
 #dd_reload

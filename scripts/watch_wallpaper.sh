@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 BASE_FILE="$HOME/.local/share/dermodex"
+CACHE_DIR="$HOME/.cache/dermodex"
 HOLD_FILE="$HOME/.cache/dermodex_hold"
 CONF_FILE="$HOME/.local/share/dermodex/config.ini"
 CINN_FILE="$HOME/.cache/dermodex/cinnamon.css"
@@ -7,13 +8,39 @@ CINN_FILE="$HOME/.cache/dermodex/cinnamon.css"
 CCA="$HOME/.cache/dermodex/common-assets/cinnamon/assets"
 TCD="$HOME/.themes/DermoDeX"
 
-PID=$(ps aux | grep -i "watch_wallpaper.sh" | head -1 | awk '{print $2}')
-kill $PID >/dev/null 2>&1
+check_install() {
+    if [ -d "$BASE_FILE" ]; then
+        echo ""
+    else
+        echo "[i] Error: .local Directory Missing for DermoDeX. Please re-install DermoDeX."
+        notify-send --urgency=normal --category=transfer.complete --icon=cs-backgrounds-symbolic "DermoDeX Error" ".local Directory Missing for DermoDeX. Please re-install DermoDeX."
+        
+        rm -f $HOME/.local/share/nemo/actions/dd-*
+        
+        PID=$(ps aux | grep -i "watch_wallpaper.sh" | head -1 | awk '{print $2}')
+        kill $PID >/dev/null 2>&1
+    fi
+
+    if [ -d "$CACHE_DIR" ]; then
+        echo ""
+    else
+        echo "[i] Error: .cache Directory Missing for DermoDeX. Please re-install DermoDeX."
+        notify-send --urgency=normal --category=transfer.complete --icon=cs-backgrounds-symbolic "DermoDeX Error" ".cache Directory Missing for DermoDeX. Please re-install DermoDeX."
+        
+        rm -f $HOME/.local/share/nemo/actions/dd-*
+        
+        PID=$(ps aux | grep -i "watch_wallpaper.sh" | head -1 | awk '{print $2}')
+        kill $PID >/dev/null 2>&1
+    fi
+}
 
 
 if [ -f "$HOLD_FILE" ]; then
     ACT="0"
+    check_install
 else
+    check_install
+    
     mkdir -p $HOME/.cache/dermodex
     touch $HOME/.cache/dermodex/wallpaper.jpg
     touch $HOME/.cache/dermodex/wallpaper_swatch.png
@@ -26,7 +53,10 @@ else
         if [ -f "$HOLD_FILE" ]; then
             # Hold DermoDeX from acting upon wallpaper changes
             ACT="0"
+            check_install
         else
+            check_install
+            
             # LET DermoDeX DO
             CUR=$(gsettings get org.cinnamon.desktop.background picture-uri)
             PAS=$(cat $HOME/.cache/wallpaper_current.txt)
@@ -156,7 +186,7 @@ else
 
                 # REFRESH GTK THEME
                 #gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark-Aqua"
-                #gsettings set org.cinnamon.desktop.interface gtk-theme "DermoDeX"
+                gsettings set org.cinnamon.desktop.interface gtk-theme "DermoDeX"
 
                 # SET SOUNDS
                 $BASE_FILE/watch_sounds.sh
@@ -195,9 +225,10 @@ else
                 # No Rush All Bush
                 sleep 7200
             else
-                # Mixtape and Space Invaders
+                # No Bush All Rush - Mixtape and Space Invaders
                 sleep 1
             fi
         fi
     done
 fi
+# Kate Bush

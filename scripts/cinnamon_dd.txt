@@ -39,9 +39,9 @@ next-desklet-id=5
 no-adjacent-panel-barriers=false
 panel-edit-mode=false
 panel-launchers=['DEPRECATED']
-panel-zone-icon-sizes='[{"panelId": 1, "left": 22, "center": 22, "right": 22}]'
+panel-zone-icon-sizes='[{"panelId": 1, "left": 20, "center": 20, "right": 16}]'
 panel-zone-symbolic-icon-sizes='[{"panelId": 1, "left": 22, "center": 22, "right": 18}]'
-panel-zone-text-sizes='[{"panelId": 1, "left": 13.0, "center": 12.0, "right": 13.0}]'
+panel-zone-text-sizes='[{"panelId": 1, "left": 12.0, "center": 12.0, "right": 12.0}]'
 panels-autohide=['1:false', '2:false']
 panels-enabled=['1:0:bottom']
 panels-height=['1:60']
@@ -90,8 +90,8 @@ exec='gnome-terminal'
 color-shading-type='vertical'
 picture-options='zoom'
 picture-uri='file:///home/lee/Pictures/DermoDeX/pexels-mengliu-di-3064258.jpg'
-primary-color='#000000'
-secondary-color='#703500'
+primary-color=''
+secondary-color=''
 
 [desktop/background/slideshow]
 delay=15
@@ -175,12 +175,12 @@ idle-delay=uint32 300
 [desktop/sound]
 event-sounds=false
 volume-sound-enabled=true
-volume-sound-file='/usr/share/sounds/borealis/bell.ogg'
+volume-sound-file='/usr/share/sounds/zorin/stereo/button-pressed.ogg'
 
 [desktop/wm/preferences]
 min-window-opacity=30
 num-workspaces=3
-theme='HighContrast'
+theme='DermoDeX'
 theme-backup='Mint-Y'
 titlebar-font='Ubuntu Medium 12'
 workspace-names=@as []
@@ -225,22 +225,22 @@ menus-have-icons=false
 rgba-order='vbgr'
 
 [sounds]
-close-file='/usr/share/sounds/enchanted/button-released.ogg'
-login-file='/usr/share/sounds/borealis/startup1_2.ogg'
-logout-file='/usr/share/sounds/borealis/exit1_2.ogg'
+close-file='/usr/share/sounds/zorin/stereo/message.ogg'
+login-file='/usr/share/sounds/zorin/stereo/desktop-logout.ogg'
+logout-file='/usr/share/sounds/zorin/stereo/desktop-login.ogg'
 map-enabled=false
-map-file='/usr/share/sounds/enchanted/dialog-question.ogg'
-maximize-file='/usr/share/sounds/enchanted/window-minimized.ogg'
-minimize-file='/usr/share/sounds/enchanted/window-minimized.ogg'
+map-file='/usr/share/sounds/zorin/stereo/message.ogg'
+maximize-file='/usr/share/sounds/zorin/stereo/button-toggle-on.ogg'
+minimize-file='/usr/share/sounds/zorin/stereo/button-toggle-off.ogg'
 notification-enabled=true
-notification-file='/usr/share/sounds/borealis/notification.ogg'
-plug-file='/usr/share/sounds/enchanted/dialog-question.ogg'
+notification-file='/usr/share/sounds/zorin/stereo/message-new-instant.ogg'
+plug-file='/usr/share/sounds/zorin/stereo/device-added.oga'
 switch-enabled=false
-switch-file='/usr/share/sounds/enchanted/notebook-tab-changed.ogg'
+switch-file='/usr/share/sounds/zorin/stereo/window-slide.ogg'
 tile-enabled=false
-tile-file='/usr/share/sounds/enchanted/window-unmaximized.ogg'
-unmaximize-file='/usr/share/sounds/enchanted/window-unmaximized.ogg'
-unplug-file='/usr/share/sounds/enchanted/dialog-error.ogg'
+tile-file='/usr/share/sounds/zorin/stereo/button-pressed.ogg'
+unmaximize-file='/usr/share/sounds/zorin/stereo/button-toggle-off.ogg'
+unplug-file='/usr/share/sounds/zorin/stereo/device-removed.oga'
 
 [theme]
 name='DermoDeX'
