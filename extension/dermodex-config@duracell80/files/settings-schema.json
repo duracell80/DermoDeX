@@ -24,7 +24,7 @@
     },
     "soundtheme" : {
         "type": "combobox",
-        "default" : "linux-a11y",
+        "default" : "fresh-dream",
         "description" : "Sound Theme",
         "options" : {
             "Linux A11y" : "linux-a11y",

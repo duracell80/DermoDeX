@@ -464,6 +464,7 @@ StScrollBar StButton#hhandle:hover {
 
 .menu-application-button-selected {
   selected-color        : #202020;
+  dd-menu-selected-color: #ffffff;
   background-color      : #3281ea;
   border                : 1px solid #3281ea;
 }

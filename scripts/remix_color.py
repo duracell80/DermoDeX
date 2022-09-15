@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import sys, getopt
+import sys, getopt, math
 from PIL import ImageColor
 
 
@@ -27,11 +27,24 @@ def main(argv):
             
     if arg_mode == "rgb":
         print(get_rgb(colorscale(arg_color, arg_factor)))
+    elif arg_mode == "balance":
+        rgb_bits = str(get_rgb(arg_color)).split(",")
+        print(isLightOrDark(int(rgb_bits[0]), int(rgb_bits[1]), int(rgb_bits[2])))
     else:
         print(colorscale(arg_color, arg_factor))
 
 
 
+# StackOverflow kardi-teknomo
+def isLightOrDark(r,g,b):
+    r = int(r)
+    g = int(g)
+    b = int(b)
+    hsp = math.sqrt(0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b))
+    if (hsp>127.5):
+        return 'light'
+    else:
+        return 'dark'
 
 
 def clamp(val, minimum=0, maximum=255):

@@ -255,9 +255,12 @@ if [ "$type" == "notification" ]; then
 
         elif [ "$soundtheme" == "teampixel" ]; then
             APP_SOUND="$DIR_SOUND/teampixel/notification_simple-01.ogg"
+            
+        elif [ "$soundtheme" == "linux-a11y" ]; then
+            APP_SOUND="$DIR_SOUND/teampixel/notification_simple-01.ogg"
 
         else
-            APP_SOUND="$DIR_SOUND/linux-a11y/stereo/window-attention.oga"
+            APP_SOUND="$DIR_SOUND/dream/stereo/dialog-question.ogg"
         fi
         
     fi

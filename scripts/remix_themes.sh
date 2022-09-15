@@ -257,6 +257,13 @@ sed -i "s|rgba(1,16,36|rgba(${RGB_DARKEST}|g" $CINN_FILE
 sed -i "s|~/|$HOME/|g" $CINN_FILE
 
 
+# PROTECT CINAMON MENU HOVER FROM TOO LIGHT OF A HOVER SELECT
+HOVER_SHADE=$($HOME/.local/share/dermodex/remix_color.py -c "#EAFFC9" --mode="balance")
+if [ "$HOVER_SHADE" == "light" ]; then
+    sed -i "s|dd-menu-selected-color: #ffffff;|color: ${DARKEST};|g" $CINN_FILE
+else
+    sed -i "s|dd-menu-selected-color: #ffffff;|color: #ffffff;|g" $CINN_FILE
+fi
 
 
 # COMBINE THE MODS
@@ -264,7 +271,7 @@ cat $CINN_FILE >> $CCD/cinnamon-base.css
 cp -f $CCD/cinnamon-base.css $LWD/theme/cinnamon/cinnamon.css
 
 
-if [ "$flowcolors" = true ]; then
+if [ "$flowcolors" == true ]; then
     # COPY OVER GTK2 CSS TO THE CACHE
     cp -f $LWD/theme/gtk-2.0/gtkrc $LWD/theme/gtk-2.0/gtkrc.orig
     cp -f $LWD/theme/gtk-2.0/gtkrc $CCD/gtk-2.0

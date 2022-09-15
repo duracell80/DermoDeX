@@ -427,11 +427,11 @@ shade_1_bits = str(get_rgb(shade_1)).replace("(", "").replace(")", "").split(","
 # ENACT GTK PROTECTION
 if cin_flowcolors == "true":
     if isLightOrDark(int(shade_1_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2])) == "light":
-        shade_gtk = list_hex[0]
+        shade_gtk = darken_color(int(shade_1_bits[0]), int(shade_1_bits[1]), int(shade_1_bits[2]), factor=0.5)
     else:
-        shade_gtk = list_hex[1]
+        shade_gtk = list_hex[2] 
 else:
-    shade_gtk = "#333333"
+    shade_gtk = "#222222"
 
 config.set('colors', 'savegtk0', shade_gtk.replace("#", ""))    
     

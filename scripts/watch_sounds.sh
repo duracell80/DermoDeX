@@ -40,6 +40,25 @@ if [ "$soundtheme" == "zorin" ]; then
     
     gsettings set org.cinnamon.desktop.sound volume-sound-file '/usr/share/sounds/zorin/stereo/button-pressed.ogg'
 
+ elif [ "$soundtheme" == "linux-a11y" ]; then
+    # SOUND - Linux-A11y
+    gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/linux-a11y/stereo/window-switch.oga'
+    gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/linux-a11y/stereo/message-sent.oga'
+    gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/linux-a11y/stereo/message.oga'
+    gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/linux-a11y/stereo/tooltip-popup.oga'
+    gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/linux-a11y/stereo/tooltip-popup.oga'
+    gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/linux-a11y/stereo/window-minimized.oga'
+    gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/linux-a11y/stereo/desktop-logout.oga'
+    gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/linux-a11y/stereo/window-minimized.oga'
+    gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/linux-a11y/stereo/menu-popup.oga'
+    if [ "$soundnotification" == "theme" ]; then
+        gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/linux-a11y/stereo/window-attention.oga'
+    fi
+    gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/linux-a11y/stereo/window-minimized.oga'
+    gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/linux-a11y/stereo/desktop-login.oga'
+    
+    gsettings set org.cinnamon.desktop.sound volume-sound-file '/usr/share/sounds/linux-a11y/stereo/menu-popup.oga'
+
 elif [ "$soundtheme" == "x11" ]; then
     # SOUND - Windows 11
     gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/x11/stereo/system-ready.ogg'
@@ -286,23 +305,22 @@ elif [ "$soundtheme" == "teampixel" ]; then
     gsettings set org.cinnamon.desktop.sound volume-sound-file '/usr/share/sounds/teampixel/ui_refresh-feed.ogg'
     
 
-
-else
-    # SOUND - Linux-A11y
-    gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/linux-a11y/stereo/window-switch.oga'
-    gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/linux-a11y/stereo/message-sent.oga'
-    gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/linux-a11y/stereo/message.oga'
-    gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/linux-a11y/stereo/tooltip-popup.oga'
-    gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/linux-a11y/stereo/tooltip-popup.oga'
-    gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/linux-a11y/stereo/window-minimized.oga'
-    gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/linux-a11y/stereo/desktop-logout.oga'
-    gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/linux-a11y/stereo/window-minimized.oga'
-    gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/linux-a11y/stereo/menu-popup.oga'
+else 
+    gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/dream/stereo/success.ogg'
+    gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/dream/stereo/button-toggle-on.ogg'
+    gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/dream/stereo/button-toggle-off.ogg'
+    gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/dream/stereo/dialog-error-2.ogg'
+    gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/dream/stereo/dialog-warning.ogg'
+    gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/dream/stereo/service-logout.ogg'
+    gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/dream/stereo/desktop-logout.ogg'
+    gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/dream/stereo/service-login.ogg'
+    gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/dream/stereo/window-slide.ogg'
     if [ "$soundnotification" == "theme" ]; then
-        gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/linux-a11y/stereo/window-attention.oga'
+        gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/dream/stereo/dialog-question.ogg'
     fi
-    gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/linux-a11y/stereo/window-minimized.oga'
-    gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/linux-a11y/stereo/desktop-login.oga'
+    gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/dream/stereo/service-login.ogg'
+    gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/dream/stereo/desktop-login.ogg'
     
-    gsettings set org.cinnamon.desktop.sound volume-sound-file '/usr/share/sounds/linux-a11y/stereo/menu-popup.oga'
+    gsettings set org.cinnamon.desktop.sound volume-sound-file '/usr/share/sounds/dream/stereo/button-pressed.ogg'
+    
 fi
