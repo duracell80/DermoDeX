@@ -68,6 +68,7 @@ cp -f ./scripts/remix_sounds.sh $HOME/.local/share/dermodex
 cp -f ./scripts/remix_themes.sh $HOME/.local/share/dermodex
 cp -f ./scripts/remix_icons.sh $HOME/.local/share/dermodex
 cp -f ./scripts/remix_color.py $HOME/.local/share/dermodex
+cp -f ./scripts/remix_wallpapers.sh $HOME/.local/share/dermodex
 
 cp -f ./scripts/sounds_waveform.sh $HOME/.local/share/dermodex
 cp -f ./scripts/display_resolution.sh $HOME/.local/share/dermodex
