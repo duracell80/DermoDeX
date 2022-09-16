@@ -205,12 +205,15 @@ if [ "$panelstyle" = "flat" ]; then
             sed -i "s|dd-panel-background-color : rgba(1,16,36,0.9);|background-color : rgba(1,16,36,${paneltrans});|g" $CINN_FILE
         fi
     fi
+    sed -i "s|dd-panel-window-border-radius : 64px;|border-radius : 0px;|g" $CINN_FILE
 else
     # MODERN STYLE
     echo "[i] Panel Style: Modern"
     sed -i "s|dd-panel-inner-background-color : rgba(1,16,36,0.9);|background-color : rgba(1,16,36,${paneltrans});|g" $CINN_FILE
     
     sed -i "s|dd-panel-background-color : rgba(1,16,36,0.9);|background-color : rgba(1,16,36,0);|g" $CINN_FILE
+    sed -i "s|dd-panel-window-border-radius : 64px;|border-radius : 64px;|g" $CINN_FILE
+    
 fi
 
 

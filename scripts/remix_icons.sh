@@ -4,7 +4,7 @@
 # top: stop-color:#666
 # tab: fill:#999
 LWD=$HOME/.local/share/dermodex/icons/breeze-dark_black
-IWD=$HOME/.local/share/icons/White-Icons/scalable
+IWD=$HOME/.local/share/icons/DermoDeX/scalable
 CWD=$HOME/.cache/dermodex/icons/breeze-dark_black
 CCA=$HOME/.cache/dermodex/common-assets/cinnamon/assets
 TCD=$HOME/.themes/DermoDeX
@@ -178,19 +178,19 @@ rm -f $FILE
 
 
 cp -n $CWD/places/outline/*.svg $CWD/places
-mv -f $CWD/places/*.svg $HOME/.local/share/icons/White-Icons/scalable/places
-mv -f $CWD/emblems/*.svg $HOME/.local/share/icons/White-Icons/scalable/emblems
-mv -f $CWD/mimetypes/*.svg $HOME/.local/share/icons/White-Icons/scalable/mimetypes
+mv -f $CWD/places/*.svg $HOME/.local/share/icons/DermoDeX/scalable/places
+mv -f $CWD/emblems/*.svg $HOME/.local/share/icons/DermoDeX/scalable/emblems
+mv -f $CWD/mimetypes/*.svg $HOME/.local/share/icons/DermoDeX/scalable/mimetypes
 
-cp -f $CWD/controlpanel/cats/cs* $HOME/.local/share/icons/White-Icons/scalable/categories
-cp -f $CWD/controlpanel/apps/csd* $HOME/.local/share/icons/White-Icons/scalable/apps
+cp -f $CWD/controlpanel/cats/cs* $HOME/.local/share/icons/DermoDeX/scalable/categories
+cp -f $CWD/controlpanel/apps/csd* $HOME/.local/share/icons/DermoDeX/scalable/apps
 
 
 # RECOLOR APP ICON BACKGROUNDS
 cp -f $LWD/apps/scalable/*.svg $CWD/apps
 sed -i "s|#333333|${DARK}|g" $CWD/apps/*.svg
 
-APP_ICONS="${HOME}/.local/share/icons/White-Icons/scalable/apps"
+APP_ICONS="${HOME}/.local/share/icons/DermoDeX/scalable/apps"
 APP_ICONS_AUX="$CWD/apps"
 
 

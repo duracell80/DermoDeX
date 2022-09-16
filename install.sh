@@ -345,11 +345,17 @@ ln -sf "${TWD}/gtk-4.0/gtk.css" "${HOME}/.config/gtk-4.0/gtk.css"
 ln -sf "${TWD}/gtk-4.0/gtk-dark.css" "${HOME}/.config/gtk-4.0/gtk-dark.css"
 
 
-gsettings set org.cinnamon.desktop.interface icon-theme "White-Icons"
+# RENAME WHITE ICONS AS DERMODEX
+rm -rf $HOME/.local/share/icons/DermoDeX
+mv -f $HOME/.local/share/icons/White-Icons $HOME/.local/share/icons/DermoDeX 
+sed -i "s|White-Icons|DermoDeX|g" $HOME/.local/share/icons/DermoDeX/index.theme
+
+gsettings set org.cinnamon.desktop.interface icon-theme "DermoDeX"
 gsettings set org.cinnamon.desktop.interface gtk-theme "DermoDeX"
 gsettings set org.cinnamon.desktop.wm.preferences theme "DermoDeX"
 gsettings set org.cinnamon.theme name "DermoDeX"
 gsettings set org.cinnamon.desktop.notifications bottom-notifications "true"
 gsettings set org.cinnamon.desktop.notifications display-notifications "true"
 
-#dd_reload
+
+dd_refresh

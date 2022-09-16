@@ -180,7 +180,7 @@ StScrollBar StButton#hhandle:hover {
     background-gradient-direction   : vertical;
     background-gradient-end         : rgba(255, 255, 255, 0.05);
     background-gradient-start       : rgba(255, 255, 255, 0.2);
-    border-radius   : 64px;
+    dd-panel-window-border-radius : 64px;
     border          : 1px solid #ffffff;
 }
 
@@ -261,14 +261,14 @@ StScrollBar StButton#hhandle:hover {
 .grouped-window-list-item-box .progress {
     background-gradient-start : #cccccc;
     background-gradient-end   : #cccccc;
-    border-radius             : 64px;
+    dd-panel-window-border-radius : 64px;
 }
 
 .window-list-item-demands-attention,
 .grouped-window-list-item-demands-attention {
     background-gradient-start : #000000;
     background-gradient-end   : #000000;
-    border-radius             : 64px;
+    dd-panel-window-border-radius : 64px;
 }
 
 /* GROUPED WINDOW LIST */
@@ -284,7 +284,7 @@ StScrollBar StButton#hhandle:hover {
     background-color: transparent;
     background-image: url("assets/grouped-window-dot.svg");
     min-width       : 64px;
-    border-radius   : 64px; 
+    dd-panel-window-border-radius : 64px; 
     border          : 0px solid transparent;
     padding-left    : 8px;
     padding-right   : 8px;
@@ -330,7 +330,7 @@ StScrollBar StButton#hhandle:hover {
 .grouped-window-list-item-demands-attention {
     background-gradient-start   : #666666;
     background-gradient-end     : #666666;
-    border-radius               : 64px;
+    dd-panel-window-border-radius : 64px;
 }
 
 .grouped-window-list-thumbnail-menu .item-box:outlined {
