@@ -212,6 +212,13 @@
         "default" : false,
         "tooltip" : "Override DermoDex's chosen colors with your own selections"
     },
+    "override4": {
+        "type": "colorchooser",
+        "default": "aN",
+        "dependency" : "coloroverrides",
+        "description": "Folder Accent",
+        "tooltip" : "Choose a static color for the folders, even when changing wallpaper, this color will be chosen"
+    },
     "override3": {
         "type": "colorchooser",
         "default": "aN",

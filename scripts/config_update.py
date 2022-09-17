@@ -35,7 +35,10 @@ def main(argv):
         config.write(configfile)
         
     if "override3" in cfg_key:
-        os.system(HOME + '/.local/share/dermodex/remix_icons.sh');
+        os.system(HOME + '/.local/share/dermodex/remix_icons.sh "#' + cfg_value + '" icons');
+        
+    if "override4" in cfg_key:
+        os.system(HOME + '/.local/share/dermodex/remix_icons.sh "#' + cfg_value + '" folders');
     
     if "mintpaper" in cfg_key:
         os.system(HOME + '/.local/share/dermodex/remix_wallpapers.sh ' + cfg_key.lower() + ' ' + cfg_value.lower());

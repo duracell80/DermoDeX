@@ -156,6 +156,7 @@ else
                 OVR1="#${override1}"
                 OVR2="#${override2}"
                 OVR3="#${override3}"
+                OVR3="#${override4}"
                 
                 # REMIX THEMES AND ICONS ONLY IF SLIDESHOW NOT ACTIVE
                 if [ "$CONF_SLIDESHOW" = "false" ]; then
@@ -164,9 +165,19 @@ else
                     # RECOLOR NEMO FOLDERS AND EMBLEMS
                     if [ "$flowicons" == "true" ]; then
                         if [ "$coloroverrides" == "true" ]; then
-                            $BASE_FILE/remix_icons.sh "${OVR3}"
+                            $BASE_FILE/remix_icons.sh "${OVR3}" icons
+                            if [ "$OVR4" == "#none" ]; then
+                                if [ "$OVR3" == "#none" ]; then
+                                    $BASE_FILE/remix_icons.sh "${HEX1}" folders
+                                else
+                                    $BASE_FILE/remix_icons.sh "${OVR3}" folders
+                                fi
+                            else
+                                $BASE_FILE/remix_icons.sh "${OVR4}" folders
+                            fi
                         else
-                            $BASE_FILE/remix_icons.sh "${HEX1}"
+                            $BASE_FILE/remix_icons.sh "${HEX1}" icons
+                            $BASE_FILE/remix_icons.sh "${HEX1}" folders
                         fi
                     fi
                 fi

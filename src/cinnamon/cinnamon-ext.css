@@ -432,7 +432,7 @@ StScrollBar StButton#hhandle:hover {
 .menu-category-button-hover,
 .menu-category-button-selected {
     color           : #ffffff;
-    border-color    : #3281ea;
+    border-color    : #011a3b;
 }
 
 
@@ -463,10 +463,10 @@ StScrollBar StButton#hhandle:hover {
 }
 
 .menu-application-button-selected {
-  selected-color        : #202020;
+  selected-color        : #ffffff;
   dd-menu-selected-color: #ffffff;
-  background-color      : #3281ea;
-  border                : 1px solid #3281ea;
+  background-color      : #011a3b;
+  border                : 1px solid #011a3b;
 }
   
 .menu-application-button:highlighted,

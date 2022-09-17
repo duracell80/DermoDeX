@@ -163,7 +163,7 @@ fi
 # USE ACCENT COLOR ON START MENU BUTTON
 if [ "$flowcolorsmenu" = "true" ]; then
     echo "[i] Accent - Start Menu Button: Enabled"
-    sed -i "s|dd-menu-button-hover : #ffffff;|color : #3281ea;|g" $CINN_FILE
+    sed -i "s|dd-menu-button-hover : #ffffff;|color : #011a3b;|g" $CINN_FILE
 else 
     sed -i "s|dd-menu-button-hover : #ffffff;|color : #ffffff;|g" $CINN_FILE
 fi

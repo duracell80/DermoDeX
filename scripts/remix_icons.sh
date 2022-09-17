@@ -10,7 +10,7 @@ CCA=$HOME/.cache/dermodex/common-assets/cinnamon/assets
 TCD=$HOME/.themes/DermoDeX
 FILE="$CWD/list.txt"
 
-
+TYPE=$2
 
 CONF_FILE="$HOME/.local/share/dermodex/config.ini"
 
@@ -34,7 +34,7 @@ shopt -u extglob # Switching it back off after use
 if [ ! -z $1 ]
 then
     # USE HEX PROVIDED IN PARAMETER
-    echo "[i] Icon Accent provided via Parameter: ${1}"
+    echo "[i] Accent provided via Parameter: ${1}"
     ACCENT=$1
 else
 
@@ -44,8 +44,14 @@ else
             echo "[i] Icon override color not set yet, exiting."
             exit
         else
-            echo "[i] Icon Accent provided via Configuration: ${override3}"
-            ACCENT="#${override3}"
+            if [ "$override4" == "aN" ] || [ "$override4" == "none" ]; then
+                echo "[i] Icon Accent provided via Configuration: ${override3}"
+                ACCENT="#${override3}"
+            else
+                echo "[i] Folder Accent provided via Configuration: ${override4}"
+                ACCENT="#${override4}"
+            fi
+            
         fi
     else
         # USE HEX PROVIDED BY DERMODEX WALLPAPER EXTRACTOR
@@ -115,164 +121,170 @@ GTK0_BRIGHT=$($HOME/.local/share/dermodex/remix_color.py -c "${savegtk0}" -f 1.3
 GTK0_DARK=$($HOME/.local/share/dermodex/remix_color.py -c "${savegtk0}" -f 0.7 --mode="hex")
 
 
-# PLACES
-cp -f $LWD/places/*.svg $CWD/places
-ls $CWD/places/*.svg > $FILE
+if [ "$TYPE" == "folders" ]; then
+    echo "[i] Remixing Icons: Places"
+    
+    # PLACES
+    cp -f $LWD/places/*.svg $CWD/places
+    ls $CWD/places/*.svg > $FILE
+    
+    while read -r LINE; do
+        sed -i "s|stop-color:#000|stop-color:${ACCENT}|g" ${LINE}
+        sed -i "s|stop-color:#666|stop-color:${BRIGHT}|g" ${LINE}
+        sed -i "s|fill:#999|fill:${DARK}|g" ${LINE}
+    done < $FILE
+    rm -f $FILE
+    
+    # PLACES - OUTLINED
+    cp -f $LWD/places/outline/*.svg $CWD/places/outline
+    ls $CWD/places/outline/*.svg > $FILE
+    
+    echo "[i] Remixing Icons: Places Outlined"
+    while read -r LINE; do
+        sed -i 's|#000000|'${ACCENT}'|g' ${LINE}
+    done < $FILE
+    rm -f $FILE
+    
+    cp -n $CWD/places/outline/*.svg $CWD/places
+    mv -f $CWD/places/*.svg $HOME/.local/share/icons/DermoDeX/scalable/places
 
-echo "[i] Remixing Icons: Places"
-while read -r LINE; do
-    sed -i "s|stop-color:#000|stop-color:${ACCENT}|g" ${LINE}
-    sed -i "s|stop-color:#666|stop-color:${BRIGHT}|g" ${LINE}
-    sed -i "s|fill:#999|fill:${DARK}|g" ${LINE}
-done < $FILE
-rm -f $FILE
+else
+    # EMBLEMS
+    cp -f $LWD/emblems/*.svg $CWD/emblems
+    ls $CWD/emblems/*.svg > $FILE
 
-# PLACES - OUTLINED
-cp -f $LWD/places/outline/*.svg $CWD/places/outline
-ls $CWD/places/outline/*.svg > $FILE
-
-echo "[i] Remixing Icons: Places Outlined"
-while read -r LINE; do
-    sed -i 's|#000000|'${ACCENT}'|g' ${LINE}
-done < $FILE
-rm -f $FILE
-
-# EMBLEMS
-cp -f $LWD/emblems/*.svg $CWD/emblems
-ls $CWD/emblems/*.svg > $FILE
-
-echo "[i] Remixing Icons: Emblems"
-while read -r LINE; do
-    sed -i "s|#333333|${DARK}|g" ${LINE}
-done < $FILE
-rm -f $FILE
-
-
-# MIMETYPES
-ls $CWD/mimetypes/*.svg > $FILE
-
-echo "[i] Remixing Icons: Mimetypes"
-while read -r LINE; do
-    sed -i 's|#000000|'${DARK}'|g' ${LINE}
-done < $FILE
-rm -f $FILE
-
-# SYSTEM CONTROL PANEL
-cp -f $LWD/controlpanel/cats/*.svg $CWD/controlpanel/cats/
-ls $CWD/controlpanel/cats/*.svg > $FILE
-
-echo "[i] Remixing Icons: Control Panel - Categories"
-while read -r LINE; do
-    sed -i 's|#cccccc|'${ACCENT}'|g' ${LINE}
-done < $FILE
-rm -f $FILE
-
-cp -f $LWD/controlpanel/apps/*.svg $CWD/controlpanel/apps
-ls $CWD/controlpanel/apps/*.svg > $FILE
-
-echo "[i] Remixing Icons: Control Panel - Applications"
-while read -r LINE; do
-    sed -i 's|#cccccc|'${ACCENT}'|g' ${LINE}
-done < $FILE
-rm -f $FILE
+    echo "[i] Remixing Icons: Emblems"
+    while read -r LINE; do
+        sed -i "s|#333333|${DARK}|g" ${LINE}
+    done < $FILE
+    rm -f $FILE
 
 
-cp -n $CWD/places/outline/*.svg $CWD/places
-mv -f $CWD/places/*.svg $HOME/.local/share/icons/DermoDeX/scalable/places
-mv -f $CWD/emblems/*.svg $HOME/.local/share/icons/DermoDeX/scalable/emblems
-mv -f $CWD/mimetypes/*.svg $HOME/.local/share/icons/DermoDeX/scalable/mimetypes
+    # MIMETYPES
+    ls $CWD/mimetypes/*.svg > $FILE
 
-cp -f $CWD/controlpanel/cats/cs* $HOME/.local/share/icons/DermoDeX/scalable/categories
-cp -f $CWD/controlpanel/apps/csd* $HOME/.local/share/icons/DermoDeX/scalable/apps
+    echo "[i] Remixing Icons: Mimetypes"
+    while read -r LINE; do
+        sed -i 's|#000000|'${DARK}'|g' ${LINE}
+    done < $FILE
+    rm -f $FILE
 
+    # SYSTEM CONTROL PANEL
+    cp -f $LWD/controlpanel/cats/*.svg $CWD/controlpanel/cats/
+    ls $CWD/controlpanel/cats/*.svg > $FILE
 
-# RECOLOR APP ICON BACKGROUNDS
-cp -f $LWD/apps/scalable/*.svg $CWD/apps
-sed -i "s|#333333|${DARK}|g" $CWD/apps/*.svg
+    echo "[i] Remixing Icons: Control Panel - Categories"
+    while read -r LINE; do
+        sed -i 's|#cccccc|'${ACCENT}'|g' ${LINE}
+    done < $FILE
+    rm -f $FILE
 
-APP_ICONS="${HOME}/.local/share/icons/DermoDeX/scalable/apps"
-APP_ICONS_AUX="$CWD/apps"
+    cp -f $LWD/controlpanel/apps/*.svg $CWD/controlpanel/apps
+    ls $CWD/controlpanel/apps/*.svg > $FILE
 
+    echo "[i] Remixing Icons: Control Panel - Applications"
+    while read -r LINE; do
+        sed -i 's|#cccccc|'${ACCENT}'|g' ${LINE}
+    done < $FILE
+    rm -f $FILE
+    
+    mv -f $CWD/emblems/*.svg $HOME/.local/share/icons/DermoDeX/scalable/emblems
+    mv -f $CWD/mimetypes/*.svg $HOME/.local/share/icons/DermoDeX/scalable/mimetypes
 
-cp -f "$APP_ICONS_AUX/"org.gnome* $APP_ICONS
-cp -f $APP_ICONS/google-chrome.svg $APP_ICONS/chromium.svg
-cp -f $APP_ICONS/google-chrome.svg $APP_ICONS/chrome.svg
-cp -f $APP_ICONS/google-chrome.svg $APP_ICONS/com.google.Chrome.svg
-cp -f "$APP_ICONS_AUX/"chrom* $APP_ICONS
-cp -f "$APP_ICONS_AUX/"brav* $APP_ICONS
-cp -f "$APP_ICONS_AUX/microsoft-edge.svg" $APP_ICONS/com.microsoft.Edge.svg
-
-cp -f "$APP_ICONS_AUX/krita.svg" $APP_ICONS/org.kde.krita.svg
-
-cp -f "$APP_ICONS_AUX/"libreoffice* $APP_ICON
-cp -f $APP_ICONS/spotify.svg $APP_ICONS/spotify-client.svg
-
-cp -f $APP_ICONS/skype.svg $APP_ICONS/skypeforlinux.svg
-cp -f "$APP_ICONS_AUX/teams.svg" $APP_ICONS
-cp -f "$APP_ICONS_AUX/teams-for-linux.svg" $APP_ICONS
-cp -f $APP_ICONS/firefox-esr.svg $APP_ICONS/firefox.svg
-cp -f $APP_ICONS/terminal.svg $APP_ICONS/putty.svg
-cp -f $APP_ICONS/multimedia.svg $APP_ICONS/io.github.celluloid_player.Celluloid.svg
-cp -f $APP_ICONS/magnatune.svg $APP_ICONS/hdhr.svg
-cp -f $APP_ICONS/mpv.svg $APP_ICONS/hypnotix.svg
-cp -f $APP_ICONS/picasa.svg $APP_ICONS/xviewer.svg
-cp -f $APP_ICONS/acroread.svg $APP_ICONS/xreader.svg
-cp -f $APP_ICONS/gnome-note.svg $APP_ICONS/sticky.svg
-cp -f $APP_ICONS/org.gnome.LightsOff.svg $APP_ICONS/gnome-todo.svg
-cp -f $APP_ICONS/gthumb.svg $APP_ICONS/redshift-gtk.svg
-cp -f $APP_ICONS/gthumb.svg $APP_ICONS/redshift.svg
-cp -f "$APP_ICONS_AUX/kdenlive.svg" $APP_ICONS/bulky.svg
-cp -f "$APP_ICONS_AUX/onboard.svg" $APP_ICONS
-cp -f "$APP_ICONS_AUX/alacarte.svg" $APP_ICONS/thingy.svg
-
-cp -f "$APP_ICONS_AUX/simplenote.svg" $APP_ICONS/mintinstall.svg
-cp -f "$APP_ICONS_AUX/simplenote.svg" $APP_ICONS/mintsources.svg
-cp -f "$APP_ICONS_AUX/bleachbit.svg" $APP_ICONS/mintreport.svg
-cp -f "$APP_ICONS_AUX/xfburn.svg" $APP_ICONS/mintupdate.svg
-cp -f "$APP_ICONS_AUX/kclock.svg" $APP_ICONS/timeshift.svg
-cp -f $APP_ICONS/distributor-logo-linux-mint.svg $APP_ICONS/mintwelcome.svg
-cp -f $APP_ICONS/synaptic.svg $APP_ICONS/mintstick.svg
-cp -f "$APP_ICONS_AUX/livepatch.svg" $APP_ICONS/mintbackup.svg
-cp -f "$APP_ICONS_AUX/acetoneiso.svg" $APP_ICONS/mintdrivers.svg
-cp -f "$APP_ICONS_AUX/keepass.svg" $APP_ICONS/lightdm-settings.svg
-cp -f $APP_ICONS/preferences-desktop-keyboard.svg $APP_ICONS/mintlocale-im.svg
-cp -f "$APP_ICONS_AUX/warpinator.svg" $APP_ICONS/org.x.Warpinator.svg
-
-cp -f "$APP_ICONS_AUX/com.github.maoschanz.drawing.svg" $APP_ICONS
-cp -f "$APP_ICONS_AUX/shuffler-control.svg" $APP_ICONS/pix.svg
-cp -f "$APP_ICONS_AUX/budgiewprviews.svg" $APP_ICONS/webapp-manager.svg
-cp -f "$APP_ICONS_AUX/github-desktop.svg" $APP_ICONS/io.github.shiftey.Desktop.svg
-cp -f "$APP_ICONS_AUX/io.atom.Atom.svg" $APP_ICONS/io.brackets.Brackets.svg
-cp -f "$APP_ICONS_AUX/sublime-text.svg" $APP_ICONS
-cp -f $APP_ICONS/gnome-warning.svg $APP_ICONS/gufw.svg
-
-cp -f "$APP_ICONS_AUX/shotcut.svg" $APP_ICONS/org.shotcut.Shotcut.svg
-cp -f "$APP_ICONS_AUX/hb-icon.svg" $APP_ICONS/fr.handbrake.ghb.svg
-cp -f "$APP_ICONS_AUX/xfburn.svg" $APP_ICONS/com.makemkv.MakeMKV.svg
-cp -f "$APP_ICONS_AUX/kodi.svg" $APP_ICONS
+    cp -f $CWD/controlpanel/cats/cs* $HOME/.local/share/icons/DermoDeX/scalable/categories
+    cp -f $CWD/controlpanel/apps/csd* $HOME/.local/share/icons/DermoDeX/scalable/apps
 
 
+    # RECOLOR APP ICON BACKGROUNDS
+    cp -f $LWD/apps/scalable/*.svg $CWD/apps
+    sed -i "s|#333333|${DARK}|g" $CWD/apps/*.svg
 
-# COPY CINNAMON ASSETS FOR MANIPULATION
-cp -rf $HOME/.local/share/dermodex/theme-ext/cinnamon/assets/dermodex $HOME/.themes/DermoDeX/cinnamon/assets
+    APP_ICONS="${HOME}/.local/share/icons/DermoDeX/scalable/apps"
+    APP_ICONS_AUX="$CWD/apps"
 
-cp -rf $HOME/.local/share/dermodex/theme/cinnamon/assets/*.svg $CCA
-cp -rf $HOME/.local/share/dermodex/theme/cinnamon/assets/calendar-arrow-left.svg $CCA/calendar-arrow-left-hover.svg
-cp -rf $HOME/.local/share/dermodex/theme/cinnamon/assets/calendar-arrow-right.svg $CCA/calendar-arrow-right-hover.svg
 
-# RECOLOR CINNAMON CLOSE ICONS
-sed -i "s|#f75a61|${ACCENT}|g" $CCA/close.svg
-sed -i "s|#d8354a|${DARK}|g" $CCA/close-active.svg
-sed -i "s|#ff7a80|${BRIGHT}|g" $CCA/close-hover.svg
-sed -i "s|#1a73e8|${BRIGHT}|g" $CCA/corner-ripple.svg
-sed -i "s|#3476cf|${ACCENT}|g" $CCA/toggle-on.svg
-sed -i "s|#0860f2|${ACCENT}|g" $CCA/add-workspace-active.svg
-sed -i "s|#3476cf|${ACCENT}|g" $CCA/checkbox.svg
-sed -i "s|#1a73e8|${ACCENT}|g" $CCA/radiobutton.svg
-sed -i "s|#3281ea|${ACCENT}|g" $CCA/grouped-window-dot-active.svg
-sed -i "s|#e6e6e6|${BRIGHT}|g" $CCA/calendar-arrow-left-hover.svg
-sed -i "s|#e6e6e6|${BRIGHT}|g" $CCA/calendar-arrow-right-hover.svg
-#rm -rf $CCA/*.svg
-cp -f $CCA/*.svg $TCD/cinnamon/assets
+    cp -f "$APP_ICONS_AUX/"org.gnome* $APP_ICONS
+    cp -f $APP_ICONS/google-chrome.svg $APP_ICONS/chromium.svg
+    cp -f $APP_ICONS/google-chrome.svg $APP_ICONS/chrome.svg
+    cp -f $APP_ICONS/google-chrome.svg $APP_ICONS/com.google.Chrome.svg
+    cp -f "$APP_ICONS_AUX/"chrom* $APP_ICONS
+    cp -f "$APP_ICONS_AUX/"brav* $APP_ICONS
+    cp -f "$APP_ICONS_AUX/microsoft-edge.svg" $APP_ICONS/com.microsoft.Edge.svg
+
+    cp -f "$APP_ICONS_AUX/krita.svg" $APP_ICONS/org.kde.krita.svg
+
+    cp -f "$APP_ICONS_AUX/"libreoffice* $APP_ICON
+    cp -f $APP_ICONS/spotify.svg $APP_ICONS/spotify-client.svg
+
+    cp -f $APP_ICONS/skype.svg $APP_ICONS/skypeforlinux.svg
+    cp -f "$APP_ICONS_AUX/teams.svg" $APP_ICONS
+    cp -f "$APP_ICONS_AUX/teams-for-linux.svg" $APP_ICONS
+    cp -f $APP_ICONS/firefox-esr.svg $APP_ICONS/firefox.svg
+    cp -f $APP_ICONS/terminal.svg $APP_ICONS/putty.svg
+    cp -f $APP_ICONS/multimedia.svg $APP_ICONS/io.github.celluloid_player.Celluloid.svg
+    cp -f $APP_ICONS/magnatune.svg $APP_ICONS/hdhr.svg
+    cp -f $APP_ICONS/mpv.svg $APP_ICONS/hypnotix.svg
+    cp -f $APP_ICONS/picasa.svg $APP_ICONS/xviewer.svg
+    cp -f $APP_ICONS/acroread.svg $APP_ICONS/xreader.svg
+    cp -f $APP_ICONS/gnome-note.svg $APP_ICONS/sticky.svg
+    cp -f $APP_ICONS/org.gnome.LightsOff.svg $APP_ICONS/gnome-todo.svg
+    cp -f $APP_ICONS/gthumb.svg $APP_ICONS/redshift-gtk.svg
+    cp -f $APP_ICONS/gthumb.svg $APP_ICONS/redshift.svg
+    cp -f "$APP_ICONS_AUX/kdenlive.svg" $APP_ICONS/bulky.svg
+    cp -f "$APP_ICONS_AUX/onboard.svg" $APP_ICONS
+    cp -f "$APP_ICONS_AUX/alacarte.svg" $APP_ICONS/thingy.svg
+
+    cp -f "$APP_ICONS_AUX/simplenote.svg" $APP_ICONS/mintinstall.svg
+    cp -f "$APP_ICONS_AUX/simplenote.svg" $APP_ICONS/mintsources.svg
+    cp -f "$APP_ICONS_AUX/bleachbit.svg" $APP_ICONS/mintreport.svg
+    cp -f "$APP_ICONS_AUX/xfburn.svg" $APP_ICONS/mintupdate.svg
+    cp -f "$APP_ICONS_AUX/kclock.svg" $APP_ICONS/timeshift.svg
+    cp -f $APP_ICONS/distributor-logo-linux-mint.svg $APP_ICONS/mintwelcome.svg
+    cp -f $APP_ICONS/synaptic.svg $APP_ICONS/mintstick.svg
+    cp -f "$APP_ICONS_AUX/livepatch.svg" $APP_ICONS/mintbackup.svg
+    cp -f "$APP_ICONS_AUX/acetoneiso.svg" $APP_ICONS/mintdrivers.svg
+    cp -f "$APP_ICONS_AUX/keepass.svg" $APP_ICONS/lightdm-settings.svg
+    cp -f $APP_ICONS/preferences-desktop-keyboard.svg $APP_ICONS/mintlocale-im.svg
+    cp -f "$APP_ICONS_AUX/warpinator.svg" $APP_ICONS/org.x.Warpinator.svg
+
+    cp -f "$APP_ICONS_AUX/com.github.maoschanz.drawing.svg" $APP_ICONS
+    cp -f "$APP_ICONS_AUX/shuffler-control.svg" $APP_ICONS/pix.svg
+    cp -f "$APP_ICONS_AUX/budgiewprviews.svg" $APP_ICONS/webapp-manager.svg
+    cp -f "$APP_ICONS_AUX/github-desktop.svg" $APP_ICONS/io.github.shiftey.Desktop.svg
+    cp -f "$APP_ICONS_AUX/io.atom.Atom.svg" $APP_ICONS/io.brackets.Brackets.svg
+    cp -f "$APP_ICONS_AUX/sublime-text.svg" $APP_ICONS
+    cp -f $APP_ICONS/gnome-warning.svg $APP_ICONS/gufw.svg
+
+    cp -f "$APP_ICONS_AUX/shotcut.svg" $APP_ICONS/org.shotcut.Shotcut.svg
+    cp -f "$APP_ICONS_AUX/hb-icon.svg" $APP_ICONS/fr.handbrake.ghb.svg
+    cp -f "$APP_ICONS_AUX/xfburn.svg" $APP_ICONS/com.makemkv.MakeMKV.svg
+    cp -f "$APP_ICONS_AUX/kodi.svg" $APP_ICONS
+
+
+
+    # COPY CINNAMON ASSETS FOR MANIPULATION
+    cp -rf $HOME/.local/share/dermodex/theme-ext/cinnamon/assets/dermodex $HOME/.themes/DermoDeX/cinnamon/assets
+
+    cp -rf $HOME/.local/share/dermodex/theme/cinnamon/assets/*.svg $CCA
+    cp -rf $HOME/.local/share/dermodex/theme/cinnamon/assets/calendar-arrow-left.svg $CCA/calendar-arrow-left-hover.svg
+    cp -rf $HOME/.local/share/dermodex/theme/cinnamon/assets/calendar-arrow-right.svg $CCA/calendar-arrow-right-hover.svg
+
+    # RECOLOR CINNAMON CLOSE ICONS
+    sed -i "s|#f75a61|${ACCENT}|g" $CCA/close.svg
+    sed -i "s|#d8354a|${DARK}|g" $CCA/close-active.svg
+    sed -i "s|#ff7a80|${BRIGHT}|g" $CCA/close-hover.svg
+    sed -i "s|#1a73e8|${BRIGHT}|g" $CCA/corner-ripple.svg
+    sed -i "s|#3476cf|${ACCENT}|g" $CCA/toggle-on.svg
+    sed -i "s|#0860f2|${ACCENT}|g" $CCA/add-workspace-active.svg
+    sed -i "s|#3476cf|${ACCENT}|g" $CCA/checkbox.svg
+    sed -i "s|#1a73e8|${ACCENT}|g" $CCA/radiobutton.svg
+    sed -i "s|#3281ea|${ACCENT}|g" $CCA/grouped-window-dot-active.svg
+    sed -i "s|#e6e6e6|${BRIGHT}|g" $CCA/calendar-arrow-left-hover.svg
+    sed -i "s|#e6e6e6|${BRIGHT}|g" $CCA/calendar-arrow-right-hover.svg
+    #rm -rf $CCA/*.svg
+    cp -f $CCA/*.svg $TCD/cinnamon/assets
+fi
+
+
 
 #xdotool key ctrl+alt+"Escape"
