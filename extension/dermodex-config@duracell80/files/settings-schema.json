@@ -190,8 +190,8 @@
     "flowcolorsmenu" : {
         "type" : "checkbox",
         "description" : "Color Flow - Start Menu Button",
-        "default" : true,
-        "tooltip" : "When active, DermoDeX transfer the accent color to the Applictaions Menu button on click."
+        "default" : false,
+        "tooltip" : "When active, DermoDeX transfers the accent color to the Applications Menu button on click."
     },
     "flowsoundwaves" : {
         "type" : "checkbox",
@@ -215,14 +215,12 @@
     "override4": {
         "type": "colorchooser",
         "default": "aN",
-        "dependency" : "coloroverrides",
         "description": "Folder Accent",
         "tooltip" : "Choose a static color for the folders, even when changing wallpaper, this color will be chosen"
     },
     "override3": {
         "type": "colorchooser",
         "default": "aN",
-        "dependency" : "coloroverrides",
         "description": "Icon Accent",
         "tooltip" : "Choose a static color for the icons, even when changing wallpaper, this color will be chosen"
     },

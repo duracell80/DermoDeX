@@ -153,13 +153,12 @@ if [ -d $CWD/deps/Color-Icons ] ; then
     git pull
     
     tar -xzf Color-Icons.tar.gz
-    sleep 5
     
     cd $CWD/deps/Royal-Z
     git fetch
     git pull
     tar -xf "Royal Z.tar.xz"
-    sleep 5
+    sleep 2
 else
     echo "[i] Downloading Color Icons"
 
