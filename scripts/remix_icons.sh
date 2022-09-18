@@ -124,8 +124,27 @@ GTK0_DARK=$($HOME/.local/share/dermodex/remix_color.py -c "${savegtk0}" -f 0.7 -
 if [ "$TYPE" == "folders" ]; then
     echo "[i] Remixing Icons: Places"
     
+    mkdir -p $CWD/places/desktop
+    mkdir -p $HOME/.local/share/icons/DermoDeX/scalable/places/desktop
+    
+    savehex1_bright=$($HOME/.local/share/dermodex/remix_color.py -c "#${savehex1}" -f 1.3 --mode="hex")
+    savehex1_dark=$($HOME/.local/share/dermodex/remix_color.py -c "#${savehex1}" -f 0.7 --mode="hex")
+    
     # PLACES
     cp -f $LWD/places/*.svg $CWD/places
+    cp -f $LWD/places/user-home.svg $CWD/places/desktop
+    cp -f $LWD/places/network-server.svg $CWD/places/desktop
+    
+    sed -i "s|stop-color:#000|stop-color:#${savehex1}|g" $CWD/places/desktop/user-home.svg
+    sed -i "s|stop-color:#666|stop-color:${savehex1_bright}|g" $CWD/places/desktop/user-home.svg
+    sed -i "s|fill:#999|fill:${savehex1_dark}|g" $CWD/places/desktop/user-home.svg
+    
+    sed -i "s|stop-color:#000|stop-color:#${savehex1}|g" $CWD/places/desktop/network-server.svg
+    sed -i "s|stop-color:#666|stop-color:${savehex1_bright}|g" $CWD/places/desktop/network-server.svg
+    sed -i "s|fill:#999|fill:${savehex1_dark}|g" $CWD/places/desktop/network-server.svg
+    
+    cp $CWD/places/desktop/*.svg $HOME/.local/share/icons/DermoDeX/scalable/places/desktop
+    
     ls $CWD/places/*.svg > $FILE
     
     while read -r LINE; do
