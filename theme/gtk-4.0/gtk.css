@@ -1731,7 +1731,7 @@ headerbar .titlebar {
 }
 
 headerbar > windowhandle > box {
-  padding: o 6px;
+  padding: 0 6px;
 }
 
 headerbar > windowhandle > box,

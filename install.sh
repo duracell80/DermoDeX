@@ -7,6 +7,16 @@ if awk "BEGIN {exit !($CINN_VERSION < 5.2)}"; then
     exit
 fi
 
+gsettings set org.cinnamon.desktop.interface icon-theme "Mint-Y"
+gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y"
+gsettings set org.cinnamon.desktop.wm.preferences theme "cinnamon"
+gsettings set org.cinnamon.theme name "cinnamon"
+
+rm -rf $HOME/.local/share/dermodex
+rm -rf $HOME/.cache/dermodex
+rm -rf $HOME/.themes/DermoDeX
+rm -rf $HOME/.local/share/cinnamon/extensions/dermodex-config@duracell80
+rm -f $HOME/.cinnamon/configs/dermodex-config@duracell80
 
 
 echo "[i] - Installing Deps from APT and PIP"
@@ -137,7 +147,19 @@ chmod u+x $HOME/.local/share/dermodex/theme-ext/gtk/remix_assets.sh
 
 
 if [ -d $CWD/deps/Color-Icons ] ; then
-    echo "[i] Main Icons Already Installed"
+    echo "[i] Main Icons Already Installed ... Fetching Updates"
+    cd $CWD/deps/Color-Icons
+    git fetch
+    git pull
+    
+    tar -xzf Color-Icons.tar.gz
+    sleep 5
+    
+    cd $CWD/deps/Royal-Z
+    git fetch
+    git pull
+    tar -xf "Royal Z.tar.xz"
+    sleep 5
 else
     echo "[i] Downloading Color Icons"
 
@@ -357,6 +379,7 @@ rm -rf $HOME/.local/share/icons/DermoDeX
 mv -f $HOME/.local/share/icons/White-Icons $HOME/.local/share/icons/DermoDeX 
 sed -i "s|White-Icons|DermoDeX|g" $HOME/.local/share/icons/DermoDeX/index.theme
 
+gsettings set org.gnome.Terminal.Legacy.Settings theme-variant "dark"
 gsettings set org.cinnamon.desktop.interface icon-theme "DermoDeX"
 gsettings set org.cinnamon.desktop.interface gtk-theme "DermoDeX"
 gsettings set org.cinnamon.desktop.wm.preferences theme "DermoDeX"

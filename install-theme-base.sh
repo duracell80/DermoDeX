@@ -18,9 +18,16 @@ cd $CWD/deps
 
 # CLONE FLUENT
 echo ""
-echo ""
-git clone https://github.com/vinceliuice/Fluent-gtk-theme.git
-cd $CWD/deps/Fluent-gtk-theme
+
+if [ -d $CWD/deps/Fluent-gtk-theme ] ; then
+    echo "[i] Fluent Theme Already Installed"
+    cd $CWD/deps/Fluent-gtk-theme
+    git fetch
+    git pull
+else
+    git clone https://github.com/vinceliuice/Fluent-gtk-theme.git
+    cd $CWD/deps/Fluent-gtk-theme
+fi
 
 echo ""
 echo ""

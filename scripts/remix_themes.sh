@@ -267,12 +267,12 @@ sed -i "s|~/|$HOME/|g" $CINN_FILE
 
 
 # PROTECT CINAMON MENU HOVER FROM TOO LIGHT OF A HOVER SELECT
-HOVER_SHADE=$($HOME/.local/share/dermodex/remix_color.py -c "#EAFFC9" --mode="balance")
-if [ "$HOVER_SHADE" == "light" ]; then
-    sed -i "s|dd-menu-selected-color: #ffffff;|color: ${DARKEST};|g" $CINN_FILE
-else
-    sed -i "s|dd-menu-selected-color: #ffffff;|color: #ffffff;|g" $CINN_FILE
-fi
+#HOVER_SHADE=$($HOME/.local/share/dermodex/remix_color.py -c "#EAFFC9" --mode="balance")
+#if [ "$HOVER_SHADE" == "light" ]; then
+    #sed -i "s|dd-menu-selected-color: #ffffff;|color: ${DARKEST};|g" $CINN_FILE
+#else
+sed -i "s|dd-menu-selected-color: #ffffff;|color: #ffffff;|g" $CINN_FILE
+#fi
 
 
 # COMBINE THE MODS
