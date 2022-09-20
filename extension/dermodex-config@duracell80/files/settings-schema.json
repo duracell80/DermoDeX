@@ -36,20 +36,19 @@
         "description" : "Sound Theme",
         "options" : {
             "Linux A11y" : "linux-a11y",
-            "Linux Mint": "mint20",
-            "Linux Ubuntu" : "ubuntu-original",
             "Team Pixel" : "teampixel",
             "Xeroxed XP" : "xxp",
             "Xeroxed 10" : "x10",
+            "Xeroxed 10 - Crystal" : "x10",
             "Xeroxed 11" : "x11",
-            "Harmony (Longhorn)" : "harmony",
-            "Enchanted" : "enchanted",
+            "Harmony" : "harmony",
             "Borealis" : "borealis",
-            "Fresh Dream" : "fresh-dream",
+            "Dream" : "dream",
             "MiUI" : "miui",
             "Deepin" : "deepin",
             "Zorin" : "zorin",
-            "Nightly News" : "nightlynews"
+            "iOS - Remix" : "ios-remix",
+            "Samsung - Retro" : "samsung-retro"
         },
         "tooltip" : "Choose a sound theme based on a few selections installed by DermoDeX to /usr/share/sounds"
     },

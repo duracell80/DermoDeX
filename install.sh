@@ -7,10 +7,38 @@ if awk "BEGIN {exit !($CINN_VERSION < 5.2)}"; then
     exit
 fi
 
-gsettings set org.cinnamon.desktop.interface icon-theme "Mint-Y"
-gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y"
-gsettings set org.cinnamon.desktop.wm.preferences theme "cinnamon"
-gsettings set org.cinnamon.theme name "cinnamon"
+echo "[i] Before running the install note the changes documented such as needing to backup your /usr/share/sounds directory."
+read -p "[Q] Do you wish to continue (y/n)? " answer
+case ${answer:0:1} in
+    y|Y )
+        echo ""
+        echo "[i] - Installing Deps from APT and PIP"
+        sudo apt install -y python3-pip libsass1 sassc rofi scrot imagemagick xz-utils xdotool ffmpeg inkscape
+
+
+        pip3 install easydev
+        pip3 install colormap
+        pip3 install pandas
+        pip3 install numpy
+        pip3 install colorgram.py
+        pip3 install extcolors
+        pip3 install matplotlib
+        pip3 install configparser
+        pip3 install xdisplayinfo
+    
+        dconf dump /org/cinnamon/ > $HOME/cinnamon_desktop_preinstall.backup
+    
+        gsettings set org.cinnamon.desktop.interface icon-theme "Mint-Y"
+        gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y"
+        gsettings set org.cinnamon.desktop.wm.preferences theme "cinnamon"
+        gsettings set org.cinnamon.theme name "cinnamon"
+    ;;
+    * )
+        exit
+    ;;
+esac
+
+
 
 rm -rf $HOME/.local/share/dermodex
 rm -rf $HOME/.cache/dermodex
@@ -18,20 +46,6 @@ rm -rf $HOME/.themes/DermoDeX
 rm -rf $HOME/.local/share/cinnamon/extensions/dermodex-config@duracell80
 rm -f $HOME/.cinnamon/configs/dermodex-config@duracell80
 
-
-echo "[i] - Installing Deps from APT and PIP"
-sudo apt install -y python3-pip libsass1 sassc rofi scrot imagemagick xz-utils xdotool ffmpeg inkscape
-
-
-pip3 install easydev
-pip3 install colormap
-pip3 install pandas
-pip3 install numpy
-pip3 install colorgram.py
-pip3 install extcolors
-pip3 install matplotlib
-pip3 install configparser
-pip3 install xdisplayinfo
 
 echo "[i] - Backing Up Current Cinnamon Configuration"
 dconf dump /org/cinnamon/ > $HOME/cinnamon_desktop.backup
@@ -144,6 +158,22 @@ cp -f $CWD/deps/Fluent-gtk-theme/src/gtk/assets.svg $HOME/.local/share/dermodex/
 
 chmod u+x $HOME/.local/share/dermodex/theme-ext/gtk/remix_assets.sh
 
+if [ -d $CWD/sounds ] ; then
+    echo "[i] Sound Themes Already Installed ... Fetching Updates"
+    cd $CWD/deps/Cinnamon-PowerToys
+    git fetch
+    git pull
+    sleep 1
+    cp -rf $CWD/deps/Cinnamon-PowerToys/sounds $CWD
+    sleep 1
+else
+    echo "[i] Downloading Sound Themes"
+    cd $CWD/deps
+    rm $CWD/sounds
+    git clone --quiet https://github.com/duracell80/Cinnamon-PowerToys.git
+    cp -rf $CWD/deps/Cinnamon-PowerToys/sounds $CWD
+    sleep 1
+fi
 
 
 if [ -d $CWD/deps/Color-Icons ] ; then
@@ -268,62 +298,148 @@ echo ""
 echo "Login screen can be 'blured' using the login_blur.png file in ~/.local/share/dermodex. To do this search for Login Window in the Control Panel."
 echo ""
 
-
 # SOUND - ZORIN
+if [ -d /usr/share/sounds/zorin ] ; then
+    sudo rm -rf /usr/share/sounds/zorin
+fi
+
 sudo cp -fr $CWD/sounds/zorin/ /usr/share/sounds/
-sudo chmod -R a+rx /usr/share/sounds/zorin/
+sudo chmod -R a+rx /usr/share/sounds/zorin
 
 # SOUND - X11
+if [ -d /usr/share/sounds/x11 ] ; then
+    sudo rm -rf /usr/share/sounds/x11
+fi
+
 sudo cp -fr $CWD/sounds/x11/ /usr/share/sounds/
-sudo chmod -R a+rx /usr/share/sounds/x11/
+sudo chmod -R a+rx /usr/share/sounds/x11
 
 # SOUND - X10
+if [ -d /usr/share/sounds/x10 ] ; then
+    sudo rm -rf /usr/share/sounds/x10
+fi
+
 sudo cp -fr $CWD/sounds/x10/ /usr/share/sounds/
-sudo chmod -R a+rx /usr/share/sounds/x10/
+sudo chmod -R a+rx /usr/share/sounds/x10
+
+# SOUND - X10 Crystal
+if [ -d /usr/share/sounds/x10-crystal ] ; then
+    sudo rm -rf /usr/share/sounds/x10-crystal
+fi
+
+sudo cp -fr $CWD/sounds/x10-crystal/ /usr/share/sounds/
+sudo chmod -R a+rx /usr/share/sounds/x10-crystal
 
 # SOUND - XXP
+if [ -d /usr/share/sounds/xxp ] ; then
+    sudo rm -rf /usr/share/sounds/xxp
+fi
+
 sudo cp -fr $CWD/sounds/xxp/ /usr/share/sounds/
-sudo chmod -R a+rx /usr/share/sounds/xxp/
+sudo chmod -R a+rx /usr/share/sounds/xxp
 
 # SOUND - MIUI
+if [ -d /usr/share/sounds/miui ] ; then
+    sudo rm -rf /usr/share/sounds/miui
+fi
+
 sudo cp -fr $CWD/sounds/miui/ /usr/share/sounds/
-sudo chmod -R a+rx /usr/share/sounds/miui/
+sudo chmod -R a+rx /usr/share/sounds/miui
 
 # SOUND - DEEPIN
+if [ -d /usr/share/sounds/deepin ] ; then
+    sudo rm -rf /usr/share/sounds/deepin
+fi
+
 sudo cp -fr $CWD/sounds/deepin/ /usr/share/sounds/
-sudo chmod -R a+rx /usr/share/sounds/deepin/
+sudo chmod -R a+rx /usr/share/sounds/deepin
+
+# SOUND - IOS Remix
+if [ -d /usr/share/sounds/ios-remix ] ; then
+    sudo rm -rf /usr/share/sounds/ios-remix
+fi
+
+sudo cp -fr $CWD/sounds/ios-remix/ /usr/share/sounds/
+sudo chmod -R a+rx /usr/share/sounds/ios-remix
+
 
 # SOUND - Enchanted
-sudo cp -fr $CWD/sounds/enchanted/ /usr/share/sounds/
-sudo chmod -R a+rx /usr/share/sounds/enchanted/
+if [ -d /usr/share/sounds/enchanted ] ; then
+    sudo rm -rf /usr/share/sounds/enchanted
+fi
+#sudo cp -fr $CWD/sounds/enchanted/ /usr/share/sounds/
+#sudo chmod -R a+rx /usr/share/sounds/enchanted/
 
 # SOUND - Borealis
+if [ -d /usr/share/sounds/borealis ] ; then
+    sudo rm -rf /usr/share/sounds/borealis
+fi
+
 sudo cp -fr $CWD/sounds/borealis/ /usr/share/sounds/
-sudo chmod -R a+rx /usr/share/sounds/borealis/
+sudo chmod -R a+rx /usr/share/sounds/borealis
 
 # SOUND - HARMONY
+if [ -d /usr/share/sounds/harmony ] ; then
+    sudo rm -rf /usr/share/sounds/harmony
+fi
+
 sudo cp -fr $CWD/sounds/harmony/ /usr/share/sounds/
-sudo chmod -R a+rx /usr/share/sounds/harmony/
+sudo chmod -R a+rx /usr/share/sounds/harmony
 
 # SOUND - Fresh Dream
+if [ -d /usr/share/sounds/dream ] ; then
+    sudo rm -rf /usr/share/sounds/dream
+fi
+
 sudo cp -fr $CWD/sounds/dream/ /usr/share/sounds/
-sudo chmod -R a+rx /usr/share/sounds/dream/
+sudo chmod -R a+rx /usr/share/sounds/dream
 
 # SOUND - LINUX-A11Y
+if [ -d /usr/share/sounds/linux-a11y ] ; then
+    sudo rm -rf /usr/share/sounds/linux-a11y
+fi
+
 sudo cp -fr $CWD/sounds/linux-a11y/ /usr/share/sounds/
-sudo chmod -R a+rx /usr/share/sounds/linux-a11y/
+sudo chmod -R a+rx /usr/share/sounds/linux-a11y
+
+# SOUND - SAMSUNG-RETRO
+if [ -d /usr/share/sounds/samsung-retro ] ; then
+    sudo rm -rf /usr/share/sounds/samsung-retro
+fi
+
+sudo cp -fr $CWD/sounds/samsung-retro/ /usr/share/sounds/
+sudo chmod -R a+rx /usr/share/sounds/samsung-retro
 
 # SOUND - LINUX-UBUNTU
-sudo cp -fr $CWD/sounds/linux-ubuntu/ /usr/share/sounds/
-sudo chmod -R a+rx /usr/share/sounds/linux-ubuntu/
+if [ -d /usr/share/sounds/linux-ubuntu ] ; then
+    sudo rm -rf /usr/share/sounds/linux-ubuntu
+fi
+if [ -d /usr/share/sounds/macos ] ; then
+    sudo rm -rf /usr/share/sounds/macos
+fi
+#sudo cp -fr $CWD/sounds/linux-ubuntu/ /usr/share/sounds/
+#sudo chmod -R a+rx /usr/share/sounds/linux-ubuntu/
 
 # SOUND - NIGHTLY NEWS
-sudo cp -fr $CWD/sounds/nightlynews/ /usr/share/sounds/
-sudo chmod -R a+rx /usr/share/sounds/nightlynews/
+if [ -d /usr/share/sounds/nightlynews ] ; then
+    sudo rm -rf /usr/share/sounds/nightlynews
+fi
+#sudo cp -fr $CWD/sounds/nightlynews/ /usr/share/sounds/
+#sudo chmod -R a+rx /usr/share/sounds/nightlynews/
 
 # SOUND - Team Pixel
+if [ -d /usr/share/sounds/teampixel ] ; then
+    sudo rm -rf /usr/share/sounds/teampixel
+fi
+
 sudo cp -fr $CWD/sounds/teampixel/ /usr/share/sounds/
 sudo chmod -R a+rx /usr/share/sounds/teampixel/
+
+
+
+
+
+
 
 sudo cp $CWD/fonts/* /usr/share/fonts/ && fc-cache -f
 
@@ -340,21 +456,7 @@ else
     
     sudo mkdir -p /usr/share/backgrounds/dermodex
     sudo chmod a+rw /usr/share/backgrounds/dermodex
-    
-    # SOUND - FRESH DREAM
-    gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/dream/stereo/success.ogg'
-    gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/dream/stereo/button-toggle-on.ogg'
-    gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/dream/stereo/button-toggle-off.ogg'
-    gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/dream/stereo/dialog-error-2.ogg'
-    gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/dream/stereo/dialog-warning.ogg'
-    gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/dream/stereo/service-logout.ogg'
-    gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/dream/stereo/desktop-logout.ogg'
-    gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/dream/stereo/service-login.ogg'
-    gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/dream/stereo/window-slide.ogg'
-    gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/dream/stereo/dialog-question.ogg'
-    gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/dream/stereo/service-login.ogg'
-    gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/dream/stereo/desktop-login.ogg'
-    gsettings set org.cinnamon.desktop.sound volume-sound-file '/usr/share/sounds/dream/stereo/button-pressed.ogg'    
+       
 fi
 
 # COPY OVER THE EXTENSION
@@ -386,5 +488,20 @@ gsettings set org.cinnamon.theme name "DermoDeX"
 gsettings set org.cinnamon.desktop.notifications bottom-notifications "true"
 gsettings set org.cinnamon.desktop.notifications display-notifications "true"
 
+
+# SOUND - FRESH DREAM
+gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/dream/stereo/window-close.ogg'
+gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/dream/stereo/device-added.ogg'
+gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/dream/stereo/device-removed.ogg'
+gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/dream/stereo/window-close.ogg'
+gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/dream/stereo/window-close.ogg'
+gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/dream/stereo/window-close.ogg'
+gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/dream/stereo/desktop-logout.ogg'
+gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/dream/stereo/window-close.ogg'
+gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/dream/stereo/window-slide.ogg'
+gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/dream/stereo/dialog-question.ogg'
+gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/dream/stereo/window-close.ogg'
+gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/dream/stereo/desktop-login.ogg'
+gsettings set org.cinnamon.desktop.sound volume-sound-file '/usr/share/sounds/dream/stereo/audio-volume-change.ogg' 
 
 dd_refresh

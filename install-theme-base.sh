@@ -31,7 +31,7 @@ fi
 
 echo ""
 echo ""
-read -p "Do you wish to use the rounded version of fluent (y/n)? " answer
+read -p "[Q] Do you wish to use the rounded version of fluent (y/n)? " answer
 case ${answer:0:1} in
     y|Y )
         # INSTALL FLUENT IN CURRENT WORKING DIRECTORY NOT USR THEMES
