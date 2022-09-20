@@ -32,7 +32,7 @@
     },
     "soundtheme" : {
         "type": "combobox",
-        "default" : "fresh-dream",
+        "default" : "dream",
         "description" : "Sound Theme",
         "options" : {
             "Linux A11y" : "linux-a11y",
