@@ -169,7 +169,7 @@ if [ -d $CWD/sounds ] ; then
 else
     echo "[i] Downloading Sound Themes"
     cd $CWD/deps
-    rm $CWD/sounds
+    #rm $CWD/sounds
     git clone --quiet https://github.com/duracell80/Cinnamon-PowerToys.git
     cp -rf $CWD/deps/Cinnamon-PowerToys/sounds $CWD
     sleep 1
@@ -490,18 +490,20 @@ gsettings set org.cinnamon.desktop.notifications display-notifications "true"
 
 
 # SOUND - FRESH DREAM
-gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/dream/stereo/window-close.ogg'
-gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/dream/stereo/device-added.ogg'
-gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/dream/stereo/device-removed.ogg'
-gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/dream/stereo/window-close.ogg'
-gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/dream/stereo/window-close.ogg'
-gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/dream/stereo/window-close.ogg'
-gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/dream/stereo/desktop-logout.ogg'
-gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/dream/stereo/window-close.ogg'
-gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/dream/stereo/window-slide.ogg'
-gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/dream/stereo/dialog-question.ogg'
-gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/dream/stereo/window-close.ogg'
-gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/dream/stereo/desktop-login.ogg'
-gsettings set org.cinnamon.desktop.sound volume-sound-file '/usr/share/sounds/dream/stereo/audio-volume-change.ogg'
+set_sound_theme dream
+
+#gsettings set org.cinnamon.sounds tile-file '/usr/share/sounds/dream/stereo/window-close.ogg'
+#gsettings set org.cinnamon.sounds plug-file '/usr/share/sounds/dream/stereo/device-added.ogg'
+#gsettings set org.cinnamon.sounds unplug-file '/usr/share/sounds/dream/stereo/device-removed.ogg'
+#gsettings set org.cinnamon.sounds close-file '/usr/share/sounds/dream/stereo/window-close.ogg'
+#gsettings set org.cinnamon.sounds map-file '/usr/share/sounds/dream/stereo/window-close.ogg'
+#gsettings set org.cinnamon.sounds minimize-file '/usr/share/sounds/dream/stereo/window-close.ogg'
+#gsettings set org.cinnamon.sounds logout-file '/usr/share/sounds/dream/stereo/desktop-logout.ogg'
+#gsettings set org.cinnamon.sounds maximize-file '/usr/share/sounds/dream/stereo/window-close.ogg'
+#gsettings set org.cinnamon.sounds switch-file '/usr/share/sounds/dream/stereo/window-slide.ogg'
+#gsettings set org.cinnamon.sounds notification-file '/usr/share/sounds/dream/stereo/dialog-question.ogg'
+#gsettings set org.cinnamon.sounds unmaximize-file '/usr/share/sounds/dream/stereo/window-close.ogg'
+#gsettings set org.cinnamon.sounds login-file '/usr/share/sounds/dream/stereo/desktop-login.ogg'
+#gsettings set org.cinnamon.desktop.sound volume-sound-file '/usr/share/sounds/dream/stereo/audio-volume-change.ogg'
 
 dd_refresh
