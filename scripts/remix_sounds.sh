@@ -55,7 +55,7 @@ set_sound () {
 if [ "$type" == "notification" ]; then
 
     if [ "$name" == "linux-a11y" ]; then
-        APP_SOUND="$DIR_SOUND/linux-a11y/stereo/window-attention.oga"
+        APP_SOUND="$DIR_SOUND/linux-a11y/stereo/window-attention.ogg"
     elif [ "$name" == "teampixel" ]; then
         APP_SOUND="$DIR_SOUND/teampixel/notification_simple-01.ogg"
     elif [ "$name" == "pixel-keys" ]; then
