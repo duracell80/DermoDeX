@@ -9,6 +9,7 @@ APP_SOUND="notification.ogg"
 
 CONF_FILE="$HOME/.local/share/dermodex/config.ini"
 
+
 # READ THE UPDATED CONFIG
 shopt -s extglob
 
@@ -25,7 +26,29 @@ do
 done < $CONF_FILE.unix
 shopt -u extglob # Switching it back off after use
 
-echo $name
+
+set_sound () {
+    SOUND_INDEX=$DIR_SOUND/${2}/index.theme
+    
+    # READ THE CONFIG
+    SOUND_FILE=$(awk -F '=' '/^\s*'${3}'\s*=/ {
+        sub(/^ +/, "", $2);
+        sub(/ +$/, "", $2);
+        print $2;
+        exit;
+    }' $SOUND_INDEX)
+    
+    SOUND_SET=$(echo $SOUND_FILE | tr -d \'\" )
+    if [ "${1}" == "cinnamon" ]; then
+        if [[ "${3}" == *"volume-sound"* ]]; then
+            gsettings set org.cinnamon.desktop.sound $3 $DIR_SOUND/$SOUND_SET
+        else
+            gsettings set org.cinnamon.sounds $3 $DIR_SOUND/$SOUND_SET
+        fi
+    fi
+}
+
+
 
 # SET SOUNDS
 
@@ -209,59 +232,25 @@ if [ "$type" == "notification" ]; then
         APP_SOUND="$DIR_SOUND/samsung-retro/stereo/message-new-email.ogg"
     elif [ "$name" == "ios-remix" ]; then
         APP_SOUND="$DIR_SOUND/ios-remix/stereo/message-new-instant.ogg"
-    
-    
-    
-    elif [ "$name" == "theme" ]; then
-
-        echo "[i] SOUND AS THEMED"
-        # SET SOUNDS
-        if [ "$soundtheme" == "zorin" ]; then
-            APP_SOUND="$DIR_SOUND/zorin/stereo/message-new-instant.ogg"
-
-        elif [ "$soundtheme" == "x11" ]; then
-            APP_SOUND="$DIR_SOUND/x11/stereo/message-new-instant.ogg"
-
-        elif [ "$soundtheme" == "x10" ]; then
-            APP_SOUND="$DIR_SOUND/x10/notify-system-generic.ogg"
-            
-        elif [ "$soundtheme" == "x10-crystal" ]; then
-            APP_SOUND="$DIR_SOUND/x10-crystal/notify-system-generic.ogg"
-            
-        elif [ "$soundtheme" == "xxp" ]; then
-            APP_SOUND="$DIR_SOUND/xxp/notify.ogg"
-
-        elif [ "$soundtheme" == "miui" ]; then
-            APP_SOUND="$DIR_SOUND/miui/stereo/message-sent-instant.ogg"
-
-        elif [ "$soundtheme" == "deepin" ]; then
-            APP_SOUND="$DIR_SOUND/deepin/suspend-resume.ogg"
-
-        elif [ "$soundtheme" == "borealis" ]; then
-            APP_SOUND="$DIR_SOUND/borealis/notification.ogg"
-
-        elif [ "$soundtheme" == "harmony" ]; then
-            APP_SOUND="$DIR_SOUND/harmony/notification-brighter.ogg"
-            
-        elif [ "$soundtheme" == "hydrogen" ]; then
-            APP_SOUND="$DIR_SOUND/hydrogen/notification-brighter.ogg"
-            
-        elif [ "$soundtheme" == "dream" ]; then
-            APP_SOUND="$DIR_SOUND/dream/stereo/dialog-question.ogg"
-
-        elif [ "$soundtheme" == "teampixel" ]; then
-            APP_SOUND="$DIR_SOUND/teampixel/notification_simple-01.ogg"
-            
-        elif [ "$soundtheme" == "linux-a11y" ]; then
-            APP_SOUND="$DIR_SOUND/linux-a11y/stereo/window-attention.ogg"
-
-        else
-            APP_SOUND="$DIR_SOUND/dream/stereo/dialog-question.ogg"
-        fi
-        
     fi
     
-    # APPLY THE SOUND
+    # APPLY THE NOTIFICATION AS CUSTOMIZED
     gsettings set org.cinnamon.sounds notification-file "$APP_SOUND"
+    
+    
+    # APPLY THE NOTIFICATION AS THEMED
+    if [ "$name" == "theme" ]; then
+
+        # SET SOUNDS
+        SOUND_THEME=$(gsettings get org.cinnamon.desktop.sound theme-name | tr -d \'\")
+        
+        if [ -d $DIR_SOUND/$SOUND_THEME ] ; then
+            #echo "[i] DermoDeX - Setting notification file for Cinnamon from ${SOUND_THEME}"
+            set_sound cinnamon $SOUND_THEME "notification-file"
+
+        fi
+    fi
+    
+    
 
 fi
