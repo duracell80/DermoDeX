@@ -181,32 +181,34 @@ if [ "$type" == "notification" ]; then
         APP_SOUND="$DIR_SOUND/teampixel/notifications/Pixel Sounds/Strum.ogg"
     elif [ "$name" == "pixel-trill" ]; then
         APP_SOUND="$DIR_SOUND/teampixel/notifications/Pixel Sounds/Trill.ogg"
+    
+    
     elif [ "$name" == "x11" ]; then
         APP_SOUND="$DIR_SOUND/x11/stereo/message-new-instant.ogg"
     elif [ "$name" == "x10" ]; then
-        APP_SOUND="$DIR_SOUND/x10/notify-system-generic.ogg"
+        APP_SOUND="$DIR_SOUND/x10/stereo/window-attention-inactive.ogg"
+    elif [ "$name" == "x10-crystal" ]; then
+        APP_SOUND="$DIR_SOUND/x10-crystal/stereo/message-new-instant.ogg"
     elif [ "$name" == "xxp" ]; then
-        APP_SOUND="$DIR_SOUND/xxp/notify.ogg"   
-    elif [ "$name" == "mint20" ]; then
-        APP_SOUND="$DIR_SOUND/LinuxMint/stereo/system-ready.ogg"
+        APP_SOUND="$DIR_SOUND/xxp/stereo/message-new-instant.ogg"
     elif [ "$name" == "miui" ]; then
         APP_SOUND="$DIR_SOUND/miui/stereo/message-sent-instant.ogg"
     elif [ "$name" == "deepin" ]; then
-        APP_SOUND="$DIR_SOUND/deepin/suspend-resume.ogg"
-    elif [ "$name" == "enchanted" ]; then
-        APP_SOUND="$DIR_SOUND/enchanted/message-sent-instant.ogg"
+        APP_SOUND="$DIR_SOUND/deepin/stereo/message.ogg"
     elif [ "$name" == "borealis" ]; then
-        APP_SOUND="$DIR_SOUND/borealis/notification.ogg"
+        APP_SOUND="$DIR_SOUND/borealis/stereo/message-new-instant-alt.ogg"
     elif [ "$name" == "harmony" ]; then
-        APP_SOUND="$DIR_SOUND/harmony/notification-brighter.ogg"
-    elif [ "$name" == "fresh-dream" ]; then
-        APP_SOUND="$DIR_SOUND/dream/stereo/dialog-question.ogg"
-    elif [ "$name" == "ubuntu-original" ]; then
-        APP_SOUND="$DIR_SOUND/linux-ubuntu/new-mail.ogg"
-    elif [ "$name" == "nightlynews" ]; then
-        APP_SOUND="$DIR_SOUND/nightlynews/chimes.ogg"
+        APP_SOUND="$DIR_SOUND/harmony/stereo/message-new-instant.ogg"
+    elif [ "$name" == "hydrogen" ]; then
+        APP_SOUND="$DIR_SOUND/hydrogen/stereo/message-new-email.ogg"
+    elif [ "$name" == "dream" ]; then
+        APP_SOUND="$DIR_SOUND/dream/stereo/battery-full.ogg"
     elif [ "$name" == "zorin" ]; then
-        APP_SOUND="$DIR_SOUND/zorin/stereo/message-new-instant.ogg"
+        APP_SOUND="$DIR_SOUND/zorin/stereo/success.ogg"
+    elif [ "$name" == "samsung-retro" ]; then
+        APP_SOUND="$DIR_SOUND/samsung-retro/stereo/message-new-email.ogg"
+    elif [ "$name" == "ios-remix" ]; then
+        APP_SOUND="$DIR_SOUND/ios-remix/stereo/message-new-instant.ogg"
     
     
     
@@ -223,6 +225,9 @@ if [ "$type" == "notification" ]; then
         elif [ "$soundtheme" == "x10" ]; then
             APP_SOUND="$DIR_SOUND/x10/notify-system-generic.ogg"
             
+        elif [ "$soundtheme" == "x10-crystal" ]; then
+            APP_SOUND="$DIR_SOUND/x10-crystal/notify-system-generic.ogg"
+            
         elif [ "$soundtheme" == "xxp" ]; then
             APP_SOUND="$DIR_SOUND/xxp/notify.ogg"
 
@@ -238,17 +243,17 @@ if [ "$type" == "notification" ]; then
         elif [ "$soundtheme" == "harmony" ]; then
             APP_SOUND="$DIR_SOUND/harmony/notification-brighter.ogg"
             
+        elif [ "$soundtheme" == "hydrogen" ]; then
+            APP_SOUND="$DIR_SOUND/hydrogen/notification-brighter.ogg"
+            
         elif [ "$soundtheme" == "dream" ]; then
             APP_SOUND="$DIR_SOUND/dream/stereo/dialog-question.ogg"
-
-        elif [ "$soundtheme" == "ubuntu-original" ]; then
-            APP_SOUND="$DIR_SOUND/linux-ubuntu/new-mail.ogg"
 
         elif [ "$soundtheme" == "teampixel" ]; then
             APP_SOUND="$DIR_SOUND/teampixel/notification_simple-01.ogg"
             
         elif [ "$soundtheme" == "linux-a11y" ]; then
-            APP_SOUND="$DIR_SOUND/teampixel/notification_simple-01.ogg"
+            APP_SOUND="$DIR_SOUND/linux-a11y/stereo/window-attention.ogg"
 
         else
             APP_SOUND="$DIR_SOUND/dream/stereo/dialog-question.ogg"
