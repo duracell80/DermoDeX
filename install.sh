@@ -223,6 +223,7 @@ cp -f $CWD/deps/Color-Icons/Color-Icons/Black-Icons/scalable/mimetypes/* $CWD/de
 mkdir -p $HOME/.local/share/dermodex/icons/breeze-dark_black/places/outline
 
 cp -f $CWD/deps/Color-Icons/Color-Icons/Black-Icons/scalable/places/*.svg $HOME/.local/share/dermodex/icons/breeze-dark_black/places/outline
+
 cp -f $CWD/deps/Color-Icons/Color-Icons/White-Icons/scalable/apps/*.svg $LWD/controlpanel/apps
 cp -f $CWD/deps/Color-Icons/Color-Icons/White-Icons/scalable/categories/*.svg $LWD/controlpanel/cats
 cp -f $CWD/deps/Color-Icons/Color-Icons/Black-Icons/scalable/places/* $CWD/deps/Color-Icons/Color-Icons/White-Icons/scalable/places
@@ -257,6 +258,13 @@ fi
 
 cp -rf $CWD/src/icons/breeze-dark_black/places $HOME/.local/share/icons/White-Icons/scalable
 #cp -rf $CWD/deps/Royal-Z/Royal-Z $HOME/.local/share/icons/
+
+cp -f "$CWD/src/icons/trash/user-trash.svg" $LWD
+cp -f "$CWD/src/icons/trash/user-trash-full.svg" $LWD
+
+mkdir -p $HOME/.cache/dermodex/icons/trash
+cp -f "$CWD/src/icons/trash/user-trash.svg" $HOME/.cache/dermodex/icons/trash/user-trash.svg
+cp -f "$CWD/src/icons/trash/user-trash-full.svg" $HOME/.cache/dermodex/icons/trash/user-trash-full.svg
 
 gsettings set org.cinnamon.desktop.interface text-scaling-factor "1"
 

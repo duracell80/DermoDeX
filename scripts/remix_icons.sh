@@ -145,6 +145,7 @@ if [ "$TYPE" == "folders" ]; then
     
     cp $CWD/places/desktop/*.svg $HOME/.local/share/icons/DermoDeX/scalable/places/desktop
     
+    
     ls $CWD/places/*.svg > $FILE
     
     while read -r LINE; do
@@ -304,6 +305,7 @@ else
     cp -f $CCA/*.svg $TCD/cinnamon/assets
 fi
 
-
+cp -f "$HOME/.cache/dermodex/icons/trash/user-trash.svg" $HOME/.local/share/icons/DermoDeX/scalable/places/user-trash.svg
+cp -f "$HOME/.cache/dermodex/icons/trash/user-trash-full.svg" $HOME/.local/share/icons/DermoDeX/scalable/places/user-trash-full.svg
 
 #xdotool key ctrl+alt+"Escape"
