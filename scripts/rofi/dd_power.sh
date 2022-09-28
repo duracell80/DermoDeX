@@ -71,12 +71,12 @@ selected="$(echo -e "$options" |
 case $selected in
     "${poweroff}")
         play -v 0.6 "$SOUND_LOGOUT"&
-        sleep 3
+        sleep 6
         systemctl poweroff
         ;;
     "${reboot}")
         play -v 0.6 "$SOUND_SHUTDOWN"&
-        sleep 3
+        sleep 6
         systemctl reboot
         ;;
     "${sleep}")
@@ -86,11 +86,12 @@ case $selected in
         ;;
     "${logout}")
         play -v 0.6 "$SOUND_LOGOUT"&
-        sleep 3
+        sleep 6
         cinnamon-session-quit --logout --no-prompt || ( xfce4-session-logout --logout || mate-session-save --logout )
         ;;
     "${lock}")
         play -v 0.6 "$SOUND_LOCK"&
+        sleep 1
         cinnamon-screensaver-command --lock || ( xflock4 || mate-screensaver-command -l )
         ;;
 esac
