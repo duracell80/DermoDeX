@@ -13,7 +13,7 @@ case ${answer:0:1} in
     y|Y )
         echo ""
         echo "[i] - Installing Deps from APT and PIP"
-        sudo apt install -y python3-pip libsass1 sassc rofi scrot imagemagick xz-utils xdotool ffmpeg inkscape
+        sudo apt install -y python3-pip libsass1 sassc rofi scrot imagemagick xz-utils xdotool ffmpeg inkscape sox
 
 
         pip3 install easydev
@@ -123,6 +123,7 @@ cp -f $CWD/scripts/rofi/dd_radio.sh $HOME/.local/bin/dd_radio
 cp -f $CWD/scripts/rofi/dd_radio.json $HOME/.local/share/dermodex/rofi
 cp -f $CWD/scripts/rofi/themes/*.rasi $HOME/.local/share/dermodex/rofi/themes
 
+sudo cp -f $CWD/fonts/* /usr/share/fonts/ && fc-cache -f
 
 
 cp -r $CWD/nemo/actions/*.nemo_action $HOME/.local/share/nemo/actions
