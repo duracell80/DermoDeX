@@ -187,7 +187,7 @@ for filename in $CWD/deps/Cinnamon-PowerToys/autostart/*.desktop; do
     sed -i "s|Exec=~/|Exec=$HOME/|g" "$file.tmp"
     #mv "$file.tmp" "$HOME/.config/autostart/$file"
 done
-mv -f "$CWD/deps/Cinnamon-PowerToys/Power Toys - Trash Monitor.desktop.tmp" $HOME/.config/autostart/
+mv -f "$CWD/deps/Cinnamon-PowerToys/Power Toys - Trash Monitor.desktop.tmp" "$HOME/.config/autostart/Power Toys - Trash Monitor.desktop"
 rm -f $CWD/deps/Cinnamon-PowerToys/*.tmp
 
 
