@@ -18,4 +18,4 @@ shopt -u extglob # Switching it back off after use
 
 # SET SOUNDS
 echo "[i] Sound Theme: ${soundtheme}"
-set_sound_theme $soundtheme
+/usr/share/sounds/scripts/set_sound_theme.sh $soundtheme

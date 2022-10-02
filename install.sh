@@ -177,6 +177,8 @@ fi
 sudo cp -rf $CWD/sounds /usr/share
 sudo chmod a+x /usr/share/sounds/scripts/set_sound_theme.sh
 
+mkdir -p $HOME/.local/share/powertoys
+
 cp -f $CWD/deps/Cinnamon-PowerToys/scripts/watch_trash.sh $HOME/.local/share/powertoys
 
 # SET ANY AUTOSTART SCRIPTS FOR DESKTOP ENVIRONMENT
