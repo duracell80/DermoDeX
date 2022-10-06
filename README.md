@@ -3,9 +3,13 @@ A Cinnamon Theme Engine built for Linux Mint
 
 Newly updated for Mint 21
 
-DermoDeX is a dynamic cinnamon theme that responds to the currently selected background wallpaper. It uses a function based python script to determine not quite the main color in a wallpaper but a color that may be considered an accent. For example in an image of the milkyway with brown mountains in the forground, DermoDeX will attempt to extract a color that would be complimentary to the image.
+This project could serve as inspiration for what might be possible to modernize cinnamon and came from noodling around with cinnamon as a front end dev, seeing what I could do. I figured I'd like to have this automation across devices and installs and to also level up with some wallpaper accent extraction.
+
+DermoDeX is a dynamic cinnamon theme that responds to the currently selected background wallpaper (it can be set to auto detect changes for 15 minutes or you can right click the desktop to refresh). It uses a function based python script to determine not quite the main color in a wallpaper but a color that may be considered an accent. For example in an image of the milkyway with brown mountains in the forground, DermoDeX will attempt to extract a color that would be complimentary to the image.
 
 This accent color is then passed to the cinnamon.css using sed on a cinnamon_base.css file and the gtk stylesheets too. You can override the colors also!
+
+DermoDeX will also reshade icons and the GTK colors too.
 
 ## One Theme, Infinite Shades
 ![Screenshot](https://raw.githubusercontent.com/duracell80/DermoDeX/main/documentation/screens/brown.png)
