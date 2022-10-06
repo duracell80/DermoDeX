@@ -68,7 +68,8 @@ Press Alt+F2 to bring up the run box
 - dd_hold (Once you like the result, holding it means that changing the wallpaper again won't change the theme colors)
 - dd_release (Release the color hold)
 - dd_swatch (See what DermoDeX is seeing!)
-- dd_reload (Attempts to refresh cinnamon and reheck the colors)
+- dd_reload (Attempts to rebuild the enitre theme and icons again from local copies and refresh cinnamon)
+- dd_power (run the rofi powermenu with blurry background)
 
 ## Dependencies
 - python3-pip
