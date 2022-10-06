@@ -5,7 +5,7 @@ Newly updated for Mint 21 and WIP
 
 This project could serve as inspiration for what might be possible to modernize cinnamon and came from noodling around with cinnamon as a front end dev, seeing what I could do. I figured I'd like to have this automation across devices and installs and to also level up with some wallpaper accent extraction.
 
-DermoDeX is a dynamic cinnamon theme that responds to the currently selected background wallpaper (it can be set to auto detect changes for 15 minutes or you can right click the desktop to refresh). It uses a function based python script to determine not quite the main color in a wallpaper but a color that may be considered an accent. For example in an image of the milkyway with brown mountains in the forground, DermoDeX will attempt to extract a color that would be complimentary to the image.
+DermoDeX is a dynamic cinnamon theme that responds to the currently selected background wallpaper (it can be set to auto detect changes for 15 minutes or you can right click the desktop to refresh). It uses a function based python script to determine not quite the main color in a wallpaper but a color that may be considered an accent. For example in an image of the milkyway with brown mountains in the foreground, DermoDeX will attempt to extract a color that would be complimentary to the image.
 
 This accent color is then passed to the cinnamon.css using sed on a cinnamon_base.css file and the gtk stylesheets too. You can override the colors also!
 
@@ -15,7 +15,7 @@ DermoDeX will also reshade icons and the GTK colors too.
 ![Screenshot](https://raw.githubusercontent.com/duracell80/DermoDeX/main/documentation/screens/brown.png)
 ![Screenshot](https://raw.githubusercontent.com/duracell80/DermoDeX/main/documentation/screens/blue.png)
 
-This whole monster is work in progress and isn't gauranteed to work in your install, though I do highly encourage reports since I only have the hardware I have, I may have not accounted for certain situations. And yes messing with cinnamon this much is pretty scary, or freaking cool and you don't have to daily drive it. I do and I like the personalization it can bring.
+This whole monster is work in progress and isn't gauranteed to work in your install, though I do highly encourage reports since I only have the hardware I have, I may have not accounted for certain situations.
 
 ## Main Features:
 - Install previous Mint wallpapers from the offical packages! (why isn't this an option already?)
@@ -54,7 +54,9 @@ Run the install.sh script which runs most things as the current user, a few need
 ## How Does it Work?
 DermoDex uses files in the ~/.local/share/dermodex directory to overwrite the stylesheets and assets in the ~/.themes/DermoDeX directory when a change is detected. The main scripts are more like sed on steroids; using a find and replace to rebuild a theme file. By default DermoDeX scans the right half of a wallpaper since a lot of desktop wallpapers have a focus area in that part of the screen. A pallete and color wheel will appear in the notifcations area and shortly after cinnamon will be refreshed.
 
-If cinnamon doesn't refresh use the Ctrl+Alt+Esc shortcut
+If cinnamon doesn't refresh after about a minute or two; use the Ctrl+Alt+Esc shortcut.
+
+There is also some inkscape stuff going on in the background to recolor the GTK assets which takes about 30 seconds on my hardware.
 
 Directly after login DermoDeX will remain active for about 15 minutes if set to autostart in the Startup Applications (if not you can always right click the desktop and do a refresh after changing settings and/or changing the wallpaper). If it falls asleep you can right click on the desktop and refresh DermoDeX after changing the wallpaper.
 
@@ -81,7 +83,6 @@ Press Alt+F2 to bring up the run box
 - libsass1 
 - sassc 
 - rofi 
-- scrot (possible not needed since I have blurring with python) 
 - imagemagick 
 - xz-utils 
 - xdotool
@@ -106,3 +107,6 @@ If asked, yeah I would love to have DermoDeX as Cinnamon Extension. For now it's
 
 ## Mint 21?
 Done and with Fluent there is at least a choice of two styles of window titlebar style (rounded, with mint style close icon or flat with windows style close icon).
+
+## Excited? We should be yeah, we need these options
+Yes messing with cinnamon this much is pretty scary, or freaking cool. You don't have to daily drive it, I do and I like the personalization it can bring. Try it in a VM before daily driving.
