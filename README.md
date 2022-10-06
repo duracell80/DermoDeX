@@ -1,21 +1,18 @@
 # DermoDeX - Linux Mint Desktop Experience
-A Cinnamon Theme Engine built on Linux Mint 20
+A Cinnamon Theme Engine built for Linux Mint
+
+Newly updated for Mint 21
 
 DermoDeX is a dynamic cinnamon theme that responds to the currently selected background wallpaper. It uses a function based python script to determine not quite the main color in a wallpaper but a color that may be considered an accent. For example in an image of the milkyway with brown mountains in the forground, DermoDeX will attempt to extract a color that would be complimentary to the image.
 
 This accent color is then passed to the cinnamon.css using sed on a cinnamon_base.css file and the gtk stylesheets too. You can override the colors also!
 
-## One Theme, Infinite Colors
+## One Theme, Infinite Shades
 
-![Winterball](https://raw.githubusercontent.com/duracell80/DermoDeX/master/deps/001.png)
-The Una Winterball wallpaper
-
-![Lush](https://raw.githubusercontent.com/duracell80/DermoDeX/master/deps/002.png)
-The Una Lush wallpaper
 
 ## Main Features:
 - Cinnamon Extention to tweak the configuration settings
-- Privacy focused install script changes some cinnamon settings for enhanced privacy
+- Now based on Fluent GTK theme
 - Accent color extraction from wallpaper
 - Color picker overrides
 - Desktop shortcuts
@@ -23,9 +20,11 @@ The Una Lush wallpaper
 - Panel configuration
 - Panel and menu faux blur
 - Login screen blur
-- Complimentary icon install (Color Icons - White)
+- Complimentary icon install (Color and Royal-Z Icons)
 - Folder icon remix, replaces places icons with Breeze
-- Several sound themes
+- Several sound themes (split into seperate repo)
+
+To note, backup your /usr/share/sounds directory and if you use the Colors - White icon theme take a backup of that too. The sound themes I have created use modified index.theme files to enhance cinnamon sound theming. For example trash sounds work as do sound events for battery status and unplugging and replugging the power adapter. This requires adding modded sound themes into /usr/share/sounds for all users.
 
 ## How to Install?
 Run the install.sh script which runs most things as the current user, a few need sudo for example to transfer sounds to /usr/share/sounds and make /usr/share/backgrounds writable for the login image blur.
@@ -37,7 +36,9 @@ Run the install.sh script which runs most things as the current user, a few need
 - After making changes right click the desktop and select "DermoDeX - Refresh"
 
 ## How Does it Work?
-DermoDex uses files in the ~/.local/share/dermodex directory to overwrite the stylesheets and assets in the ~/.themes/DermoDeX directory when a change is detected. The main scripts are more like sed on steroids using a find and replace approach tio rebuildig a theme file. By default DermoDeX scans the right half of a wallpaper since a lot of desktop wallpapers have a focus area in that part of the screen. A pallete and color wheel will appear in the notifcations area and shortly after cinnamon will be refreshed.
+DermoDex uses files in the ~/.local/share/dermodex directory to overwrite the stylesheets and assets in the ~/.themes/DermoDeX directory when a change is detected. The main scripts are more like sed on steroids; using a find and replace to rebuild a theme file. By default DermoDeX scans the right half of a wallpaper since a lot of desktop wallpapers have a focus area in that part of the screen. A pallete and color wheel will appear in the notifcations area and shortly after cinnamon will be refreshed.
+
+If cinnamon doesn't refresh use the Ctrl+Alt+Esc shortcut
 
 Directly after login DermoDeX will remain active for about 15 minutes. If it falls asleep you can right click on the desktop and refresh DermoDeX after changing the wallpaper.
 
@@ -59,6 +60,15 @@ Press Alt+F2 to bring up the run box
 - colormap
 - extcolors
 - colorgram
+- libsass1 
+- sassc 
+- rofi 
+- scrot (possible not needed since I have blurring with python) 
+- imagemagick 
+- xz-utils 
+- xdotool
+- inkscape
+- sox
 
 ## Credits for Image Processing
 - https://towardsdatascience.com/image-color-extraction-with-python-in-4-steps-8d9370d9216e
@@ -71,10 +81,10 @@ Press Alt+F2 to bring up the run box
 
 
 ## Caution
-The image processing with python may produce a stylesheet that can crash Cinnamon, when using the brightness and contrast sliders. For example using a very bright background or a background with not a lot of color variation may result in a narrow color selection. The routines do detect #ffffff which can be problematic for things like menu hover backgrounds. There are also routines to detect if the text color needs inverting at certain shades.
+The image processing with python may produce a stylesheet that can crash Cinnamon (though I try to avoid this), when using the brightness and contrast sliders. For example using a very bright background or a background with not a lot of color variation may result in a narrow color selection. The routines do detect #ffffff which can be problematic for things like menu hover backgrounds. There are also routines to detect if the text color needs inverting at certain shades.
 
 ## Commit to Cinnamon Spices?
 If asked, yeah I would love to have DermoDeX as Cinnamon Extension. For now it's a playground. It looks like they favour stability which is understandable. These scripts can make a lot of significant changes to the environment. The project offers a lot of inspiration for advanced themeing in Cinnamon.
 
 ## Mint 21?
-Working on it, I haven't upgraded yet, dropping metacity looks nice.
+Done and with Fluent there is at least a choice of two styles of window titlebar style (rounded, with mint style close icon or flat with windows style close icon).
