@@ -8,8 +8,10 @@ DermoDeX is a dynamic cinnamon theme that responds to the currently selected bac
 This accent color is then passed to the cinnamon.css using sed on a cinnamon_base.css file and the gtk stylesheets too. You can override the colors also!
 
 ## One Theme, Infinite Shades
+![Screenshot](https://raw.githubusercontent.com/duracell80/DermoDeX/main/documentation/screens/brown.png)
+![Screenshot](https://raw.githubusercontent.com/duracell80/DermoDeX/main/documentation/screens/blue.png)
 
-![alt text](https://github.com/duracell80/DermoDeX/blob/main/documentation/screens/brown.jpg?raw=true)
+Recolor your icons based on the wallpaper or color overrides, right click the desktop to get to DermoDeX - Configuration.
 
 ## Main Features:
 - Install previous Mint wallpapers from the offical packages! (why isn't this an option already?)
@@ -28,6 +30,13 @@ This accent color is then passed to the cinnamon.css using sed on a cinnamon_bas
 - Several sound themes (split into seperate repo)
 
 To note, backup your /usr/share/sounds directory and if you use the Colors - White icon theme take a backup of that too. The sound themes I have created use modified index.theme files to enhance cinnamon sound theming. For example trash sounds work as do sound events for battery status and unplugging and replugging the power adapter. This requires adding modded sound themes into /usr/share/sounds for all users.
+
+![Screenshot](https://raw.githubusercontent.com/duracell80/DermoDeX/main/documentation/screens/rofi-powermenu.png)
+Add Super+S as a shortcut to dd_power
+
+![Screenshot](https://raw.githubusercontent.com/duracell80/DermoDeX/main/documentation/screens/rofi-radio.png)
+(Have the Radio++ applet installed) Add Super+R as a shortcut to dd_radio
+
 
 ## How to Install?
 Run the install.sh script which runs most things as the current user, a few need sudo for example to transfer sounds to /usr/share/sounds and make /usr/share/backgrounds writable for the login image blur.
