@@ -1,7 +1,7 @@
 # DermoDeX - Linux Mint Desktop Experience
 A Cinnamon Theme Engine built for Linux Mint
 
-Newly updated for Mint 21
+Newly updated for Mint 21 and WIP
 
 This project could serve as inspiration for what might be possible to modernize cinnamon and came from noodling around with cinnamon as a front end dev, seeing what I could do. I figured I'd like to have this automation across devices and installs and to also level up with some wallpaper accent extraction.
 
@@ -15,7 +15,7 @@ DermoDeX will also reshade icons and the GTK colors too.
 ![Screenshot](https://raw.githubusercontent.com/duracell80/DermoDeX/main/documentation/screens/brown.png)
 ![Screenshot](https://raw.githubusercontent.com/duracell80/DermoDeX/main/documentation/screens/blue.png)
 
-Recolor your icons based on the wallpaper or color overrides, right click the desktop to get to DermoDeX - Configuration.
+This whole monster is work in progress and isn't gauranteed to work in your install, though I do highly encourage reports since I only have the hardware I have, I may have not accounted for certain situations. And yes messing with cinnamon this much is pretty scary, or freaking cool and you don't have to daily drive it. I do and I like the personalization it can bring.
 
 ## Main Features:
 - Install previous Mint wallpapers from the offical packages! (why isn't this an option already?)
