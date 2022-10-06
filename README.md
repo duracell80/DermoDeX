@@ -11,7 +11,8 @@ This accent color is then passed to the cinnamon.css using sed on a cinnamon_bas
 
 
 ## Main Features:
-- Cinnamon Extention to tweak the configuration settings
+- Install previous Mint wallpapers from the offical packages! (why isn't this an option already?)
+- Cinnamon Ext to tweak the configuration settings
 - Now based on Fluent GTK theme
 - Accent color extraction from wallpaper
 - Color picker overrides
