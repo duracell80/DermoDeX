@@ -9,6 +9,7 @@ This accent color is then passed to the cinnamon.css using sed on a cinnamon_bas
 
 ## One Theme, Infinite Shades
 
+![alt text](https://github.com/duracell80/DermoDeX/blob/main/documentation/screens/brown.jpg?raw=true)
 
 ## Main Features:
 - Install previous Mint wallpapers from the offical packages! (why isn't this an option already?)
@@ -18,9 +19,10 @@ This accent color is then passed to the cinnamon.css using sed on a cinnamon_bas
 - Color picker overrides
 - Desktop shortcuts
 - Enhanced productivity with hot corners, expo in center and workspace switcher
-- Panel configuration
+- Panel configuration (transparency sliders)
 - Panel and menu faux blur
 - Login screen blur
+- Rofi based power menu and radio++ integration
 - Complimentary icon install (Color and Royal-Z Icons)
 - Folder icon remix, replaces places icons with Breeze
 - Several sound themes (split into seperate repo)
