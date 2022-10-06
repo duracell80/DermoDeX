@@ -52,7 +52,9 @@ DermoDex uses files in the ~/.local/share/dermodex directory to overwrite the st
 
 If cinnamon doesn't refresh use the Ctrl+Alt+Esc shortcut
 
-Directly after login DermoDeX will remain active for about 15 minutes. If it falls asleep you can right click on the desktop and refresh DermoDeX after changing the wallpaper.
+Directly after login DermoDeX will remain active for about 15 minutes if set to autostart in the Startup Applications (if not you can always right click the desktop and do a refresh after changing settings and/or changing the wallpaper). If it falls asleep you can right click on the desktop and refresh DermoDeX after changing the wallpaper.
+
+Does it work when the slideshow of wallpapers is active? No that would be insane, cool but insane.
 
 ## Helpful Shortcuts
 Press Alt+F2 to bring up the run box
