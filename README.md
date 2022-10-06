@@ -64,7 +64,7 @@ Does it work when the slideshow of wallpapers is active? No that would be insane
 
 ## Helpful Shortcuts
 Press Alt+F2 to bring up the run box
-- dd_wake (Forces a rebuild of the theme)
+- dd_wake (Wakes DermoDeX from slumber)
 - dd_hold (Once you like the result, holding it means that changing the wallpaper again won't change the theme colors)
 - dd_release (Release the color hold)
 - dd_swatch (See what DermoDeX is seeing!)
