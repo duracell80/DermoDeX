@@ -120,6 +120,7 @@ cp -f $CWD/scripts/bin/.mpris.so $HOME/.local/share/dermodex
 mkdir -p $HOME/.local/share/dermodex/rofi/themes
 cp -f $CWD/scripts/rofi/dd_power.sh $HOME/.local/bin/dd_power
 cp -f $CWD/scripts/rofi/dd_radio.sh $HOME/.local/bin/dd_radio
+cp -f $CWD/scripts/rofi/dd_bluetooth.sh $HOME/.local/bin/dd_bluetooth
 cp -f $CWD/scripts/rofi/dd_radio.json $HOME/.local/share/dermodex/rofi
 cp -f $CWD/scripts/rofi/themes/*.rasi $HOME/.local/share/dermodex/rofi/themes
 

@@ -1,0 +1,126 @@
+/**
+ *
+ * Author : Lee Jordan (@duracell80)
+ * Github : @duracell80
+ * 
+ * Rofi Theme File - dd_bluetooth
+ **/
+
+
+configuration {
+    show-icons:                 false;
+}
+
+* {
+    /* Resolution : 1920x1080 */
+    mainbox-spacing:             100px;
+    mainbox-margin:              100px 100px;
+    message-margin:              0px 100px;
+    message-padding:             15px;
+    message-border-radius:       100%;
+    listview-spacing:            30px;
+    element-padding:             30px 30px;
+    element-border-radius:       100%;
+
+    prompt-font:                 "mallanna regular 40";
+    textbox-font:                "mallanna regular 16";
+    element-text-font:           "mallanna regular 22";
+
+    background-window:           black/65%;
+    background-normal:           white/10%;
+    background-selected:         white/25%;
+    foreground-normal:           white;
+    foreground-selected:         white;
+}
+
+
+window {
+    transparency:                "~/.local/share/dermodex/login_blur.png";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  true;
+    cursor:                      "default";
+    background-color:            var(background-window);
+}
+
+
+mainbox {
+    enabled:                     true;
+    spacing:                     var(mainbox-spacing);
+    margin:                      var(mainbox-margin);
+    background-color:            transparent;
+    children:                    [ "dummy", "inputbar", "listview", "message", "dummy" ];
+}
+
+inputbar {
+    enabled:                     true;
+    background-color:            transparent;
+    children:                    [ "dummy", "prompt", "dummy"];
+}
+
+dummy {
+    background-color:            transparent;
+}
+
+prompt {
+    enabled:                     true;
+    font:                        var(prompt-font);
+    background-color:            transparent;
+    text-color:                  var(foreground-normal);
+}
+
+message {
+    enabled:                     true;
+    margin:                      var(message-margin);
+    padding:                     var(message-padding);
+    border-radius:               var(message-border-radius);
+    background-color:            var(background-normal);
+    text-color:                  var(foreground-normal);
+}
+textbox {
+    font:                        var(textbox-font);
+    background-color:            transparent;
+    text-color:                  inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+}
+
+listview {
+    enabled:                     true;
+    expand:                      false;
+    columns:                     3;
+    lines:                       3;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    
+    spacing:                     var(listview-spacing);
+    background-color:            transparent;
+    cursor:                      "default";
+}
+
+
+element {
+    enabled:                     true;
+    padding:                     var(element-padding);
+    border-radius:               var(element-border-radius);
+    background-color:            var(background-normal);
+    text-color:                  var(foreground-normal);
+    cursor:                      pointer;
+}
+element-text {
+    font:                        var(element-text-font);
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+}
+element selected.normal {
+    background-color:            var(background-selected);
+    text-color:                  var(foreground-selected);
+}

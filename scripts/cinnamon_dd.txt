@@ -3,7 +3,7 @@ alttab-switcher-delay=100
 alttab-switcher-style='coverflow'
 app-menu-label=''
 applet-cache-updated=1593057270
-command-history=['dd_release', 'dd_hold', 'dd_sleep', 'dd_wake', 'dd_refresh', 'dd_reload', 'r', 'dd_powermenu', 'dd_power']
+command-history=['dd_release', 'dd_hold']
 desklet-cache-updated=1593325530
 desklet-decorations=0
 desklet-snap=true
@@ -89,9 +89,9 @@ exec='gnome-terminal'
 [desktop/background]
 color-shading-type='vertical'
 picture-options='zoom'
-picture-uri='file:///home/lee/Pictures/DermoDeX/pexels-chevanon-photography-325044.jpg'
-primary-color='#8A7153'
-secondary-color='#CCBFAE'
+picture-uri='file:///home/lee/Pictures/DermoDeX/pexels-matt-hardy-3560168.jpg'
+primary-color='#000000'
+secondary-color='#840000'
 
 [desktop/background/slideshow]
 delay=15
@@ -114,7 +114,7 @@ text-scaling-factor=1
 toolkit-accessibility=true
 
 [desktop/keybindings]
-custom-list=['custom1', '__dummy__', 'custom0']
+custom-list=['custom2', 'custom0', '__dummy__', 'custom1']
 looking-glass-keybinding=@as []
 show-desklets=@as []
 
@@ -127,6 +127,11 @@ name='Rofi Powermenu'
 binding=['<Super>r']
 command='dd_radio'
 name='Rofi Radiomenu'
+
+[desktop/keybindings/custom-keybindings/custom2]
+binding=['<Super>b']
+command='dd_bluetooth'
+name='Rofi Bluetooth'
 
 [desktop/keybindings/media-keys]
 on-screen-keyboard=['<Super>k']
@@ -174,8 +179,10 @@ idle-delay=uint32 300
 
 [desktop/sound]
 event-sounds=false
+maximum-volume=100
+theme-name='harmony'
 volume-sound-enabled=true
-volume-sound-file='/usr/share/sounds/borealis/bell.ogg'
+volume-sound-file='/usr/share/sounds/harmony/stereo/audio-volume-change.ogg'
 
 [desktop/wm/preferences]
 min-window-opacity=30
@@ -225,22 +232,27 @@ menus-have-icons=false
 rgba-order='vbgr'
 
 [sounds]
-close-file='/usr/share/sounds/enchanted/button-released.ogg'
-login-file='/usr/share/sounds/borealis/startup1_2.ogg'
-logout-file='/usr/share/sounds/borealis/exit1_2.ogg'
+close-enabled=false
+close-file='/usr/share/sounds/harmony/stereo/window-new.ogg'
+login-enabled=true
+login-file='/usr/share/sounds/harmony/stereo/desktop-login.ogg'
+logout-file='/usr/share/sounds/harmony/stereo/desktop-logout.ogg'
 map-enabled=false
-map-file='/usr/share/sounds/enchanted/dialog-question.ogg'
-maximize-file='/usr/share/sounds/enchanted/window-minimized.ogg'
-minimize-file='/usr/share/sounds/enchanted/window-minimized.ogg'
+map-file='/usr/share/sounds/harmony/stereo/window-new.ogg'
+maximize-enabled=false
+maximize-file='/usr/share/sounds/harmony/stereo/window-unminimized.ogg'
+minimize-enabled=false
+minimize-file='/usr/share/sounds/harmony/stereo/window-minimized.ogg'
 notification-enabled=true
-notification-file='/usr/share/sounds/borealis/notification.ogg'
-plug-file='/usr/share/sounds/enchanted/dialog-question.ogg'
+notification-file='/usr/share/sounds/harmony/stereo/message-new-instant.ogg'
+plug-file='/usr/share/sounds/harmony/stereo/device-added.ogg'
 switch-enabled=false
-switch-file='/usr/share/sounds/enchanted/notebook-tab-changed.ogg'
+switch-file='/usr/share/sounds/harmony/stereo/window-slide.ogg'
 tile-enabled=false
-tile-file='/usr/share/sounds/enchanted/window-unmaximized.ogg'
-unmaximize-file='/usr/share/sounds/enchanted/window-unmaximized.ogg'
-unplug-file='/usr/share/sounds/enchanted/dialog-error.ogg'
+tile-file='/usr/share/sounds/harmony/stereo/window-slide.ogg'
+unmaximize-enabled=false
+unmaximize-file='/usr/share/sounds/harmony/stereo/window-unminimized.ogg'
+unplug-file='/usr/share/sounds/harmony/stereo/device-removed.ogg'
 
 [theme]
 name='DermoDeX'
