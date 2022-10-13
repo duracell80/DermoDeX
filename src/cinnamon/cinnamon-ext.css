@@ -715,12 +715,14 @@ StScrollBar StButton#hhandle:hover {
 .popup-combo-menu {
     dd-menu-background-color : rgba(1,16,36,0.9);
     border-radius     : 8px;
+    min-width : 350px;
 }
 
 .menu .popup-menu-content,
 .popup-menu .popup-menu-content,
 .popup-combo-menu .popup-menu-content {
     padding: 16px;
+    min-width : 350px;
 }
 
 .menu .popup-menu-item,

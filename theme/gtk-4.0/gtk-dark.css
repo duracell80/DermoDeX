@@ -408,6 +408,24 @@ entry.warning:disabled {
   border-color: rgba(255, 255, 255, 0.04);
 }
 
+spinbutton.success.vertical, spinbutton.success:not(.vertical),
+entry.success {
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), border 300ms cubic-bezier(0, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0, 0, 0.2, 1);
+  box-shadow: inset 0 0 0 1px transparent;
+  background-color: #2B2B2B;
+  color: white;
+  border-color: rgba(255, 255, 255, 0.08);
+  border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+spinbutton.success.vertical:disabled, spinbutton.success:disabled:not(.vertical),
+entry.success:disabled {
+  box-shadow: inset 0 0 0 1px transparent;
+  background-color: #303030;
+  color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0.04);
+}
+
 spinbutton.vertical > progress, spinbutton:not(.vertical) > progress,
 spinbutton.vertical progress > trough > progress,
 spinbutton:not(.vertical) progress > trough > progress,
@@ -876,7 +894,7 @@ menubutton.circular > button label, filechooser #pathbarbox > stack > box > butt
   padding: 0;
 }
 
-placessidebar .navigation-sidebar > row button.sidebar-button, popover.menu box.circular-buttons button.circular.image-button.model, spinbutton.vertical > button, spinbutton:not(.vertical) > button {
+.nautilus-window .floating-bar button, placessidebar .navigation-sidebar > row button.sidebar-button, popover.menu box.circular-buttons button.circular.image-button.model, spinbutton.vertical > button, spinbutton:not(.vertical) > button {
   min-height: 22px;
   min-width: 22px;
   padding: 0;
@@ -1656,7 +1674,7 @@ headerbar entry:hover {
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.12);
 }
 
-headerbar entry:focus {
+headerbar entry:focus-within {
   box-shadow: inset 0 0 0 2px #a6c8f6;
 }
 
@@ -1681,7 +1699,8 @@ headerbar {
   transition: background-color 75ms cubic-bezier(0, 0, 0.2, 1), color 75ms cubic-bezier(0, 0, 0.2, 1);
   box-shadow: inset 0 -1px rgba(255, 255, 255, 0.12);
   color: white;
-  min-height: 44px;
+  min-height: 42px;
+  margin: 0;
   background-color: rgba(32, 32, 32, 0.98);
 }
 
@@ -1696,6 +1715,12 @@ headerbar:backdrop {
 
 headerbar:backdrop:disabled {
   color: rgba(255, 255, 255, 0.3);
+}
+
+headerbar.flat, headerbar.flat:backdrop {
+  background: none;
+  box-shadow: none;
+  transition: none;
 }
 
 headerbar .title {
@@ -1742,19 +1767,21 @@ headerbar > windowhandle > box > box.end {
 
 headerbar entry,
 headerbar spinbutton,
-headerbar button {
+headerbar button,
+headerbar stackswitcher,
+headerbar separator:not(.sidebar) {
   margin-top: 6px;
   margin-bottom: 6px;
 }
 
-headerbar menubutton {
+headerbar menubutton > button,
+headerbar spinbutton > button,
+headerbar splitbutton > button {
   margin-top: 0;
   margin-bottom: 0;
 }
 
 headerbar separator:not(.sidebar) {
-  margin-top: 11px;
-  margin-bottom: 11px;
   background-color: rgba(255, 255, 255, 0.12);
 }
 
@@ -1776,24 +1803,9 @@ headerbar switch slider {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-headerbar spinbutton > button {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
 headerbar .entry-tag {
   margin-top: 5px;
   margin-bottom: 5px;
-}
-
-headerbar.windowhandle > viewswitcher > box > button:not(.suggested-action):not(.destructive-action) {
-  border-radius: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-headerbar.windowhandle > button.popup label, headerbar.windowhandle > button.popup image {
-  min-height: 0;
 }
 
 headerbar headerbar + separator {
@@ -1980,20 +1992,47 @@ pathbar > button.slider-button {
   padding-right: 4px;
 }
 
+.pathbar {
+  background-color: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 4px;
+  padding: 2px;
+}
+
+headerbar .pathbar {
+  margin-top: 6px;
+  margin-bottom: 6px;
+  background-color: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.pathbar > button {
+  margin-top: 0;
+  margin-bottom: 0;
+  min-height: 20px;
+  border-radius: 2px;
+  border: none;
+  box-shadow: none;
+}
+
+.pathbar > button:last-child {
+  background-color: alpha(currentColor, 0.1);
+  color: white;
+}
+
 /**************
  * Tree Views *
  **************/
 columnview.view,
 treeview.view {
-  background-image: image(#2B2B2B);
   border-left-color: #4d4d4d;
   border-top-color: #4d4d4d;
 }
 
 columnview.view:selected,
 treeview.view:selected {
-  background-color: transparent;
-  background-image: image(alpha(currentColor, 0.1));
+  background-color: alpha(currentColor, 0.1);
   color: white;
 }
 
@@ -2279,6 +2318,7 @@ popover.background > contents {
   box-shadow: 0 3px 3px -1px rgba(0, 0, 0, 0.2), 0 6px 6px 0 rgba(0, 0, 0, 0.14), 0 1px 10.8px 0 rgba(0, 0, 0, 0.12);
   background-color: rgba(60, 60, 60, 0.98);
   border-radius: 6px;
+  color: white;
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
@@ -3600,8 +3640,8 @@ actionbar > revealer > box {
   background-clip: border-box;
 }
 
-.background.csd box.vertical > actionbar > revealer > box {
-  border-radius: 0 0 8px 8px;
+actionbar > revealer > box entry, actionbar > revealer > box button, actionbar > revealer > box menubutton {
+  margin: 0;
 }
 
 scrolledwindow viewport.frame {
@@ -3667,6 +3707,12 @@ separator {
   min-width: 1px;
   min-height: 1px;
   background-color: rgba(255, 255, 255, 0.12);
+}
+
+separator.spacer {
+  min-width: 0;
+  min-height: 0;
+  background-color: transparent;
 }
 
 stacksidebar + separator.vertical,
@@ -4661,9 +4707,69 @@ statusbar {
   padding: 6px 12px;
 }
 
-/**************
- * Extensions *
- **************/
+.nautilus-window placesview label {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.nautilus-window child.activatable {
+  border-radius: 8px;
+}
+
+.nautilus-window .floating-bar {
+  min-height: 32px;
+  padding: 0;
+  margin: 6px;
+  border-style: none;
+  border-radius: 4px;
+  background-color: #3281ea;
+  color: white;
+  box-shadow: 0 3px 2px -2px rgba(0, 0, 0, 0.2), 0 3px 2.4px 0 rgba(0, 0, 0, 0.14), 0 1px 4.8px 0 rgba(0, 0, 0, 0.12);
+}
+
+.nautilus-window .floating-bar button {
+  margin: 5px;
+  color: white;
+}
+
+#NautilusViewCell clamp box {
+  margin: 0;
+  border-spacing: 0;
+}
+
+#NautilusQueryEditor > menubutton > button {
+  min-width: 16px;
+  min-height: 16px;
+  margin: 0;
+}
+
+#NautilusQueryEditor > text {
+  margin: 0;
+}
+
+#NautilusPathBar {
+  background-color: rgba(255, 255, 255, 0.04);
+  border-radius: 4px;
+  margin: 6px 0;
+}
+
+#NautilusPathBar #NautilusPathButton {
+  margin: 0 3px;
+  border-radius: 4px;
+}
+
+#NautilusPathBar #NautilusPathButton.current-dir {
+  color: white;
+}
+
+#NautilusPathBar #NautilusPathButton.current-dir:hover, #NautilusPathBar #NautilusPathButton.current-dir:active {
+  background: none;
+  box-shadow: none;
+}
+
+#NautilusPathBar #NautilusPathButton:first-child {
+  margin-left: 0;
+}
+
 avatar {
   border-radius: 9999px;
   font-weight: bold;

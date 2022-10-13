@@ -6044,7 +6044,7 @@ window.background.chromium {
 
 window.background.chromium entry,
 window.background.chromium > button {
-  border: 1px solid rgba(0, 0, 0, 0.26);
+  border: 1px solid #d9d9d9;
 }
 
 window.background.chromium > button {
