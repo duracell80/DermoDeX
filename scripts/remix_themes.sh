@@ -145,10 +145,10 @@ fi
 if [ "$menubckgrd" = "true" ]; then
     echo "[i] Menu Background Image Active"
     sed -i "s|dd-menu-background-image : url(~/|background-image : url(${HOME}/|g" $CINN_FILE
-    sed -i "s|dd-menu-background-color : rgba(1,16,36,0.9);|background-color : rgba(1,16,36,${menutrans});|g" $CINN_FILE
+    sed -i "s|dd-menu-background-color : rgba(1,16,36,0.9)|background-color : rgba(1,16,36,${menutrans})|g" $CINN_FILE
 else 
     echo "[i] Menu Background Image Inactive"
-    sed -i "s|dd-menu-background-color : rgba(1,16,36,0.9);|background-color : rgba(1,16,36,${menutrans});|g" $CINN_FILE
+    sed -i "s|dd-menu-background-color : rgba(1,16,36,0.9)|background-color : rgba(1,16,36,${menutrans})|g" $CINN_FILE
 fi
 
 # USE ACCENT COLORS ON FAV SIDEBAR AND NEMO SIDEBAR
