@@ -134,7 +134,8 @@ cp $LWD/cinnamon-ext.css $CINN_FILE
 chmod u+rw $CCD/cinnamon-base.css
 chmod u+rw $CCD/cinnamon-ext.css
 
-
+# MODIFY CINNAMON IN FLUENT
+sed -i "s|background-color: rgba(60, 60, 60, 0.98);|/*background-color: rgba(60, 60, 60, 0);*/|g" $CCD/cinnamon-base.css
 
 # SHOW AVATAR ON START MENU OR NOT
 if [ "$menuavatar" = true ]; then

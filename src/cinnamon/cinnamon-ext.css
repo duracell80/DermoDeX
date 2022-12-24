@@ -228,7 +228,7 @@ StScrollBar StButton#hhandle:hover {
     margin-bottom       : 0px;
 }
 .menu-background {
-    dd-menu-background-color : rgba(1,16,36,0.9);
+    /*dd-menu-background-color : rgba(1,16,36,0.9);*/
     dd-menu-background-image : url(~/.local/share/dermodex/menu_blur.jpg);
     background-position : 0px 0px;
     background-repeat   : no-repeat;
@@ -710,15 +710,21 @@ StScrollBar StButton#hhandle:hover {
 
 
 /* POPUP MENUS */
-.menu,
 .popup-menu,
 .popup-combo-menu {
-    /*dd-menu-background-color : rgba(1,16,36,0.9);*/
+    dd-menu-background-color : rgba(1,16,36,0.9);
     border-radius     : 8px;
     min-width : 350px;
 }
 
-.menu .popup-menu-content,
+.menu {
+    border-radius       : 8px;
+    min-width           : 350px;
+    /*dd-menu-background-color : rgba(1,16,36,0.9);*/
+}
+
+
+.menu,
 .popup-menu .popup-menu-content,
 .popup-combo-menu .popup-menu-content {
     padding: 16px;
