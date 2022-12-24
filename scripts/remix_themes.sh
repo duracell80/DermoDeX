@@ -344,14 +344,14 @@ if [ "$flowcolors" == true ]; then
 
     # WARNING ERROR SUCCESS
     # WARNING
-    sed -i "s|#F4B400|${DARKEST}|g" $GTK3_FILE
-    sed -i "s|#F4B400|${DARKEST}|g" $GTK3_DARK
+    #sed -i "s|#F4B400|${DARKEST}|g" $GTK3_FILE
+    #sed -i "s|#F4B400|${DARKEST}|g" $GTK3_DARK
     # ERROR
-    sed -i "s|#D93025|${DARKER}|g" $GTK3_FILE
-    sed -i "s|#D93025|${DARKER}|g" $GTK3_DARK
+    #sed -i "s|#D93025|${DARKER}|g" $GTK3_FILE
+    #sed -i "s|#D93025|${DARKER}|g" $GTK3_DARK
     # SUCCESS
-    sed -i "s|#0F9D58|${ACCENT}|g" $GTK3_FILE
-    sed -i "s|#0F9D58|${ACCENT}|g" $GTK3_DARK
+    #sed -i "s|#0F9D58|${ACCENT}|g" $GTK3_FILE
+    #sed -i "s|#0F9D58|${ACCENT}|g" $GTK3_DARK
     
     
     
@@ -386,14 +386,14 @@ if [ "$flowcolors" == true ]; then
 
     # WARNING ERROR SUCCESS
     # WARNING
-    sed -i "s|#F4B400|${DARKEST}|g" $GTK4_FILE
-    sed -i "s|#FDD633|${DARKEST}|g" $GTK4_DARK
+    #sed -i "s|#F4B400|${DARKEST}|g" $GTK4_FILE
+    #sed -i "s|#FDD633|${DARKEST}|g" $GTK4_DARK
     # ERROR
-    sed -i "s|#D93025|${DARKER}|g" $GTK4_FILE
-    sed -i "s|#F28B82|${DARKER}|g" $GTK4_DARK
+    #sed -i "s|#D93025|${DARKER}|g" $GTK4_FILE
+    #sed -i "s|#F28B82|${DARKER}|g" $GTK4_DARK
     # SUCCESS
-    sed -i "s|#0F9D58|${ACCENT}|g" $GTK4_FILE
-    sed -i "s|#81C995|${ACCENT}|g" $GTK4_DARK
+    #sed -i "s|#0F9D58|${ACCENT}|g" $GTK4_FILE
+    #sed -i "s|#81C995|${ACCENT}|g" $GTK4_DARK
 
 
     # COMBINE GTK2 MODS
