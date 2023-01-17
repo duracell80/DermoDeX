@@ -108,6 +108,3 @@ If asked, yeah I would love to have DermoDeX as Cinnamon Extension. For now it's
 
 ## Mint 21?
 Done and with Fluent there is at least a choice of two styles of window titlebar style (rounded, with mint style close icon or flat with windows style close icon).
-
-## Excited? We should be yeah, we need these options
-Yes messing with cinnamon this much is pretty scary, or freaking cool. You don't have to daily drive it, I do and I like the personalization it can bring. Try it in a VM before daily driving.
