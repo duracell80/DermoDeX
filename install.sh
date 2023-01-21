@@ -13,7 +13,7 @@ case ${answer:0:1} in
     y|Y )
         echo ""
         echo "[i] - Installing Deps from APT and PIP"
-        sudo apt install -y python3-pip libsass1 sassc rofi scrot imagemagick xz-utils xdotool ffmpeg inkscape sox
+        sudo apt install -y python3-pip libsass1 sassc rofi scrot imagemagick xz-utils xdotool ffmpeg inkscape imagemagick sox
 
 
         pip3 install easydev
@@ -160,7 +160,8 @@ cp -f $CWD/deps/Fluent-gtk-theme/src/gtk/assets.svg $HOME/.local/share/dermodex/
 
 cp -f $CWD/src/index.theme $HOME/.local/share/dermodex/theme
 cp -f $CWD/src/index.theme $HOME/.cache/dermodex
-
+cp -f $CWD/src/cinnamon/thumbnail.png $HOME/.cache/dermodex
+cp -f $CWD/src/cinnamon/thumbnail.png $HOME/.local/share/dermodex/theme/cinnamon
 
 chmod u+x $HOME/.local/share/dermodex/theme-ext/gtk/remix_assets.sh
 
