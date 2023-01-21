@@ -152,11 +152,16 @@ cp -r $CWD/src/icons $HOME/.local/share/dermodex/
 # COPY OVER THEME-EXT ASSETS
 mkdir -p $HOME/.local/share/dermodex/theme-ext/cinnamon/assets/
 mkdir -p $HOME/.local/share/dermodex/theme-ext/gtk/assets/
+mkdir -p $HOME/.local/share/dermodex/theme-ext/gtk-2.0/assets/
 cp -rf $CWD/src/cinnamon/assets/dermodex $HOME/.local/share/dermodex/theme-ext/cinnamon/assets
 cp -f $CWD/scripts/remix_assets.sh $HOME/.local/share/dermodex/theme-ext/gtk
 cp -f $CWD/deps/Fluent-gtk-theme/src/gtk/assets.txt $HOME/.local/share/dermodex/theme-ext/gtk
 cp -f $CWD/deps/Fluent-gtk-theme/src/gtk/assets.svg $HOME/.local/share/dermodex/theme-ext/gtk
 cp -f $CWD/deps/Fluent-gtk-theme/src/gtk/assets.svg $HOME/.local/share/dermodex/theme-ext/gtk/assets.orig
+
+cp -f $CWD/deps/Fluent-gtk-theme/src/gtk-2.0/assets-folder/assets.txt $HOME/.local/share/dermodex/theme-ext/gtk-2.0
+cp -f $CWD/deps/Fluent-gtk-theme/src/gtk-2.0/assets-folder/assets.svg $HOME/.local/share/dermodex/theme-ext/gtk-2.0
+cp -f $CWD/deps/Fluent-gtk-theme/src/gtk-2.0/assets-folder/assets.svg $HOME/.local/share/dermodex/theme-ext/gtk-2.0/assets.orig
 
 cp -f $CWD/src/index.theme $HOME/.local/share/dermodex/theme
 cp -f $CWD/src/index.theme $HOME/.cache/dermodex
