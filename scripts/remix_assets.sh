@@ -27,8 +27,23 @@ cp -f "$GTK_ASSETS/assets.orig" "$GTK_ASSETS/assets.svg"
 sed -i "s|#1A73E8|$1|g" "$GTK_ASSETS/assets.svg"
 sed -i "s|#3281ea|$1|g" "$GTK_ASSETS/assets.svg"
 
+if [[ -n "${RENDER_SVG}" ]]; then
+    "$RENDER_SVG" "$GTK_ASSETS/assets.svg" "$CCD/gtk-3.0/thumbnail.png"
+else
+    if awk "BEGIN {exit !($INKSCAPE_VERSION >= $INKSCAPE_VERSION_TARGET)}"; then
+        "$INKSCAPE" \
+              --export-id-only \
+              -o "$CCD/gtk-3.0/thumbnail.png" "$SRC_FILE" >/dev/null
+    else
+        "$INKSCAPE" \
+              --export-id-only \
+              -z -e "$CCD/gtk-3.0/thumbnail.png" "$SRC_FILE" >/dev/null
+    fi
+fi
+convert "$CCD/gtk-3.0/thumbnail.png" -gravity West -crop 50%x100%+0+0 "$CCD/gtk-3.0/thumbnail_crop.png"
+cp -f "$CCD/gtk-3.0/thumbnail_crop.png" "$TWD/gtk-3.0/thumbnail.png"
 
-
+exit
 [[ -d $ASSETS_DIR ]] && rm -rf $ASSETS_DIR
 mkdir -p $ASSETS_DIR
 

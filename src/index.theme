@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=DermoDeX
+Comment=Adaptive theme based on Fluent theme
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=DermoDeX
+MetacityTheme=DermoDeX
+IconTheme=DermoDeX
+CursorTheme=DMZ-White
+ButtonLayout=close,minimize,maximize:menu

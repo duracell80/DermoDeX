@@ -158,6 +158,10 @@ cp -f $CWD/deps/Fluent-gtk-theme/src/gtk/assets.txt $HOME/.local/share/dermodex/
 cp -f $CWD/deps/Fluent-gtk-theme/src/gtk/assets.svg $HOME/.local/share/dermodex/theme-ext/gtk
 cp -f $CWD/deps/Fluent-gtk-theme/src/gtk/assets.svg $HOME/.local/share/dermodex/theme-ext/gtk/assets.orig
 
+cp -f $CWD/src/index.theme $HOME/.local/share/dermodex/theme
+cp -f $CWD/src/index.theme $HOME/.cache/dermodex
+
+
 chmod u+x $HOME/.local/share/dermodex/theme-ext/gtk/remix_assets.sh
 
 if [ -d $CWD/sounds ] ; then

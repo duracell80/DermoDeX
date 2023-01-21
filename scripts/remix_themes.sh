@@ -416,5 +416,7 @@ cp -rf $LWD/theme/* $HOME/.themes/DermoDeX
 cp -f $LWD/theme/cinnamon/cinnamon.orig $LWD/theme/cinnamon/cinnamon.css
 cp -f $LWD/theme/gtk-3.0/gtk.orig $LWD/theme/gtk-3.0/gtk.css
 
+# COPY OVER INDEX.THEME
+cp -f $HOME/.cache/dermodex/index.theme $HOME/.themes/DermoDeX
 
 #xdotool key ctrl+alt+"Escape"
