@@ -84,6 +84,108 @@ else
 fi
 
 
+PS3='Choose a previous wallpaper set to install: '
+names=("none" "maya" "nadia" "olivia" "petra" "qiana" "rafaela" "rebecca" "retro" "rosa" "sarah" "serena" "sonya" "sylvia" "tara" "tessa" "tina" "tricia" "ulyana" "ulyssa" "uma" "una" "vanessa" "vera")
+select wall in "${names[@]}"; do
+    case $wall in
+        "maya")
+            sudo apt install mint-backgrounds-$wall
+            break
+            ;;
+        "nadia")
+            sudo apt install mint-backgrounds-$wall
+            break
+            ;;
+        "olivia")
+            sudo apt install mint-backgrounds-$wall
+            break
+            ;;
+        "petra")
+            sudo apt install mint-backgrounds-$wall
+            break
+            ;;
+        "qiana")
+            sudo apt install mint-backgrounds-$wall
+            break
+            ;;
+        "rafaela")
+            sudo apt install mint-backgrounds-$wall
+            break
+            ;;
+        "rebecca")
+            sudo apt install mint-backgrounds-$wall
+            break
+            ;;
+        "retro")
+            sudo apt install mint-backgrounds-$wall
+            break
+            ;;
+        "rosa")
+            sudo apt install mint-backgrounds-$wall
+            break
+            ;;
+        "sarah")
+            sudo apt install mint-backgrounds-$wall
+            break
+            ;;
+        "serena")
+            sudo apt install mint-backgrounds-$wall
+            break
+            ;;
+        "sonya")
+            sudo apt install mint-backgrounds-$wall
+            break
+            ;;
+        "sylvia")
+            sudo apt install mint-backgrounds-$wall
+            break
+            ;;
+        "tara")
+            sudo apt install mint-backgrounds-$wall
+            break
+            ;;
+        "tessa")
+            sudo apt install mint-backgrounds-$wall
+            break
+            ;;
+        "tina")
+            sudo apt install mint-backgrounds-$wall
+            break
+            ;;
+        "tricia")
+            sudo apt install mint-backgrounds-$wall
+            break
+            ;;
+        "ulyana")
+            sudo apt install mint-backgrounds-$wall
+            break
+            ;;
+        "ulyssa")
+            sudo apt install mint-backgrounds-$wall
+            break
+            ;;
+        "uma")
+            sudo apt install mint-backgrounds-$wall
+            break
+            ;;
+        "una")
+            sudo apt install mint-backgrounds-$wall
+            break
+            ;;
+        "vanessa")
+            sudo apt install mint-backgrounds-$wall
+            break
+            ;;
+        "vera")
+            sudo apt install mint-backgrounds-$wall
+            break
+            ;;
+	"none")
+	    echo "[i] No wallpapers selected"
+	    ;;
+        *) echo "[!] Invalid wallpaper set";;
+    esac
+done
 
 
 # GRANULAR CONTROL OVER WHICH SUB THEMES TO COPY OVER

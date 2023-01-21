@@ -6,43 +6,46 @@ CWD=$(pwd)
 TYPE=$1
 NAME=$2
 
-CONF_MPKG="http://packages.linuxmint.com/pool/main/m"
+#CONF_MPKG="http://packages.linuxmint.com/pool/main/m"
 
-
-# MAMBO NUMBER FIVE!
 
 if [ "$TYPE" == "mintpaper" ]; then
+    
+    sudo apt install mint-backgrounds-$2
+    
+    
+    
     # REMOVE PREVIOUS WALLPAPERS
-    gsettings set org.cinnamon.desktop.background picture-uri none
-    mv $HOME/.local/share/dermodex/wallpapers/*.tar.gz $HOME/.local/share/dermodex
-    sleep 1
-    rm -rf $HOME/.local/share/dermodex/wallpapers/mint-backgrounds*
-    mv $HOME/.local/share/dermodex/*.tar.gz $HOME/.local/share/dermodex/wallpapers
+    #gsettings set org.cinnamon.desktop.background picture-uri none
+    #mv $HOME/.local/share/dermodex/wallpapers/*.tar.gz $HOME/.local/share/dermodex
+    #sleep 1
+    #rm -rf $HOME/.local/share/dermodex/wallpapers/mint-backgrounds*
+    #mv $HOME/.local/share/dermodex/*.tar.gz $HOME/.local/share/dermodex/wallpapers
     
-    gawk -i inplace '!/mint-backgrounds/' $HOME/.cinnamon/backgrounds/user-folders.lst
+    #gawk -i inplace '!/mint-backgrounds/' $HOME/.cinnamon/backgrounds/user-folders.lst
     
-    sleep 1
+    #sleep 1
     # FIND THE VERSION OF THE PACKAGE
-    wget -P "$HOME/.local/share/dermodex/wallpapers" -A .tar.gz "$CONF_MPKG/mint-backgrounds-$NAME" 
-    CONF_VERSION=$(grep -Po ".{0,4}tar.gz{0,1}" "$HOME/.local/share/dermodex/wallpapers/mint-backgrounds-$NAME.tmp" | uniq | head -n 1)
+    #wget -P "$HOME/.local/share/dermodex/wallpapers" -A .tar.gz "$CONF_MPKG/mint-backgrounds-$NAME" 
+    #CONF_VERSION=$(grep -Po ".{0,4}tar.gz{0,1}" "$HOME/.local/share/dermodex/wallpapers/mint-backgrounds-$NAME.tmp" | uniq | head -n 1)
     
-    rm $HOME/.local/share/dermodex/wallpapers/*.tmp*
+    #rm $HOME/.local/share/dermodex/wallpapers/*.tmp*
     
     # GET THE PACKAGE
-    wget -nc -P "$HOME/.local/share/dermodex/wallpapers" "${CONF_MPKG}/mint-backgrounds-${NAME}/mint-backgrounds-${NAME}_${CONF_VERSION}"
+    #wget -nc -P "$HOME/.local/share/dermodex/wallpapers" "${CONF_MPKG}/mint-backgrounds-${NAME}/mint-backgrounds-${NAME}_${CONF_VERSION}"
     
     # UNZIP IT
-    cd $HOME/.local/share/dermodex/wallpapers
+    #cd $HOME/.local/share/dermodex/wallpapers
     
-    tar xvf "${HOME}/.local/share/dermodex/wallpapers/mint-backgrounds-${NAME}_${CONF_VERSION}" "mint-backgrounds-${NAME}/backgrounds/linuxmint-${NAME}"
+    #tar xvf "${HOME}/.local/share/dermodex/wallpapers/mint-backgrounds-${NAME}_${CONF_VERSION}" "mint-backgrounds-#${NAME}/backgrounds/linuxmint-${NAME}"
     
-    echo "${HOME}/.local/share/dermodex/wallpapers/mint-backgrounds-${NAME}/backgrounds/linuxmint-${NAME}" >> "${HOME}/.cinnamon/backgrounds/user-folders.lst"
+    #echo "${HOME}/.local/share/dermodex/wallpapers/mint-backgrounds-${NAME}/backgrounds/linuxmint-${NAME}" >> "${HOME}/.cinnamon/backgrounds/user-folders.lst"
     
-    cd $CWD
+    #cd $CWD
     
 fi
 
 
-cat -n $HOME/.cinnamon/backgrounds/user-folders.lst | sort -uk2 | sort -nk1 | cut -f2- > $HOME/.cinnamon/backgrounds/user-folders.tmp
-mv $HOME/.cinnamon/backgrounds/user-folders.tmp $HOME/.cinnamon/backgrounds/user-folders.lst
-rm -f $HOME/.cinnamon/backgrounds/user-folders.tmp
+#cat -n $HOME/.cinnamon/backgrounds/user-folders.lst | sort -uk2 | sort -nk1 | cut -f2- > $HOME/.cinnamon/backgrounds/user-folders.tmp
+#mv $HOME/.cinnamon/backgrounds/user-folders.tmp $HOME/.cinnamon/backgrounds/user-folders.lst
+#rm -f $HOME/.cinnamon/backgrounds/user-folders.tmp
