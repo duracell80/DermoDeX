@@ -64,6 +64,7 @@ DermoDeXSettings.prototype = {
         this.settings.bindProperty(Settings.BindingDirection.IN, 'flowsoundwaves', 'flowsoundwaves', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'flowcolorsmenu', 'flowcolorsmenu', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'flowsidebar', 'flowsidebar', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'flowheaderbar', 'flowheaderbar', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'flowicons', 'flowicons', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'colorcollect', 'colorcollect', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'splitimage', 'splitimage', null);
@@ -110,6 +111,7 @@ DermoDeXSettings.prototype = {
         this.settings.bind('flowcolors', 'flowcolors', this.on_flowcolors_changed);
         this.settings.bind('flowcolorsmenu', 'flowcolorsmenu', this.on_flowcolorsmenu_changed);
         this.settings.bind('flowsidebar', 'flowsidebar', this.on_flowsidebar_changed);
+        this.settings.bind('flowheaderbar', 'flowheaderbar', this.on_flowheaderbar_changed);
         this.settings.bind('flowicons', 'flowicons', this.on_flowicons_changed);
         this.settings.bind('splitimage', 'splitimage', this.on_splitimage_changed);
         this.settings.bind('splitfocus', 'splitfocus', this.on_splitfocus_changed);
@@ -200,6 +202,12 @@ DermoDeXSettings.prototype = {
     on_flowsidebar_changed: function () {
         var cfg_flowsidebar = this.settings.getValue('flowsidebar')
         let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'flowsidebar', '-v' + cfg_flowsidebar]);
+        let error = process.spawn_sync_and_get_error();
+	},
+    
+    on_flowheaderbar_changed: function () {
+        var cfg_flowheaderbar = this.settings.getValue('flowheaderbar')
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'flowheaderbar', '-v' + cfg_flowheaderbar]);
         let error = process.spawn_sync_and_get_error();
 	},
     

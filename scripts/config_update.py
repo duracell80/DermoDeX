@@ -70,6 +70,8 @@ def main(argv):
         os.system(HOME + '/.local/share/dermodex/remix_themes.sh');
     if "flowsidebar" in cfg_key:
         os.system(HOME + '/.local/share/dermodex/remix_themes.sh');
+    if "flowheaderbar" in cfg_key:
+        os.system(HOME + '/.local/share/dermodex/remix_themes.sh');
     if "flowcolorsmenu" in cfg_key:
         os.system(HOME + '/.local/share/dermodex/remix_themes.sh');
 

@@ -152,7 +152,7 @@ else
 fi
 
 # USE ACCENT COLORS ON FAV SIDEBAR AND NEMO SIDEBAR
-if [ "$flowsidebar" = "true" ]; then
+if [ "$flowsidebar" == "true" ]; then
     echo "[i] Accent - Sidebars: Enabled"
     sed -i "s|dd-fav-background-gradient-end|background-gradient-end|g" $CINN_FILE
     sed -i "s|dd-fav-background-gradient-start|background-gradient-start|g" $CINN_FILE
@@ -161,7 +161,7 @@ else
 fi
 
 # USE ACCENT COLOR ON START MENU BUTTON
-if [ "$flowcolorsmenu" = "true" ]; then
+if [ "$flowcolorsmenu" == "true" ]; then
     echo "[i] Accent - Start Menu Button: Enabled"
     sed -i "s|dd-menu-button-hover : #ffffff;|color : #011a3b;|g" $CINN_FILE
 else 
@@ -322,7 +322,7 @@ if [ "$flowcolors" == true ]; then
     sed -i "s|#E57373|${GTK0_BRIGHT}|g" $GTK2_FILE
     
     # HEADERBARS or TITLE BARS
-    if [ "$flowsidebar" == "true" ]; then
+    if [ "$flowheaderbar" == "true" ]; then
         sed -i "s|#1A73E8|${DARKEST}|g" $CCD/headerbar.css
         sed -i "s|#8ebaf4|${BRILLIANT}|g" $CCD/headerbar.css
         cat $CCD/headerbar.css > ~/.config/gtk-3.0/gtk.css
