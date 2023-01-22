@@ -275,6 +275,12 @@ sed -i "s|~/|$HOME/|g" $CINN_FILE
 sed -i "s|dd-menu-selected-color: #ffffff;|color: #ffffff;|g" $CINN_FILE
 #fi
 
+# SET THE CALENDAR TWEAKS
+sed -i "s|dd-calendar-today-color: #ffffff|color: ${BRIGHTEST}|g" $CINN_FILE
+sed -i "s|dd-calendar-events-main-box-background-gradient-start: rgba(255, 255, 255, 0.04);|background-gradient-start: rgba(${RGB_ACCENT}, 1);|g" $CINN_FILE
+sed -i "s|dd-calendar-events-main-box-background-gradient-end: rgba(255, 255, 255, 0.04);|background-gradient-end: rgba(${RGB_ACCENT}, 0.7);|g" $CINN_FILE
+ 
+
 
 # COMBINE THE MODS
 cat $CINN_FILE >> $CCD/cinnamon-base.css

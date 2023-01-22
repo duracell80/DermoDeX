@@ -86,11 +86,12 @@ StScrollBar StButton#hhandle:hover {
 
 .calendar-event-color-strip {
     background          : transparent;
+    width               : 0px;
 }
 .calendar-event-button {
     padding             : 8px;
-    border              : 1px solid #333333;
-    border-radius       : 32px;
+    border              : 1px solid #3281ea;
+    border-radius       : 6px;
 }
 .calendar-event-button:hover {
     background          : transparent;
@@ -130,9 +131,17 @@ StScrollBar StButton#hhandle:hover {
 .calendar-today,
 .calendar-today:active,
 .calendar-today:focus,
-.calendar-today:hover {
-    color           : #ffffff;
-    background-color: #3281ea;
+.calendar-today:hover,
+.calendar-today:selected  {
+    dd-calendar-today-color: #ffffff;
+    background-color: #3281ea !important;
+}
+
+.calendar-events-main-box {
+  background-gradient-direction: vertical;
+  dd-calendar-events-main-box-background-gradient-start: rgba(255, 255, 255, 0.04);
+  dd-calendar-events-main-box-background-gradient-end: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 1);
 }
 
 
