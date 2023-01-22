@@ -6,26 +6,32 @@ from PIL import ImageColor
 
 def main(argv):
     arg_color   = "#3281ea"
+    arg_colormix= "#cccccc"
     arg_factor  = float(0.5)
     arg_mode    = "hex"
     
     try:
-        opts, args = getopt.getopt(argv,"h:c:f:m",["color=","factor=","mode="])
+        opts, args = getopt.getopt(argv,"h:c:d:f:m",["color=","colormix=","factor=","mode="])
     except getopt.GetoptError:
-        print('remix_color.py -c <hexcolor> -f <factor> -m <hex|rgb>')
+        print('remix_color.py -c <hexcolor> -d <hexcolortomix> -f <factor> -m <hex|rgb>')
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h':
-            print('remix_color.py -c <hexcolor> -f <factor> -m <hex|rgb>')
+            print('remix_color.py -c <hexcolor> -d <hexcolortomix> -f <factor> -m <hex|rgb|mix>')
             sys.exit()
         elif opt in ("-c", "--color"):
             arg_color = str(arg)
+        elif opt in ("-d", "--colormix"):
+            arg_colormix = str(arg)
         elif opt in ("-f", "--factor"):
             arg_factor = float(arg)
         elif opt in ("-m", "--mode"):
             arg_mode = str(arg)
             
-    if arg_mode == "rgb":
+    if arg_mode == "mix":
+        blended = blend_hex(arg_color,arg_colormix)
+        print(str(blended))
+    elif arg_mode == "rgb":
         print(get_rgb(colorscale(arg_color, arg_factor)))
     elif arg_mode == "balance":
         rgb_bits = str(get_rgb(arg_color)).split(",")
@@ -59,6 +65,21 @@ def get_rgb(h):
     rgb = rgb.replace("(", "").replace(")", "").replace(" ", "")
     
     return rgb
+
+def get_hex(r, g, b):
+    return ('{:X}{:X}{:X}').format(r, g, b)
+
+
+def blend_hex(colorRGBA1,colorRGBA2):
+    rgb_bits1 = str(get_rgb(colorRGBA1)).split(",")
+    rgb_bits2 = str(get_rgb(colorRGBA2)).split(",")
+    #alpha = 255 - ((255 - int(rgb_bits1[2])) * (255 - int(rgb_bits2[2])) / 255)
+    
+    red   = (int(rgb_bits1[0]) * (255 - int(rgb_bits2[2])) + int(rgb_bits2[0]) * int(rgb_bits2[2])) / 255
+    green = (int(rgb_bits1[1]) * (255 - int(rgb_bits2[2])) + int(rgb_bits2[1]) * int(rgb_bits2[2])) / 255
+    blue  = (int(rgb_bits1[2]) * (255 - int(rgb_bits2[2])) + int(rgb_bits2[2]) * int(rgb_bits2[2])) / 255
+    
+    return ("#" + get_hex(int(red), int(green), int(blue)))
 
 def colorscale(hexstr, scalefactor):
     """

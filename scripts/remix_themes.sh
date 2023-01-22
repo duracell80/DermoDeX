@@ -95,10 +95,8 @@ fi
 
 
 
-
-
-
-BRILLIANT=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 3.2 --mode="hex")
+BRILLIANT=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -d "#cccccc" --mode="mix")
+NITESHADE=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -d "#666666" --mode="mix")
 BRIGHTEST=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 2.2 --mode="hex")
 BRIGHTER=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 2 --mode="hex")
 BRIGHT=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 1.3 --mode="hex")
@@ -324,10 +322,10 @@ if [ "$flowcolors" == true ]; then
     sed -i "s|#E57373|${GTK0_BRIGHT}|g" $GTK2_FILE
     
     # HEADERBARS or TITLE BARS
-    #sed -i "s|#1A73E8|${DARKEST}|g" $CCD/headerbar.css
-    #sed -i "s|#8ebaf4|${GTK0_BRIGHT}|g" $CCD/headerbar.css
-    #cat $CCD/headerbar.css > ~/.config/gtk-3.0/gtk.css
-    #cp -f $LWD/headerbar.css.orig $CCD/headerbar.css
+    sed -i "s|#1A73E8|${DARKEST}|g" $CCD/headerbar.css
+    sed -i "s|#8ebaf4|${BRILLIANT}|g" $CCD/headerbar.css
+    cat $CCD/headerbar.css > ~/.config/gtk-3.0/gtk.css
+    cp -f $LWD/headerbar.css.orig $CCD/headerbar.css
     
     
     # WORK THROUGH SOME GTK3 STUFF WITH SED
