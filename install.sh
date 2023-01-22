@@ -190,6 +190,8 @@ done
 
 # GRANULAR CONTROL OVER WHICH SUB THEMES TO COPY OVER
 cp -r $CWD/src/cinnamon/cinnamon-ext.css $HOME/.local/share/dermodex/
+cp -r $CWD/src/headerbar.css $HOME/.local/share/dermodex/
+cp -r $CWD/src/headerbar.css $HOME/.cache/dermodex/
 
 cp $HOME/.cinnamon/configs/menu@cinnamon.org/0.json $HOME/.cinnamon/configs/menu@cinnamon.org/0.json.bak
 cp -f ./scripts/config_menu.json $HOME/.cinnamon/configs/menu@cinnamon.org/0.json

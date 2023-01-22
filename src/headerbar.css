@@ -1,0 +1,9 @@
+headerbar {
+  color: #1A73E8;
+  background-color: #8ebaf4;
+}
+
+headerbar:backdrop {
+  color: #666666;
+  background-color: #f6f5f4;
+}

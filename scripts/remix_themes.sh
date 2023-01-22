@@ -98,6 +98,7 @@ fi
 
 
 
+BRILLIANT=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 3.2 --mode="hex")
 BRIGHTEST=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 2.2 --mode="hex")
 BRIGHTER=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 2 --mode="hex")
 BRIGHT=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 1.3 --mode="hex")
@@ -292,6 +293,9 @@ if [ "$flowcolors" == true ]; then
     cp -f $LWD/theme/gtk-2.0/gtkrc $LWD/theme/gtk-2.0/gtkrc.orig
     cp -f $LWD/theme/gtk-2.0/gtkrc $CCD/gtk-2.0
     
+    cp -f $LWD/headerbar.css $LWD/headerbar.css.orig
+    cp -f $LWD/headerbar.css $CCD
+    
     
     # COPY OVER GTK3 CSS TO THE CACHE
     cp -f $LWD/theme/gtk-3.0/gtk.css $LWD/theme/gtk-3.0/gtk.orig
@@ -318,6 +322,13 @@ if [ "$flowcolors" == true ]; then
     # WM AND CLOSE BUTTONS
     sed -i "s|#E53935|${GTK0}|g" $GTK2_FILE
     sed -i "s|#E57373|${GTK0_BRIGHT}|g" $GTK2_FILE
+    
+    # HEADERBARS or TITLE BARS
+    #sed -i "s|#1A73E8|${DARKEST}|g" $CCD/headerbar.css
+    #sed -i "s|#8ebaf4|${GTK0_BRIGHT}|g" $CCD/headerbar.css
+    #cat $CCD/headerbar.css > ~/.config/gtk-3.0/gtk.css
+    #cp -f $LWD/headerbar.css.orig $CCD/headerbar.css
+    
     
     # WORK THROUGH SOME GTK3 STUFF WITH SED
     # MAIN SED
