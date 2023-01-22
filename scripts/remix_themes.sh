@@ -322,11 +322,15 @@ if [ "$flowcolors" == true ]; then
     sed -i "s|#E57373|${GTK0_BRIGHT}|g" $GTK2_FILE
     
     # HEADERBARS or TITLE BARS
-    sed -i "s|#1A73E8|${DARKEST}|g" $CCD/headerbar.css
-    sed -i "s|#8ebaf4|${BRILLIANT}|g" $CCD/headerbar.css
-    cat $CCD/headerbar.css > ~/.config/gtk-3.0/gtk.css
-    cp -f $LWD/headerbar.css.orig $CCD/headerbar.css
-    
+    if [ "$flowsidebar" == "true" ]; then
+        sed -i "s|#1A73E8|${DARKEST}|g" $CCD/headerbar.css
+        sed -i "s|#8ebaf4|${BRILLIANT}|g" $CCD/headerbar.css
+        cat $CCD/headerbar.css > ~/.config/gtk-3.0/gtk.css
+        cp -f $LWD/headerbar.css.orig $CCD/headerbar.css
+    else
+        cp -f ~/.config/gtk-3.0/gtk.css ~/.config/gtk-3.0/gtk.css.backup
+        rm -f ~/.config/gtk-3.0/gtk.css
+    fi
     
     # WORK THROUGH SOME GTK3 STUFF WITH SED
     # MAIN SED

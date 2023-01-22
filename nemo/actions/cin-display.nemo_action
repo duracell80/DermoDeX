@@ -1,9 +1,0 @@
-[Nemo Action]
-# Opens the Display Settings to Change Monitor Setups
-Name=Displa_y Settings
-Comment=Make Changes to Monitors and Scaling
-Exec=cinnamon-settings display
-Icon-Name=video-joined-displays-symbolic
-Selection=none
-Extensions=any;
-Conditions=desktop;

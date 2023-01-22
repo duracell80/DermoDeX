@@ -156,9 +156,9 @@
     },
     "flowsidebar" : {
         "type" : "checkbox",
-        "description" : "Color Flow - Sidebars",
-        "default" : true,
-        "tooltip" : "When active, DermoDeX will make an attempt to shade the sidebar for example in the nemo file manager."
+        "description" : "Color Flow - Sidebars and Titlebars",
+        "default" : false,
+        "tooltip" : "When active, DermoDeX will make an attempt to shade the titlebars and sidebar for example the sidebar in the nemo file manager."
     },
     "flowcolorsmenu" : {
         "type" : "checkbox",
