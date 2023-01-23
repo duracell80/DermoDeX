@@ -1,0 +1,12 @@
+.places-treeview,
+.nemo-window scrolledwindow.frame .view:not(:selected) {
+  background-color: #8ebaf4;
+}
+
+menu menuitem:hover,
+.menu menuitem:hover,
+.context-menu menuitem:hover,
+menubar > menuitem:hover,
+.menubar > menuitem:hover {
+  background-color: #8ebaf4;
+}

@@ -95,14 +95,16 @@ fi
 
 
 
-BRILLIANT=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -d "#cccccc" --mode="mix")
-NITESHADE=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -d "#666666" --mode="mix")
+
 BRIGHTEST=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 2.2 --mode="hex")
 BRIGHTER=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 2 --mode="hex")
 BRIGHT=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 1.3 --mode="hex")
 DARK=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 0.7 --mode="hex")
 DARKER=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 0.3 --mode="hex")
 DARKEST=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 0.2 --mode="hex")
+
+BRILLIANT=$($HOME/.local/share/dermodex/remix_color.py -c "${DARK}" -d "#eeeeee" --mode="mix")
+NITESHADE=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -d "#666666" --mode="mix")
 
 RGB_ACCENT=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 1 --mode="rgb")
 RGB_BRIGHTEST=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 2.2 --mode="rgb")
@@ -133,6 +135,10 @@ cp $LWD/cinnamon-ext.css $CINN_FILE
 chmod u+rw $CCD/cinnamon-base.css
 chmod u+rw $CCD/cinnamon-ext.css
 
+# REMOVE GTK CUSTOMIZATIONS FROM LOCAL
+cp ~/.config/gtk-3.0/gtk.css ~/.config/gtk-3.0/gtk.css.orig
+echo " " > ~/.config/gtk-3.0/gtk.css
+
 # MODIFY CINNAMON IN FLUENT
 sed -i "s|background-color: rgba(60, 60, 60, 0.98);|/*background-color: rgba(60, 60, 60, 0);*/|g" $CCD/cinnamon-base.css
 
@@ -156,7 +162,13 @@ if [ "$flowsidebar" == "true" ]; then
     echo "[i] Accent - Sidebars: Enabled"
     sed -i "s|dd-fav-background-gradient-end|background-gradient-end|g" $CINN_FILE
     sed -i "s|dd-fav-background-gradient-start|background-gradient-start|g" $CINN_FILE
-else 
+    sed -i "s|#8ebaf4|${BRILLIANT}|g" $CCD/sidebar.css
+    sed -i "s|#a0bfe8|${BRIGHTEST}|g" $CCD/sidebar.css
+    cp -f $LWD/sidebar.css $LWD/sidebar.css.orig
+    cat $CCD/sidebar.css > ~/.config/gtk-3.0/gtk-sidebar.css
+    echo "@import './gtk-sidebar.css';" >> ~/.config/gtk-3.0/gtk.css
+    cp -f $LWD/sidebar.css $CCD/sidebar.css
+else
     echo "[i] Accent - Sidebars: Not Enabled"
 fi
 
@@ -325,11 +337,13 @@ if [ "$flowcolors" == true ]; then
     if [ "$flowheaderbar" == "true" ]; then
         sed -i "s|#1A73E8|${DARKEST}|g" $CCD/headerbar.css
         sed -i "s|#8ebaf4|${BRILLIANT}|g" $CCD/headerbar.css
-        cat $CCD/headerbar.css > ~/.config/gtk-3.0/gtk.css
-        cp -f $LWD/headerbar.css.orig $CCD/headerbar.css
+        
+        cp -f $LWD/headerbar.css $LWD/headerbar.css.orig
+        cat $CCD/headerbar.css > ~/.config/gtk-3.0/gtk-headerbar.css
+        echo "@import './gtk-headerbar.css';" >> ~/.config/gtk-3.0/gtk.css
+        cp -f $LWD/headerbar.css $CCD/headerbar.css
     else
-        cp -f ~/.config/gtk-3.0/gtk.css ~/.config/gtk-3.0/gtk.css.backup
-        rm -f ~/.config/gtk-3.0/gtk.css
+        echo "[i] Accent - Headerbars: Not Enabled"
     fi
     
     # WORK THROUGH SOME GTK3 STUFF WITH SED
