@@ -1,5 +1,15 @@
 #!/bin/bash
 
+if [ -f "$HOLD_FILE" ]; then
+    ACT="0"
+    echo "[!] Hold file is currently active, release dermodex hold"
+    notify-send --urgency=normal --category=transfer.complete --icon=cs-backgrounds-symbolic "DermoDeX Hold Active!" "Release the hold in order to continue ..."
+    exit
+else
+    ACT="1"
+    notify-send --urgency=normal --category=transfer.complete --icon=cs-backgrounds-symbolic "DermoDeX is Installing!" "Answer a few questions in the terminal to configure things just the way you want them."
+fi
+
 
 CINN_VERSION=$(cinnamon --version)
 if awk "BEGIN {exit !($CINN_VERSION < 5.2)}"; then
@@ -240,6 +250,8 @@ cp -r $CWD/nemo/scripts/* $HOME/.local/share/nemo/scripts
 cp -f $CWD/*.desktop $HOME/.config/autostart
 
 chmod u+x $HOME/.local/bin/dd_*
+chmod u+x $HOME/.local/bin/dex-*
+
 chmod u+x $HOME/.local/share/dermodex/*.sh
 mkdir -p $HOME/.local/share/icons/White-Icons/scalable/apps
 mkdir -p $HOME/.local/share/dermodex/icons/breeze-dark_black/apps

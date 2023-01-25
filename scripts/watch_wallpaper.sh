@@ -43,6 +43,8 @@ check_install() {
 
 if [ -f "$HOLD_FILE" ]; then
     ACT="0"
+    echo "[!] Hold file is currently active, release dermodex hold"
+    notify-send --urgency=normal --category=transfer.complete --icon=cs-backgrounds-symbolic "DermoDeX Hold Active!" "Release the hold in order to continue ..."
     check_install
 else
     check_install
@@ -158,9 +160,14 @@ else
                 OVR3="#${override3}"
                 OVR3="#${override4}"
                 
+		if [ "$HEX1" == "none" ]; then
+			HEX1="#000000"
+		fi
+
                 # REMIX THEMES AND ICONS ONLY IF SLIDESHOW NOT ACTIVE
                 if [ "$CONF_SLIDESHOW" = "false" ]; then
-                    $BASE_FILE/remix_themes.sh "${HEX1}"
+                    echo "[i] Starting the theme build process ..."
+		    $BASE_FILE/remix_themes.sh "${HEX1}"
 
                     # RECOLOR NEMO FOLDERS AND EMBLEMS
                     if [ "$flowicons" == "true" ]; then
