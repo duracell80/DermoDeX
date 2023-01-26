@@ -1,0 +1,13 @@
+[:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+background-color='rgb(0,0,0)'
+background-transparency-percent=3
+cursor-colors-set=false
+font='Liberation Mono 15'
+foreground-color='rgb(255,255,255)'
+highlight-colors-set=false
+palette=['rgb(0,0,0)', 'rgb(255,36,36)', 'rgb(98,162,214)', 'rgb(0,74,170)', 'rgb(255,255,255)', 'rgb(98,162,214)', 'rgb(98,162,214)', 'rgb(170,170,170)', 'rgb(85,85,85)', 'rgb(255,85,119)', 'rgb(98,162,214)', 'rgb(85,108,255)', 'rgb(255,255,255)', 'rgb(98,162,214)', 'rgb(98,162,214)', 'rgb(255,255,255)']
+use-system-font=false
+use-theme-colors=false
+use-theme-transparency=true
+use-transparent-background=false
+visible-name='DermoDeX'

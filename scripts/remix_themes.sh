@@ -31,6 +31,9 @@ GTK4_FILE=$CCD/gtk-4.0/gtk.css
 GTK4_DARK=$CCD/gtk-4.0/gtk-dark.css
 
 CONF_FILE="$HOME/.local/share/dermodex/config.ini"
+CONF_TERM="gnome-terminal-profiles.dconf"
+
+cp -f $LWD/$CONF_TERM $CCD/$CONF_TERM
 
 mkdir -p $CCD/gtk-2.0
 mkdir -p $CCD/gtk-3.0
@@ -107,12 +110,14 @@ BRILLIANT=$($HOME/.local/share/dermodex/remix_color.py -c "${DARK}" -d "#eeeeee"
 NITESHADE=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -d "#666666" --mode="mix")
 
 RGB_ACCENT=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 1 --mode="rgb")
+RGB_BLEACHED=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 3.5 --mode="rgb")
 RGB_BRIGHTEST=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 2.2 --mode="rgb")
 RGB_BRIGHTER=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 2 --mode="rgb")
 RGB_BRIGHT=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 1.3 --mode="rgb")
 RGB_DARK=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 0.7 --mode="rgb")
 RGB_DARKER=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 0.3 --mode="rgb")
 RGB_DARKEST=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 0.2 --mode="rgb")
+#RGB_BRILLIANT=$($HOME/.local/share/dermodex/remix_color.py -c "${DARK}" -d "#eeeeee" --mode="mixrgb")
 
 if [ "$flowcolors" = true ]; then
     if [ "$coloroverrides" == "true" ] && [ "$overridegtk" != "ffffff" ]; then
@@ -242,6 +247,9 @@ fi
 
 echo "[i] Colors to Apply - Accent: $ACCENT | Bright: $BRIGHT | Brightest: $BRIGHTEST | Dark: $DARKER | Darkest: $DARKEST"
 
+# UPDATE TERMINAL COLORS
+sed -i "s|rgb(98,162,214|rgb(${RGB_BLEACHED}|g" $CCD/$CONF_TERM
+dconf load /org/gnome/terminal/legacy/profiles:/ < $CCD/$CONF_TERM
 
 # IF ICON COLOR WAS OVERRIDEN AND DOESN'T MATCH ACCENT FROM WALLPAPER
 if [ "$override3" == "aN" ] || [ "$override3" == "none" ]; then

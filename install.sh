@@ -264,6 +264,10 @@ cp -f $CWD/scripts/config_update.py $HOME/.local/share/dermodex
 cp -f $CWD/scripts/*.ini $HOME/.local/share/dermodex
 cp -f $CWD/scripts/colors.py $HOME/.local/share/dermodex
 
+# COPY OVER TERMINAL THEME
+cp -f $CWD/scripts/gnome-terminal-profiles.dconf $HOME/.local/share/dermodex
+cp -f $CWD/scripts/gnome-terminal-profiles.dconf $HOME/.cache/dermodex
+
 
 # COPY OVER WALLPAPERS and ICONS
 cp -r $CWD/wallpapers $HOME/.local/share/dermodex
