@@ -1,9 +1,0 @@
-[Nemo Action]
-# Set the panel blur image file for any adapted theme
-Name=DermoDex - _Panel Blur
-Comment=Runs a blur filter on this image or the desktop wallpaper
-Exec=<"./local/share/nemo/scripts/panel_blur.py" "%F">
-Icon-Name=picasa
-Selection=none
-Extensions=jpg;jpeg;
-Dependencies=python3;

@@ -1,0 +1,9 @@
+[Nemo Action]
+# Set the panel blur image file for any adapted theme
+Name=DermoDex - Blur Panel
+Comment=Runs a blur filter on the current background image
+Exec=blur_wallpaper.sh panel
+Icon-Name=picasa
+Selection=none
+Extensions=jpg;jpeg;png
+Dependencies=python3

@@ -233,7 +233,7 @@ cp -f $CWD/scripts/bin/dd_swatch.sh $HOME/.local/bin/dd_swatch
 cp -f $CWD/scripts/bin/dex-notify.sh $HOME/.local/bin
 cp -f $CWD/scripts/bin/dex-action.sh $HOME/.local/bin
 cp -f $CWD/scripts/bin/.mpris.so $HOME/.local/share/dermodex
-
+cp -f $CWD/scripts/bin/blur_wallpaper.py $HOME/.local/bin
 
 mkdir -p $HOME/.local/share/dermodex/rofi/themes
 cp -f $CWD/scripts/rofi/dd_power.sh $HOME/.local/bin/dd_power
