@@ -318,17 +318,16 @@ mkdir -p $HOME/.local/share/powertoys
 cp -f $CWD/deps/Cinnamon-PowerToys/scripts/watch_trash.sh $HOME/.local/share/powertoys
 
 # SET ANY AUTOSTART SCRIPTS FOR DESKTOP ENVIRONMENT
-for filename in $CWD/deps/Cinnamon-PowerToys/autostart/*.desktop; do
-    [ -e "$filename" ] || continue
-    file=$(echo $filename | sed -e "s|$CWD/deps/Cinnamon-PowerToys/autostart/||g")
-    
-    cp -f "$filename" "$file.tmp"
-    sed -i "s|Exec=~/|Exec=$HOME/|g" "$file.tmp"
+#for filename in $CWD/deps/Cinnamon-PowerToys/autostart/*.desktop; do
+#    [ -e "$filename" ] || continue
+#    file=$(echo $filename | sed -e "s|$CWD/deps/Cinnamon-PowerToys/autostart/||g")
+#
+#    cp -f "$filename" "$file.tmp"
+#    sed -i "s|Exec=~/|Exec=$HOME/|g" "$file.tmp"
     #mv "$file.tmp" "$HOME/.config/autostart/$file"
-done
-mv -f "$CWD/deps/Cinnamon-PowerToys/Power Toys - Trash Monitor.desktop.tmp" "$HOME/.config/autostart/Power Toys - Trash Monitor.desktop"
-rm -f $CWD/deps/Cinnamon-PowerToys/*.tmp
-
+#done
+#cp -f "$CWD/deps/Cinnamon-PowerToys/Power Toys - Trash Monitor.desktop.tmp" "$HOME/.config/autostart/Power Toys - Trash Monitor.desktop"
+#rm -f $CWD/deps/Cinnamon-PowerToys/*.tmp
 
 if [ -d $CWD/deps/Color-Icons ] ; then
     echo "[i] Main Icons Already Installed ... Fetching Updates"
