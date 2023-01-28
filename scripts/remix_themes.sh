@@ -461,4 +461,4 @@ cp -f $LWD/theme/gtk-3.0/gtk.orig $LWD/theme/gtk-3.0/gtk.css
 cp -f $HOME/.cache/dermodex/index.theme $HOME/.themes/DermoDeX
 cp -f $HOME/.local/share/dermodex/theme/cinnamon/thumbnail.png $HOME/.themes/DermoDeX/cinnamon
 
-#xdotool key ctrl+alt+"Escape"
+xdotool key ctrl+alt+"Escape"

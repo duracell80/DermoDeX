@@ -56,25 +56,28 @@ def main(argv):
         
     if "panelblur" in cfg_key:
         os.system(HOME + '/.local/share/dermodex/remix_themes.sh');
-    if "panelstyle" in cfg_key:
+    elif "panelstyle" in cfg_key:
         os.system(HOME + '/.local/share/dermodex/remix_themes.sh');
-    if "panelshade" in cfg_key:
+    elif "panelshade" in cfg_key:
         os.system(HOME + '/.local/share/dermodex/remix_themes.sh');
-    if "paneltrans" in cfg_key:
+    elif "paneltrans" in cfg_key:
         os.system(HOME + '/.local/share/dermodex/remix_themes.sh');
-    if "menubckgrd" in cfg_key:
+    elif "menubckgrd" in cfg_key:
         os.system(HOME + '/.local/share/dermodex/remix_themes.sh');
-    if "menutrans" in cfg_key:
+    elif "menutrans" in cfg_key:
         os.system(HOME + '/.local/share/dermodex/remix_themes.sh');
-    if "menuavatar" in cfg_key:
+    elif "menuavatar" in cfg_key:
         os.system(HOME + '/.local/share/dermodex/remix_themes.sh');
-    if "flowsidebar" in cfg_key:
+    elif "flowsidebar" in cfg_key:
         os.system(HOME + '/.local/share/dermodex/remix_themes.sh');
-    if "flowheaderbar" in cfg_key:
+    elif "flowheaderbar" in cfg_key:
         os.system(HOME + '/.local/share/dermodex/remix_themes.sh');
-    if "flowcolorsmenu" in cfg_key:
+    elif "flowcolorsmenu" in cfg_key:
         os.system(HOME + '/.local/share/dermodex/remix_themes.sh');
-
+    elif "actiontheme" in cfg_key:
+        os.system(HOME + '/.local/share/dermodex/remix_themes.sh');
+    else:
+        x=1+1
     
     
 if __name__ == "__main__":

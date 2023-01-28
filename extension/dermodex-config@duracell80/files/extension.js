@@ -457,7 +457,7 @@ DermoDeXSettings.prototype = {
 	},
     
     actiontheme: function () {
-        let process = new ShellUtils.ShellOutputProcess('xdotool key ctrl+alt+"Escape"');
+        let process = new ShellUtils.ShellOutputProcess(['~/.local/share/dermodex/config_update.py', '-s', 'cinnamon', '-k', 'actiontheme', '-v main']);
         let error = process.spawn_sync_and_get_error();
     }
     

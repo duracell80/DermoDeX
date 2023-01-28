@@ -324,11 +324,6 @@
     "div10" : {
         "type" : "separator"
     },
-    "actionapplytheme" : {
-        "type": "button",
-        "description": "Enact Theme Changes",
-        "callback": "actiontheme"
-    },
     
     "div3" : {
         "type" : "separator"
