@@ -110,7 +110,7 @@ BRILLIANT=$($HOME/.local/share/dermodex/remix_color.py -c "${DARK}" -d "#eeeeee"
 NITESHADE=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -d "#666666" --mode="mix")
 
 RGB_ACCENT=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 1 --mode="rgb")
-RGB_BLEACHED=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 3.5 --mode="rgb")
+RGB_BLEACHED=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 2.8 --mode="rgb")
 RGB_BRIGHTEST=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 2.2 --mode="rgb")
 RGB_BRIGHTER=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 2 --mode="rgb")
 RGB_BRIGHT=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 1.3 --mode="rgb")
