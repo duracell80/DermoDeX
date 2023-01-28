@@ -212,6 +212,11 @@ else
                 #gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark-Aqua"
                 gsettings set org.cinnamon.desktop.interface gtk-theme "DermoDeX"
 
+                # REFRESH ICONS
+                gsettings set org.cinnamon.desktop.interface icon-theme "Mint-Y-Aqua"
+                sleep 1
+                gsettings set org.cinnamon.desktop.interface icon-theme "DermoDeX"
+                
                 # SET SOUNDS
                 $BASE_FILE/watch_sounds.sh
                 
