@@ -294,8 +294,8 @@ cp -f $CWD/src/cinnamon/thumbnail.png $HOME/.local/share/dermodex/theme/cinnamon
 
 chmod u+x $HOME/.local/share/dermodex/theme-ext/gtk/remix_assets.sh
 
-if [ -d $CWD/sounds ] ; then
-    echo "[i] Sound Themes Already Installed ... Fetching Updates"
+if [ -d $CWD/deps/Cinnamon-PowerToys ] ; then
+    echo "[i] Powertoys Already Installed ... Fetching Updates"
     cd $CWD/deps/Cinnamon-PowerToys
     git fetch
     git pull
@@ -303,7 +303,7 @@ if [ -d $CWD/sounds ] ; then
     cp -rf $CWD/deps/Cinnamon-PowerToys/sounds $CWD
     sleep 1
 else
-    echo "[i] Downloading Sound Themes"
+    echo "[i] Downloading Powertoys"
     cd $CWD/deps
     #rm $CWD/sounds
     git clone --quiet https://github.com/duracell80/Cinnamon-PowerToys.git
