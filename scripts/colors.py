@@ -249,6 +249,8 @@ def extract_color(input_image, resize, tolerance, zoom, crop_variant = "h_1"):
     
     img_login.save(HOME + '/.local/share/dermodex/login_blur.jpg')
     img_login.save(HOME + '/.local/share/dermodex/login_blur.png')
+    img_panel_darken = adjust_brightness(img_login, float("0.8"))
+    img_panel_darken.save(HOME + '/.local/share/dermodex/panel_blur.png')
     
     if cin_panelblur == "true": 
         # Convert Wallpaper to PNG and add transparency to panel blur
