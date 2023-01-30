@@ -1,5 +1,7 @@
 #!/bin/bash
 
+gsettings set org.cinnamon.desktop.notifications display-notifications true
+
 if [ -f "$HOLD_FILE" ]; then
     ACT="0"
     echo "[!] Hold file is currently active, release dermodex hold"
@@ -16,6 +18,7 @@ if awk "BEGIN {exit !($CINN_VERSION < 5.2)}"; then
     echo "[i] ERROR: Cinnamon version too low, this script was designed for Cinnamon 5.2 and above"
     exit
 fi
+
 
 echo "[i] Before running the install note the changes documented such as needing to backup your /usr/share/sounds directory."
 read -p "[Q] Do you wish to continue (y/n)? " answer
@@ -42,6 +45,13 @@ case ${answer:0:1} in
         gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y"
         gsettings set org.cinnamon.desktop.wm.preferences theme "cinnamon"
         gsettings set org.cinnamon.theme name "cinnamon"
+        
+        gsettings set org.cinnamon.desktop.interface text-scaling-factor 1
+        gsettings set org.cinnamon.desktop.interface menus-have-icons false
+        gsettings set org.cinnamon.desktop.interface buttons-have-icons false
+        gsettings set org.cinnamon.settings-daemon.peripherals.keyboard remember-numlock-state true
+        
+        gsettings set org.cinnamon.desktop.background.slideshow slideshow-enabled false
     ;;
     * )
         exit
@@ -226,6 +236,8 @@ cp ~/.config/gtk-3.0/gtk.css ~/.config/gtk-3.0/gtk.css.backup
 #cp $HOME/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json $HOME/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json.bak
 #cp -f $CWD/scripts/config_workspace.json $HOME/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json
 
+
+
 cp -f $CWD/scripts/remix_sounds.sh $HOME/.local/share/dermodex
 cp -f $CWD/scripts/remix_themes.sh $HOME/.local/share/dermodex
 cp -f $CWD/scripts/remix_icons.sh $HOME/.local/share/dermodex
@@ -236,6 +248,8 @@ cp -f $CWD/scripts/sounds_waveform.sh $HOME/.local/share/dermodex
 cp -f $CWD/scripts/display_resolution.sh $HOME/.local/share/dermodex
 
 cp -f $CWD/scripts/cinnamon_reload $HOME/.local/bin
+chmod u+x $HOME/.local/bin/cinnamon_reload
+
 cp -f $CWD/scripts/bin/dd_sleep.sh $HOME/.local/bin/dd_sleep
 cp -f $CWD/scripts/bin/dd_start.sh $HOME/.local/bin/dd_start
 cp -f $CWD/scripts/bin/dd_wake.sh $HOME/.local/bin/dd_wake
