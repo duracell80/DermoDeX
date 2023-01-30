@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 CINN_VERSION=$(cinnamon --version)
 if awk "BEGIN {exit !($CINN_VERSION < 5.2)}"; then
@@ -7,4 +7,4 @@ if awk "BEGIN {exit !($CINN_VERSION < 5.2)}"; then
 fi
 
 #dd_release
-$HOME/.local/share/dermodex/watch_wallpaper.sh
+$HOME/.local/share/dermodex/watch_wallpaper.sh &

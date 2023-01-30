@@ -65,12 +65,26 @@ SWD=/usr/share/sounds
 LWD=$HOME/.local/share/dermodex/icons/breeze-dark_black
 TWD=$HOME/.themes/DermoDeX
 
+
+# SET ANY AUTOSTART SCRIPTS FOR DESKTOP ENVIRONMENT
+for filename in $CWD/*.desktop; do
+    [ -e "$filename" ] || continue
+    file=$(echo $filename | sed -e "s|${CWD}/||g")
+    
+    cp -f "$filename" "$file.tmp"
+    sed -i "s|Exec=~/|Exec=$HOME/|g" "$file.tmp"
+    mv -f "$file.tmp" "$HOME/.config/autostart/$file"
+done
+
+
 sed -i "s|file:///~/|file:///$HOME/|g" $CWD/scripts/cinnamon_dd.txt
 mkdir -p $HOME/.cache/dermodex
 mkdir -p $HOME/.local/share/dermodex
 mkdir -p $HOME/.local/share/dermodex/wallpapers
 mkdir -p $HOME/.themes/DermoDeX
 mkdir -p $HOME/.local/bin
+
+cp -f $CWD/scripts/watch_wallpaper.sh $HOME/.local/share/dermodex/
 
 # IMPORT FLUENT FROM GIT
 echo "[i] Installing Base Theme - Fluent"
@@ -207,10 +221,10 @@ cp -r $CWD/src/sidebar.css $HOME/.cache/dermodex/
 
 cp ~/.config/gtk-3.0/gtk.css ~/.config/gtk-3.0/gtk.css.backup
 
-cp $HOME/.cinnamon/configs/menu@cinnamon.org/0.json $HOME/.cinnamon/configs/menu@cinnamon.org/0.json.bak
-cp -f ./scripts/config_menu.json $HOME/.cinnamon/configs/menu@cinnamon.org/0.json
-cp $HOME/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json $HOME/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json.bak
-cp -f $CWD/scripts/config_workspace.json $HOME/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json
+#cp $HOME/.cinnamon/configs/menu@cinnamon.org/0.json $HOME/.cinnamon/configs/menu@cinnamon.org/0.json.bak
+#cp -f ./scripts/config_menu.json $HOME/.cinnamon/configs/menu@cinnamon.org/0.json
+#cp $HOME/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json $HOME/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json.bak
+#cp -f $CWD/scripts/config_workspace.json $HOME/.cinnamon/configs/workspace-switcher@cinnamon.org/27.json
 
 cp -f $CWD/scripts/remix_sounds.sh $HOME/.local/share/dermodex
 cp -f $CWD/scripts/remix_themes.sh $HOME/.local/share/dermodex
@@ -223,6 +237,7 @@ cp -f $CWD/scripts/display_resolution.sh $HOME/.local/share/dermodex
 
 cp -f $CWD/scripts/cinnamon_reload $HOME/.local/bin
 cp -f $CWD/scripts/bin/dd_sleep.sh $HOME/.local/bin/dd_sleep
+cp -f $CWD/scripts/bin/dd_start.sh $HOME/.local/bin/dd_start
 cp -f $CWD/scripts/bin/dd_wake.sh $HOME/.local/bin/dd_wake
 cp -f $CWD/scripts/bin/dd_hold.sh $HOME/.local/bin/dd_hold
 cp -f $CWD/scripts/bin/dd_release.sh $HOME/.local/bin/dd_release
@@ -246,8 +261,10 @@ sudo cp -f $CWD/fonts/* /usr/share/fonts/ && fc-cache -f
 
 
 cp -r $CWD/nemo/actions/*.nemo_action $HOME/.local/share/nemo/actions
-cp -r $CWD/nemo/scripts/* $HOME/.local/share/nemo/scripts
-cp -f $CWD/*.desktop $HOME/.config/autostart
+#cp -r $CWD/nemo/scripts/* $HOME/.local/share/nemo/scripts
+
+
+#cp -f $CWD/*.desktop $HOME/.config/autostart
 
 chmod u+x $HOME/.local/bin/dd_*
 chmod u+x $HOME/.local/bin/dex-*
@@ -258,7 +275,6 @@ mkdir -p $HOME/.local/share/dermodex/icons/breeze-dark_black/apps
 
 
 cp -f $CWD/scripts/watch_sounds.sh $HOME/.local/share/dermodex
-cp -f $CWD/scripts/watch_wallpaper.sh $HOME/.local/share/dermodex
 cp -f $CWD/scripts/cinnamon_dd.txt $HOME/.local/share/dermodex
 cp -f $CWD/scripts/config_update.py $HOME/.local/share/dermodex
 cp -f $CWD/scripts/*.ini $HOME/.local/share/dermodex
