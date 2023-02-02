@@ -87,6 +87,7 @@ fi
 mkdir -p $CCA
 mkdir -p $CWD/places/outline
 mkdir -p $CWD/emblems
+mkdir -p $CWD/legacy
 mkdir -p $CWD/mimetypes
 mkdir -p $CWD/apps
 mkdir -p $CWD/controlpanel/cats
@@ -178,6 +179,18 @@ else
         sed -i "s|#333333|${DARK}|g" ${LINE}
     done < $FILE
     rm -f $FILE
+    
+    
+    # EMBLEMS -LEGACY
+    sleep 1
+    cp -f $LWD/emblems/emblem-* $CWD/legacy
+    ls $CWD/legacy/emblem-* > $FILE
+
+    echo "[i] Remixing Icons: Emblems - Legacy"
+    while read -r LINE; do
+        sed -i "s|#333333|${DARK}|g" ${LINE}
+    done < $FILE
+    rm -f $FILE
 
 
     # MIMETYPES
@@ -209,6 +222,7 @@ else
     rm -f $FILE
     
     mv -f $CWD/emblems/*.svg $HOME/.local/share/icons/DermoDeX/scalable/emblems
+    mv -f $CWD/legacy/emblem-* $HOME/.local/share/icons/DermoDeX/scalable/legacy
     mv -f $CWD/mimetypes/*.svg $HOME/.local/share/icons/DermoDeX/scalable/mimetypes
 
     cp -f $CWD/controlpanel/cats/cs* $HOME/.local/share/icons/DermoDeX/scalable/categories
