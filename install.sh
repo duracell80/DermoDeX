@@ -221,6 +221,7 @@ select wall in "${names[@]}"; do
     esac
 done
 
+sudo update-alternatives --config x-cursor-theme
 
 # GRANULAR CONTROL OVER WHICH SUB THEMES TO COPY OVER
 cp -r $CWD/src/cinnamon/cinnamon-ext.css $HOME/.local/share/dermodex/
