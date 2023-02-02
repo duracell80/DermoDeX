@@ -122,14 +122,35 @@ GTK0_BRIGHT=$($HOME/.local/share/dermodex/remix_color.py -c "${savegtk0}" -f 1.3
 GTK0_DARK=$($HOME/.local/share/dermodex/remix_color.py -c "${savegtk0}" -f 0.7 --mode="hex")
 
 
+ACCENT_COMP1=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 1 --mode="comp")
+
+ACCENT_COMP1_BRIGHTEST=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT_COMP1}" -f 2.2 --mode="hex")
+ACCENT_COMP1_BRIGHTER=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT_COMP1}" -f 2 --mode="hex")
+ACCENT_COMP1_BRIGHT=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT_COMP1}" -f 1.3 --mode="hex")
+ACCENT_COMP1_DARK=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT_COMP1}" -f 0.7 --mode="hex")
+ACCENT_COMP1_DARKER=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT_COMP1}" -f 0.3 --mode="hex")
+ACCENT_COMP1_DARKEST=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT_COMP1}" -f 0.2 --mode="hex")
+
 if [ "$TYPE" == "folders" ]; then
     echo "[i] Remixing Icons: Places"
     
     mkdir -p $CWD/places/desktop
     mkdir -p $HOME/.local/share/icons/DermoDeX/scalable/places/desktop
     
+    #savehex0_brightest=$($HOME/.local/share/dermodex/remix_color.py -c "#${savehex0}" -f 2.2 --mode="hex")
+    #savehex0_brighter=$($HOME/.local/share/dermodex/remix_color.py -c "#${savehex0}" -f 1.8 --mode="hex")
+    #savehex0_bright=$($HOME/.local/share/dermodex/remix_color.py -c "#${savehex0}" -f 1.3 --mode="hex")
+    #savehex0_dark=$($HOME/.local/share/dermodex/remix_color.py -c "#${savehex0}" -f 0.7 --mode="hex")
+    
+    savehex1_brighterst=$($HOME/.local/share/dermodex/remix_color.py -c "#${savehex1}" -f 2.2 --mode="hex")
+    savehex1_brighter=$($HOME/.local/share/dermodex/remix_color.py -c "#${savehex1}" -f 1.8 --mode="hex")
     savehex1_bright=$($HOME/.local/share/dermodex/remix_color.py -c "#${savehex1}" -f 1.3 --mode="hex")
     savehex1_dark=$($HOME/.local/share/dermodex/remix_color.py -c "#${savehex1}" -f 0.7 --mode="hex")
+    
+    #savehex2_brightest=$($HOME/.local/share/dermodex/remix_color.py -c "#${savehex2}" -f 2.2 --mode="hex")
+    #savehex2_brighter=$($HOME/.local/share/dermodex/remix_color.py -c "#${savehex2}" -f 1.8 --mode="hex")
+    #savehex2_bright=$($HOME/.local/share/dermodex/remix_color.py -c "#${savehex2}" -f 1.3 --mode="hex")
+    #savehex2_dark=$($HOME/.local/share/dermodex/remix_color.py -c "#${savehex2}" -f 0.7 --mode="hex")
     
     # PLACES
     cp -f $LWD/places/*.svg $CWD/places
@@ -148,13 +169,40 @@ if [ "$TYPE" == "folders" ]; then
     
     
     ls $CWD/places/*.svg > $FILE
-    
     while read -r LINE; do
         sed -i "s|stop-color:#000|stop-color:${ACCENT}|g" ${LINE}
         sed -i "s|stop-color:#666|stop-color:${BRIGHT}|g" ${LINE}
         sed -i "s|fill:#999|fill:${DARK}|g" ${LINE}
     done < $FILE
     rm -f $FILE
+    
+    # PLACES - FOLDER COLOR OPTIONS
+    cp -f $LWD/places/folder.svg $CWD/places/folder_1.svg
+    cp -f $LWD/places/folder.svg $CWD/places/folder_2.svg
+    cp -f $LWD/places/folder.svg $CWD/places/folder_3.svg
+    cp -f $LWD/places/folder.svg $CWD/places/folder_4.svg
+    
+    cp -f $LWD/places/folder-drag-accept.svg $CWD/places/folder-drag-accept_1.svg
+    cp -f $LWD/places/folder-drag-accept.svg $CWD/places/folder-drag-accept_2.svg
+    cp -f $LWD/places/folder-drag-accept.svg $CWD/places/folder-drag-accept_3.svg
+    cp -f $LWD/places/folder-drag-accept.svg $CWD/places/folder-drag-accept_4.svg
+    
+    ls $CWD/places/folder_*.svg > $FILE
+    while read -r LINE; do
+        sed -i "s|stop-color:#000|stop-color:${ACCENT_COMP1}|g" ${LINE}
+        sed -i "s|stop-color:#666|stop-color:${ACCENT_COMP1_BRIGHT}|g" ${LINE}
+        sed -i "s|fill:#999|fill:${ACCENT_COMP1_DARK}|g" ${LINE}
+    done < $FILE
+    rm -f $FILE
+    
+    ls $CWD/places/folder-drag-accept_*.svg > $FILE
+    while read -r LINE; do
+        sed -i "s|stop-color:#000|stop-color:${ACCENT_COMP1}|g" ${LINE}
+        sed -i "s|stop-color:#666|stop-color:${ACCENT_COMP1_BRIGHT}|g" ${LINE}
+        sed -i "s|fill:#999|fill:${ACCENT_COMP1_DARK}|g" ${LINE}
+    done < $FILE
+    rm -f $FILE
+    
     
     # PLACES - OUTLINED
     cp -f $LWD/places/outline/*.svg $CWD/places/outline

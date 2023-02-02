@@ -3,7 +3,6 @@
 import sys, getopt, math
 from PIL import ImageColor
 
-
 def main(argv):
     arg_color   = "#3281ea"
     arg_colormix= "#cccccc"
@@ -36,6 +35,8 @@ def main(argv):
     elif arg_mode == "balance":
         rgb_bits = str(get_rgb(arg_color)).split(",")
         print(isLightOrDark(int(rgb_bits[0]), int(rgb_bits[1]), int(rgb_bits[2])))
+    elif arg_mode == "comp":
+        print(comp_hex(arg_color))
     else:
         print(colorscale(arg_color, arg_factor))
 
@@ -80,6 +81,15 @@ def blend_hex(colorRGBA1,colorRGBA2):
     blue  = (int(rgb_bits1[2]) * (255 - int(rgb_bits2[2])) + int(rgb_bits2[2]) * int(rgb_bits2[2])) / 255
     
     return ("#" + get_hex(int(red), int(green), int(blue)))
+
+def comp_hex(color):
+    color = color[1:]
+    color = int(color, 16)
+    comp_color = 0xFFFFFF ^ color
+    comp_color = "#%06X" % comp_color
+    
+    return comp_color
+    
 
 def colorscale(hexstr, scalefactor):
     """
