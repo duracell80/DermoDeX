@@ -122,15 +122,22 @@ GTK0_DARK=$($HOME/.local/share/dermodex/remix_color.py -c "${savegtk0}" -f 0.7 -
 
 
 
-ACCENT_COMP1=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -i "${CURRENT_WALL}" --mode="image" | cut -d ',' -f2)
-
-
-ACCENT_COMP1_BRIGHTEST=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT_COMP1}" -f 2.2 --mode="hex")
-ACCENT_COMP1_BRIGHTER=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT_COMP1}" -f 2 --mode="hex")
+ACCENT_COMP1=$(cat $HOME/.local/share/dermodex/colors_hex.txt | cut -d ',' -f2)
 ACCENT_COMP1_BRIGHT=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT_COMP1}" -f 1.3 --mode="hex")
 ACCENT_COMP1_DARK=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT_COMP1}" -f 0.7 --mode="hex")
-ACCENT_COMP1_DARKER=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT_COMP1}" -f 0.3 --mode="hex")
-ACCENT_COMP1_DARKEST=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT_COMP1}" -f 0.2 --mode="hex")
+
+ACCENT_COMP2=$(cat $HOME/.local/share/dermodex/colors_hex.txt | cut -d ',' -f3)
+ACCENT_COMP2_BRIGHT=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT_COMP2}" -f 1.3 --mode="hex")
+ACCENT_COMP2_DARK=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT_COMP2}" -f 0.7 --mode="hex")
+
+ACCENT_COMP3=$(cat $HOME/.local/share/dermodex/colors_hex.txt | cut -d ',' -f4)
+ACCENT_COMP3_BRIGHT=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT_COMP3}" -f 1.3 --mode="hex")
+ACCENT_COMP3_DARK=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT_COMP3}" -f 0.7 --mode="hex")
+
+ACCENT_COMP4=$(cat $HOME/.local/share/dermodex/colors_hex.txt | cut -d ',' -f5)
+ACCENT_COMP4_BRIGHT=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT_COMP4}" -f 1.3 --mode="hex")
+ACCENT_COMP4_DARK=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT_COMP4}" -f 0.7 --mode="hex")
+
 
 if [ "$TYPE" == "folders" ]; then
     echo "[i] Remixing Icons: Places"
@@ -188,21 +195,42 @@ if [ "$TYPE" == "folders" ]; then
     cp -f $LWD/places/folder-drag-accept.svg $CWD/places/folder-drag-accept_3.svg
     cp -f $LWD/places/folder-drag-accept.svg $CWD/places/folder-drag-accept_4.svg
     
-    ls $CWD/places/folder_*.svg > $FILE
-    while read -r LINE; do
-        sed -i "s|stop-color:#000|stop-color:${ACCENT_COMP1}|g" ${LINE}
-        sed -i "s|stop-color:#666|stop-color:${ACCENT_COMP1_BRIGHT}|g" ${LINE}
-        sed -i "s|fill:#999|fill:${ACCENT_COMP1_DARK}|g" ${LINE}
-    done < $FILE
-    rm -f $FILE
+    LINE=$CWD/places/folder_1.svg
+    LINE2=$CWD/places/folder-drag-accept_1.svg
+    sed -i "s|stop-color:#000|stop-color:${ACCENT_COMP1}|g" ${LINE}
+    sed -i "s|stop-color:#666|stop-color:${ACCENT_COMP1_BRIGHT}|g" ${LINE}
+    sed -i "s|fill:#999|fill:${ACCENT_COMP1_DARK}|g" ${LINE}
+    sed -i "s|stop-color:#000|stop-color:${ACCENT_COMP1}|g" ${LINE2}
+    sed -i "s|stop-color:#666|stop-color:${ACCENT_COMP1_BRIGHT}|g" ${LINE2}
+    sed -i "s|fill:#999|fill:${ACCENT_COMP1_DARK}|g" ${LINE2}
     
-    ls $CWD/places/folder-drag-accept_*.svg > $FILE
-    while read -r LINE; do
-        sed -i "s|stop-color:#000|stop-color:${ACCENT_COMP1}|g" ${LINE}
-        sed -i "s|stop-color:#666|stop-color:${ACCENT_COMP1_BRIGHT}|g" ${LINE}
-        sed -i "s|fill:#999|fill:${ACCENT_COMP1_DARK}|g" ${LINE}
-    done < $FILE
-    rm -f $FILE
+    LINE=$CWD/places/folder_2.svg
+    LINE2=$CWD/places/folder-drag-accept_2.svg
+    sed -i "s|stop-color:#000|stop-color:${ACCENT_COMP2}|g" ${LINE}
+    sed -i "s|stop-color:#666|stop-color:${ACCENT_COMP2_BRIGHT}|g" ${LINE}
+    sed -i "s|fill:#999|fill:${ACCENT_COMP2_DARK}|g" ${LINE}
+    sed -i "s|stop-color:#000|stop-color:${ACCENT_COMP2}|g" ${LINE2}
+    sed -i "s|stop-color:#666|stop-color:${ACCENT_COMP2_BRIGHT}|g" ${LINE2}
+    sed -i "s|fill:#999|fill:${ACCENT_COMP2_DARK}|g" ${LINE2}
+    
+    LINE=$CWD/places/folder_3.svg
+    LINE2=$CWD/places/folder-drag-accept_3.svg
+    sed -i "s|stop-color:#000|stop-color:${ACCENT_COMP3}|g" ${LINE}
+    sed -i "s|stop-color:#666|stop-color:${ACCENT_COMP3_BRIGHT}|g" ${LINE}
+    sed -i "s|fill:#999|fill:${ACCENT_COMP3_DARK}|g" ${LINE}
+    sed -i "s|stop-color:#000|stop-color:${ACCENT_COMP3}|g" ${LINE2}
+    sed -i "s|stop-color:#666|stop-color:${ACCENT_COMP3_BRIGHT}|g" ${LINE2}
+    sed -i "s|fill:#999|fill:${ACCENT_COMP3_DARK}|g" ${LINE2}
+
+    LINE=$CWD/places/folder_4.svg
+    LINE2=$CWD/places/folder-drag-accept_4.svg
+    sed -i "s|stop-color:#000|stop-color:${ACCENT_COMP4}|g" ${LINE}
+    sed -i "s|stop-color:#666|stop-color:${ACCENT_COMP4_BRIGHT}|g" ${LINE}
+    sed -i "s|fill:#999|fill:${ACCENT_COMP4_DARK}|g" ${LINE}
+    sed -i "s|stop-color:#000|stop-color:${ACCENT_COMP4}|g" ${LINE2}
+    sed -i "s|stop-color:#666|stop-color:${ACCENT_COMP4_BRIGHT}|g" ${LINE2}
+    sed -i "s|fill:#999|fill:${ACCENT_COMP4_DARK}|g" ${LINE2}
+    
     
     
     # PLACES - OUTLINED

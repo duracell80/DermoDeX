@@ -313,6 +313,20 @@ def extract_color(input_image, resize, tolerance, zoom, crop_variant = "h_1"):
     print("\n\nDermoDeX found these colors in the image: ")
     print(list_color)
     
+    i = 0
+    hex_out = ""
+    rgb_out = ""
+    for c in list_color:
+        hex_out+=str(list_color[i]) + ","
+        rgb_out+=str(get_rgb(list_color[i])) + ","
+        i+=1
+    
+    os.system('echo "' + hex_out[:-1] + '" > '+ HOME +'/.cache/dermodex/colors_hex.txt')
+    os.system('echo "' + rgb_out[:-1] + '" > '+ HOME +'/.cache/dermodex/colors_rgb.txt')
+    os.system('echo "' + hex_out[:-1] + '" > '+ HOME +'/.local/share/dermodex/colors_hex.txt')
+    os.system('echo "' + rgb_out[:-1] + '" > '+ HOME +'/.local/share/dermodex/colors_rgb.txt')
+    
+    
     global list_rgb
     global list_hex
     global shade_rgb
@@ -346,10 +360,10 @@ def extract_color(input_image, resize, tolerance, zoom, crop_variant = "h_1"):
     
     
     
-    for i in range(length):
+    #for i in range(length):
         
-        os.system('echo "' + list_hex[i] + '" >> '+ HOME +'/.cache/dermodex/colors_hex.txt')
-        os.system('echo "' + str(get_rgb(list_hex[i])) + '" >> '+ HOME +'/.cache/dermodex/colors_rgb.txt')
+    #    os.system('echo "' + list_hex[i] + '" >> '+ HOME +'/.cache/dermodex/colors_hex.txt')
+    #    os.system('echo "' + str(get_rgb(list_hex[i])) + '" >> '+ HOME +'/.cache/dermodex/colors_rgb.txt')
     
     
     list_precent = [int(i) for i in list(df_color['occurence'])]
@@ -407,7 +421,7 @@ os.system('cp "'+ wallpaper_file +'" '+ HOME +'/.cache/dermodex/wallpaper.jpg')
 
 
 
-
+print("\n\n[i] DermoDeX is looking at the desktop wallpaper, please wait a few seconds for color extraction to run ...")
 extract_color(HOME +'/.cache/dermodex/wallpaper.jpg', 900, int(cfg_tollerance), 2.5, cfg_splitfocus)
 
 
@@ -446,6 +460,8 @@ print("- Shade0: " + main_shade + " - rgb" + str(shade_rgb))
 print("- Shade1: " + shade_1 + " - rgb" + str(get_rgb(shade_1)))
 print("- Shade2: " + shade_2 + " - rgb" + str(get_rgb(shade_2)) + "\n\n")
 print("- Shade GTK: " + shade_gtk + " - rgb" + str(get_rgb(shade_gtk)))
+
+
 
 
 
