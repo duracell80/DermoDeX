@@ -99,8 +99,7 @@ cp -f $LWD/mimetypes/*.svg $CWD/mimetypes
 
 
 
-
-
+CURRENT_WALL=$(gsettings get org.cinnamon.desktop.background picture-uri | sed "s|'file://||" | sed "s|'||")
 
 
 BRIGHTEST=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 2.2 --mode="hex")
@@ -122,7 +121,9 @@ GTK0_BRIGHT=$($HOME/.local/share/dermodex/remix_color.py -c "${savegtk0}" -f 1.3
 GTK0_DARK=$($HOME/.local/share/dermodex/remix_color.py -c "${savegtk0}" -f 0.7 --mode="hex")
 
 
-ACCENT_COMP1=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -f 1 --mode="comp")
+
+ACCENT_COMP1=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT}" -i "${CURRENT_WALL}" --mode="image" | cut -d ',' -f2)
+
 
 ACCENT_COMP1_BRIGHTEST=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT_COMP1}" -f 2.2 --mode="hex")
 ACCENT_COMP1_BRIGHTER=$($HOME/.local/share/dermodex/remix_color.py -c "${ACCENT_COMP1}" -f 2 --mode="hex")
