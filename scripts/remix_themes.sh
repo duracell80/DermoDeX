@@ -437,6 +437,9 @@ if [ "$flowcolors" == true ]; then
     #sed -i "s|#81C995|${ACCENT}|g" $GTK4_DARK
 
 
+    # ADD GTK3 OVERRIDES
+    echo "stackswitcher button.text-button, stackswitcher.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action).text-button {min-width: unset;}" >> $GTK3_FILE
+
     # COMBINE GTK2 MODS
     cp -f $GTK2_FILE $LWD/theme/gtk-2.0/
     
