@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/lee/.local/share/powertoys/hypnotix_yt.sh
+X-GNOME-Autostart-enabled=false
+NoDisplay=false
+Hidden=false
+Name[en_US]=Power Toys - Hypnotix YouTubeLive
+Comment[en_US]=Converts YouTube livestreams into m3u entries for Hypnotix, copy the ~/.cache/hypnotix/yt_channels.txt file to ~/Videos to change streams
+X-GNOME-Autostart-Delay=60

@@ -26,7 +26,7 @@ case ${answer:0:1} in
     y|Y )
         echo ""
         echo "[i] - Installing Deps from APT and PIP"
-        sudo apt install -y python3-pip libsass1 sassc rofi scrot imagemagick xz-utils xdotool ffmpeg inkscape imagemagick sox
+        sudo apt install -y git python3-pip libsass1 sassc rofi scrot imagemagick xz-utils xdotool ffmpeg inkscape imagemagick sox
 
 
         pip3 install easydev
@@ -543,4 +543,4 @@ gsettings set org.cinnamon.desktop.notifications display-notifications "true"
 /usr/share/sounds/scripts/set_sound_theme.sh harmony
 
 
-dd_refresh
+$HOME/.local/bin/dd_refresh

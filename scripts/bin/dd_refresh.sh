@@ -7,7 +7,7 @@ if awk "BEGIN {exit !($CINN_VERSION < 5.2)}"; then
 fi
 
 CUR_WALL=$(gsettings get org.cinnamon.desktop.background picture-uri)
-dd_sleep
+$HOME/.local/bin/dd_sleep
 echo "" > $HOME/.cache/wallpaper_current.txt
 sleep 1
-dd_wake
+$HOME/.local/bin/dd_wake

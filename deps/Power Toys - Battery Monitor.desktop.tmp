@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/lee/.local/share/powertoys/watch_battery.sh
+X-GNOME-Autostart-enabled=false
+NoDisplay=false
+Hidden=false
+Name[en_US]=Power Toys - Battery Monitor
+Comment[en_US]=Watches battery level and alerts with different sound
+X-GNOME-Autostart-Delay=20

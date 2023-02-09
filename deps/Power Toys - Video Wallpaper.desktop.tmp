@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/lee/.local/bin/video-wallpaper.sh --start "~/Videos/Wallpapers/current.mp4"
+X-GNOME-Autostart-enabled=false
+NoDisplay=false
+Hidden=false
+Name[en_US]=Power Toys - Video Wallpaper
+Comment[en_US]=Launches the currently selected video wallpaper loop on startup
+X-GNOME-Autostart-Delay=0

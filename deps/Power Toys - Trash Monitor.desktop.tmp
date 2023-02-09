@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/lee/.local/share/powertoys/watch_trash.sh
+X-GNOME-Autostart-enabled=true
+NoDisplay=false
+Hidden=false
+Name[en_US]=Power Toys - Trash Monitor
+Comment[en_US]=Watches trash level and alerts with default notification sound when too full. Additionally enables the trash empty sound from the sound theme to function correctly!
+X-GNOME-Autostart-Delay=5
